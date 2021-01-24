@@ -1,0 +1,20 @@
+nav {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   color: white;
+   display: flex;
+   align-items: center;
+
+   section {
+      margin: 0 2rem;
+      height: 75px;
+      width: 100%;
+   }
+
+   .burger {
+      margin: 2rem;
+      margin-left: auto;
+   }
+}

@@ -1,0 +1,25 @@
+* {
+   margin: 0;
+   padding: 0;
+   font-family: 'Combo', cursive;
+}
+
+body {
+   height: 100vh;
+   width: 100%;
+   background: linear-gradient(to bottom, black, white);
+}
+
+#root {
+   height: 100vh;
+   width: 100%;
+}
+
+.react-calendar {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   margin: 30px;
+   border-radius: 15px;
+   box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.4);
+}

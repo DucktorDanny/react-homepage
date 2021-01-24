@@ -1,0 +1,19 @@
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  user-select: none;
+  -webkit-user-select: none;
+  color: white;
+}
+.clock-container h1 {
+  font-size: 9rem;
+  font-weight: normal;
+}
+.clock-container p {
+  font-size: 4.5rem;
+  transform: translateY(25%);
+}
+
+/*# sourceMappingURL=Clock.css.map */
