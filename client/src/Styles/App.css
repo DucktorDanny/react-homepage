@@ -2,12 +2,14 @@
   margin: 0;
   padding: 0;
   font-family: "Combo", cursive;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 body {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(to bottom, black, white);
+  background: linear-gradient(to bottom, #373737, #e4e4e4);
 }
 
 #root {
@@ -22,6 +24,29 @@ body {
   margin: 30px;
   border-radius: 15px;
   box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  overflow: hidden;
+  animation: slide-in 1s ease-in-out;
+}
+@keyframes slide-in {
+  0% {
+    transform: translateX(-125%);
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.5;
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .react-calendar {
+    margin: 0.5rem;
+    width: calc(100% - 1rem);
+  }
 }
 
 /*# sourceMappingURL=App.css.map */

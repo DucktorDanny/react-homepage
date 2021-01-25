@@ -11,10 +11,63 @@ nav {
       margin: 0 2rem;
       height: 75px;
       width: 100%;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      animation: fade-in 1s ease-in-out;
+
+      div {
+         background: gray;
+         height: 50px;
+         width: 50px;
+         margin: .5rem;
+         border-radius: 10px;
+         transition: all .3s;
+
+         .data {
+            position: relative;
+            top: 80%;
+            left: 50%;
+            margin: 1.2rem;
+            padding: .6rem;
+            font-size: 16px;
+            height: fit-content;
+            width: fit-content;
+            min-width: 50px;
+            max-width: 250px;
+            background: #000000;
+            border-radius: 15px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .5s;
+         }
+
+         &:hover {
+            cursor: pointer;
+            background: rgb(161, 161, 161);
+            .data {
+               opacity: 1;
+            }
+         }
+
+         &:active {
+            // transform: scale(1.1);
+            background: rgb(201, 201, 201);
+         }
+      }
    }
 
    .burger {
       margin: 2rem;
       margin-left: auto;
+      min-width: 35px;
+      max-width: 35px;
+      animation: fade-in 1s ease-in-out;
+      cursor: pointer;
+   }
+
+   @keyframes fade-in {
+      from { opacity: 0; }
+      to { opacity: 1; }
    }
 }

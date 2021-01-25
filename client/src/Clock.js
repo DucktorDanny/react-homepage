@@ -5,17 +5,22 @@ import './Styles/Clock.css';
 const Clock = () => {
    const [hours, setHours] = useState(null);
    const [minutes, setMinutes] = useState(null);
-   const [ampm, setAmpm] = useState(null);
+   const [amPm, setAmPm] = useState(null);
+
+   const setTime = () => {
+      const now = {
+         hours: new Date().getHours(),
+         minutes: new Date().getMinutes()
+      };
+      setHours(now.hours > 12 ? now.hours - 12 + '': now.hours+'');
+      setMinutes(now.minutes < 10 ? `0${now.minutes}` : now.minutes+'');
+      setAmPm(now.hours >= 12 ? 'pm' : 'am');
+   }
 
    useEffect(() => {
+      setTime();
       setInterval(() => {
-         const now = {
-            hours: new Date().getHours(),
-            minutes: new Date().getMinutes()
-         };
-         setHours(now.hours > 12 ? now.hours - 12 : now.hours);
-         setMinutes(now.minutes < 10 ? `0${now.minutes}` : now.minutes);
-         setAmpm(now.hours >= 12 ? 'pm' : 'am');
+         setTime();
       }, 1000);
    }, []);
 
@@ -23,7 +28,7 @@ const Clock = () => {
    return(
       <div className='clock-container'>
          {hours && minutes ? <h1>{hours}:{minutes}</h1> : <h1>Loading...</h1>}
-         {ampm ? <p>{ampm}</p> : <p></p>}
+         {amPm ? <p>{amPm}</p> : <p></p>}
       </div>
    )
 }

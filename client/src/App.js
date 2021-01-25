@@ -26,6 +26,7 @@ const App = () => {
 				className='react-calendar'
 				onChange={onChange}
 				value={value}
+				
 			/>
 		</>
 	)

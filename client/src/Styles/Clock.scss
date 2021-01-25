@@ -1,19 +1,66 @@
 .clock-container {
-
+   
    display: flex;
    justify-content: center;
    align-items: center;
    height: 100vh;
-   user-select: none;
-   -webkit-user-select: none;
    color: white;
+   overflow: hidden;
+   z-index: -1;
+   animation: fade-in 1.5s ease-in-out;
 
    h1 {
       font-size: 9rem;
       font-weight: normal;
+      z-index: -1;
    }
    p {
       font-size: 4.5rem;
       transform: translateY(25%);
+      z-index: -1;
+   }
+
+   @media only screen and (max-width: 450px) {
+      h1 {
+         font-size: 4.5rem;
+      }
+      p {
+         font-size: 2.25rem;
+      }
+   }
+
+   @keyframes fade-in {
+      0% { opacity: 0; }
+      25% { opacity: 0; }
+      100% { opacity: 1; }
+   }
+
+}
+
+.clock-when-settings-open {
+   animation: clock-slide-open .6s ease-in-out;
+   animation-fill-mode: forwards;
+   width: calc(100% - 500px);
+}
+
+.clock-when-settings-close {
+   animation: clock-slide-close .6s ease-in-out;
+   animation-fill-mode: forwards;
+   width: 100%;
+}
+
+@keyframes clock-slide-open {
+   from {
+      width: 100%;
+   } to {
+      width: calc(100% - 500px);
+   }
+}
+
+@keyframes clock-slide-close {
+   from {
+      width: calc(100% - 500px);
+   } to {
+      width: 100%;
    }
 }
