@@ -23,8 +23,7 @@ const Clock = () => {
          setTime();
       }, 1000);
    }, []);
-
-
+   
    return(
       <div className='clock-container'>
          {hours && minutes ? <h1>{hours}:{minutes}</h1> : <h1>Loading...</h1>}

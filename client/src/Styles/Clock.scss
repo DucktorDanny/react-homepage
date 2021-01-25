@@ -20,7 +20,10 @@
       z-index: -1;
    }
 
-   @media only screen and (max-width: 450px) {
+}
+
+@media only screen and (max-width: 450px) {
+   .clock-container {
       h1 {
          font-size: 4.5rem;
       }
@@ -28,14 +31,8 @@
          font-size: 2.25rem;
       }
    }
-
-   @keyframes fade-in {
-      0% { opacity: 0; }
-      25% { opacity: 0; }
-      100% { opacity: 1; }
-   }
-
 }
+
 
 .clock-when-settings-open {
    animation: clock-slide-open .6s ease-in-out;
@@ -47,20 +44,4 @@
    animation: clock-slide-close .6s ease-in-out;
    animation-fill-mode: forwards;
    width: 100%;
-}
-
-@keyframes clock-slide-open {
-   from {
-      width: 100%;
-   } to {
-      width: calc(100% - 500px);
-   }
-}
-
-@keyframes clock-slide-close {
-   from {
-      width: calc(100% - 500px);
-   } to {
-      width: 100%;
-   }
 }

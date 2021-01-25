@@ -1,0 +1,46 @@
+.greeting {
+   position: fixed;
+   width: 100%;
+   top: 20%;
+   text-align: center;
+   color: white;
+   z-index: -1;
+   animation: slide-in 1s ease-in-out;
+   animation-fill-mode: forwards;
+
+   h1 {
+      white-space: nowrap;
+      font-size: 32px;
+      z-index: -1;
+   }
+}
+
+@media only screen and (max-width: 450px) {
+   .greeting {
+      h1 {
+         font-size: 20px;
+      }
+   }
+}
+
+.greeting-when-settings-open {
+   animation: clock-slide-open .8s ease-in-out;
+   animation-fill-mode: forwards;
+   width: calc(100% - 500px);
+}
+
+.greeting-when-settings-close {
+   animation: clock-slide-close .8s ease-in-out;
+   animation-fill-mode: forwards;
+   width: 100%;
+}
+
+.greeting-hidden {
+   animation: slide-out 1s ease-in-out;
+   animation-fill-mode: forwards;
+}
+
+.greeting-shown {
+   animation: slide-in 1s ease-in-out;
+   animation-fill-mode: forwards;
+}

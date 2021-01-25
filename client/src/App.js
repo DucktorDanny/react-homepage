@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Nav from './Nav';
+import Greeting from './Greeting';
 import Clock from './Clock';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -21,6 +22,7 @@ const App = () => {
 	return (
 		<>
 			<Nav />
+			<Greeting />
 			<Clock />
 			<Calendar
 				className='react-calendar'

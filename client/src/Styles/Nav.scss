@@ -7,14 +7,15 @@ nav {
    display: flex;
    align-items: center;
 
-   section {
+   .favorites {
       margin: 0 2rem;
       height: 75px;
       width: 100%;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      animation: fade-in 1s ease-in-out;
+      animation: slide-in 1s ease-in-out;
+      animation-fill-mode: forwards;
 
       div {
          background: gray;
@@ -51,10 +52,14 @@ nav {
          }
 
          &:active {
-            // transform: scale(1.1);
             background: rgb(201, 201, 201);
          }
       }
+   }
+
+   .favorites-hidden {
+      animation: slide-out 1s ease-in-out;
+      animation-fill-mode: forwards;
    }
 
    .burger {
@@ -64,10 +69,5 @@ nav {
       max-width: 35px;
       animation: fade-in 1s ease-in-out;
       cursor: pointer;
-   }
-
-   @keyframes fade-in {
-      from { opacity: 0; }
-      to { opacity: 1; }
    }
 }

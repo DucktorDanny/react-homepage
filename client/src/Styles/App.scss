@@ -4,6 +4,7 @@
    font-family: 'Combo', cursive;
    user-select: none;
    -webkit-user-select: none;
+   -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -27,24 +28,95 @@ body {
    font-size: 20px;
    overflow: hidden;
    animation: slide-in 1s ease-in-out;
-
-   @keyframes slide-in {
-      0% { 
-         transform: translateX(-125%);
-         opacity: 0;
-      }
-      70% {
-         opacity: .5;
-         transform: translateX(5%);
-      }
-      100% { 
-         transform: translateX(0%);
-         opacity: 1;
-      }
-   }
-
+   
    @media only screen and (max-width: 450px) {
       margin: .5rem;
       width: calc(100% - 1rem);
+   }
+}
+
+.react-calendar-shown {
+   transform: translateX(0%);
+   opacity: 1;
+   animation: slide-in 1s ease-in-out;
+   
+}
+
+.react-calendar-hidden {
+   transform: translateX(-125%);
+   opacity: 0;
+   animation: slide-out 1s ease-in-out;
+   
+}
+
+
+@keyframes slide-in {
+   0% { 
+      transform: translateX(-125%);
+      opacity: 0;
+   }
+   70% {
+      opacity: .5;
+      transform: translateX(5%);
+   }
+   100% { 
+      transform: translateX(0%);
+      opacity: 1;
+   }
+}
+
+@keyframes slide-out {
+   0% { 
+      transform: translateX(0%);
+      opacity: 1;
+   }
+   30% {
+      opacity: .5;
+      transform: translateX(5%);
+   }
+   100% { 
+      transform: translateX(-125%);
+      opacity: 0;
+   }
+}
+
+@keyframes open-settings-open {
+   from {
+      transform: translateX(calc(100% + 2rem));
+   }to {
+      transform: translateX(0);
+   }
+}
+
+@keyframes open-settings-close {
+   from {
+      transform: translateX(0);
+   }to {
+      transform: translateX(calc(100% + 2rem));
+   }
+}
+
+@keyframes clock-slide-open {
+   from {
+      width: 100%;
+   } to {
+      width: calc(100% - 500px);
+   }
+}
+
+@keyframes clock-slide-close {
+   from {
+      width: calc(100% - 500px);
+   } to {
+      width: 100%;
+   }
+}
+
+@keyframes fade-out {
+   from {
+      opacity: 1;
+   }
+   to {
+      opacity: 0;
    }
 }
