@@ -6,8 +6,8 @@ import Settings from './Settings';
 import './Styles/Nav.css';
 
 const Nav = () => {
-	const [loaded, setLoaded] = useState(false);
-	const [opened, setOpened] = useState(false);
+	const [ loaded, setLoaded ] = useState(false);
+	const [ opened, setOpened ] = useState(false);
 
 	const clicked = () => {
 		setOpened(!opened);
@@ -71,7 +71,7 @@ const Nav = () => {
 					</div>
 
 				</section>
-				<Burger direction='right' isOpen={opened} onClick={clicked} />
+				<Burger direction='right' isOpen={ opened } onClick={ clicked } />
 			</nav>
 			<Settings />
 		</>

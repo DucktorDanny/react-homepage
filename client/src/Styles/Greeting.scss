@@ -5,12 +5,13 @@
    text-align: center;
    color: white;
    z-index: -1;
-   overflow: hidden;
    animation: slide-in 1s ease-in-out;
    animation-fill-mode: forwards;
+   overflow: hidden;
 
    h1 {
-      white-space: nowrap;
+      overflow: hidden;
+      // white-space: nowrap;
       font-size: 32px;
       z-index: -1;
    }
