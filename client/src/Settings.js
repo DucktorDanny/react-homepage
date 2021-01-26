@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 // import { useForm } from 'react-hook-form';
 
+import Checkbox from './Checkbox';
 import Line from './Line';
 import './Styles/Settings.css';
 
@@ -20,7 +21,7 @@ const Settings = () => {
 		if (!calendar.classList.contains('react-calendar-hidden')) {
 			calendar.style.display = 'none';
 		}
-		if (greeting.classList.contains('greeting-hidden')) {
+		if (!greeting.classList.contains('greeting-hidden')) {
 			greeting.style.display = 'none';
 		}
 	}, []);
@@ -34,15 +35,22 @@ const Settings = () => {
 	}, [showFavorites]);
 
 	useEffect(() => {
-		// const greeting = document.querySelector('.greeting');
-		// if (!showGreeting) {
-		// 	// animationHandler('greeting', 'greeting-hidden', 'block', showGreeting);
-		// 	greeting.classList.remove('greeting-shown');
-		// 	greeting.classList.add('greeting-hidden');
-		// } else {
-		// 	greeting.classList.remove('greeting-hidden');
-		// 	greeting.classList.add('greeting-shown');
-		// }
+		// settings opened animation and show animation problem... :)
+		// animationHandler('greeting', 'greeting-hidden', 'block', showGreeting);
+
+		const greeting = document.querySelector('.greeting');
+		if (showGreeting) {
+			greeting.style.display = 'block';
+			if (greeting.classList.contains('greeting-hidden')) {
+				greeting.classList.add('greeting-shown');
+			}
+			greeting.classList.remove('greeting-hidden');
+		} else {
+			// greeting.classList.remove('greeting-shown');
+			// greeting.classList.remove('greeting-when-settings-open');
+			greeting.classList.remove('greeting-shown');
+			greeting.classList.add('greeting-hidden');
+		}
 	}, [showGreeting]);
 	
 	const clickedShowCalendar = () => {
@@ -72,20 +80,9 @@ const Settings = () => {
 			<h1>Settings</h1>
 			<Line />
 			<form>
-				<label className='container' htmlFor='show-calendar' onClick={clickedShowCalendar} >Show calendar
-					<input name='show-calendar' type='checkbox' checked={showCalendar} readOnly />
-					<span className='checkmark'></span>
-				</label>
-
-				<label className='container' htmlFor='show-favorites' onClick={clickedShowFavorites} >Show favorites
-					<input name='show-favorites' type='checkbox' checked={showFavorites} readOnly />
-					<span className='checkmark'></span>
-				</label>
-
-				<label className='container' htmlFor='show-greeting' onClick={clickedShowGreeting} >Show greeting
-					<input name='show-greeting' type='checkbox' checked={showGreeting} readOnly />
-					<span className='checkmark'></span>
-				</label>
+				<Checkbox htmlName='show-favorites' onClick={ clickedShowFavorites } labelText='Show favorites' chekced={ showFavorites } />
+				<Checkbox htmlName='show-greeting' onClick={ clickedShowGreeting } labelText='Show greeting' chekced={ showGreeting } />
+				<Checkbox htmlName='show-calendar' onClick={ clickedShowCalendar } labelText='Show Calendar' chekced={ showCalendar } />
 			</form>
 		</div>
 	)

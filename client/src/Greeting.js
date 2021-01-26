@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import './Styles/Greeting.css';
 
 const Greeting = ({ pronouns = 'friend', emojis = '🦆' }) => {
-   const [greetings, setGreetings] = useState('Hello Ducks!');
+   const [greetings, setGreetings] = useState('');
 
    const setGreeting = () => {
       const currentHour = new Date().getHours();

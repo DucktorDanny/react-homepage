@@ -32,6 +32,7 @@ const Nav = () => {
 				if (settings.classList.contains('settings-open')) {
 					settings.classList.remove('settings-open');
 					clockContainer.classList.remove('clock-when-settings-open');
+					greeting.classList.remove('greeting-shown');
 					greeting.classList.remove('greeting-when-settings-open');
 				}
 				settings.classList.add('settings-close');
