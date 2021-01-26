@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import Checkbox from './Checkbox';
 import Greeting from './Greeting';
 import Line from './Line';
-import { TextField } from '@material-ui/core';
+import Favorite from './Favorite';
+import { TextField, Button } from '@material-ui/core';
 import './Styles/Settings.css';
 
 const Settings = () => {
@@ -16,6 +17,9 @@ const Settings = () => {
 
 	const [ isEmojiValid, setIsEmojiValid ] = useState(true);
 	const [ isPronounsValid, setIsPronounsValid ] = useState(true);
+
+	const [ isFavoriteNameValid, setIsFavoriteNameValid ] = useState(true);
+	const [ isFavoriteUrlValid, setIsFavoriteUrlValid ] = useState(true);
 
 	useEffect(() => {
 		const favorites = document.querySelector('.favorites');
@@ -97,6 +101,29 @@ const Settings = () => {
 			.test(emoji);
 	}
 
+	const addNewFavorite = () => {
+		// const name = document.querySelector('#favorite-add-name').value;
+		// const url = document.querySelector('#favorite-add-url').value;
+		
+		// const isNameValid = name.length <= 20;
+
+		// // console.log(typeof url)
+		// // const isUrlValid = url.toString().includes('http://') || url.toString().contains('https://');
+		// const isUrlValid = true;
+
+		// setIsFavoriteNameValid(isNameValid);
+		// setIsFavoriteUrlValid(isUrlValid);
+
+		// if (isNameValid && isUrlValid) {
+		// 	const favoritContainer = document.querySelector('.favorites');
+		// 	favoritContainer.innerHTML += <Favorite name={ name } url={ url } />
+		// 	console.log('asd');
+			
+		// }
+
+		// need a solution to add a new Favorite component to nav ...
+	}
+
 	return (
 		<>
 			<div className='settings'>
@@ -138,19 +165,26 @@ const Settings = () => {
 					<Line />
 					<h2>Add new favorite</h2>
 					<TextField
-						name='favorite-add-name'
+						id='favorite-add-name'
 						className='textfield'
+						name='favorite-add-name'
 						type='text'
 						label='Name'
 						variant='outlined'
 					/>
 					<TextField
-						name='favorite-add-link'
+						id='favorite-add-url'
 						className='textfield'
+						name='favorite-add-link'
 						type='text'
 						label='Link'
 						variant='outlined'
 					/>
+					<Button
+						variant='contained'
+						color='primary'
+						onClick={ addNewFavorite }
+					>Add</Button>
 				</form>
 				<Line />
 			</div>

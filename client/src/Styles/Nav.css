@@ -17,7 +17,9 @@ nav .favorites {
   animation: slide-in 1s ease-in-out;
   animation-fill-mode: forwards;
 }
-nav .favorites div {
+nav .favorites a {
+  color: inherit;
+  text-decoration: none;
   background: rgba(255, 255, 255, 0.6);
   height: 50px;
   width: 50px;
@@ -25,31 +27,38 @@ nav .favorites div {
   border-radius: 10px;
   transition: all 0.3s;
 }
-nav .favorites div .data {
+nav .favorites a .url-img {
   position: relative;
-  top: 80%;
+  width: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+nav .favorites a .data {
+  position: relative;
+  top: 25%;
   left: 50%;
   margin: 1.2rem;
   padding: 0.6rem;
-  font-size: 16px;
+  font-size: 20px;
   height: fit-content;
   width: fit-content;
   min-width: 50px;
   max-width: 250px;
-  background: #000000;
+  background: #061a63cf;
   border-radius: 15px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s;
 }
-nav .favorites div:hover {
+nav .favorites a:hover {
   cursor: pointer;
   background: #a1a1a1;
 }
-nav .favorites div:hover .data {
+nav .favorites a:hover .data {
   opacity: 1;
 }
-nav .favorites div:active {
+nav .favorites a:active {
   background: #c9c9c9;
 }
 nav .favorites-hidden {

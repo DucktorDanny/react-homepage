@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react';
 import Burger from '@animated-burgers/burger-arrow';
 import '@animated-burgers/burger-arrow/dist/styles.css';
 import Settings from './Settings';
+import Favorite from './Favorite';
 import './Styles/Nav.css';
 
-const Nav = () => {
+const Nav = ({ url = 'https://youtube.com' }) => {
 	const [ loaded, setLoaded ] = useState(false);
 	const [ opened, setOpened ] = useState(false);
 
@@ -49,31 +50,15 @@ const Nav = () => {
 		<>
 			<nav>
 				<section className='favorites'>
-					<div>
-						<div className='data'>
-							<label htmlFor="data">asd adsa da dasasdasdasdsssssssss asdas ahd</label>
-						</div>
-					</div>
-					<div>
-						<div className='data'>
-							<label htmlFor="data">asd adsa da dasasdasdasdsssssssss asdas ahd</label>
-						</div>
-					</div>
-					<div>
-						<div className='data'>
-							<label htmlFor="data">asd </label>
-						</div>
-					</div>
-					<div>
-						<div className='data'>
-							<label htmlFor="data">s ahd ashd kahs djhaks hdaksh dkahsdk hajkdh kash</label>
-						</div>
-					</div>
+					
+					<Favorite name='Youtube' url='https://youtube.com' />
+					<Favorite name='Facebook' url='https://facebook.com' />
+					<Favorite name='Stackoverflow' url='https://stackoverflow.com' />
 
 				</section>
 				<Burger direction='right' isOpen={ opened } onClick={ clicked } />
+				<Settings />
 			</nav>
-			<Settings />
 		</>
 	)
 }

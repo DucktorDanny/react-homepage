@@ -26,8 +26,8 @@ const Clock = () => {
    
    return(
       <div className='clock-container'>
-         {hours && minutes ? <h1>{hours}:{minutes}</h1> : <h1>Loading...</h1>}
-         {amPm ? <p>{amPm}</p> : <p></p>}
+         <h1>{ hours && minutes ? `${hours}:${minutes}` : 'Loading...' }</h1>
+         <p>{amPm ? amPm : '' }</p>
       </div>
    )
 }

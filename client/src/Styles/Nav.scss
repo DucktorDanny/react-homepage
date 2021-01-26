@@ -17,7 +17,9 @@ nav {
       animation: slide-in 1s ease-in-out;
       animation-fill-mode: forwards;
 
-      div {
+      a {
+         color: inherit;
+         text-decoration: none;
          background: rgba(255, 255, 255, 0.6);
          height: 50px;
          width: 50px;
@@ -25,18 +27,26 @@ nav {
          border-radius: 10px;
          transition: all .3s;
 
+         .url-img {
+            position: relative;
+            width: 60%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+         }
+
          .data {
             position: relative;
-            top: 80%;
+            top: 25%;
             left: 50%;
             margin: 1.2rem;
             padding: .6rem;
-            font-size: 16px;
+            font-size: 20px;
             height: fit-content;
             width: fit-content;
             min-width: 50px;
             max-width: 250px;
-            background: #000000;
+            background: #061a63cf;
             border-radius: 15px;
             opacity: 0;
             pointer-events: none;
