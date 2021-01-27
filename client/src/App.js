@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import Nav from './Nav';
 import Clock from './Clock';
+import Settings from './Settings';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './Styles/App.css';
@@ -20,13 +20,13 @@ const App = () => {
 
 	return (
 		<>
-			<Nav />
 			<Clock />
 			<Calendar
 				className='react-calendar'
 				onChange={onChange}
 				value={value}
 			/>
+			<Settings />
 		</>
 	)
 	

@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 
 import Burger from '@animated-burgers/burger-arrow';
 import '@animated-burgers/burger-arrow/dist/styles.css';
-import Settings from './Settings';
+
 import Favorite from './Favorite';
 import './Styles/Nav.css';
 
-const Nav = ({ url = 'https://youtube.com' }) => {
+const Nav = ({ favorites }) => {
 	const [ loaded, setLoaded ] = useState(false);
 	const [ opened, setOpened ] = useState(false);
 
@@ -51,13 +51,14 @@ const Nav = ({ url = 'https://youtube.com' }) => {
 			<nav>
 				<section className='favorites'>
 					
-					<Favorite name='Youtube' url='https://youtube.com' />
-					<Favorite name='Facebook' url='https://facebook.com' />
-					<Favorite name='Stackoverflow' url='https://stackoverflow.com' />
+					{favorites.map((favorite, i) => {
+						return(
+							<Favorite key={i} name={favorite.name} url={favorite.url} />
+						);
+					})}
 
 				</section>
 				<Burger direction='right' isOpen={ opened } onClick={ clicked } />
-				<Settings />
 			</nav>
 		</>
 	)

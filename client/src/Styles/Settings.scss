@@ -22,7 +22,8 @@
 
 	.settings-form {
 
-		height: 80%;
+    // height: 80%;
+    height: calc(100% - 175px);
 		
 		padding-top: 2rem;
 		padding-bottom: 2rem;
@@ -50,18 +51,27 @@
 			font-size: 26px;
 			text-align: center;
 		}
-		
-		.textfield {
-			width: 40%;
-			margin: 1rem;
-		}
-
-		.line {
-			border: 1px solid rgba(255, 255, 255, 0.2);
-			width: 65%;
-		}
+    
+    .textfield {
+      width: 40%;
+      margin: 1rem;
+    }
+    
+    .line {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 65%;
+    }
+    
+    .favorite-add {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 	}
 }
+
+
 
 @media only screen and (max-width: 550px) {
    .settings {

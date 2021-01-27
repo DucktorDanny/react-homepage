@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
+import Nav from './Nav';
 import Checkbox from './Checkbox';
-import Greeting from './Greeting';
 import Line from './Line';
-import Favorite from './Favorite';
+import Greeting from './Greeting';
 import { TextField, Button } from '@material-ui/core';
 import './Styles/Settings.css';
 
@@ -20,6 +20,8 @@ const Settings = () => {
 
 	const [ isFavoriteNameValid, setIsFavoriteNameValid ] = useState(true);
 	const [ isFavoriteUrlValid, setIsFavoriteUrlValid ] = useState(true);
+
+	const [ favorites, setFavorites ] = useState([]);
 
 	useEffect(() => {
 		const favorites = document.querySelector('.favorites');
@@ -102,30 +104,48 @@ const Settings = () => {
 	}
 
 	const addNewFavorite = () => {
-		// const name = document.querySelector('#favorite-add-name').value;
-		// const url = document.querySelector('#favorite-add-url').value;
-		
-		// const isNameValid = name.length <= 20;
+		const form = document.querySelector('.settings-form');
+		const formData = new FormData(form);
 
-		// // console.log(typeof url)
-		// // const isUrlValid = url.toString().includes('http://') || url.toString().contains('https://');
-		// const isUrlValid = true;
+		const name = formData.get('favorite-add-name');
+		const url = formData.get('favorite-add-link');
 
-		// setIsFavoriteNameValid(isNameValid);
-		// setIsFavoriteUrlValid(isUrlValid);
+		const isNameValid = name.length <= 20;
+		const isUrlValid = url.includes('http://') || url.includes('https://');
 
-		// if (isNameValid && isUrlValid) {
-		// 	const favoritContainer = document.querySelector('.favorites');
-		// 	favoritContainer.innerHTML += <Favorite name={ name } url={ url } />
-		// 	console.log('asd');
-			
-		// }
+		setIsFavoriteNameValid(isNameValid);
+		setIsFavoriteUrlValid(isUrlValid);
 
-		// need a solution to add a new Favorite component to nav ...
+		if (isNameValid && isUrlValid) {
+			const newFavorite = {
+				name: name,
+				url: url
+			};
+
+			setFavorites([...favorites, newFavorite]);
+
+			form.reset();
+		}
+	}
+
+	const addNewFavoriteByEnter = (e) => {
+		if (e.code === 'Enter') {
+			addNewFavorite();
+		}
+	}
+
+	const test = (e) => {
+		const favoriteField = e.target;
+		if (favoriteField.value === '' && favoriteField.name === 'favorite-add-link') {
+			setIsFavoriteUrlValid(true);
+		} else if (favoriteField.name === 'favorite-add-name') {
+			setIsFavoriteNameValid(favoriteField.value.length <= 20);
+		}
 	}
 
 	return (
 		<>
+			<Nav favorites={ favorites } />
 			<div className='settings'>
 				<h1>Settings</h1>
 				<Line />
@@ -171,6 +191,10 @@ const Settings = () => {
 						type='text'
 						label='Name'
 						variant='outlined'
+						onChange={ test }
+						onKeyUp={ addNewFavoriteByEnter }
+						error={ !isFavoriteNameValid }
+						helperText={ !isFavoriteNameValid ? 'The name is too long' : '' }
 					/>
 					<TextField
 						id='favorite-add-url'
@@ -179,6 +203,10 @@ const Settings = () => {
 						type='text'
 						label='Link'
 						variant='outlined'
+						onChange={ test }
+						onKeyUp={ addNewFavoriteByEnter }
+						error={ !isFavoriteUrlValid }
+						helperText={ !isFavoriteUrlValid ? 'Url is invalid' : '' }
 					/>
 					<Button
 						variant='contained'
