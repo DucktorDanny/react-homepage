@@ -4,6 +4,7 @@ import Nav from './Nav';
 import Checkbox from './Checkbox';
 import Line from './Line';
 import Greeting from './Greeting';
+import FavoriteList from './FavoriteList';
 import { TextField, Button } from '@material-ui/core';
 import './Styles/Settings.css';
 
@@ -21,7 +22,24 @@ const Settings = () => {
 	const [ isFavoriteNameValid, setIsFavoriteNameValid ] = useState(true);
 	const [ isFavoriteUrlValid, setIsFavoriteUrlValid ] = useState(true);
 
-	const [ favorites, setFavorites ] = useState([]);
+	const [ favorites, setFavorites ] = useState([
+		{
+			name: 'Youtube',
+			url: 'https://youtube.com'
+		},
+		{
+			name: 'Facebook',
+			url: 'https://facebook.com'
+		},
+		{
+			name: 'Stackoverflow',
+			url: 'https://stackoverflow.com'
+		},
+		{
+			name: 'Google',
+			url: 'https://google.com'
+		}
+	]);
 
 	useEffect(() => {
 		const favorites = document.querySelector('.favorites');
@@ -134,13 +152,32 @@ const Settings = () => {
 		}
 	}
 
-	const test = (e) => {
+	const checkAddForm = (e) => {
 		const favoriteField = e.target;
+
 		if (favoriteField.value === '' && favoriteField.name === 'favorite-add-link') {
 			setIsFavoriteUrlValid(true);
 		} else if (favoriteField.name === 'favorite-add-name') {
 			setIsFavoriteNameValid(favoriteField.value.length <= 20);
 		}
+	}
+
+	const removeFavorite = (e) => {
+		// if I click on the label then I get a span but if not then I get a button so this is required:
+		const favoriteElementID = e.target.classList.contains('MuiButton-label') ? e.target.parentNode.parentNode.id : e.target.parentNode.id;
+		const favoriteIndex = parseInt(favoriteElementID.split('-fav-lement')[0]);
+
+		// remove in a state array:
+		// (made this way because other methods like splice doesnt re-render...)
+		let test = [];
+
+		for (let i = 0; i < favorites.length; i++) {
+			if (i !== favoriteIndex) {
+				test.push(favorites[i]);
+			}
+		}
+
+		setFavorites(test);
 	}
 
 	return (
@@ -191,7 +228,7 @@ const Settings = () => {
 						type='text'
 						label='Name'
 						variant='outlined'
-						onChange={ test }
+						onChange={ checkAddForm }
 						onKeyUp={ addNewFavoriteByEnter }
 						error={ !isFavoriteNameValid }
 						helperText={ !isFavoriteNameValid ? 'The name is too long' : '' }
@@ -203,7 +240,7 @@ const Settings = () => {
 						type='text'
 						label='Link'
 						variant='outlined'
-						onChange={ test }
+						onChange={ checkAddForm }
 						onKeyUp={ addNewFavoriteByEnter }
 						error={ !isFavoriteUrlValid }
 						helperText={ !isFavoriteUrlValid ? 'Url is invalid' : '' }
@@ -213,6 +250,14 @@ const Settings = () => {
 						color='primary'
 						onClick={ addNewFavorite }
 					>Add</Button>
+
+					<Line />
+
+					<h2>Remove favorite</h2>
+					<FavoriteList favorites={ favorites } removeFunction={ removeFavorite } />
+
+					{/* <Line /> */}
+
 				</form>
 				<Line />
 			</div>

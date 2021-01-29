@@ -42,6 +42,9 @@
   font-size: 26px;
   text-align: center;
 }
+.settings .settings-form button {
+  margin: 1rem;
+}
 .settings .settings-form .textfield {
   width: 40%;
   margin: 1rem;
@@ -55,6 +58,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.settings .settings-form .favorite-list {
+  width: 75%;
+  margin: 1rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.settings .settings-form .favorite-list .favorite-list-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 1rem 1.5rem;
+  color: #373e49;
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.6));
+  border-radius: 10px;
+  border: 1px solid #5f6777;
+  box-shadow: 2.5px 2.5px 10px 1.25px rgba(0, 0, 0, 0.2);
+}
+.settings .settings-form .favorite-list .favorite-list-element h3, .settings .settings-form .favorite-list .favorite-list-element h4 {
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+  margin: 0.25rem 0;
+  padding: 0 1rem;
+}
+.settings .settings-form .favorite-list .favorite-list-element button {
+  background: #c83232;
 }
 
 @media only screen and (max-width: 550px) {
@@ -86,6 +119,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: #373e49;
 }
 
 /* Hide the browser's default checkbox */
