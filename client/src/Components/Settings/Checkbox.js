@@ -1,4 +1,4 @@
-import './Styles/Settings.css';
+import './style/Settings.css';
 
 const Checkbox = ({ htmlName, onClick, labelText, chekced }) => {
 	return (

@@ -1,5 +1,5 @@
 import FavoriteListElement from './FavoriteListElement';
-import './Styles/Settings.css';
+import './style/Settings.css';
 
 const FavoriteList = ({ favorites, removeFunction }) => {
 	return (

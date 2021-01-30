@@ -75,7 +75,6 @@
   color: #373e49;
   background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.6));
   border-radius: 10px;
-  border: 1px solid #5f6777;
   box-shadow: 2.5px 2.5px 10px 1.25px rgba(0, 0, 0, 0.2);
 }
 .settings .settings-form .favorite-list .favorite-list-element h3, .settings .settings-form .favorite-list .favorite-list-element h4 {
@@ -85,6 +84,9 @@
   word-break: break-all;
   margin: 0.25rem 0;
   padding: 0 1rem;
+}
+.settings .settings-form .favorite-list .favorite-list-element h4 {
+  text-decoration: underline;
 }
 .settings .settings-form .favorite-list .favorite-list-element button {
   background: #c83232;

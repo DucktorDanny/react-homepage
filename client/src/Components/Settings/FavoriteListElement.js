@@ -1,11 +1,11 @@
 import { Button } from '@material-ui/core';
-import './Styles/Settings.css';
+import './style/Settings.css';
 
 const FavoriteListElement = ({ data_key, name, url, removeFunction }) => {
    return (
       <div id={ `${data_key}-fav-lement` } className='favorite-list-element'>
          <h3>{ name }</h3>
-         <h4>{ url }</h4>
+         <a href={ url }><h4>{ url }</h4></a>
 
          <Button
 				variant='contained'

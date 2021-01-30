@@ -1,4 +1,4 @@
-import './Styles/Nav.css';
+import './style/Nav.css';
 
 const Favorite = ({ name, url }) => {
    return (

@@ -1,4 +1,4 @@
-import './Styles/Settings.css';
+import './style/Settings.css';
 
 const Line = () => {
    return (

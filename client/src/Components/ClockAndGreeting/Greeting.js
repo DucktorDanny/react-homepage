@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 
-import './Styles/Greeting.css';
+import './style/Greeting.css';
 
 const Greeting = ({ pronouns, emojis }) => {
    const [ greetings, setGreetings ] = useState('');

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import Clock from './Clock';
-import Settings from './Settings';
+import Clock from './Components/ClockAndGreeting/Clock';
+import Settings from './Components/Settings/Settings';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './Styles/App.css';
+import './AppStyle/App.css';
 
 // links:
 

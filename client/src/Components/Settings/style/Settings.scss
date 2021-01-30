@@ -92,7 +92,7 @@
         color: #373e49;
         background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.6));
         border-radius: 10px; 
-        border: 1px solid rgb(95, 103, 119);
+        // border: 1px solid rgb(95, 103, 119);
         box-shadow: 2.5px 2.5px 10px 1.25px rgba(0, 0, 0, 0.2);
         
 
@@ -103,6 +103,10 @@
           word-break: break-all;
           margin: .25rem 0;
           padding: 0 1rem;
+        }
+
+        h4 {
+          text-decoration: underline;
         }
 
         button {

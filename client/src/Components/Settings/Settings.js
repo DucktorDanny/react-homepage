@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
-import Nav from './Nav';
+import Nav from '../Nav/Nav';
 import Checkbox from './Checkbox';
 import Line from './Line';
-import Greeting from './Greeting';
+import Greeting from '../ClockAndGreeting/Greeting';
 import FavoriteList from './FavoriteList';
 import { TextField, Button } from '@material-ui/core';
-import './Styles/Settings.css';
+import './style/Settings.css';
 
 const Settings = () => {
 	const [ showCalendar, setShowCalendar ] = useState(true);

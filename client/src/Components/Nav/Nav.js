@@ -4,7 +4,7 @@ import Burger from '@animated-burgers/burger-arrow';
 import '@animated-burgers/burger-arrow/dist/styles.css';
 
 import Favorite from './Favorite';
-import './Styles/Nav.css';
+import './style/Nav.css';
 
 const Nav = ({ favorites }) => {
 	const [ loaded, setLoaded ] = useState(false);
