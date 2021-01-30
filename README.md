@@ -26,11 +26,15 @@
 ## Links:
 
 * burger:
-https://www.npmjs.com/package/@animated-burgers/burger-squeeze
-https://march08.github.io/animated-burgers/
+   https://www.npmjs.com/package/@animated-burgers/burger-squeeze
+   https://march08.github.io/animated-burgers/
 
 * calendar component: https://www.npmjs.com/package/react-calendar
 
 * checkbox component: https://www.npmjs.com/package/react-checkbox-component
+
+* favorite order changing by drag-and-drop:
+   https://www.npmjs.com/package/react-dropzone
+   https://blog.logrocket.com/react-drag-and-drop/
 
 * store locally the favorites and settings: https://www.code-boost.com/react-local-storage/
