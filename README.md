@@ -22,3 +22,15 @@
 * [ ] Background color changing
 * [ ] Background Image change?
 * [ ] Should I store datas locally? Or should I write a server side for it?
+
+## Links:
+
+* burger:
+https://www.npmjs.com/package/@animated-burgers/burger-squeeze
+https://march08.github.io/animated-burgers/
+
+* calendar component: https://www.npmjs.com/package/react-calendar
+
+* checkbox component: https://www.npmjs.com/package/react-checkbox-component
+
+* store locally the favorites and settings: https://www.code-boost.com/react-local-storage/
