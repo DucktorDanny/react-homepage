@@ -34,11 +34,11 @@
 * checkbox component: https://www.npmjs.com/package/react-checkbox-component
 
 * favorite order changing by drag-and-drop:
-   https://www.npmjs.com/package/react-dropzone
-   https://blog.logrocket.com/react-drag-and-drop/
-   https://www.youtube.com/watch?v=Vqa9NMzF3wc&ab_channel=LogRocket
-   https://codesandbox.io/s/k260nyxq9v?file=/index.js
-   https://github.com/atlassian/react-beautiful-dnd/issues/128
-   https://github.com/DucktorDanny/react-beautiful-dnd-example
+   * https://www.npmjs.com/package/react-dropzone
+   * https://blog.logrocket.com/react-drag-and-drop/
+   * https://www.youtube.com/watch?v=Vqa9NMzF3wc&ab_channel=LogRocket
+   * https://codesandbox.io/s/k260nyxq9v?file=/index.js
+   * https://github.com/atlassian/react-beautiful-dnd/issues/128
+   * https://github.com/DucktorDanny/react-beautiful-dnd-example
 
 * store locally the favorites and settings: https://www.code-boost.com/react-local-storage/
