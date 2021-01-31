@@ -21,6 +21,7 @@
 * [x] Change the favorites order by drag-and-drop
 * [ ] Background color changing
 * [ ] Background Image change?
+* [ ] Editable favorites?
 * [ ] Should I store datas locally? Or should I write a server side for it?
 
 ## Links:

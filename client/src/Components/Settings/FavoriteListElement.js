@@ -9,7 +9,7 @@ const FavoriteListElement = ({ data_key, name, url, removeFunction }) => {
 
          <Button
 				variant='contained'
-				color='primary'
+				color='secondary'
             onClick={ removeFunction }
 			>Remove</Button>
       </div>
