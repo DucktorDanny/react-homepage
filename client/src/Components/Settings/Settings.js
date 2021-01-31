@@ -285,7 +285,11 @@ const Settings = () => {
 					<h2>Remove favorite</h2>
 					<FavoriteList favorites={ favorites } removeFunction={ removeFavorite } onDragEnd={ onDragEnd } />
 
-					{/* <Line /> */}
+					<Line />
+
+					<h2>Change background color</h2>
+
+					{/*  changing the linear gradient top by slider */}
 
 				</form>
 				<Line />

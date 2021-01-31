@@ -19,7 +19,7 @@
 ## To Do:
 
 * [x] Change the favorites order by drag-and-drop
-* [ ] Background color changing
+* [ ] Background color changing ( changing the top of linear graditent  RGB with sliders )
 * [ ] Background Image change?
 * [ ] Editable favorites?
 * [ ] Should I store datas locally? Or should I write a server side for it?
@@ -30,9 +30,11 @@
    * https://www.npmjs.com/package/@animated-burgers/burger-squeeze
    * https://march08.github.io/animated-burgers/
 
-* calendar component: https://www.npmjs.com/package/react-calendar
+* calendar component:
+   * https://www.npmjs.com/package/react-calendar
 
-* checkbox component: https://www.npmjs.com/package/react-checkbox-component
+* checkbox component:
+   * https://www.npmjs.com/package/react-checkbox-component
 
 * favorite order changing by drag-and-drop:
    * https://www.npmjs.com/package/react-dropzone
@@ -42,4 +44,8 @@
    * https://github.com/atlassian/react-beautiful-dnd/issues/128
    * https://github.com/DucktorDanny/react-beautiful-dnd-example
 
-* store locally the favorites and settings: https://www.code-boost.com/react-local-storage/
+* slider component:
+   * https://material-ui.com/components/slider/
+
+* store locally the favorites and settings:
+   * https://www.code-boost.com/react-local-storage/
