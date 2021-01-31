@@ -18,7 +18,7 @@
 
 ## To Do:
 
-* [ ] Change the favorites order by drag-and-drop
+* [x] Change the favorites order by drag-and-drop
 * [ ] Background color changing
 * [ ] Background Image change?
 * [ ] Should I store datas locally? Or should I write a server side for it?
@@ -36,5 +36,7 @@
 * favorite order changing by drag-and-drop:
    https://www.npmjs.com/package/react-dropzone
    https://blog.logrocket.com/react-drag-and-drop/
+   https://www.youtube.com/watch?v=Vqa9NMzF3wc&ab_channel=LogRocket
+   https://codesandbox.io/s/k260nyxq9v?file=/index.js
 
 * store locally the favorites and settings: https://www.code-boost.com/react-local-storage/

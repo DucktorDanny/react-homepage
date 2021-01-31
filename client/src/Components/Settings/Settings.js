@@ -180,6 +180,35 @@ const Settings = () => {
 		setFavorites(test);
 	}
 
+	// reorder the array
+	const reorder = (arr, from, to) => {
+
+		if (arr) {
+			arr.splice(to, 0, arr.splice(from, 1)[0]);
+			return arr;
+		}
+		return;
+	}
+
+	const onDragEnd = (result) => {
+		// if the destinatin is null don't do anything
+		if (!result.destination) {
+			return;
+		}
+
+		// We need te re-order the array by these indexes
+		if (favorites) {
+			let newArray = [];
+			const orderedArray = reorder(favorites, result.source.index, result.destination.index);
+			// reset the array state
+			for (let i = 0; i < orderedArray.length; i++) {
+				newArray.push(orderedArray[i]);
+			}
+			setFavorites(newArray);
+		}
+
+	}
+
 	return (
 		<>
 			<Nav favorites={ favorites } />
@@ -254,7 +283,7 @@ const Settings = () => {
 					<Line />
 
 					<h2>Remove favorite</h2>
-					<FavoriteList favorites={ favorites } removeFunction={ removeFavorite } />
+					<FavoriteList favorites={ favorites } removeFunction={ removeFavorite } onDragEnd={ onDragEnd } />
 
 					{/* <Line /> */}
 
