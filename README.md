@@ -26,8 +26,8 @@
 ## Links:
 
 * burger:
-   https://www.npmjs.com/package/@animated-burgers/burger-squeeze
-   https://march08.github.io/animated-burgers/
+   * https://www.npmjs.com/package/@animated-burgers/burger-squeeze
+   * https://march08.github.io/animated-burgers/
 
 * calendar component: https://www.npmjs.com/package/react-calendar
 
