@@ -19,6 +19,7 @@
 ## To Do:
 
 * [x] Change the favorites order by drag-and-drop
+* [ ] Fix Safari style issues
 * [ ] Background color changing ( changing the top of linear graditent  RGB with sliders )
 * [ ] Background Image change?
 * [ ] Editable favorites?
