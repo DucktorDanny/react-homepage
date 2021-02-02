@@ -44,18 +44,20 @@ const FavoriteList = ({ favorites, removeFunction, onDragEnd }) => {
 		// 	}
 		// </div>
 		// <div className='favorite-list'>
-		<DragDropContext onDragEnd={ onDragEnd } >
+		<DragDropContext onDragEnd={ onDragEnd }>
 			<Droppable droppableId='droppable'>
 				{(provided, snapshot) => (
 					<div
 						{ ...provided.droppableProps }
 						ref={ provided.innerRef }
-						style={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
-							width: '100%',
-						}}
+						className='droppable'
+						// style={{
+						// 	display: 'flex',
+						// 	flexDirection: 'column',
+						// 	alignItems: 'center',
+						// 	width: '100%',
+						// 	border: '1px solid red',
+						// }}
 					>
 						{favorites.map((fav, index) => (
 							<Draggable key={ `${index}-fav` } draggableId={ `${index}-fav` } index={ index }>

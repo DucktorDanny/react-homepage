@@ -225,60 +225,65 @@ const Settings = () => {
 					<Line />
 
 					<h2>Greeting</h2>
+					<div className='greeting-settings'>
+						<TextField
+							name='greeting-pronouns'
+							className='textfield'
+							type='text'
+							label='Greeting pronouns'
+							helperText={ !isPronounsValid ? 'Too long pronouns!' : '' }
+							variant='outlined'
+							onChange={ greetingPronounsChange } 
+							disabled={ !showGreeting }
+							error={ !isPronounsValid }
+						/>
+						<TextField
+						name='greeting-emoji'
+							className='textfield'
+							type='text'
+							label='Greeting emojis'
+							helperText={ !isEmojiValid ? 'It is not an emoji!' : '' }
+							variant='outlined'
+							onChange={ greetingEmjisChange } 
+							disabled={ !showGreeting }
+							error={ !isEmojiValid }
+						/>
+					</div>
 
-					<TextField
-						name='greeting-pronouns'
-						className='textfield'
-						type='text'
-						label='Greeting pronouns'
-						helperText={ !isPronounsValid ? 'Too long pronouns!' : '' }
-						variant='outlined'
-						onChange={ greetingPronounsChange } 
-						disabled={ !showGreeting }
-						error={ !isPronounsValid }
-					/>
-					<TextField
-					name='greeting-emoji'
-						className='textfield'
-						type='text'
-						label='Greeting emojis'
-						helperText={ !isEmojiValid ? 'It is not an emoji!' : '' }
-						variant='outlined'
-						onChange={ greetingEmjisChange } 
-						disabled={ !showGreeting }
-						error={ !isEmojiValid }
-					/>
 					<Line />
+
 					<h2>Add new favorite</h2>
-					<TextField
-						id='favorite-add-name'
-						className='textfield'
-						name='favorite-add-name'
-						type='text'
-						label='Name'
-						variant='outlined'
-						onChange={ checkAddForm }
-						onKeyUp={ addNewFavoriteByEnter }
-						error={ !isFavoriteNameValid }
-						helperText={ !isFavoriteNameValid ? 'The name is too long' : '' }
-					/>
-					<TextField
-						id='favorite-add-url'
-						className='textfield'
-						name='favorite-add-link'
-						type='text'
-						label='Link'
-						variant='outlined'
-						onChange={ checkAddForm }
-						onKeyUp={ addNewFavoriteByEnter }
-						error={ !isFavoriteUrlValid }
-						helperText={ !isFavoriteUrlValid ? 'Url is invalid' : '' }
-					/>
-					<Button
-						variant='contained'
-						color='primary'
-						onClick={ addNewFavorite }
-					>Add</Button>
+					<div className='favorite-add'>
+						<TextField
+							id='favorite-add-name'
+							className='textfield'
+							name='favorite-add-name'
+							type='text'
+							label='Name'
+							variant='outlined'
+							onChange={ checkAddForm }
+							onKeyUp={ addNewFavoriteByEnter }
+							error={ !isFavoriteNameValid }
+							helperText={ !isFavoriteNameValid ? 'The name is too long' : '' }
+						/>
+						<TextField
+							id='favorite-add-url'
+							className='textfield'
+							name='favorite-add-link'
+							type='text'
+							label='Link'
+							variant='outlined'
+							onChange={ checkAddForm }
+							onKeyUp={ addNewFavoriteByEnter }
+							error={ !isFavoriteUrlValid }
+							helperText={ !isFavoriteUrlValid ? 'Url is invalid' : '' }
+						/>
+						<Button
+							variant='contained'
+							color='primary'
+							onClick={ addNewFavorite }
+						>Add</Button>
+					</div>
 
 					<Line />
 

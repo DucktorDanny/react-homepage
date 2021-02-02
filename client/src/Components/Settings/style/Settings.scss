@@ -59,7 +59,6 @@
 
     .textfield {
       width: 40%;
-      margin: 1rem;
     }
     
     .line {
@@ -67,11 +66,27 @@
       width: 65%;
     }
     
+    .greeting-settings {
+      width: 100%;
+      .textfield {
+        display: block;
+        margin: 0 auto 1rem;
+      }  
+    }
+
+    // border: 1px solid red; 
     .favorite-add {
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      
+      .textfield {
+        display: block;
+        margin: 0 auto 1rem;
+      }
+
+      button {
+        display: block;
+        margin: 0 auto 1rem;
+      }
     }
 
     // .favorite-list {
@@ -119,9 +134,14 @@
   }
 }
 
-.draggable {
+.droppable {
+  align-items: center;
   width: 75%;
-  margin-bottom: 1rem;
+}
+
+.draggable {
+  width: 100%;
+  margin: 0 auto 1rem;
 }
 
 @media only screen and (max-width: 550px) {

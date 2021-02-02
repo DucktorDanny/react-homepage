@@ -47,17 +47,28 @@
 }
 .settings .settings-form .textfield {
   width: 40%;
-  margin: 1rem;
 }
 .settings .settings-form .line {
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 65%;
 }
+.settings .settings-form .greeting-settings {
+  width: 100%;
+}
+.settings .settings-form .greeting-settings .textfield {
+  display: block;
+  margin: 0 auto 1rem;
+}
 .settings .settings-form .favorite-add {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+.settings .settings-form .favorite-add .textfield {
+  display: block;
+  margin: 0 auto 1rem;
+}
+.settings .settings-form .favorite-add button {
+  display: block;
+  margin: 0 auto 1rem;
 }
 
 .favorite-list-element {
@@ -88,9 +99,14 @@
   margin: 0.5rem 0 !important;
 }
 
-.draggable {
+.droppable {
+  align-items: center;
   width: 75%;
-  margin-bottom: 1rem;
+}
+
+.draggable {
+  width: 100%;
+  margin: 0 auto 1rem;
 }
 
 @media only screen and (max-width: 550px) {
