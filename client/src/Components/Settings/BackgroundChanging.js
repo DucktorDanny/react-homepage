@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Slider } from '@material-ui/core';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import './style/Settings.css';
 
 const PrettoSlider = withStyles({
@@ -36,7 +36,7 @@ const PrettoSlider = withStyles({
 // defaultValue={ 55 }
 // defaultValue={ 89 }
 
-const Background = ({ R = 7, G = 55, B = 89 }) => {
+const BackgroundChanging = ({ R = 7, G = 55, B = 89 }) => {
    const [ red, setRed ] = useState(R);
 	const [ green, setGreen ] = useState(G);
 	const [ blue, setBlue ] = useState(B);
@@ -94,4 +94,4 @@ const Background = ({ R = 7, G = 55, B = 89 }) => {
    )
 }
 
-export default Background;
+export default BackgroundChanging;

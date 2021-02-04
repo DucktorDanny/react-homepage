@@ -5,7 +5,7 @@ import Checkbox from './Checkbox';
 import Line from './Line';
 import Greeting from '../ClockAndGreeting/Greeting';
 import FavoriteList from './FavoriteList';
-import Background from './Background';
+import BackgroundChanging from './BackgroundChanging';
 import { TextField, Button } from '@material-ui/core';
 import './style/Settings.css';
 
@@ -294,7 +294,7 @@ const Settings = () => {
 					<Line />
 
 					<h2>Change background color</h2>
-					<Background />
+					<BackgroundChanging />
 
 				</form>
 				<Line />
