@@ -5,8 +5,9 @@
    height: calc(100% - 8rem);
    margin: 2rem 1rem;
    width: 500px;
-   background: linear-gradient(30deg, rgba(108, 130, 168, 0.9), rgba(144, 144, 144, 0.9));
-   backdrop-filter: blur(7.5px);
+  //  background: linear-gradient(30deg, rgba(108, 130, 168, 0.9), rgba(144, 144, 144, 0.9));
+   background: linear-gradient(30deg, rgba(76, 76, 76, 0.4), rgba(196, 196, 196, 0.6));
+   backdrop-filter: blur(15px);
    border-radius: 15px;
    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.4);
    color: white;
@@ -37,15 +38,16 @@
 		// box-shadow: 0 0 25px 5px rgba(255, 255, 255, 0.8), 0 0 25px 5px rgba(255, 255, 255, 0.8) inset;
 
 		&::-webkit-scrollbar {
-			width: 15px;
-			background: transparent;
+      width: 15px;
+      background: transparent;
 		}
-
+    
 		&::-webkit-scrollbar-thumb {
-			background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.8);
 			border-radius: 15px;
 		}
-
+    scrollbar-color: rgba(255, 255, 255, 0.8) transparent !important;
+    
 		h2 {
 			margin: 1rem;
 			font-size: 26px;
@@ -89,16 +91,11 @@
       }
     }
 
-    // .favorite-list {
-    //   width: 75%;
-    //   margin: 1rem 1rem 0;
-    //   display: flex;
-    //   flex-direction: column;
-    //   align-items: center;
-    
+    .background-sliders {
+      padding-bottom: 1.5rem;
+      width: 75%;
+    }
 
-      
-    // }
 	}
 }
 
@@ -110,7 +107,7 @@
   width: 100%;
   
   color: #373e49;
-  background: linear-gradient(45deg, rgb(176, 176, 176), rgb(130, 167, 219));
+  background: linear-gradient(45deg, rgb(144, 144, 144), rgb(255, 255, 255));
   border-radius: 10px;
   box-shadow: 2.5px 2.5px 10px 1.25px rgba(0, 0, 0, 0.2);
   padding: 1rem 0 !important;

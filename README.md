@@ -20,7 +20,7 @@
 
 * [x] Change the favorites order by drag-and-drop
 * [x] Fix Safari style issuescd 
-* [ ] Background color changing ( changing the top of linear graditent  RGB with sliders )
+* [x] Background color changing ( changing the top of linear graditent  RGB with sliders )
 * [ ] Background Image change?
 * [ ] Editable favorites?
 * [ ] Should I store datas locally? Or should I write a server side for it?

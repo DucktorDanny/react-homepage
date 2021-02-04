@@ -5,6 +5,7 @@ import Checkbox from './Checkbox';
 import Line from './Line';
 import Greeting from '../ClockAndGreeting/Greeting';
 import FavoriteList from './FavoriteList';
+import Background from './Background';
 import { TextField, Button } from '@material-ui/core';
 import './style/Settings.css';
 
@@ -293,8 +294,7 @@ const Settings = () => {
 					<Line />
 
 					<h2>Change background color</h2>
-
-					{/*  changing the linear gradient top by slider */}
+					<Background />
 
 				</form>
 				<Line />
