@@ -21,6 +21,7 @@
 * [x] Change the favorites order by drag-and-drop
 * [x] Fix Safari style issuescd 
 * [x] Background color changing ( changing the top of linear graditent  RGB with sliders )
+* [x] Settings open always at the top of the form
 * [ ] Background Image change?
 * [ ] Editable favorites?
 * [ ] Should I store datas locally? Or should I write a server side for it?

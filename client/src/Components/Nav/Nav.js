@@ -12,6 +12,9 @@ const Nav = ({ favorites }) => {
 
 	const clicked = () => {
 		setOpened(!opened);
+		
+		const form = document.querySelector('.settings-form');
+		form.scrollTo(0, 0);
 	}
 
 	useEffect(() => {
