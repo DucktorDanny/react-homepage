@@ -32,18 +32,14 @@ const PrettoSlider = withStyles({
    },
  })(Slider);
 
-//  defaultValue={ 7 }
-// defaultValue={ 55 }
-// defaultValue={ 89 }
-
 const BackgroundChanging = ({ R = 7, G = 55, B = 89 }) => {
    const [ red, setRed ] = useState(R);
 	const [ green, setGreen ] = useState(G);
 	const [ blue, setBlue ] = useState(B);
 
-	const changeRed = (event, newValue) => { setRed(newValue) }
-	const changeGreen = (event, newValue) => { setGreen(newValue) }
-	const changeBlue = (event, newValue) => { setBlue(newValue) }
+	const changeRed = (event, newValue) => setRed(newValue);
+	const changeGreen = (event, newValue) => setGreen(newValue);
+	const changeBlue = (event, newValue) => setBlue(newValue);
 	
 	useEffect(() => {
 		document.querySelector('body').style.background = `linear-gradient(to bottom, rgb(${red}, ${green}, ${blue}), #a4a4a4)`;
