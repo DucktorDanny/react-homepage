@@ -66,11 +66,11 @@
       "emoji": "🦆",
    },
    "favorites": [
-      0: {
+      "0": {
          "name": "Youtube",
          "url": "https://youtube.com",
       },
-      1: {
+      "1": {
          "name": "Facebook",
          "url": "https://facebook.com",
       },
