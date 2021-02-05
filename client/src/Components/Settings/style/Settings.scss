@@ -51,7 +51,7 @@
 		h2 {
 			margin: 1rem;
 			font-size: 26px;
-			text-align: center;
+      text-align: center;
 		}
     
     button {
@@ -96,6 +96,21 @@
       width: 75%;
     }
 
+    .save-changes {
+      position: fixed;
+      width: 100%;
+      right: 0;
+      bottom: 0;
+      // background: rgba(255, 255, 255, 0.8);
+      z-index: 99;
+      pointer-events: none;
+      button {
+        display: block;
+        margin: .75rem auto;
+        font-size: 1rem;
+        pointer-events: all;
+      }
+    }
 	}
 }
 

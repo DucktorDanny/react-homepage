@@ -82,3 +82,32 @@
    }
 }
 ```
+
+```js
+const data = {
+   showElements: {
+      calendar: true,
+      favorites: true,
+      greeting: true,
+   },
+   greeting: {
+      pronouns: 'friend',
+      emoji: '🦆',
+   },
+   favorites: [
+      {
+         name: 'Youtube',
+         url: 'https://youtube.com',
+      },
+      {
+         name: 'Facebook',
+         url: 'https://facebook.com'
+      },
+   ],
+   backgroundColor: {
+      R: 7,
+      G: 55,
+      B: 89,
+   }
+}
+```

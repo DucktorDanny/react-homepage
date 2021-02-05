@@ -75,6 +75,20 @@
   padding-bottom: 1.5rem;
   width: 75%;
 }
+.settings .settings-form .save-changes {
+  position: fixed;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  pointer-events: none;
+}
+.settings .settings-form .save-changes button {
+  display: block;
+  margin: 0.75rem auto;
+  font-size: 1rem;
+  pointer-events: all;
+}
 
 .favorite-list-element {
   z-index: 9999;

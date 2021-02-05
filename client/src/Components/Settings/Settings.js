@@ -296,6 +296,12 @@ const Settings = () => {
 					<h2>Change background color</h2>
 					<BackgroundChanging />
 
+					<div className='save-changes'>
+						<Button
+								variant='contained'
+								color='primary'
+						>Save</Button>
+					</div>
 				</form>
 				<Line />
 			</div>
