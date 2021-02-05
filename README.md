@@ -22,9 +22,9 @@
 * [x] Fix Safari style issuescd 
 * [x] Background color changing ( changing the top of linear graditent  RGB with sliders )
 * [x] Settings open always at the top of the form
+* [ ] Set up local storage
 * [ ] Background Image change?
 * [ ] Editable favorites?
-* [ ] Should I store datas locally? Or should I write a server side for it?
 
 ## Links:
 
@@ -51,3 +51,34 @@
 
 * store locally the favorites and settings:
    * https://www.code-boost.com/react-local-storage/
+
+## Local Storage Structure:
+
+```json
+{
+   "showElements": {
+      "calendar": true,
+      "favorites": true,
+      "greeting": true,
+   },
+   "greeting": {
+      "pronouns": "friend",
+      "emoji": "🦆",
+   },
+   "favorites": [
+      0: {
+         "name": "Youtube",
+         "url": "https://youtube.com",
+      },
+      1: {
+         "name": "Facebook",
+         "url": "https://facebook.com",
+      },
+   ],
+   "backgroundColor": {
+      "R": 7,
+      "G": 55,
+      "B": 89,
+   }
+}
+```
