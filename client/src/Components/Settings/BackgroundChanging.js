@@ -32,7 +32,7 @@ const PrettoSlider = withStyles({
    },
  })(Slider);
 
-const BackgroundChanging = ({ R = 7, G = 55, B = 89 }) => {
+const BackgroundChanging = ({ R, G, B }) => {
    const [ red, setRed ] = useState(R);
 	const [ green, setGreen ] = useState(G);
 	const [ blue, setBlue ] = useState(B);

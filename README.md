@@ -23,6 +23,9 @@
 * [x] Background color changing ( changing the top of linear graditent  RGB with sliders )
 * [x] Settings open always at the top of the form
 * [ ] Set up local storage
+   * [x] Get datas
+   * [ ] Make a function what returns the colors of a backgroundImage
+   * [ ] Save datas
 * [ ] Background Image change?
 * [ ] Editable favorites?
 
@@ -54,6 +57,7 @@
 
 ## Local Storage Structure:
 
+JSON:
 ```json
 {
    "showElements": {
@@ -65,7 +69,7 @@
       "pronouns": "friend",
       "emoji": "🦆",
    },
-   "favorites": [
+   "favoritesArray": [
       {
          "name": "Youtube",
          "url": "https://youtube.com",
@@ -82,7 +86,7 @@
    }
 }
 ```
-
+JavaScript Object:
 ```js
 const data = {
    showElements: {
@@ -94,7 +98,7 @@ const data = {
       pronouns: 'friend',
       emoji: '🦆',
    },
-   favorites: [
+   favoritesArray: [
       {
          name: 'Youtube',
          url: 'https://youtube.com',

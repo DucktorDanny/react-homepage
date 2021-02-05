@@ -9,13 +9,18 @@ import BackgroundChanging from './BackgroundChanging';
 import { TextField, Button } from '@material-ui/core';
 import './style/Settings.css';
 
-const Settings = () => {
-	const [ showCalendar, setShowCalendar ] = useState(true);
-	const [ showFavorites, setShowFavorites ] = useState(true);
-	const [ showGreeting, setShowGreeting ] = useState(true);
+// showElements,
+// greeting,
+// favorites,
+// backgroundColor
 
-	const [ greetingPronouns, setGreetingPronouns ] = useState('');
-	const [ greetingEmoji, setGreetingEmoji ] = useState('');
+const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) => {
+	const [ showCalendar, setShowCalendar ] = useState(showElements.calendar);
+	const [ showFavorites, setShowFavorites ] = useState(showElements.favorites);
+	const [ showGreeting, setShowGreeting ] = useState(showElements.greeting);
+
+	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
+	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
 
 	const [ isEmojiValid, setIsEmojiValid ] = useState(true);
 	const [ isPronounsValid, setIsPronounsValid ] = useState(true);
@@ -23,24 +28,7 @@ const Settings = () => {
 	const [ isFavoriteNameValid, setIsFavoriteNameValid ] = useState(true);
 	const [ isFavoriteUrlValid, setIsFavoriteUrlValid ] = useState(true);
 
-	const [ favorites, setFavorites ] = useState([
-		{
-			name: 'Youtube',
-			url: 'https://youtube.com'
-		},
-		{
-			name: 'Facebook',
-			url: 'https://facebook.com'
-		},
-		{
-			name: 'Stackoverflow',
-			url: 'https://stackoverflow.com'
-		},
-		{
-			name: 'Google',
-			url: 'https://google.com'
-		}
-	]);
+	const [ favorites, setFavorites ] = useState(favoritesArray);
 
 	useEffect(() => {
 		const favorites = document.querySelector('.favorites');
@@ -210,13 +198,43 @@ const Settings = () => {
 
 	}
 
+	const getLinearGradientColors = (backgroundImage) => {
+		return null;
+	}
+
+	const saveChanges = (event) => {
+		event.preventDefault();
+
+		const form = document.querySelector('form');
+		const formData = new FormData(form);
+
+		const datas = {
+			showElements: {
+				calendar: showCalendar,
+				favorites: showFavorites,
+				greeting: showGreeting,
+			},
+			greeting: {
+				pronouns: greetingPronouns,
+				emoji: greetingEmoji,
+			},
+			favoritesArray: favorites,
+			// need a function what returns the colors of backgroundImage
+			backgroundColor: {
+				colors: null
+			}
+		}
+		console.log(document.querySelector('body').style.backgroundImage);
+		// localStorage.setItem('datas', );
+	}
+
 	return (
 		<>
 			<Nav favorites={ favorites } />
 			<div className='settings'>
 				<h1>Settings</h1>
 				<Line />
-				<form className='settings-form'>
+				<form className='settings-form' onSubmit={ saveChanges }>
 					<h2>Element visibility</h2>
 
 					<Checkbox htmlName='show-favorites' onClick={ clickedShowFavorites } labelText='Show favorites' chekced={ showFavorites } />
@@ -294,12 +312,17 @@ const Settings = () => {
 					<Line />
 
 					<h2>Change background color</h2>
-					<BackgroundChanging />
+					<BackgroundChanging
+						R={ backgroundColor.R }
+						G={ backgroundColor.G }
+						B={ backgroundColor.B }
+					/>
 
 					<div className='save-changes'>
 						<Button
-								variant='contained'
-								color='primary'
+							type='submit'
+							variant='contained'
+							color='primary'
 						>Save</Button>
 					</div>
 				</form>
