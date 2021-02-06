@@ -198,15 +198,13 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	}
 
-	const getLinearGradientColors = (backgroundImage) => {
-		return null;
-	}
-
 	const saveChanges = (event) => {
 		event.preventDefault();
 
-		const form = document.querySelector('form');
-		const formData = new FormData(form);
+		const bgColor = document.querySelector('body').style.backgroundImage
+			.replace('linear-gradient(rgb(', '')
+			.replace('), rgb(164, 164, 164))', '')
+			.split(', ');
 
 		const datas = {
 			showElements: {
@@ -219,13 +217,14 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				emoji: greetingEmoji,
 			},
 			favoritesArray: favorites,
-			// need a function what returns the colors of backgroundImage
 			backgroundColor: {
-				colors: null
+				R: parseInt(bgColor[0]),
+				G: parseInt(bgColor[1]),
+				B: parseInt(bgColor[2]),
 			}
 		}
-		console.log(document.querySelector('body').style.backgroundImage);
-		// localStorage.setItem('datas', );
+
+		localStorage.setItem('datas', JSON.stringify(datas));
 	}
 
 	return (

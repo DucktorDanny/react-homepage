@@ -17,7 +17,7 @@ const greeting = datas ? datas.greeting : {
    pronouns: 'friend',
    emoji: '🐣',
 };
-const favoritesArray = datas ? datas.favorites : [
+const favoritesArray = datas ? datas.favoritesArray : [
    {
       name: 'Youtube',
       url: 'https://youtube.com',

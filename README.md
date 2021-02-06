@@ -22,10 +22,11 @@
 * [x] Fix Safari style issuescd 
 * [x] Background color changing ( changing the top of linear graditent  RGB with sliders )
 * [x] Settings open always at the top of the form
-* [ ] Set up local storage
+* [x] Set up local storage
    * [x] Get datas
-   * [ ] Make a function what returns the colors of a backgroundImage
-   * [ ] Save datas
+   ~~* [ ] Make a function what returns the colors of a backgroundImage~~
+   * [x] Convert backgroundImage string to an array with R, G and B
+   * [x] Pass datas to localStorage
 * [ ] Background Image change?
 * [ ] Editable favorites?
 
