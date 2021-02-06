@@ -1,3 +1,8 @@
+.notifications-component {
+  position: fixed;
+  bottom: 0;
+}
+
 .settings {
   position: fixed;
   top: 5rem;

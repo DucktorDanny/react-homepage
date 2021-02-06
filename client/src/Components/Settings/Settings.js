@@ -7,12 +7,10 @@ import Greeting from '../ClockAndGreeting/Greeting';
 import FavoriteList from './FavoriteList';
 import BackgroundChanging from './BackgroundChanging';
 import { TextField, Button } from '@material-ui/core';
+import ReactNotifications, { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css/animate.min.css';
 import './style/Settings.css';
-
-// showElements,
-// greeting,
-// favorites,
-// backgroundColor
 
 const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) => {
 	const [ showCalendar, setShowCalendar ] = useState(showElements.calendar);
@@ -225,11 +223,23 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 
 		localStorage.setItem('datas', JSON.stringify(datas));
+		store.addNotification({
+			title: 'Success',
+			message: 'Changes have been saved!',
+			type: 'success',
+			container: 'bottom-center',
+			animationIn: ['animate__animated animate__flipInX'],
+			animationOut: ['animate__animated animate__fadeOut'],
+			dismiss: {
+				duration: 2000
+			}
+		});
 	}
 
 	return (
 		<>
 			<Nav favorites={ favorites } />
+			<ReactNotifications />
 			<div className='settings'>
 				<h1>Settings</h1>
 				<Line />

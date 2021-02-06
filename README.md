@@ -27,8 +27,9 @@
    * [ ] ~~Make a function what returns the colors of a backgroundImage~~
    * [x] Convert backgroundImage string to an array with R, G and B
    * [x] Pass datas to localStorage
-* [ ] Background Image change?
+* [x] Feedback notification after save
 * [ ] Editable favorites?
+* [ ] Background Image change?
 
 ## Links:
 
@@ -55,6 +56,10 @@
 
 * store locally the favorites and settings:
    * https://www.code-boost.com/react-local-storage/
+
+* change save success notification:
+   * https://teodosii.github.io/react-notifications-component/
+   * https://www.digitalocean.com/community/tutorials/react-react-notifications-component
 
 ## Local Storage Structure:
 
