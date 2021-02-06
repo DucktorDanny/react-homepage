@@ -24,7 +24,7 @@
 * [x] Settings open always at the top of the form
 * [x] Set up local storage
    * [x] Get datas
-   ~~* [ ] Make a function what returns the colors of a backgroundImage~~
+   * [ ] ~~Make a function what returns the colors of a backgroundImage~~
    * [x] Convert backgroundImage string to an array with R, G and B
    * [x] Pass datas to localStorage
 * [ ] Background Image change?
