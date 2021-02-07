@@ -53,7 +53,11 @@ const App = () => {
 						backgroundColor={ backgroundColor }
 					/>
 				</>
-			: <h1>Loading...</h1> }
+			: <h1 style={{
+				displat: 'block',
+				margin: 'auto',
+				color: 'white',
+			}}>Loading...</h1> }
 		</>
 	)
 	

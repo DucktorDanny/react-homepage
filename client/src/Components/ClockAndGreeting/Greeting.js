@@ -13,13 +13,15 @@ const Greeting = ({ pronouns, emojis }) => {
          const currentHour = new Date().getHours();
    
          if (!pronouns || pronouns.trim() === '') {
-            pronounsProp.current = 'friend';
+            const datas = localStorage.getItem('datas');
+            pronounsProp.current = datas ? JSON.parse(datas).greeting.pronouns : 'friend';
          } else {
             pronounsProp.current = pronouns;
          }
    
          if (!emojis || emojis.trim() === '') {
-            emojisProp.current = '🐣';
+            const datas = localStorage.getItem('datas');
+            emojisProp.current = datas ? JSON.parse(datas).greeting.emoji : '🐣';
          } else {
             emojisProp.current = emojis;
          }

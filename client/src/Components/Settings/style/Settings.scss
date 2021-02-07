@@ -11,7 +11,8 @@
    margin: 2rem 1rem;
    width: 500px;
   //  background: linear-gradient(30deg, rgba(108, 130, 168, 0.9), rgba(144, 144, 144, 0.9));
-   background: linear-gradient(30deg, rgba(76, 76, 76, 0.4), rgba(196, 196, 196, 0.6));
+  background: linear-gradient(30deg, rgba(76, 76, 76, 0.9), rgba(196, 196, 196, 0.8));
+  // -moz-background: linear-gradient(30deg, rgb(76, 76, 76), rgb(196, 196, 196));
    backdrop-filter: blur(15px);
    border-radius: 15px;
    box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.4);

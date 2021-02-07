@@ -93,14 +93,25 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		const pronouns = e.target.value;
 		const isValid = pronouns.length < 12;
 		setIsPronounsValid(isValid);
-		setGreetingPronouns(isValid ? pronouns : '');
+		// setGreetingPronouns(isValid && pronouns !== '' ? pronouns : greeting.pronouns);
+		if (isValid && pronouns !== '') {
+			setGreetingPronouns(pronouns);
+		} else if (isValid && pronouns === '') {
+			setGreetingPronouns(greeting.pronouns);
+		}
 	}
 
 	const greetingEmjisChange = (e) => {
 		const emoji = e.target.value.trim();
 		const isValid = isEmoji(emoji) || emoji === '';
-		setGreetingEmoji(isValid ? emoji : '');
 		setIsEmojiValid(isValid);
+		// setGreetingEmoji(isValid && emoji !== '' ? emoji : greeting.emoji);
+		console.log(greeting.emoji);
+		if (isValid && emoji !== '') {
+			setGreetingEmoji(emoji);
+		} else if (isValid && emoji === '') {
+			setGreetingEmoji(greeting.emoji);
+		}
 	}
 
 	const isEmoji = (emoji) => {
@@ -198,12 +209,15 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	const saveChanges = (event) => {
 		event.preventDefault();
+		const form = document.querySelector('form');
 
 		const bgColor = document.querySelector('body').style.backgroundImage
 			.replace('linear-gradient(rgb(', '')
 			.replace('), rgb(164, 164, 164))', '')
 			.split(', ');
 
+		console.log(greetingEmoji);
+		
 		const datas = {
 			showElements: {
 				calendar: showCalendar,
@@ -221,6 +235,10 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				B: parseInt(bgColor[2]),
 			}
 		}
+		form.reset();
+
+		greeting.pronouns = greetingPronouns;
+		greeting.emoji = greetingEmoji;
 
 		localStorage.setItem('datas', JSON.stringify(datas));
 		store.addNotification({
@@ -258,7 +276,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							name='greeting-pronouns'
 							className='textfield'
 							type='text'
-							label='Greeting pronouns'
+							label='Pronouns'
 							helperText={ !isPronounsValid ? 'Too long pronouns!' : '' }
 							variant='outlined'
 							onChange={ greetingPronounsChange } 
@@ -269,7 +287,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 						name='greeting-emoji'
 							className='textfield'
 							type='text'
-							label='Greeting emojis'
+							label='Emojis'
 							helperText={ !isEmojiValid ? 'It is not an emoji!' : '' }
 							variant='outlined'
 							onChange={ greetingEmjisChange } 

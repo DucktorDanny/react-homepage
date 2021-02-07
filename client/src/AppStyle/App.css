@@ -15,7 +15,7 @@
 body {
   height: 100vh;
   width: 100%;
-  background: linear-gradient(to bottom, #073759, #a4a4a4);
+  background: #323232;
 }
 
 #root {

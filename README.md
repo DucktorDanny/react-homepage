@@ -28,6 +28,11 @@
    * [x] Convert backgroundImage string to an array with R, G and B
    * [x] Pass datas to localStorage
 * [x] Feedback notification after save
+* [x] A bit smaller favicon
+* [x] Fix favorite icon name
+* [x] Pronouns and emoji disappear on submit
+* [x] ~~Greeting pronouns and emojis settings fix~~
+* [ ] Fix responsivibilty on Settings (and Firefox compatibleity [backdrop-filter])
 * [ ] Editable favorites?
 * [ ] Background Image change?
 
@@ -92,6 +97,7 @@ JSON:
    }
 }
 ```
+
 JavaScript Object:
 ```js
 const data = {
