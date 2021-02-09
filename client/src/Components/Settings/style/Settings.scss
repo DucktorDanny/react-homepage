@@ -11,7 +11,7 @@
    margin: 2rem 1rem;
    width: 500px;
   //  background: linear-gradient(30deg, rgba(108, 130, 168, 0.9), rgba(144, 144, 144, 0.9));
-  background: linear-gradient(30deg, rgba(76, 76, 76, 0.9), rgba(196, 196, 196, 0.8));
+  background: linear-gradient(30deg, rgba(76, 76, 76, 0.7), rgba(196, 196, 196, 0.6));
   // -moz-background: linear-gradient(30deg, rgb(76, 76, 76), rgb(196, 196, 196));
    backdrop-filter: blur(15px);
    border-radius: 15px;
@@ -131,7 +131,7 @@
   background: linear-gradient(45deg, rgb(144, 144, 144), rgb(255, 255, 255));
   border-radius: 10px;
   box-shadow: 2.5px 2.5px 10px 1.25px rgba(0, 0, 0, 0.2);
-  padding: 1rem 0 !important;
+  padding: .5rem 0 !important;
 
   h3, h4 {
     text-align: center;
@@ -150,6 +150,41 @@
     background: rgb(200, 50, 50);
     margin: .5rem 0 !important;
   }
+
+  .fav-list-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .remove-icon, .edit-icon {
+      display: block;
+      margin: 0 .75rem;
+      transition: all .4s;
+      cursor: pointer;
+
+      svg {
+        display: block;
+        margin: auto;
+      }
+    }
+
+    .remove-icon {
+      border-radius: 100%;
+      &:hover {
+        background: rgb(200, 50, 50);
+      }
+    }
+
+    .edit-icon {
+      border-radius: 7px;
+      padding: .2rem;
+      &:hover {
+        background: rgb(235, 246, 119);
+      }
+    }
+  }
+
 }
 
 .droppable {
@@ -166,6 +201,12 @@
    .settings {
       width: calc(100% - 2rem);
    }
+}
+
+@media only screen and (max-width: 950px) {
+  .settings {
+    background: linear-gradient(30deg, rgb(76, 76, 76), rgb(196, 196, 196));
+  }
 }
 
 .settings-open {

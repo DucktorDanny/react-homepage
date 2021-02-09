@@ -25,3 +25,4 @@ yarn-error.log*
 .vercel
 .now
 now.json
+.env

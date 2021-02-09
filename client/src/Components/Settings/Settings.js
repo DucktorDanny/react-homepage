@@ -162,20 +162,24 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	const removeFavorite = (e) => {
 		// if I click on the label then I get a span but if not then I get a button so this is required:
-		const favoriteElementID = e.target.classList.contains('MuiButton-label') ? e.target.parentNode.parentNode.id : e.target.parentNode.id;
-		const favoriteIndex = parseInt(favoriteElementID.split('-fav-lement')[0]);
+		// const favoriteElementID = e.target.classList.contains('MuiButton-label') ? e.target.parentNode.parentNode.id : e.target.parentNode.id;
+		// const favoriteIndex = parseInt(favoriteElementID.split('-fav-lement')[0]);
+
+		console.log(e.target.id);
+
+		// const favoriteElementID = e.target.nodeName === 'svg' ? a.target.id
 
 		// remove in a state array:
 		// (made this way because other methods like splice doesnt re-render...)
-		let test = [];
+		// let test = [];
 
-		for (let i = 0; i < favorites.length; i++) {
-			if (i !== favoriteIndex) {
-				test.push(favorites[i]);
-			}
-		}
+		// for (let i = 0; i < favorites.length; i++) {
+		// 	if (i !== favoriteIndex) {
+		// 		test.push(favorites[i]);
+		// 	}
+		// }
 
-		setFavorites(test);
+		// setFavorites(test);
 	}
 
 	// reorder the array
