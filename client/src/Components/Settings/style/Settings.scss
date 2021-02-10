@@ -28,23 +28,18 @@
    }
 
 	.settings-form {
-
-    // height: 80%;
     height: calc(100% - 175px);
-		
-		padding-top: 2rem;
-		padding-bottom: 2rem;
+    padding: 2rem 0 2rem 14px;
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
-		overflow-y: scroll;
-		
-		// box-shadow: 0 0 25px 5px rgba(255, 255, 255, 0.4);
-		// box-shadow: 0 0 25px 5px rgba(255, 255, 255, 0.8), 0 0 25px 5px rgba(255, 255, 255, 0.8) inset;
+    overflow-y: scroll;
+    
 
 		&::-webkit-scrollbar {
-      width: 15px;
+      width: 14px;
       background: transparent;
 		}
     
@@ -66,7 +61,9 @@
     }
 
     .textfield {
-      width: 40%;
+      .MuiOutlinedInput-root {
+        width: 100%;
+      }
     }
     
     .line {
@@ -77,6 +74,7 @@
     .greeting-settings {
       width: 100%;
       .textfield {
+        width: 40%;
         display: block;
         margin: 0 auto 1rem;
       }  
@@ -87,6 +85,7 @@
       width: 100%;
       
       .textfield {
+        width: 40%;
         display: block;
         margin: 0 auto 1rem;
       }
@@ -102,6 +101,28 @@
       width: 75%;
     }
 
+    .imp-exp-settings {
+      width: 100%;
+      padding: 1rem 0 2rem 0;
+
+
+      button {
+        display: block;
+        margin: 0 auto 1.5rem;
+      }
+
+      .textfield {
+        display: block;
+        margin: 0 auto 1.5rem;
+        width: 70%;
+      }
+
+      .reset-settings {
+        color: white;
+        background: rgb(150, 0, 0);
+      }
+    }
+
     .save-changes {
       position: fixed;
       width: 100%;
@@ -109,14 +130,18 @@
       bottom: 0;
       z-index: 99;
       pointer-events: none;
+
       button {
         display: block;
         margin: .75rem auto;
         font-size: 1rem;
         pointer-events: all;
         box-shadow: 0 0 25px 10px rgba(63, 81, 181, 0.6);
+        border: 1px solid white;
+        border-radius: 10px;
       }
     }
+
 	}
 }
 

@@ -10,6 +10,7 @@ import { TextField, Button } from '@material-ui/core';
 import ReactNotifications, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css/animate.min.css';
+import Popup from 'react-popup';
 import './style/Settings.css';
 
 const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) => {
@@ -206,6 +207,69 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	}
 
+	const copySettingsDatas = () => {
+		try {
+			const datas = localStorage.getItem('datas');
+	
+			if (!datas) {
+				throw new Error('You have no saved datas!');
+			}
+
+			navigator.clipboard.writeText(datas)
+				.then(() => {
+					createNotification('Success', 'You have copied your settings!', 'success');
+				})
+				.catch((err) => {
+					createNotification('Error', `Error in copying: ${err}`, 'danger');
+				})
+			
+		} catch(err) {
+			createNotification('Error', err.message, 'danger');
+		}
+	}
+
+	const setExportedDatas = () => {
+		
+		const exportSettingsField = document.querySelector('#export-settings-field');
+		
+		// verify datas
+		try {
+			const datas = JSON.parse(exportSettingsField.value);
+
+			if (datas.showElements && datas.greeting && datas.favoritesArray && datas.backgroundColor) {
+				localStorage.setItem('datas', JSON.stringify(datas));
+				createNotification('Success', 'You have exported settings!', 'success');
+				
+				// easy way:
+				window.location.reload(true);
+			}
+		} catch (err) {
+			createNotification('Error', err.message, 'danger');
+		}
+	}
+
+	const resetSettings = () => {
+		// Popup.create({
+		// 	title: 'Warning!',
+		// 	content: 'Are you sure you want to reset all settings?',
+		// 	buttons: {
+		// 		left: [{
+		// 			text: 'Cancel',
+		// 			action: () => {
+		// 				Popup.close();
+		// 			}
+		// 		}],
+		// 		right: [{
+		// 			text: 'Reset',
+		// 			className: 'danger',
+		// 			action: () => {
+		// 				console.log('You reset me...!');
+		// 			}
+		// 		}]
+		// 	}
+		// })
+	}
+
 	const saveChanges = (event) => {
 		event.preventDefault();
 		// const form = document.querySelector('form');
@@ -214,8 +278,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 			.replace('linear-gradient(rgb(', '')
 			.replace('), rgb(164, 164, 164))', '')
 			.split(', ');
-
-		console.log(greetingEmoji);
 		
 		const datas = {
 			showElements: {
@@ -240,10 +302,14 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		greeting.emoji = greetingEmoji;
 
 		localStorage.setItem('datas', JSON.stringify(datas));
+		createNotification('Success', 'Changes have been saved!', 'success');
+	}
+
+	const createNotification = (title, message, type) => {
 		store.addNotification({
-			title: 'Success',
-			message: 'Changes have been saved!',
-			type: 'success',
+			title,
+			message,
+			type,
 			container: 'bottom-center',
 			animationIn: ['animate__animated animate__flipInX'],
 			animationOut: ['animate__animated animate__fadeOut'],
@@ -344,6 +410,46 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 					<h2>Remove favorite</h2>
 					<FavoriteList favorites={ favorites } removeFunction={ removeFavorite } onDragEnd={ onDragEnd } />
 
+					
+
+					<Line />
+
+					<h2>Import, export and reset settings</h2>
+					<div className='imp-exp-settings'>
+
+						<TextField
+							id='export-settings-field'
+							className='textfield'
+							name='favorite-add-link'
+							type='text'
+							label='Copied datas'
+							variant='outlined'
+						/>
+
+						<Button
+							type='button'
+							variant='contained'
+							color='primary'
+							onClick={ setExportedDatas }
+						>Export</Button>
+
+						<Button
+							type='button'
+							variant='contained'
+							color='primary'
+							onClick={ copySettingsDatas }
+						>Copy settings datas</Button>
+
+						<Button
+							type='button'
+							variant='contained'
+							className='reset-settings'
+							onClick={ resetSettings }
+						>Reset settings</Button>
+					</div>
+
+
+					{/* Save changes */}
 					<div className='save-changes'>
 						<Button
 							type='submit'
@@ -351,6 +457,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							color='primary'
 						>Save</Button>
 					</div>
+
 				</form>
 				<Line />
 			</div>
