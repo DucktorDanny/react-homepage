@@ -37,6 +37,8 @@
 * [ ] Make popup component to the settings reset button.
 * [ ] After exporting make the changes instead of a simple reload
 * [ ] Editable favorites popup
+* [ ] Update sample photos
+* [ ] Also aublish it into chrome (Firefox submition done. Should I publish it for others too?)
 * [ ] Background Image change?
 
 ## Links:
