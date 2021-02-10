@@ -107,7 +107,6 @@
       width: 100%;
       right: 0;
       bottom: 0;
-      // background: rgba(255, 255, 255, 0.8);
       z-index: 99;
       pointer-events: none;
       button {
@@ -115,6 +114,7 @@
         margin: .75rem auto;
         font-size: 1rem;
         pointer-events: all;
+        box-shadow: 0 0 25px 10px rgba(63, 81, 181, 0.6);
       }
     }
 	}
@@ -190,6 +190,7 @@
 .droppable {
   align-items: center;
   width: 75%;
+  padding: 2rem 0;
 }
 
 .draggable {

@@ -144,11 +144,11 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 	}
 
-	const addNewFavoriteByEnter = (e) => {
-		if (e.code === 'Enter') {
-			addNewFavorite();
-		}
-	}
+	// const addNewFavoriteByEnter = (e) => {
+	// 	if (e.code === 'Enter') {
+	// 		addNewFavorite();
+	// 	}
+	// }
 
 	const checkAddForm = (e) => {
 		const favoriteField = e.target;
@@ -161,25 +161,20 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 	}
 
 	const removeFavorite = (e) => {
-		// if I click on the label then I get a span but if not then I get a button so this is required:
-		// const favoriteElementID = e.target.classList.contains('MuiButton-label') ? e.target.parentNode.parentNode.id : e.target.parentNode.id;
-		// const favoriteIndex = parseInt(favoriteElementID.split('-fav-lement')[0]);
-
-		console.log(e.target.id);
-
-		// const favoriteElementID = e.target.nodeName === 'svg' ? a.target.id
+		const favoriteIndex = parseInt(e.target.getAttribute('id') || e.target.parentNode.getAttribute('id'));
+		console.log(favoriteIndex);
 
 		// remove in a state array:
 		// (made this way because other methods like splice doesnt re-render...)
-		// let test = [];
+		let test = [];
 
-		// for (let i = 0; i < favorites.length; i++) {
-		// 	if (i !== favoriteIndex) {
-		// 		test.push(favorites[i]);
-		// 	}
-		// }
+		for (let i = 0; i < favorites.length; i++) {
+			if (i !== favoriteIndex) {
+				test.push(favorites[i]);
+			}
+		}
 
-		// setFavorites(test);
+		setFavorites(test);
 	}
 
 	// reorder the array
@@ -213,7 +208,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	const saveChanges = (event) => {
 		event.preventDefault();
-		const form = document.querySelector('form');
+		// const form = document.querySelector('form');
 
 		const bgColor = document.querySelector('body').style.backgroundImage
 			.replace('linear-gradient(rgb(', '')
@@ -239,7 +234,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				B: parseInt(bgColor[2]),
 			}
 		}
-		form.reset();
+		// form.reset();
 
 		greeting.pronouns = greetingPronouns;
 		greeting.emoji = greetingEmoji;
@@ -271,6 +266,15 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 					<Checkbox htmlName='show-favorites' onClick={ clickedShowFavorites } labelText='Show favorites' chekced={ showFavorites } />
 					<Checkbox htmlName='show-greeting' onClick={ clickedShowGreeting } labelText='Show greeting' chekced={ showGreeting } />
 					<Checkbox htmlName='show-calendar' onClick={ clickedShowCalendar } labelText='Show Calendar' chekced={ showCalendar } />
+
+					<Line />
+
+					<h2>Change background color</h2>
+					<BackgroundChanging
+						R={ backgroundColor.R }
+						G={ backgroundColor.G }
+						B={ backgroundColor.B }
+					/>
 
 					<Line />
 
@@ -312,7 +316,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							label='Name'
 							variant='outlined'
 							onChange={ checkAddForm }
-							onKeyUp={ addNewFavoriteByEnter }
+							// onKeyUp={ addNewFavoriteByEnter }
 							error={ !isFavoriteNameValid }
 							helperText={ !isFavoriteNameValid ? 'The name is too long' : '' }
 						/>
@@ -324,7 +328,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							label='Link'
 							variant='outlined'
 							onChange={ checkAddForm }
-							onKeyUp={ addNewFavoriteByEnter }
+							// onKeyUp={ addNewFavoriteByEnter }
 							error={ !isFavoriteUrlValid }
 							helperText={ !isFavoriteUrlValid ? 'Url is invalid' : '' }
 						/>
@@ -339,15 +343,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 					<h2>Remove favorite</h2>
 					<FavoriteList favorites={ favorites } removeFunction={ removeFavorite } onDragEnd={ onDragEnd } />
-
-					<Line />
-
-					<h2>Change background color</h2>
-					<BackgroundChanging
-						R={ backgroundColor.R }
-						G={ backgroundColor.G }
-						B={ backgroundColor.B }
-					/>
 
 					<div className='save-changes'>
 						<Button

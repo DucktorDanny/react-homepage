@@ -32,6 +32,7 @@
 * [x] Fix favorite icon name
 * [x] Pronouns and emoji disappear on submit
 * [x] ~~Greeting pronouns and emojis settings fix~~
+* [ ] Fixed clock animation
 * [ ] Fix responsivibilty on Settings (and Firefox compatibleity [backdrop-filter])
 * [ ] Editable favorites?
 * [ ] Background Image change?

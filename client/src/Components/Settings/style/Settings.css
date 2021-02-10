@@ -93,6 +93,7 @@
   margin: 0.75rem auto;
   font-size: 1rem;
   pointer-events: all;
+  box-shadow: 0 0 25px 10px rgba(63, 81, 181, 0.6);
 }
 
 .favorite-list-element {
@@ -155,6 +156,7 @@
 .droppable {
   align-items: center;
   width: 75%;
+  padding: 2rem 0;
 }
 
 .draggable {

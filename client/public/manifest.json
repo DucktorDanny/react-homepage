@@ -1,9 +1,9 @@
 {
   "name": "Dnyyy Homepage",
   "description": "A new tab homepage created with React",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 2,
-  "permissions" : ["management", "history", "storage"],
+  "permissions" : ["management", "history", "storage", "tabs", "activeTab"],
   "chrome_url_overrides" : {
       "newtab": "index.html"
   },
