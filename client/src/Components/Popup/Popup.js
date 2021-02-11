@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Button } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import Line from '../Settings/Line';
 import './style/Popup.css';
 
@@ -8,7 +8,7 @@ class Popup extends Component {
       super();
       
       this.state = {
-         title: 'Test',
+         title: 'Hello World',
          content: 'I just wanna test that my component is working just like this... :)',
          acceptLabel: 'Reset',
          declineLabel: 'Cancel',
@@ -18,7 +18,11 @@ class Popup extends Component {
    // { title, content, acceptLabel, declineLabel }
    static create({ type, datas }) {
       const acceptDeclinePopup = () => {
-         document.querySelector('.popup-container').style.display = 'block';
+         document.querySelector('#accept-decline').style.display = 'block';
+      }
+
+      const favoriteEditPopup = () => {
+         document.querySelector('#favorite-edit').style.display = 'block';
       }
 
       try {
@@ -27,11 +31,17 @@ class Popup extends Component {
          }
 
          switch(type) {
-            case 'accept-decline':
+            case 'accept-decline': {
                acceptDeclinePopup(); 
                break;
-            default: 
+            }
+            case 'favorite-edit': {
+               favoriteEditPopup();
+               break;
+            }
+            default: {
                throw new Error('Popup type unknown.');
+            }
          }
       } catch (err) {
          console.error(err.message);
@@ -39,35 +49,88 @@ class Popup extends Component {
    }
    
    static close() {
-      document.querySelector('.popup-container').style.display = 'none';
+      document.querySelector('#accept-decline').style.display = 'none';
+      document.querySelector('#favorite-edit').style.display = 'none';
    }
 
    render() {
       const { title, content, acceptLabel, declineLabel } = this.state;
       return (
-         <div className='popup-container'>
-            <div className='popup-box'>
-               <h1>{title}</h1>
-               <Line />
-               <p>{content}</p>
-
-               <div className='popup-buttons'>
-                  <Button
-                     type='button'
-                     variant='contained'
-                     className='popup-button-accept'
-                  >{acceptLabel}</Button>
-                  <Button
-                     type='button'
-                     variant='contained'
-                     className='popup-button-decline'
-                     onClick={ Popup.close }
-                  >{declineLabel}</Button>
-               </div>
-            </div>
-         </div>
+         <>
+            <AcceptDecline
+               title={ title }
+               content={ content }
+               acceptLabel={ acceptLabel }
+               declineLabel={ declineLabel }
+            />
+            <FavoriteEdit
+               titleField={ title }
+               acceptLabel={ acceptLabel }
+               declineLabel={ declineLabel }
+            />
+         </>
       )
    }
 }
+
+const AcceptDecline = ({ title, content, acceptLabel, declineLabel }) => (
+   <div id='accept-decline' className='popup-container'>
+      <div className='popup-box'>
+         { title
+         ? <>
+            <h1>{title}</h1>
+            <Line />
+         </>
+         : ''}
+         
+         <p>{content}</p>
+
+         <div className='popup-buttons'>
+            <Button
+               type='button'
+               variant='contained'
+               className='popup-button-accept'
+            >{acceptLabel}</Button>
+            <Button
+               type='button'
+               variant='contained'
+               className='popup-button-decline'
+               onClick={Popup.close}
+            >{declineLabel}</Button>
+         </div>
+      </div>
+   </div>
+);
+
+const FavoriteEdit = ({ titleField, linkField, acceptLabel, declineLabel }) => (
+   <div id='favorite-edit' className='popup-container'>
+      <div className='popup-box'>
+
+         <TextField
+            id='favorite-edit-title'
+            className='textfield'
+            name='favorite-edit-title'
+            type='text'
+            label='Title'
+            variant='outlined'
+            defaultValue={ titleField }
+         />
+
+         <div className='popup-buttons'>
+            <Button
+               type='button'
+               variant='contained'
+               className='popup-button-accept'
+            >{acceptLabel}</Button>
+            <Button
+               type='button'
+               variant='contained'
+               className='popup-button-decline'
+               onClick={ Popup.close }
+            >{declineLabel}</Button>
+         </div>
+      </div>
+   </div>
+);
 
 export default Popup;

@@ -250,19 +250,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 	}
 
 	const resetSettings = () => {
-		// ... do something
-		// document.querySelector('.popup-container').style.display = 'block';
-		// const something = new Popup();
-		// something.something();
-
-		// Popup.create({
-		// 	title: 'test',
-		// 	content: 'testing it something and this is the content let see how it looks like...',
-		// 	acceptLabel: 'yes',
-		// 	declineLabel: 'no'
-		// });
-
-		Popup.create({ type: 'accept-decline' });
+		Popup.create({ type: 'favorite-edit' });
 	}
 
 	const saveChanges = (event) => {
