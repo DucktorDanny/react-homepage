@@ -6,11 +6,12 @@ import Line from './Line';
 import Greeting from '../ClockAndGreeting/Greeting';
 import FavoriteList from './FavoriteList';
 import BackgroundChanging from './BackgroundChanging';
+import Popup from '../Popup/Popup';
 import { TextField, Button } from '@material-ui/core';
 import ReactNotifications, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css/animate.min.css';
-import Popup from 'react-popup';
+
 import './style/Settings.css';
 
 const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) => {
@@ -249,25 +250,19 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 	}
 
 	const resetSettings = () => {
+		// ... do something
+		// document.querySelector('.popup-container').style.display = 'block';
+		// const something = new Popup();
+		// something.something();
+
 		// Popup.create({
-		// 	title: 'Warning!',
-		// 	content: 'Are you sure you want to reset all settings?',
-		// 	buttons: {
-		// 		left: [{
-		// 			text: 'Cancel',
-		// 			action: () => {
-		// 				Popup.close();
-		// 			}
-		// 		}],
-		// 		right: [{
-		// 			text: 'Reset',
-		// 			className: 'danger',
-		// 			action: () => {
-		// 				console.log('You reset me...!');
-		// 			}
-		// 		}]
-		// 	}
-		// })
+		// 	title: 'test',
+		// 	content: 'testing it something and this is the content let see how it looks like...',
+		// 	acceptLabel: 'yes',
+		// 	declineLabel: 'no'
+		// });
+
+		Popup.create({ type: 'accept-decline' });
 	}
 
 	const saveChanges = (event) => {
@@ -323,6 +318,13 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		<>
 			<Nav favorites={ favorites } />
 			<ReactNotifications />
+			{/* <PopupAcceptDecline
+				title='test'
+				content='testing it something and this is the content let see how it looks like...'
+				acceptLabel='yes'
+				declineLabel='no'
+			/> */}
+			<Popup />
 			<div className='settings'>
 				<h1>Settings</h1>
 				<Line />

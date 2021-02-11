@@ -1,0 +1,57 @@
+.popup-container {
+   position: fixed;
+   z-index: 99999999;
+   height: 100%;
+   width: 100%;
+   top: 0;
+   left: 0;
+   background: rgba(0, 0, 0, 0.5);
+   backdrop-filter: blur(5px);
+
+   .popup-box {
+      position: absolute;
+      width: 22.5rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      background: rgb(222, 222, 222);
+      padding: 1.5rem;
+      border-radius: 15px;
+
+      h1 {
+         text-align: center;
+         margin-bottom: 1rem;
+         color: rgb(79, 79, 79);
+      }
+
+      .line {
+         height: .5px;
+         background: linear-gradient(to right, transparent, rgba(52, 52, 52, 0.8), transparent);
+      }
+
+      p {
+         width: 100%;
+         text-align: center;
+         margin: 1rem 0;
+         color: rgb(79, 79, 79);
+      }
+
+      .popup-buttons {
+         display: flex;
+         justify-content: space-between;
+
+         .popup-button-accept {
+            color: white;
+            background: green;
+         }
+      
+         .popup-button-decline {
+            color: white;
+            background: red;
+         }
+      }
+
+   }
+
+}
