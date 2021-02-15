@@ -1,6 +1,6 @@
 # React HomePage
 
-> About a half year ago I made a homepage for myself into my browser when I used jquery to make it. But since then I learned a lot and now I am mainly using react so I decided to remake it.
+> About a half year ago I made a homepage for myself into my browser when I used jquery to make it. But since then I learned a lot and now I am mainly using react so I decided to remake it. And now I learned about browser extension a lot so I am gonna use it as well.
 
 ## Some sample photos about it:
 
@@ -34,11 +34,13 @@
 * [x] ~~Greeting pronouns and emojis settings fix~~
 * [x] Fixed clock animation
 * [x] ~~Fix responsivibilty on Settings (and Firefox compatibleity [backdrop-filter])~~
-* [ ] Make popup component to the settings reset button.
-* [ ] After exporting make the changes instead of a simple reload
+* [x] Make popup component to the settings reset button.
+   * Check reactjs-popup (https://react-popup.elazizi.com/component-api/)
 * [ ] Editable favorites popup
+* [ ] After exporting make the changes instead of a simple reload
+* [ ] Slidable/scrollable favorite list (right-letf)
 * [ ] Update sample photos
-* [ ] Also aublish it into chrome (Firefox submition done. Should I publish it for others too?)
+* [x] Also aublish it into chrome (Firefox submition done. Should I publish it for others too?) -> published on chrome for testers
 * [ ] Background Image change?
 
 ## Links:
@@ -70,6 +72,9 @@
 * change save success notification:
    * https://teodosii.github.io/react-notifications-component/
    * https://www.digitalocean.com/community/tutorials/react-react-notifications-component
+
+* override homepage:
+   * https://forums.opera.com/topic/20490/using-chrome_url_overrides-for-extension/4
 
 ## Local Storage Structure:
 

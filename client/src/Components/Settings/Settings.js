@@ -250,7 +250,36 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 	}
 
 	const resetSettings = () => {
-		Popup.create({ type: 'favorite-edit' });
+		try {
+			const datas = JSON.parse(localStorage.getItem('datas'));
+			if (!datas) {
+				throw new Error('There are no saved settings.');
+			}
+
+			setPopup({
+				type: 'accept-decline',
+				open: true,
+				datas: {
+					title: 'Reset settings',
+					content: 'Are you sure you want to delete your saved settings?',
+					acceptLabel: 'Reset',
+					declineLabel: 'Cancel',
+					onAccept: () => {
+						localStorage.removeItem('datas');
+
+						// easy way:
+						window.location.reload(true);
+						// close popup
+						setPopup({...popup, open: false});
+					},
+					onDecline: () => {
+						setPopup({...popup, open: false});
+					}
+				}
+			});
+		} catch(err) {
+			createNotification('Error', err.message, 'danger');
+		}
 	}
 
 	const saveChanges = (event) => {
@@ -302,17 +331,17 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		});
 	}
 
+	const [popup, setPopup] = useState(Object);
+
 	return (
 		<>
 			<Nav favorites={ favorites } />
 			<ReactNotifications />
-			{/* <PopupAcceptDecline
-				title='test'
-				content='testing it something and this is the content let see how it looks like...'
-				acceptLabel='yes'
-				declineLabel='no'
-			/> */}
-			<Popup />
+			<Popup
+				type={popup.type}
+				open={popup.open}
+				datas={popup.datas}
+			/>
 			<div className='settings'>
 				<h1>Settings</h1>
 				<Line />
