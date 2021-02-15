@@ -30,6 +30,8 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	const [ favorites, setFavorites ] = useState(favoritesArray);
 
+	const [popup, setPopup] = useState(Object);
+
 	useEffect(() => {
 		const favorites = document.querySelector('.favorites');
 		const calendar = document.querySelector('.react-calendar');
@@ -162,9 +164,65 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 	}
 
+	const editFavorite = (e) => {
+		setPopup(Object);
+		const favoriteIndex = parseInt(e.target.getAttribute('id'));
+
+		const type = 'favorite-edit';
+		const titleField = favorites[favoriteIndex].name;
+		const linkField = favorites[favoriteIndex].url;
+		const acceptLabel = 'Edit';
+		const declineLabel = 'Cancel';
+
+		console.log(titleField, linkField);
+
+		setPopup({
+			type,
+			open: true,
+			datas: {
+				titleField,
+				linkField,
+				acceptLabel,
+				declineLabel,
+				onAccept: () => {
+					modifyFavorite(
+						document.querySelector('#favorite-edit-title').value,
+						document.querySelector('#favorite-edit-link').value
+					);
+					setPopup({
+						type,
+						open: false,
+						datas: {
+							titleField,
+							linkField,
+							acceptLabel,
+							declineLabel
+						}
+					});
+				},
+				onDecline: () => {
+					setPopup({
+						type,
+						open: false,
+						datas: {
+							titleField,
+							linkField,
+							acceptLabel,
+							declineLabel
+						}
+					});
+				}
+			}
+		});
+	}
+
+	const modifyFavorite = (title, url) => {
+		// change
+		console.log(title, url);
+	}
+
 	const removeFavorite = (e) => {
-		const favoriteIndex = parseInt(e.target.getAttribute('id') || e.target.parentNode.getAttribute('id'));
-		console.log(favoriteIndex);
+		const favoriteIndex = parseInt(e.target.getAttribute('id'));
 
 		// remove in a state array:
 		// (made this way because other methods like splice doesnt re-render...)
@@ -256,24 +314,46 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				throw new Error('There are no saved settings.');
 			}
 
+			const type = 'accept-decline';
+			const title = 'Reset settings';
+			const content = 'Are you sure you want to delete your saved settings?';
+			const acceptLabel = 'Reset';
+			const declineLabel = 'Cancel';
+
 			setPopup({
-				type: 'accept-decline',
+				type,
 				open: true,
 				datas: {
-					title: 'Reset settings',
-					content: 'Are you sure you want to delete your saved settings?',
-					acceptLabel: 'Reset',
-					declineLabel: 'Cancel',
+					title,
+					content,
+					acceptLabel,
+					declineLabel,
 					onAccept: () => {
 						localStorage.removeItem('datas');
-
 						// easy way:
 						window.location.reload(true);
-						// close popup
-						setPopup({...popup, open: false});
+						setPopup({
+							type,
+							open: false,
+							datas: {
+								title,
+								content,
+								acceptLabel,
+								declineLabel
+							}
+						});
 					},
 					onDecline: () => {
-						setPopup({...popup, open: false});
+						setPopup({
+							type,
+							open: false,
+							datas: {
+								title,
+								content,
+								acceptLabel,
+								declineLabel
+							}
+						});
 					}
 				}
 			});
@@ -330,8 +410,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 			}
 		});
 	}
-
-	const [popup, setPopup] = useState(Object);
 
 	return (
 		<>
@@ -427,9 +505,12 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 					<Line />
 
 					<h2>Remove favorite</h2>
-					<FavoriteList favorites={ favorites } removeFunction={ removeFavorite } onDragEnd={ onDragEnd } />
-
-					
+					<FavoriteList
+						favorites={ favorites }
+						editFunction={ editFavorite }
+						removeFunction={ removeFavorite }
+						onDragEnd={ onDragEnd }
+					/>
 
 					<Line />
 

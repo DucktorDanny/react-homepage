@@ -7,6 +7,8 @@
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
+  opacity: 1;
+  animation: fade-in 0.4s ease-in-out;
 }
 .popup-container .popup-box {
   position: absolute;
@@ -23,15 +25,30 @@
   margin-bottom: 1rem;
   color: #4f4f4f;
 }
+.popup-container .popup-box h2 {
+  text-align: center;
+  margin-top: 1rem;
+  color: #4f4f4f;
+  font-size: 1.25rem;
+}
 .popup-container .popup-box .line {
   height: 0.5px;
-  background: linear-gradient(to right, transparent, rgba(52, 52, 52, 0.8), transparent);
+  background: linear-gradient(to right, transparent, rgba(52, 52, 52, 0.8), transparent) !important;
 }
 .popup-container .popup-box p {
   width: 100%;
   text-align: center;
   margin: 1rem 0;
   color: #4f4f4f;
+}
+.popup-container .popup-box .textfields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.popup-container .popup-box .textfields .edit-textfield {
+  margin: 1rem auto;
+  width: 100%;
 }
 .popup-container .popup-box .popup-buttons {
   display: flex;
@@ -44,6 +61,17 @@
 .popup-container .popup-box .popup-buttons .popup-button-decline {
   color: white;
   background: red;
+}
+
+.popup-container-hidden {
+  opacity: 0;
+  animation: fade-out 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.popup-load {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=Popup.css.map */

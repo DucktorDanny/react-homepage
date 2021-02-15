@@ -30,20 +30,11 @@ const useDraggableInPortal = () => {
 	};
 };
 
-const FavoriteList = ({ favorites, removeFunction, onDragEnd }) => {
+const FavoriteList = ({ favorites, editFunction, removeFunction, onDragEnd }) => {
 	const renderDraggable = useDraggableInPortal();
 
 	return (
-		// <div className='favorite-list'>
-		// 	{
-		// 		favorites.map((fav, i) => {
-		// 			return(
-		// 				<FavoriteListElement key={ i } data_key={ i } name={ fav.name } url={ fav.url }  removeFunction={ removeFunction } />
-		// 			);
-		// 		})
-		// 	}
-		// </div>
-		// <div className='favorite-list'>
+
 		<DragDropContext onDragEnd={ onDragEnd }>
 			<Droppable droppableId='droppable'>
 				{(provided, snapshot) => (
@@ -51,13 +42,6 @@ const FavoriteList = ({ favorites, removeFunction, onDragEnd }) => {
 						{ ...provided.droppableProps }
 						ref={ provided.innerRef }
 						className='droppable'
-						// style={{
-						// 	display: 'flex',
-						// 	flexDirection: 'column',
-						// 	alignItems: 'center',
-						// 	width: '100%',
-						// 	border: '1px solid red',
-						// }}
 					>
 						{favorites.map((fav, index) => (
 							<Draggable key={ `${index}-fav` } draggableId={ `${index}-fav` } index={ index }>
@@ -68,7 +52,14 @@ const FavoriteList = ({ favorites, removeFunction, onDragEnd }) => {
 										{ ...provided.dragHandleProps }
 										className='draggable'
 									>
-										<FavoriteListElement key={ index } data_key={ index } name={ fav.name } url={ fav.url }  removeFunction={ removeFunction } />
+										<FavoriteListElement
+											key={ index }
+											data_key={ index }
+											name={ fav.name }
+											url={ fav.url }
+											editFunction={ editFunction }
+											removeFunction={ removeFunction }
+										/>
 									</div>
 								))}
 							</Draggable>
