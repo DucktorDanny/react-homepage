@@ -37,10 +37,12 @@
 * [x] Make popup component to the settings reset button.
    * Check reactjs-popup (https://react-popup.elazizi.com/component-api/)
 * [ ] Editable favorites popup
+   * [x] Popup style for it
+   * [ ] Make the changes
 * [ ] After exporting make the changes instead of a simple reload
 * [ ] Slidable/scrollable favorite list (right-letf)
 * [ ] Update sample photos
-* [x] Also aublish it into chrome (Firefox submition done. Should I publish it for others too?) -> published on chrome for testers
+* [x] Also publish it into chrome (Firefox submition done. Should I publish it for others too?) -> published on chrome for testers
 * [ ] Background Image change?
 
 ## Links:
