@@ -18,11 +18,11 @@
 
 ### Fourth Sample (Settings)
 
-![sample1](./client/sample_photos/sample3.png)
+![sample1](./client/sample_photos/sample4.png)
 
 ### Fifth Sample (Settings)
 
-![sample1](./client/sample_photos/sample3.png)
+![sample1](./client/sample_photos/sample5.png)
 
 ## To Do:
 
