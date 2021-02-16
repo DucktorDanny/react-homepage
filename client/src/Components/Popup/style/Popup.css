@@ -34,6 +34,7 @@
 .popup-container .popup-box .line {
   height: 0.5px;
   background: linear-gradient(to right, transparent, rgba(52, 52, 52, 0.8), transparent) !important;
+  border: none;
 }
 .popup-container .popup-box p {
   width: 100%;

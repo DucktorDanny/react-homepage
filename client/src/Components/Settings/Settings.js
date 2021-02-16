@@ -148,12 +148,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 	}
 
-	// const addNewFavoriteByEnter = (e) => {
-	// 	if (e.code === 'Enter') {
-	// 		addNewFavorite();
-	// 	}
-	// }
-
 	const checkAddForm = (e) => {
 		const favoriteField = e.target;
 
@@ -213,10 +207,12 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				throw new Error('There are no changes!');
 			}
 			
-			if (name !== '') favoritesArray[idx].name = name;
-			if (url !== '') favoritesArray[idx].url = url;
-
-			setFavorites(favoritesArray);
+			const favoriteElements = favorites;
+			
+			if (name !== '') favoriteElements[idx].name = name;
+			if (url !== '') favoriteElements[idx].url = url;
+			
+			setFavorites(favoriteElements);
 			saveChanges();
 		} else if (!isNameValid) {
 			throw new Error('The new name is too long!');
@@ -273,6 +269,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 
 		// We need te re-order the array by these indexes
+
 		if (favorites) {
 			let newArray = [];
 			const orderedArray = reorder(favorites, result.source.index, result.destination.index);
@@ -284,6 +281,10 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 
 	}
+
+	useEffect(() => {
+		console.log(favorites);
+	}, [favorites]);
 
 	const copySettingsDatas = () => {
 		try {
@@ -385,7 +386,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		if (event) {
 			event.preventDefault();
 		}
-		// const form = document.querySelector('form');
 
 		const bgColor = document.querySelector('body').style.backgroundImage
 			.replace('linear-gradient(rgb(', '')
@@ -409,7 +409,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				B: parseInt(bgColor[2]),
 			}
 		}
-		// form.reset();
 
 		greeting.pronouns = greetingPronouns;
 		greeting.emoji = greetingEmoji;
