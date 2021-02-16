@@ -4,25 +4,29 @@
 
 ## Some sample photos about it:
 
-### First Sample (Main)
+### Main
 
 ![sample1](./client/sample_photos/sample1.png)
 
-### Second Sample (Settings)
+### Settings 1
 
 ![sample1](./client/sample_photos/sample2.png)
 
-### Third Sample (Settings)
+### Settings 2
 
 ![sample1](./client/sample_photos/sample3.png)
 
-### Fourth Sample (Settings)
+### Settings 3
 
 ![sample1](./client/sample_photos/sample4.png)
 
-### Fifth Sample (Settings)
+### Settings 4
 
 ![sample1](./client/sample_photos/sample5.png)
+
+### Favorite edit popup
+
+![sample1](./client/sample_photos/sample6.png)
 
 ## To Do:
 
