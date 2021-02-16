@@ -282,10 +282,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	}
 
-	useEffect(() => {
-		console.log(favorites);
-	}, [favorites]);
-
 	const copySettingsDatas = () => {
 		try {
 			const datas = localStorage.getItem('datas');
