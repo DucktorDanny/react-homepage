@@ -34,15 +34,15 @@
 * [x] ~~Greeting pronouns and emojis settings fix~~
 * [x] Fixed clock animation
 * [x] ~~Fix responsivibilty on Settings (and Firefox compatibleity [backdrop-filter])~~
+* [x] Also publish it into chrome (Firefox submition done. Should I publish it for others too?) -> published on chrome for testers
 * [x] Make popup component to the settings reset button.
    * Check reactjs-popup (https://react-popup.elazizi.com/component-api/)
-* [ ] Editable favorites popup
+* [x] Editable favorites popup
    * [x] Popup style for it
-   * [ ] Make the changes
+   * [x] Make the changes (immedietly saved locally too)
+* [ ] Update sample photos
 * [ ] After exporting make the changes instead of a simple reload
 * [ ] Slidable/scrollable favorite list (right-letf)
-* [ ] Update sample photos
-* [x] Also publish it into chrome (Firefox submition done. Should I publish it for others too?) -> published on chrome for testers
 * [ ] Background Image change?
 
 ## Links:

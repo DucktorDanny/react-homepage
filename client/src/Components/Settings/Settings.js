@@ -185,41 +185,60 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				acceptLabel,
 				declineLabel,
 				onAccept: () => {
-					modifyFavorite(
-						document.querySelector('#favorite-edit-title').value,
-						document.querySelector('#favorite-edit-link').value
-					);
-					setPopup({
-						type,
-						open: false,
-						datas: {
-							titleField,
-							linkField,
-							acceptLabel,
-							declineLabel
-						}
-					});
+					try {
+						modifyFavorite(
+							document.querySelector('#favorite-edit-title').value,
+							document.querySelector('#favorite-edit-link').value,
+							favoriteIndex
+						);
+						closeEditPopup({ type, titleField, linkField, acceptLabel, declineLabel });
+					} catch(err) {
+						createNotification('Error', err.message, 'danger');
+					}
 				},
 				onDecline: () => {
-					setPopup({
-						type,
-						open: false,
-						datas: {
-							titleField,
-							linkField,
-							acceptLabel,
-							declineLabel
-						}
-					});
+					closeEditPopup({ type, titleField, linkField, acceptLabel, declineLabel });		
 				}
 			}
 		});
 	}
 
-	const modifyFavorite = (title, url) => {
-		// change
-		console.log(title, url);
+	const modifyFavorite = (name, url, idx) => {
+
+		const isNameValid = name.length <= 20;
+		const isUrlValid = url.includes('http://') || url.includes('https://') || url === '';
+
+		if (isNameValid && isUrlValid) {
+			if (name === '' && url === '') {
+				throw new Error('There are no changes!');
+			}
+			
+			if (name !== '') favoritesArray[idx].name = name;
+			if (url !== '') favoritesArray[idx].url = url;
+
+			setFavorites(favoritesArray);
+			saveChanges();
+		} else if (!isNameValid) {
+			throw new Error('The new name is too long!');
+		} else if (!isUrlValid) {
+			throw new Error('Invalid URL! It need contain https:// or http://!');
+		}
 	}
+
+	const closeEditPopup = ({ type, titleField, linkField, acceptLabel, declineLabel }) => {
+		document.querySelector('#favorite-edit-title').value = '';
+		document.querySelector('#favorite-edit-link').value = '';
+		setPopup({
+			type,
+			open: false,
+			datas: {
+				titleField,
+				linkField,
+				acceptLabel,
+				declineLabel
+			}
+		});
+	}	
 
 	const removeFavorite = (e) => {
 		const favoriteIndex = parseInt(e.target.getAttribute('id'));
@@ -363,7 +382,9 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 	}
 
 	const saveChanges = (event) => {
-		event.preventDefault();
+		if (event) {
+			event.preventDefault();
+		}
 		// const form = document.querySelector('form');
 
 		const bgColor = document.querySelector('body').style.backgroundImage
@@ -406,7 +427,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 			animationIn: ['animate__animated animate__flipInX'],
 			animationOut: ['animate__animated animate__fadeOut'],
 			dismiss: {
-				duration: 2000
+				duration: 3000
 			}
 		});
 	}
@@ -479,7 +500,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							label='Name'
 							variant='outlined'
 							onChange={ checkAddForm }
-							// onKeyUp={ addNewFavoriteByEnter }
 							error={ !isFavoriteNameValid }
 							helperText={ !isFavoriteNameValid ? 'The name is too long' : '' }
 						/>
@@ -491,7 +511,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							label='Link'
 							variant='outlined'
 							onChange={ checkAddForm }
-							// onKeyUp={ addNewFavoriteByEnter }
 							error={ !isFavoriteUrlValid }
 							helperText={ !isFavoriteUrlValid ? 'Url is invalid' : '' }
 						/>

@@ -20,7 +20,7 @@ const Popup = ({
                      onAccept={datas.onAccept}
                      onDecline={datas.onDecline}
                   />
-                  : type === 'favorite-edit'
+               : type === 'favorite-edit'
                      ? <FavoriteEdit
                         titleField={datas.titleField}
                         linkField={datas.linkField}
@@ -29,7 +29,7 @@ const Popup = ({
                         onAccept={datas.onAccept}
                         onDecline={datas.onDecline}
                      />
-                  : ''
+               : ''
             }
          </div>
       </div >
