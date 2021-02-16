@@ -52,11 +52,13 @@
 * [x] Editable favorites popup
    * [x] Popup style for it
    * [x] Make the changes (immedietly saved locally too)
-* [ ] Update sample photos
+* [x] Update sample photos
+* [ ] Settings scroll in Chrome and Firefox...
 * [ ] After exporting make the changes instead of a simple reload
 * [ ] Slidable/scrollable favorite list (right-letf)
 * [ ] Settings component clean up
 * [ ] Background Image change?
+* [ ] Marketing side...?
 
 ## Links:
 
