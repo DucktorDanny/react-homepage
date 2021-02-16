@@ -4,15 +4,23 @@
 
 ## Some sample photos about it:
 
-### First Sample
+### First Sample (Main)
 
 ![sample1](./client/sample_photos/sample1.png)
 
-### Second Sample
+### Second Sample (Settings)
 
 ![sample1](./client/sample_photos/sample2.png)
 
-### Third Sample
+### Third Sample (Settings)
+
+![sample1](./client/sample_photos/sample3.png)
+
+### Fourth Sample (Settings)
+
+![sample1](./client/sample_photos/sample3.png)
+
+### Fifth Sample (Settings)
 
 ![sample1](./client/sample_photos/sample3.png)
 
@@ -43,6 +51,7 @@
 * [ ] Update sample photos
 * [ ] After exporting make the changes instead of a simple reload
 * [ ] Slidable/scrollable favorite list (right-letf)
+* [ ] Settings component clean up
 * [ ] Background Image change?
 
 ## Links:

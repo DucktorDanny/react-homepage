@@ -7,6 +7,10 @@
   overflow: hidden;
   z-index: -1;
   animation: fade-in 1.5s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 .clock-container h1 {
   font-size: 9rem;

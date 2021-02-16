@@ -6,6 +6,10 @@ nav {
   color: white;
   display: flex;
   align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 nav .favorites {
   margin: 0 2rem;
