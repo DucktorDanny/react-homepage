@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Comic Neue", cursive;
+}
+
+#root {
+  height: 100vh;
+}
+
+header {
+  height: 100%;
+  color: white;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(120deg, #17576c, #84a1b0);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+header h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+header img {
+  max-height: 60%;
+  max-width: 80%;
+  border: 0.1rem solid white;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+}
+@media (pointer: fine) and (hover: hover) {
+  header img:hover {
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.01);
+  }
+}
+main {
+  padding: 0 2.5rem 2.5rem;
+  color: #17576c;
+  background: #e5f0fa;
+}
+main h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 2.5rem 0;
+}
+main h3 {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+}
+main p {
+  font-size: 1.25rem;
+}
+main label {
+  display: block;
+  max-width: 75rem;
+  margin: auto;
+  padding: 1rem;
+  border-left: 0.2rem solid #17576c;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+}
+main section {
+  max-width: 75rem;
+  margin: 0 auto 1.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+main section img {
+  width: 100%;
+  border: 0.1rem solid white;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: white;
+  background: linear-gradient(120deg, #17576c, #84a1b0);
+}
+
+button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  border: 0.2rem solid white;
+  border-radius: 1.2rem;
+  transition: all 0.4s;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+}
+button:active {
+  color: #7d7d7d;
+  background: #e1e1e1;
+}
+@media (pointer: fine) and (hover: hover) {
+  button:hover {
+    color: #7d7d7d;
+    background: #e1e1e1;
+  }
+}
+
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+@media only screen and (max-width: 500px) {
+  #root {
+    height: 100%;
+  }
+
+  header {
+    height: 100%;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+  header h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  header img {
+    max-height: none;
+    max-width: none;
+    width: 95%;
+    margin-bottom: 2rem;
+    border-radius: 0.4rem;
+  }
+
+  main {
+    padding: 0 0 2.5rem;
+  }
+  main label {
+    max-width: none;
+    width: 95%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  main section {
+    max-width: none;
+    width: 95%;
+    margin: 0 auto 1.5rem;
+    box-sizing: border-box;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,9 +1,8 @@
 {
   "name": "Dnyyy Homepage",
-  "description": "A new tab homepage created with React",
+  "description": "A homepage where you can add favorites, set greeting, background and much more...",
   "version": "1.4",
   "manifest_version": 2,
-
   "chrome_url_overrides" : {
       "newtab": "index.html"
   },

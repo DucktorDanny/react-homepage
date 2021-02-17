@@ -95,7 +95,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	const greetingPronounsChange = (e) => {
 		const pronouns = e.target.value;
-		const isValid = pronouns.length < 12;
+		const isValid = pronouns.length <= 12;
 		setIsPronounsValid(isValid);
 		// setGreetingPronouns(isValid && pronouns !== '' ? pronouns : greeting.pronouns);
 		if (isValid && pronouns !== '') {
@@ -303,17 +303,17 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 	}
 
-	const setExportedDatas = () => {
+	const setImportedDatas = () => {
 		
-		const exportSettingsField = document.querySelector('#export-settings-field');
+		const importSettingsField = document.querySelector('#export-settings-field');
 		
 		// verify datas
 		try {
-			const datas = JSON.parse(exportSettingsField.value);
+			const datas = JSON.parse(importSettingsField.value);
 
 			if (datas.showElements && datas.greeting && datas.favoritesArray && datas.backgroundColor) {
 				localStorage.setItem('datas', JSON.stringify(datas));
-				createNotification('Success', 'You have exported settings!', 'success');
+				createNotification('Success', 'You have imported settings!', 'success');
 				
 				// easy way:
 				window.location.reload(true);
@@ -518,7 +518,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 					<Line />
 
-					<h2>Remove favorite</h2>
+					<h2>Favorite changes</h2>
 					<FavoriteList
 						favorites={ favorites }
 						editFunction={ editFavorite }
@@ -532,7 +532,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 					<div className='imp-exp-settings'>
 
 						<TextField
-							id='export-settings-field'
+							id='import-settings-field'
 							className='textfield'
 							name='favorite-add-link'
 							type='text'
@@ -544,8 +544,8 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							type='button'
 							variant='contained'
 							color='primary'
-							onClick={ setExportedDatas }
-						>Export</Button>
+							onClick={ setImportedDatas }
+						>Import</Button>
 
 						<Button
 							type='button'
