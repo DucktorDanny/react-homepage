@@ -60,9 +60,13 @@
    * [x] A full user guide
    * https://ducktor-homepage.vercel.app/
 * [ ] After exporting make the changes instead of a simple reload
-* [ ] Slidable/scrollable favorite list (right-letf)
 * [ ] Settings component clean up
-* [ ] Background Image change?
+
+* Other ideas:
+   * [ ] Slidable/scrollable favorite list (right-letf)
+   * [ ] Background Image change?
+   * [ ] Adding the actual site to favorites by popup.
+   * [ ] Access to history
 
 ## Links:
 
