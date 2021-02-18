@@ -7,8 +7,48 @@
 
 #root {
   height: 100vh;
+  scroll-behavior: smooth;
 }
 
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(120deg, #17576c, #84a1b0);
+  transform: translateY(-100%);
+}
+
+.nav-shown {
+  animation: slide-down 0.4s ease-in-out;
+  transform: translateY(0%);
+}
+
+.nav-hidden {
+  animation: slide-up 0.4s ease-in-out;
+  transform: translateY(-100%);
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
 header {
   height: 100%;
   color: white;
@@ -57,7 +97,7 @@ main p {
 main label {
   display: block;
   max-width: 75rem;
-  margin: auto;
+  margin: 0 auto 1.5rem;
   padding: 1rem;
   border-left: 0.2rem solid #17576c;
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
@@ -73,9 +113,17 @@ main section {
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
   background: white;
 }
-main section img {
-  width: 100%;
-  border: 0.1rem solid white;
+main section .images {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+main section .images img {
+  height: 100%;
+  width: 40%;
+  max-width: 100%;
+  margin: 1rem;
   border-radius: 0.8rem;
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.3);
 }
@@ -122,9 +170,35 @@ img {
   -ms-user-select: none;
 }
 
+@media only screen and (max-width: 1000px) {
+  main section .images img {
+    width: 60%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  main section .images img {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  nav h1 {
+    font-size: 1.2rem;
+  }
+  nav button {
+    font-size: 1rem;
+  }
+}
 @media only screen and (max-width: 500px) {
   #root {
     height: 100%;
+  }
+
+  nav h1 {
+    font-size: 1rem;
+  }
+  nav button {
+    font-size: 0.8rem;
+    padding: 0.25rem;
   }
 
   header {
@@ -158,6 +232,10 @@ img {
     width: 95%;
     margin: 0 auto 1.5rem;
     box-sizing: border-box;
+  }
+  main section .images img {
+    width: 100%;
+    margin: 1rem 0;
   }
 }
 
