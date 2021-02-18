@@ -67,6 +67,7 @@
    * [ ] Background Image change?
    * [ ] Adding the actual site to favorites by popup.
    * [ ] Access to history
+   * [ ] Calendar events
 
 ## Links:
 
