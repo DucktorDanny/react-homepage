@@ -55,9 +55,10 @@
 * [x] Update sample photos
 * [x] ~~Settings scroll in Chrome and Firefox...~~
 * [ ] Add my logo what brings to the marketing side or whatever
-* [ ] Marketing side...?
-   * [ ] Figma design making for a pattern
-   * [ ] A full user guide
+* [x] Marketing side...?
+   * [x] Figma design making for a pattern
+   * [x] A full user guide
+   * https://ducktor-homepage.vercel.app/
 * [ ] After exporting make the changes instead of a simple reload
 * [ ] Slidable/scrollable favorite list (right-letf)
 * [ ] Settings component clean up

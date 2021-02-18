@@ -53,7 +53,6 @@ const Nav = ({ favorites }) => {
 		<>
 			<nav>
 				<section className='favorites'>
-					
 					{favorites.map((favorite, i) => {
 						return(
 							<Favorite key={i} name={favorite.name} url={favorite.url} />
