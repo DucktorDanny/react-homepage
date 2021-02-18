@@ -12,6 +12,7 @@
 }
 
 nav {
+   z-index: 11;
    position: fixed;
    width: 100%;
    padding: .5rem 0;
@@ -25,12 +26,12 @@ nav {
 }
 
 .nav-shown {
-   animation: slide-down .4s ease-in-out;
+   animation: slide-down .2s ease-in-out;
    transform: translateY(0%);
 }
 
 .nav-hidden {
-   animation: slide-up .4s ease-in-out;
+   animation: slide-up .2s ease-in-out;
    transform: translateY(-100%);
 }
 
@@ -53,6 +54,7 @@ nav {
 }
 
 header {
+   z-index: 9;
    height: 100%;
    color: white;
    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
@@ -69,6 +71,7 @@ header {
    }
 
    img {
+      z-index: 10;
       max-height: 60%;
       max-width: 80%;
       border: .1rem solid white;
@@ -267,7 +270,7 @@ img {
       label {
          max-width: none;
          width: 95%;
-         margin: 0 auto;
+         margin: 0 auto 1.5rem;
          box-sizing: border-box;
       }
 
