@@ -54,13 +54,16 @@
    * [x] Make the changes (immedietly saved locally too)
 * [x] Update sample photos
 * [x] ~~Settings scroll in Chrome and Firefox...~~
-* [ ] Add my logo what brings to the marketing side or whatever
+* [ ] ~~Add my logo what brings to the marketing side or whatever~~
 * [x] Marketing side...?
    * [x] Figma design making for a pattern
    * [x] A full user guide
    * https://ducktor-homepage.vercel.app/
-* [ ] After exporting make the changes instead of a simple reload
 * [ ] Settings component clean up
+   * [x] Change greeting settings' method
+   * [ ] Chrome scrollbar width problem
+* [ ] After exporting make the changes instead of a simple reload
+* [ ] Close popup when user click out of it?
 
 * Other ideas:
    * [ ] Slidable/scrollable favorite list (right-letf)
@@ -101,6 +104,9 @@
 
 * override homepage:
    * https://forums.opera.com/topic/20490/using-chrome_url_overrides-for-extension/4
+
+* React Notifications Component:
+   * https://www.npmjs.com/package/react-notifications-component
 
 ## Local Storage Structure:
 

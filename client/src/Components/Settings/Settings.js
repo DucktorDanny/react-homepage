@@ -70,19 +70,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 			greeting.classList.add('greeting-hidden');
 		}
 	}, [ showGreeting ]);
-	
-	const clickedShowCalendar = () => {
-		setShowCalendar(!showCalendar);
-	}
-	
-	const clickedShowFavorites = () => {
-		setShowFavorites(!showFavorites);
-	}
-
-	const clickedShowGreeting = () => {
-		setShowGreeting(!showGreeting);
-	}
-	
+		
 	const animationHandler = (mainClass, hiddenClass, display, condition) => {
 		const element = document.querySelector(`.${mainClass}`);
 		if (condition) {
@@ -97,24 +85,44 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		const pronouns = e.target.value;
 		const isValid = pronouns.length <= 12;
 		setIsPronounsValid(isValid);
-		// setGreetingPronouns(isValid && pronouns !== '' ? pronouns : greeting.pronouns);
-		if (isValid && pronouns !== '') {
-			setGreetingPronouns(pronouns);
-		} else if (isValid && pronouns === '') {
-			setGreetingPronouns(greeting.pronouns);
-		}
+		
+		// if (isValid && pronouns !== '') {
+		// 	setGreetingPronouns(pronouns);
+		// } else if (isValid && pronouns === '') {
+		// 	setGreetingPronouns(greeting.pronouns);
+		// }
 	}
 
 	const greetingEmjisChange = (e) => {
 		const emoji = e.target.value.trim();
 		const isValid = isEmoji(emoji) || emoji === '';
 		setIsEmojiValid(isValid);
-		// setGreetingEmoji(isValid && emoji !== '' ? emoji : greeting.emoji);
-		console.log(greeting.emoji);
-		if (isValid && emoji !== '') {
-			setGreetingEmoji(emoji);
-		} else if (isValid && emoji === '') {
-			setGreetingEmoji(greeting.emoji);
+		
+		// if (isValid && emoji !== '') {
+		// 	setGreetingEmoji(emoji);
+		// } else if (isValid && emoji === '') {
+		// 	setGreetingEmoji(greeting.emoji);
+		// }
+	}
+
+	const changeGreeting = () => {
+		const pronouns = document.querySelector('#greeting-pronouns').value;
+		const emoji = document.querySelector('#greeting-emoji').value;
+		try {
+			if (pronouns === '' && emoji === '') {
+				throw new Error('There were no changes!');
+			}
+
+			if (isPronounsValid && pronouns !== '') {
+				setGreetingPronouns(pronouns);
+			}
+
+			if (isEmojiValid && emoji !== '') {
+				setGreetingEmoji(emoji);
+			}
+		} catch (err) {
+			// (title, message, type)
+			createNotification('Warning', err.message, 'warning');
 		}
 	}
 
@@ -442,9 +450,9 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				<form className='settings-form' onSubmit={ saveChanges }>
 					<h2>Element visibility</h2>
 
-					<Checkbox htmlName='show-favorites' onClick={ clickedShowFavorites } labelText='Show favorites' chekced={ showFavorites } />
-					<Checkbox htmlName='show-greeting' onClick={ clickedShowGreeting } labelText='Show greeting' chekced={ showGreeting } />
-					<Checkbox htmlName='show-calendar' onClick={ clickedShowCalendar } labelText='Show Calendar' chekced={ showCalendar } />
+					<Checkbox htmlName='show-favorites' onClick={ () => { setShowFavorites(!showFavorites) } } labelText='Show favorites' chekced={ showFavorites } />
+					<Checkbox htmlName='show-greeting' onClick={ () => { setShowGreeting(!showGreeting) } } labelText='Show greeting' chekced={ showGreeting } />
+					<Checkbox htmlName='show-calendar' onClick={ () => { setShowCalendar(!showCalendar) } } labelText='Show Calendar' chekced={ showCalendar } />
 
 					<Line />
 
@@ -460,6 +468,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 					<h2>Greeting</h2>
 					<div className='greeting-settings'>
 						<TextField
+							id='greeting-pronouns'
 							name='greeting-pronouns'
 							className='textfield'
 							type='text'
@@ -471,7 +480,8 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							error={ !isPronounsValid }
 						/>
 						<TextField
-						name='greeting-emoji'
+							id='greeting-emoji'
+							name='greeting-emoji'
 							className='textfield'
 							type='text'
 							label='Emojis'
@@ -481,6 +491,11 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							disabled={ !showGreeting }
 							error={ !isEmojiValid }
 						/>
+						<Button
+							variant='contained'
+							color='primary'
+							onClick={changeGreeting}
+						>Change</Button>
 					</div>
 
 					<Line />
