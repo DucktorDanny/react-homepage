@@ -115,10 +115,12 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 			if (isPronounsValid && pronouns !== '') {
 				setGreetingPronouns(pronouns);
+				document.querySelector('#greeting-pronouns').value = '';
 			}
 
 			if (isEmojiValid && emoji !== '') {
 				setGreetingEmoji(emoji);
+				document.querySelector('#greeting-emoji').value = '';
 			}
 		} catch (err) {
 			// (title, message, type)
@@ -138,21 +140,29 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		const name = formData.get('favorite-add-name');
 		const url = formData.get('favorite-add-link');
 
-		const isNameValid = name.length <= 20;
-		const isUrlValid = url.includes('http://') || url.includes('https://');
+		try {
+			const isNameValid = name.length <= 20;
+			const isUrlValid = url.includes('http://') || url.includes('https://') || url === '';
+			
+			setIsFavoriteNameValid(isNameValid);
+			setIsFavoriteUrlValid(isUrlValid);
+			
+			if (name === '' || url === '') {
+				throw new Error('Name and Url is required!');
+			}
 
-		setIsFavoriteNameValid(isNameValid);
-		setIsFavoriteUrlValid(isUrlValid);
-
-		if (isNameValid && isUrlValid) {
-			const newFavorite = {
-				name: name,
-				url: url
-			};
-
-			setFavorites([...favorites, newFavorite]);
-
-			form.reset();
+			if (isNameValid && isUrlValid) {
+				const newFavorite = {
+					name: name,
+					url: url
+				};
+	
+				setFavorites([...favorites, newFavorite]);
+	
+				form.reset();
+			}
+		} catch (err) {
+			createNotification('Error', err.message, 'danger');
 		}
 	}
 
@@ -576,7 +586,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							onClick={ resetSettings }
 						>Reset settings</Button>
 					</div>
-
 
 					{/* Save changes */}
 					<div className='save-changes'>

@@ -62,7 +62,8 @@
 * [ ] Settings component clean up
    * [x] Change greeting settings' method
    * [x] Chrome scrollbar width problem
-   
+   * [x] Warning for adding nothing to favorites
+
 * [ ] After exporting make the changes instead of a simple reload
 * [ ] Update marketing_side on version update
 * [ ] Close popup when user click out of it?
@@ -94,21 +95,25 @@
    * https://github.com/atlassian/react-beautiful-dnd/issues/128
    * https://github.com/DucktorDanny/react-beautiful-dnd-example
 
+* textfield:
+   * https://material-ui.com/components/text-fields/#textfield
+
+* button:
+   * https://material-ui.com/components/buttons/#button
+
 * slider component:
    * https://material-ui.com/components/slider/
 
 * store locally the favorites and settings:
    * https://www.code-boost.com/react-local-storage/
 
-* change save success notification:
+* React Notifications Component:
    * https://teodosii.github.io/react-notifications-component/
    * https://www.digitalocean.com/community/tutorials/react-react-notifications-component
 
 * override homepage:
    * https://forums.opera.com/topic/20490/using-chrome_url_overrides-for-extension/4
 
-* React Notifications Component:
-   * https://www.npmjs.com/package/react-notifications-component
 
 ## Local Storage Structure:
 
