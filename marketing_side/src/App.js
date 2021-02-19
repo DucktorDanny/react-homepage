@@ -18,6 +18,7 @@ import favChanges from './photos/fav_changes.png';
 import editPopup from './photos/edit_popup.png';
 import importImage from './photos/import.png';
 import resetPopup from './photos/reset_popup.png';
+import Logo from './photos/ducktorD.png';
 
 class App extends Component {
 	state = {
@@ -127,7 +128,7 @@ class App extends Component {
 						imagesLink={[importImage, resetPopup]}
 					/>
 				</main>
-				<Footer />
+				<Footer Logo={Logo} />
 			</>
 		)
 	}

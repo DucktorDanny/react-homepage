@@ -157,6 +157,15 @@ footer {
    padding: 2rem;
    color: white;
    background: linear-gradient(120deg, rgb(23, 87, 108), rgb(132, 161, 176));
+
+   label {
+      margin: .5rem;
+   }
+
+   img {
+      margin: .5rem;
+      width: 4rem;
+   }
 }
 
 button {

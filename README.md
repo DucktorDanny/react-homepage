@@ -61,8 +61,10 @@
    * https://ducktor-homepage.vercel.app/
 * [ ] Settings component clean up
    * [x] Change greeting settings' method
-   * [ ] Chrome scrollbar width problem
+   * [x] Chrome scrollbar width problem
+   
 * [ ] After exporting make the changes instead of a simple reload
+* [ ] Update marketing_side on version update
 * [ ] Close popup when user click out of it?
 
 * Other ideas:

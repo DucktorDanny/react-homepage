@@ -139,6 +139,13 @@ footer {
   color: white;
   background: linear-gradient(120deg, #17576c, #84a1b0);
 }
+footer label {
+  margin: 0.5rem;
+}
+footer img {
+  margin: 0.5rem;
+  width: 4rem;
+}
 
 button {
   margin: 0.5rem;

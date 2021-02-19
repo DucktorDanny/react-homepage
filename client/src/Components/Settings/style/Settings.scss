@@ -37,19 +37,8 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
+    
     overflow-y: scroll;
-    
-
-		&::-webkit-scrollbar {
-      left: 100%;
-      width: 10px;
-      background: transparent;
-		}
-    
-		&::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.8);
-			border-radius: 15px;
-		}
     scrollbar-color: rgba(255, 255, 255, 0.8) transparent !important;
     
 		h2 {
