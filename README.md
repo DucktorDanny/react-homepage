@@ -2,31 +2,9 @@
 
 > About a half year ago I made a homepage for myself into my browser when I used jquery to make it. But since then I learned a lot and now I am mainly using react so I decided to remake it. And now I learned about browser extension a lot so I am gonna use it as well.
 
-## Some sample photos about it:
+## Samples, description and usage:
 
-### Main
-
-![sample1](./client/sample_photos/sample1.png)
-
-### Settings 1
-
-![sample1](./client/sample_photos/sample2.png)
-
-### Settings 2
-
-![sample1](./client/sample_photos/sample3.png)
-
-### Settings 3
-
-![sample1](./client/sample_photos/sample4.png)
-
-### Settings 4
-
-![sample1](./client/sample_photos/sample5.png)
-
-### Favorite edit popup
-
-![sample1](./client/sample_photos/sample6.png)
+https://ducktor-homepage.vercel.app
 
 ## To Do:
 
@@ -59,6 +37,7 @@
    * [x] Figma design making for a pattern
    * [x] A full user guide
    * https://ducktor-homepage.vercel.app/
+   * [ ] Add sample section with some photos about the extenstion
 * [x] Settings component clean up
    * [x] Change greeting settings' method
    * [x] Chrome scrollbar width problem
