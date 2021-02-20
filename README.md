@@ -67,13 +67,14 @@
 * [ ] Calendar events
    * [x] By clicking on a date popup calendar events 'settings'
    * [x] Menupoint like 'All' and 'Selected' or 'Chosen'
-   * [ ] 'Show all events' button (maybe above the calendar)
+   * [ ] 'Show all events' button (maybe above the calendar -> the calendar and the button should be in a div and then we should change the animation a bit)
    * [ ] Create, remove and edit events
    * [ ] If there is any event today show it on the right side
 * [ ] After exporting make the changes instead of a simple reload
 * [ ] Browser popup
    * [ ] Add the actual page to favorites
    * [ ] Make new event
+* [ ] Settings visibility section not positioned by the checkbox
 * [ ] Update marketing_side on version update
 * [ ] Close popup when user click out of it?
 
@@ -82,6 +83,7 @@
    * [ ] Background Image change?
    * [ ] Adding the actual site to favorites by popup.
    * [ ] Access to history
+   * [ ] Access to bookmarks and set favorites by that (opporunity to make own favorites)
 
 ## Links:
 
