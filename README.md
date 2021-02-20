@@ -64,6 +64,10 @@ https://ducktor-homepage.vercel.app
    * [ ] Access to history
    * [ ] Access to bookmarks and set favorites by that (opporunity to make own favorites)
 
+* For later:
+   * For scrollDrag in favorites: https://medium.com/@eymaslive/scrolling-by-dragging-react-js-reusable-component-2b79e936b41c
+   * For Calendar events it might need: https://www.npmjs.com/package/react-calendar
+
 ## Links:
 
 * burger:
@@ -103,6 +107,10 @@ https://ducktor-homepage.vercel.app
 * override homepage:
    * https://forums.opera.com/topic/20490/using-chrome_url_overrides-for-extension/4
 
+* Used icons:
+   * Close icon 1: https://iconmonstr.com/x-mark-8-svg/
+   * Close icon 2: https://iconmonstr.com/x-mark-11-svg/
+   * Edit icon: https://iconmonstr.com/pencil-15-svg/
 
 ## Local Storage Structure:
 
