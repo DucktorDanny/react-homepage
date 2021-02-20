@@ -63,6 +63,7 @@
    * [x] Change greeting settings' method
    * [x] Chrome scrollbar width problem
    * [x] Warning for adding nothing to favorites
+   * [ ] Function separatings?
 * [ ] Calendar events
    * [x] By clicking on a date popup calendar events 'settings'
    * [ ] Menupoint like 'All' and 'Selected' or 'Chosen'
