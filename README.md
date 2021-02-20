@@ -66,8 +66,8 @@
    * [ ] Function separatings?
 * [ ] Calendar events
    * [x] By clicking on a date popup calendar events 'settings'
-   * [ ] Menupoint like 'All' and 'Selected' or 'Chosen'
-   * [ ] Show all events button (maybe above the calendar)
+   * [x] Menupoint like 'All' and 'Selected' or 'Chosen'
+   * [ ] 'Show all events' button (maybe above the calendar)
    * [ ] Create, remove and edit events
    * [ ] If there is any event today show it on the right side
 * [ ] After exporting make the changes instead of a simple reload

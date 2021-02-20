@@ -1,7 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap");
 * {
   margin: 0;
   padding: 0;
-  font-family: "Combo", cursive;
+  font-family: "Comic Neue", cursive;
   -webkit-tap-highlight-color: transparent;
   outline: none;
   scroll-behavior: smooth;

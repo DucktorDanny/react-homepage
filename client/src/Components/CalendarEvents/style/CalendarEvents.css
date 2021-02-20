@@ -2,15 +2,34 @@
   box-sizing: border-box;
   height: 60% !important;
   width: 80% !important;
-  padding-top: 4rem !important;
   color: #464646;
+}
+.calendar-events .calendar-event-point-section {
+  display: flex;
+  justify-content: flex-start;
+}
+.calendar-events .calendar-event-point-section .event-point {
+  display: block;
+  margin-right: 1rem;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.75rem;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.calendar-events .calendar-event-point-section .event-point:hover {
+  background: rgba(70, 70, 70, 0.1);
+}
+.calendar-events .calendar-event-point-section .selected-event-point {
+  border-bottom: 0.2rem solid #464646;
 }
 .calendar-events .calendar-events-close {
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
   margin: 0.5rem 0.5rem;
   padding: 0.5rem;
+  transform: translate(25%, -25%);
   border-radius: 15px;
   background: red;
   transition: all 0.3s;

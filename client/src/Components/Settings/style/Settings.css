@@ -47,7 +47,7 @@
   width: 100%;
 }
 .settings .settings-form .line {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   width: 65%;
 }
 .settings .settings-form .greeting-settings {
@@ -173,7 +173,7 @@
 .droppable {
   align-items: center;
   width: 75%;
-  padding: 2rem 0;
+  padding: 0rem 0 2rem;
 }
 
 .draggable {
@@ -276,10 +276,10 @@
 .line {
   position: relative;
   width: 80%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0), white, rgba(255, 255, 255, 0));
+  background: linear-gradient(to right, transparent, white, transparent);
   margin: auto;
   border-radius: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid white;
 }
 
 /*# sourceMappingURL=Settings.css.map */

@@ -11,26 +11,29 @@
    height: calc(100% - 8rem);
    margin: 2rem 1rem;
    width: 500px;
-  //  background: linear-gradient(30deg, rgba(108, 130, 168, 0.9), rgba(144, 144, 144, 0.9));
+
   background: linear-gradient(30deg, rgba(76, 76, 76, 0.7), rgba(196, 196, 196, 0.6));
-  // -moz-background: linear-gradient(30deg, rgb(76, 76, 76), rgb(196, 196, 196));
+  // background: rgb(222, 222, 222);
+
   backdrop-filter: blur(15px);
   border-radius: 15px;
   box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.4);
+
   color: white;
+  // color: rgb(79, 79, 79);
+
   z-index: 9;
 	transform: translateX(calc(100% + 2rem));
 	overflow: hidden;
    
-   h1 {
+  h1 {
       font-size: 36px;
       text-align: center;
       margin: 1rem;
-   }
+  }
 
 	.settings-form {
     height: calc(100% - 175px);
-    // padding: 2rem 0 2rem 14px;
     padding: 2rem 0;
 
 		display: flex;
@@ -59,7 +62,9 @@
     }
     
     .line {
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      // border: 1px solid rgba(79, 79, 79, 0.2);
+      // background: linear-gradient(to right, transparent, black, transparent);
       width: 65%;
     }
     
@@ -213,7 +218,7 @@
 .droppable {
   align-items: center;
   width: 75%;
-  padding: 2rem 0;
+  padding: 0rem 0 2rem;
 }
 
 .draggable {
@@ -315,12 +320,12 @@
    transform: rotate(45deg);
  }
 
- .line {
-	position: relative;
+.line {
+  position: relative;
 	width: 80%;
-	background: linear-gradient(to right, rgba(255, 255, 255, 0), white, rgba(255, 255, 255, 0));
+  background: linear-gradient(to right, transparent, white, transparent);
 	margin: auto;
 	border-radius: 100%;
-	border: 1px solid rgba(255, 255, 255, 0.8);
- }
+	border: 1px solid white;
+}
 

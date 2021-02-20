@@ -1,10 +1,13 @@
 import { useState } from 'react';
+// import { useEffect } from 'react';
 
 import Clock from './Components/ClockAndGreeting/Clock';
 import Settings from './Components/Settings/Settings';
 import Calendar from 'react-calendar';
 import CalendarEvents from './Components/CalendarEvents/CalendarEvents';
 import 'react-calendar/dist/Calendar.css';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import './AppStyle/App.css';
 
 const datas = JSON.parse(localStorage.getItem('datas'));
@@ -34,23 +37,39 @@ const backgroundColor = datas ? datas.backgroundColor : {
    B: 89,
 };
 
+// font-family: 'Combo', cursive;
+// font-family: 'Comic Neue', cursive;
+const theme = createMuiTheme({
+	typography: {
+		fontFamily: [
+			'"Comic Neue"',
+			'cursive'
+		].join(','),
+	}
+});
+
 const App = () => {
 	const [ value, onChange ] = useState(new Date());
-	const [ chosenDate, setChosenDate ] = useState(Date);
+	const [ chosenDate, setChosenDate ] = useState(null);
 	const [ calendarEventsShowing, setCalendarEventsShowing ] = useState(null);
 
 	const openCalendarEvents = (e) => {
-		setChosenDate(e+'');
+		const convertedEvent = new Date(e.toString()).toLocaleDateString();
+		setChosenDate(convertedEvent);
 		setCalendarEventsShowing(true);
 	}
 	const closeCalendarEvents = (e) => {
 		setCalendarEventsShowing(false);
 	}
 
+	// useEffect(() => {
+	// 	console.log(typeof chosenDate, chosenDate);
+	// }, [chosenDate]);
+
 	return (
 		<>
 			{ showElements ?
-				<>
+				<ThemeProvider theme={theme}>
 					<Clock />
 					<Calendar
 						className='react-calendar'
@@ -69,7 +88,7 @@ const App = () => {
 						favoritesArray={ favoritesArray }
 						backgroundColor={ backgroundColor }
 					/>
-				</>
+				</ThemeProvider>
 			: <h1 style={{
 				display: 'block',
 				margin: 'auto',
