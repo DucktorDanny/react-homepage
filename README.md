@@ -59,12 +59,20 @@
    * [x] Figma design making for a pattern
    * [x] A full user guide
    * https://ducktor-homepage.vercel.app/
-* [ ] Settings component clean up
+* [x] Settings component clean up
    * [x] Change greeting settings' method
    * [x] Chrome scrollbar width problem
    * [x] Warning for adding nothing to favorites
-
+* [ ] Calendar events
+   * [x] By clicking on a date popup calendar events 'settings'
+   * [ ] Menupoint like 'All' and 'Selected' or 'Chosen'
+   * [ ] Show all events button (maybe above the calendar)
+   * [ ] Create, remove and edit events
+   * [ ] If there is any event today show it on the right side
 * [ ] After exporting make the changes instead of a simple reload
+* [ ] Browser popup
+   * [ ] Add the actual page to favorites
+   * [ ] Make new event
 * [ ] Update marketing_side on version update
 * [ ] Close popup when user click out of it?
 
@@ -73,7 +81,6 @@
    * [ ] Background Image change?
    * [ ] Adding the actual site to favorites by popup.
    * [ ] Access to history
-   * [ ] Calendar events
 
 ## Links:
 

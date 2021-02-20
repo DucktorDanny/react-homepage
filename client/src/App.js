@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Clock from './Components/ClockAndGreeting/Clock';
 import Settings from './Components/Settings/Settings';
 import Calendar from 'react-calendar';
+import CalendarEvents from './Components/CalendarEvents/CalendarEvents';
 import 'react-calendar/dist/Calendar.css';
 import './AppStyle/App.css';
 
@@ -35,6 +36,16 @@ const backgroundColor = datas ? datas.backgroundColor : {
 
 const App = () => {
 	const [ value, onChange ] = useState(new Date());
+	const [ chosenDate, setChosenDate ] = useState(Date);
+	const [ calendarEventsShowing, setCalendarEventsShowing ] = useState(null);
+
+	const openCalendarEvents = (e) => {
+		setChosenDate(e+'');
+		setCalendarEventsShowing(true);
+	}
+	const closeCalendarEvents = (e) => {
+		setCalendarEventsShowing(false);
+	}
 
 	return (
 		<>
@@ -45,6 +56,12 @@ const App = () => {
 						className='react-calendar'
 						onChange={onChange}
 						value={value}
+						onClickDay={openCalendarEvents}
+					/>
+					<CalendarEvents
+						date={chosenDate}
+						show={calendarEventsShowing}
+						onClose={closeCalendarEvents}
 					/>
 					<Settings
 						showElements={ showElements }
@@ -54,7 +71,7 @@ const App = () => {
 					/>
 				</>
 			: <h1 style={{
-				displat: 'block',
+				display: 'block',
 				margin: 'auto',
 				color: 'white',
 			}}>Loading...</h1> }
