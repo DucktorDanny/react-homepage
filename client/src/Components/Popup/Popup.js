@@ -7,8 +7,13 @@ const Popup = ({
    open,
    datas
 }) => {
+   const onDeclineByBackground = (e) => {
+      if (e.target.classList.contains('popup-container')) {
+         datas.onDecline();
+      }
+   }
    return (
-      <div className={open === true ? 'popup-container' : open === false ? 'popup-container popup-container-hidden' : 'popup-load'} >
+      <div onClick={onDeclineByBackground} className={open === true ? 'popup-container' : open === false ? 'popup-container popup-container-hidden' : 'popup-load'} >
          <div className='popup-box'>
             {
                type === 'accept-decline'

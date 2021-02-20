@@ -2,6 +2,7 @@
    box-sizing: border-box;
    height: 60% !important;
    width: 80% !important;
+   max-width: 800px !important;
    // padding-top: 4rem !important;
    color: rgb(70, 70, 70);
 
@@ -51,6 +52,21 @@
       }
    }
 
+   .event-card {
+      width: 100%;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 5px;
+      box-shadow: 5px 5px 10px 1px rgba(70, 70, 70, 0.3);
+
+      h3, p, label {
+         margin: 0 1.5rem;
+      }
+   }
 }
 
 @media only screen and (max-width: 700px) {

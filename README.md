@@ -49,6 +49,7 @@ https://ducktor-homepage.vercel.app
    * [ ] 'Show all events' button (maybe above the calendar -> the calendar and the button should be in a div and then we should change the animation a bit)
    * [ ] Create, remove and edit events
    * [ ] If there is any event today show it on the right side
+* [x] Popup and Calendar Events onClose and onDecline when user click outside of the panel
 * [ ] After exporting make the changes instead of a simple reload
 * [ ] Browser popup
    * [ ] Add the actual page to favorites

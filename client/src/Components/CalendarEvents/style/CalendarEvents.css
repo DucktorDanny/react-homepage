@@ -2,6 +2,7 @@
   box-sizing: border-box;
   height: 60% !important;
   width: 80% !important;
+  max-width: 800px !important;
   color: #464646;
 }
 .calendar-events .calendar-event-point-section {
@@ -41,6 +42,20 @@
 }
 .calendar-events .calendar-events-close:hover {
   background: #8e0000;
+}
+.calendar-events .event-card {
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 1px rgba(70, 70, 70, 0.3);
+}
+.calendar-events .event-card h3, .calendar-events .event-card p, .calendar-events .event-card label {
+  margin: 0 1.5rem;
 }
 
 @media only screen and (max-width: 700px) {
