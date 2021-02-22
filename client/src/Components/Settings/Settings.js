@@ -34,7 +34,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	useEffect(() => {
 		const favorites = document.querySelector('.favorites');
-		const calendar = document.querySelector('.react-calendar');
+		const calendar = document.querySelector('.react-calendar-container');
 		const greeting = document.querySelector('.greeting');
 
 		if (!favorites.classList.contains('favorites-hidden')) {
@@ -49,7 +49,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 	}, []);
 
 	useEffect(() => {
-		animationHandler('react-calendar', 'react-calendar-hidden', 'block', showCalendar);
+		animationHandler('react-calendar-container', 'react-calendar-hidden', 'block', showCalendar);
 	}, [ showCalendar ]);
 
 	useEffect(() => {

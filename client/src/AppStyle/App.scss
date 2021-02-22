@@ -25,13 +25,14 @@ body {
    overflow: hidden;
 }
 
-.react-calendar {
+.react-calendar-container {
    position: fixed;
    left: 0;
    bottom: 0;
    margin: 15px;
    border-radius: 15px;
    box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.4);
+   background: transparent;
    font-size: 20px;
    overflow: hidden;
    animation: slide-in 1s ease-in-out;
@@ -41,6 +42,10 @@ body {
       width: calc(100% - 1rem);
    }
 }
+
+// .react-calendar-container {
+//    animation: slide-in 1s ease-in-out;
+// }
 
 .react-calendar-shown {
    transform: translateX(0%);
@@ -56,6 +61,12 @@ body {
    
 }
 
+.calendar-events-show-all-button {
+   button {
+      width: 100%;
+      background: white;
+   }
+}
 
 @keyframes slide-in {
    0% { 

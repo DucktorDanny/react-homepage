@@ -6,6 +6,7 @@ import Settings from './Components/Settings/Settings';
 import Calendar from 'react-calendar';
 import CalendarEvents from './Components/CalendarEvents/CalendarEvents';
 import 'react-calendar/dist/Calendar.css';
+import { Button } from '@material-ui/core';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import './AppStyle/App.css';
@@ -63,7 +64,7 @@ const App = () => {
 	}
 
 	// useEffect(() => {
-	// 	console.log(typeof chosenDate, chosenDate);
+	// 	console.log('chosenDate changed: ', chosenDate);
 	// }, [chosenDate]);
 
 	return (
@@ -71,12 +72,32 @@ const App = () => {
 			{ showElements ?
 				<ThemeProvider theme={theme}>
 					<Clock />
-					<Calendar
-						className='react-calendar'
-						onChange={onChange}
-						value={value}
-						onClickDay={openCalendarEvents}
-					/>
+					
+					<div className='react-calendar-container'>
+						<Calendar
+							className='react-calendar'
+							onChange={onChange}
+							value={value}
+							onClickDay={openCalendarEvents}
+						/>
+						{/* <button className='' onClick={() => {
+							setCalendarEventsShowing(true);
+							setChosenDate(null);
+						}}>Show all events</button> */}
+						<div className='calendar-events-show-all-button'>
+							<Button
+								type='button'
+								variant='contained'
+								// color='primary'
+								onClick={() => {
+									setChosenDate(null);
+									setCalendarEventsShowing(true);
+								}}
+							>Show all events</Button>
+						</div>
+							
+					</div>
+
 					<CalendarEvents
 						date={chosenDate}
 						show={calendarEventsShowing}
