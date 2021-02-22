@@ -12,7 +12,7 @@
    margin: 2rem 1rem;
    width: 500px;
 
-  background: linear-gradient(30deg, rgba(76, 76, 76, 0.7), rgba(196, 196, 196, 0.6));
+  background: linear-gradient(30deg, rgba(164, 164, 164, 0.5), rgba(186, 186, 186, 0.8));
   // background: rgb(222, 222, 222);
 
   backdrop-filter: blur(15px);
@@ -102,6 +102,10 @@
     .background-sliders {
       padding-bottom: 1.5rem;
       width: 75%;
+
+      h3 {
+        color: #373e49;
+      }
     }
 
     .imp-exp-settings {
@@ -156,7 +160,9 @@
   width: 100%;
   
   color: #373e49;
-  background: linear-gradient(45deg, rgb(144, 144, 144), rgb(255, 255, 255));
+  background: linear-gradient(45deg, rgba(175, 175, 175, 0.8), rgba(255, 255, 255, 0.9));
+  backdrop-filter: blur(10px);
+
   border-radius: 10px;
   box-shadow: 2.5px 2.5px 10px 1.25px rgba(0, 0, 0, 0.2);
   padding: .5rem 0 !important;
@@ -187,7 +193,7 @@
 
     .remove-icon, .edit-icon {
       display: block;
-      margin: 0 .75rem;
+      margin: 0 .8rem;
       transition: all .4s;
       cursor: pointer;
 
@@ -198,9 +204,16 @@
     }
 
     .remove-icon {
-      border-radius: 100%;
+      border-radius: 30%;
+      background: rgb(193, 68, 68);
+      padding: .25rem;
+      
+      svg {
+        fill: rgba(255, 255, 255, 0.9);
+      }
+      
       &:hover {
-        background: rgb(200, 50, 50);
+        background: rgb(152, 23, 23);
       }
     }
 

@@ -57,6 +57,10 @@
   border: 0.1rem solid rgba(70, 70, 70, 0.8);
   border-radius: 5px;
 }
+.calendar-events .all-events .date-events-container {
+  height: 80%;
+  overflow-y: scroll;
+}
 .calendar-events .event-card {
   position: relative;
   width: 100%;

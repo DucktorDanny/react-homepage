@@ -55,9 +55,9 @@ const CalendarEvents = ({ date, show, onClose }) => {
    }, [date]);
 
    useEffect(() => {
-      console.log('show changed: ', show, 'isAllEventsSelected value: ', isAllEventsSelected);
+      // console.log('show changed: ', show, 'isAllEventsSelected value: ', isAllEventsSelected);
       setIsAllEventsSelected(document.querySelector('#all-events').classList.contains('selected-event-point'));
-   }, [show])
+   }, [show, setIsAllEventsSelected]);
 
    useEffect(() => {
       console.log('isAllEventsSelected changed: ', isAllEventsSelected);

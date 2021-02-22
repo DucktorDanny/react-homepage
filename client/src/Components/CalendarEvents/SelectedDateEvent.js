@@ -4,9 +4,6 @@ import './style/CalendarEvents.css';
 const SelectedDateEvent = () => {
    return (
       <>
-         <section>
-            Test
-         </section>
          <section className='date-events-container'>
             <EventCard title='Test1' content='This is just some content' date={'22/02/2021'} />
             <EventCard title='Test2' content='This is just some content' date={'22/02/2021'} />
@@ -22,6 +19,9 @@ const SelectedDateEvent = () => {
             <EventCard title='Test12' content='This is just some content' date={'22/02/2021'} />
             <EventCard title='Test13' content='This is just some content' date={'22/02/2021'} />
             <EventCard title='Test14' content='This is just some content' date={'22/02/2021'} />
+         </section>
+         <section>
+            Test
          </section>
       </>
    )
