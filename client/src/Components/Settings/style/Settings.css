@@ -162,11 +162,9 @@
 }
 .favorite-list-element .fav-list-header .remove-icon {
   border-radius: 30%;
-  background: #c14444;
   padding: 0.25rem;
-}
-.favorite-list-element .fav-list-header .remove-icon svg {
-  fill: rgba(255, 255, 255, 0.9);
+  background: #c14444;
+  fill: gainsboro;
 }
 .favorite-list-element .fav-list-header .remove-icon:hover {
   background: #981717;
@@ -174,9 +172,11 @@
 .favorite-list-element .fav-list-header .edit-icon {
   border-radius: 7px;
   padding: 0.2rem;
+  background: #6c8bcf;
+  fill: gainsboro;
 }
 .favorite-list-element .fav-list-header .edit-icon:hover {
-  background: #ebf677;
+  background: #6c8bcf;
 }
 
 .droppable {

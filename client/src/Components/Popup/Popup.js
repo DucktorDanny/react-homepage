@@ -124,4 +124,16 @@ const FavoriteEdit = ({
    )
 }
 
+const EventEdit = ({
+   title,
+   content,
+   date
+}) => {
+   return (
+      <>
+         
+      </>
+   )
+}
+
 export default Popup;

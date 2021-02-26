@@ -48,7 +48,7 @@
 .calendar-events .calendar-events-close:hover {
   background: #8e0000;
 }
-.calendar-events .all-events {
+.calendar-events .events-container {
   height: calc(100% - 3.25rem);
   width: 100%;
   padding: 0.1rem 1.5rem;
@@ -57,9 +57,16 @@
   border: 0.1rem solid rgba(70, 70, 70, 0.8);
   border-radius: 5px;
 }
-.calendar-events .all-events .date-events-container {
-  height: 80%;
-  overflow-y: scroll;
+.calendar-events .events-container .add-new-event {
+  position: fixed;
+  bottom: -1.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.calendar-events .events-container .add-new-event button {
+  font-size: 1rem;
+  border: 1px solid white;
+  border-radius: 10px;
 }
 .calendar-events .event-card {
   position: relative;
@@ -76,11 +83,27 @@
   cursor: pointer;
 }
 .calendar-events .event-card h3, .calendar-events .event-card p, .calendar-events .event-card label {
+  cursor: pointer;
   margin: 0 1.5rem;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+.calendar-events .event-card .event-card-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 0 1.5rem;
+}
+.calendar-events .event-card .event-card-buttons button {
+  margin: 0 0.25rem;
+  color: white;
+}
+.calendar-events .event-card .event-card-buttons .event-edit-button {
+  background: #6c8bcf;
+}
+.calendar-events .event-card .event-card-buttons .event-remove-button {
+  background: #8e0000;
 }
 
 @media only screen and (max-width: 700px) {

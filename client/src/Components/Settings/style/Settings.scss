@@ -205,12 +205,9 @@
 
     .remove-icon {
       border-radius: 30%;
-      background: rgb(193, 68, 68);
       padding: .25rem;
-      
-      svg {
-        fill: rgba(255, 255, 255, 0.9);
-      }
+      background: rgb(193, 68, 68);
+      fill: rgb(220, 220, 220);
       
       &:hover {
         background: rgb(152, 23, 23);
@@ -220,8 +217,11 @@
     .edit-icon {
       border-radius: 7px;
       padding: .2rem;
+      background: rgb(108, 139, 207);
+      fill: rgb(220, 220, 220);
+
       &:hover {
-        background: rgb(235, 246, 119);
+        background: rgb(108, 139, 207);
       }
     }
   }

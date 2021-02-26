@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import Clock from './Components/ClockAndGreeting/Clock';
 import Settings from './Components/Settings/Settings';

@@ -32,6 +32,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	const [popup, setPopup] = useState(Object);
 
+	// page load
 	useEffect(() => {
 		const favorites = document.querySelector('.favorites');
 		const calendar = document.querySelector('.react-calendar-container');
@@ -48,14 +49,17 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 	}, []);
 
+	// showCalendar changes => animation changes (useing animationHandler function
 	useEffect(() => {
 		animationHandler('react-calendar-container', 'react-calendar-hidden', 'block', showCalendar);
 	}, [ showCalendar ]);
 
+	// showFavorites changes => animation changes (useing animationHandler function)
 	useEffect(() => {
 		animationHandler('favorites', 'favorites-hidden', 'flex', showFavorites);
 	}, [ showFavorites ]);
 
+	// showGreeting changes => animation chagnges...
 	useEffect(() => {
 		const greeting = document.querySelector('.greeting');
 
@@ -270,7 +274,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		setFavorites(test);
 	}
 
-	// reorder the array
 	const reorder = (arr, from, to) => {
 
 		if (arr) {
@@ -300,6 +303,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	}
 
+	// 'exporting'
 	const copySettingsDatas = () => {
 		try {
 			const datas = localStorage.getItem('datas');

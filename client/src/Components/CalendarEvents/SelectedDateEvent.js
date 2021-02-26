@@ -1,27 +1,39 @@
 import EventCard from './EventCard';
+import { Button } from '@material-ui/core';
 import './style/CalendarEvents.css';
 
-const SelectedDateEvent = () => {
+const SelectedDateEvent = ({ date }) => {
+   const eventEdit = (e) => {
+      console.log(e);
+   }
    return (
       <>
-         <section className='date-events-container'>
-            <EventCard title='Test1' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test2' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test3' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test4' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test5' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test6' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test7' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test8' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test9' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test10' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test11' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test12' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test13' content='This is just some content' date={'22/02/2021'} />
-            <EventCard title='Test14' content='This is just some content' date={'22/02/2021'} />
-         </section>
-         <section>
-            Test
+
+         <EventCard title='Test1' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test12' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test13' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test13' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test14' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test15' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test16' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test17' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test188' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test1000' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test31' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test321' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test21' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test1111' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Tes2t1' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test221' content='This is just some content' date={date} onEvent={eventEdit} />
+         <EventCard title='Test2111' content='This is just some content' date={date} onEvent={eventEdit} />
+
+         <section className='add-new-event'>
+            <Button
+               type='button'
+               variant='contained'
+               color='primary'
+               onClick={() => { console.log('Add new event') }}
+            >Add new event</Button>
          </section>
       </>
    )

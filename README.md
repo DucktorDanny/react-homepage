@@ -46,9 +46,9 @@ https://ducktor-homepage.vercel.app
 * [ ] Calendar events
    * [x] By clicking on a date popup calendar events 'settings'
    * [x] Menupoint like 'All' and 'Selected' or 'Chosen'
-   * [ ] 'Show all events' button (maybe above the calendar -> the calendar and the button should be in a div and then we should change the animation a bit)
+   * [x] 'Show all events' button (under the calendar -> the calendar and the button should be in a div and then we should change the animation a bit)
    * [ ] Create, remove and edit events
-   * [ ] Store datas in a Map by dates (need to fix date format (date is local date string so it can be different by regions))
+   * [ ] Store datas in a Map (faster finding) by dates (need to fix date format (date is local date string so it can be different by regions (converting)))
    * [ ] If there is any event today show it on the right side
 * [x] Popup and Calendar Events onClose and onDecline when user click outside of the panel
 * [ ] After exporting make the changes instead of a simple reload
@@ -57,7 +57,7 @@ https://ducktor-homepage.vercel.app
    * [ ] Make new event
 * [ ] Settings visibility section not positioned by the checkbox
 * [ ] Update marketing_side on version update
-* [ ] Close popup when user click out of it?
+* [x] Close popup when user click out of it?
 
 * Other ideas:
    * [ ] Slidable/scrollable favorite list (right-letf)
