@@ -43,6 +43,7 @@ https://ducktor-homepage.vercel.app
    * [x] Chrome scrollbar width problem
    * [x] Warning for adding nothing to favorites
    * [ ] Function separatings?
+* [x] Close popup when user click out of it?
 * [ ] Calendar events
    * [x] By clicking on a date popup calendar events 'settings'
    * [x] Menupoint like 'All' and 'Selected' or 'Chosen'
@@ -57,9 +58,9 @@ https://ducktor-homepage.vercel.app
    * [ ] Make new event
 * [ ] Settings visibility section not positioned by the checkbox
 * [ ] Update marketing_side on version update
-* [x] Close popup when user click out of it?
 
 * Other ideas:
+   * [ ] Browser notification for events? (need research)
    * [ ] Slidable/scrollable favorite list (right-letf)
    * [ ] Background Image change?
    * [ ] Adding the actual site to favorites by popup.
