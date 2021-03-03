@@ -12,7 +12,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import './AppStyle/App.css';
 
 const datas = JSON.parse(localStorage.getItem('datas'));
-const events = JSON.parse(localStorage.getItem('events'));
+const events = JSON.parse(localStorage.getItem('events')) || {};
 
 // events['27/02/2021'].push({
 // 	title: 'I dont know',

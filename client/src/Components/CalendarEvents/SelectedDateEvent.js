@@ -1,5 +1,5 @@
 import EventCard from './EventCard';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 import './style/CalendarEvents.css';
 
 const SelectedDateEvent = ({ date, events, onRemove }) => {
@@ -10,7 +10,7 @@ const SelectedDateEvent = ({ date, events, onRemove }) => {
    return (
       <>
          {
-            events
+            events && events.length !== 0
                ? events.map((event, id) => (
                   <EventCard
                      key={`selected-${id}`}

@@ -2,10 +2,23 @@ import EventCard from './EventCard';
 import './style/CalendarEvents.css';
 
 const AllEvents = ({ events, onEvent, onRemove }) => {
+
+   const hasEvents = () => {
+      let isThereAnyEvent = false;
+      if (events) {
+         Object.entries(events).forEach(event => {
+            if (event[1].length > 0) {
+               isThereAnyEvent = true;
+            }
+         });
+      }
+      return isThereAnyEvent;
+   }
+
    return (
       <>
          {
-            events
+            hasEvents()
                ? Object.entries(events).map((date, i) => (
                   date[1].map((event, j) => {
                      const key = `all-${i}-${j}`;

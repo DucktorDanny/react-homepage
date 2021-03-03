@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
-import { Grid } from '@material-ui/core';
+// import { Grid } from '@material-ui/core';
 // import DateFnsUtils from '@date-io/date-fns';
 // import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import Line from '../Settings/Line';
@@ -165,7 +165,7 @@ const EventHandler = ({
          <div className='textfields'>
             {/* <h2>Title</h2> */}
             <TextField
-               id='event-title'
+               id='event-title-field'
                className='edit-textfield'
                name='event-title'
                type='text'
@@ -175,7 +175,7 @@ const EventHandler = ({
             />
             {/* <h2>Content</h2> */}
             <TextField
-               id='event-content'
+               id='event-content-field'
                className='edit-textfield'
                name='event-content'
                type='text'

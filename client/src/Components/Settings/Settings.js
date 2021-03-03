@@ -327,7 +327,8 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	const setImportedDatas = () => {
 		
-		const importSettingsField = document.querySelector('#export-settings-field');
+		const importSettingsField = document.querySelector('#import-settings-field');
+		console.log(importSettingsField);
 		
 		// verify datas
 		try {
