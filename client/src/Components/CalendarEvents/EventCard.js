@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import './style/CalendarEvents.css';
 
-const EventCard = ({ title, content, date, onEvent, showDate }) => {
+const EventCard = ({ id, title, content, date, onEvent, onRemove, showDate }) => {
    
    return (
       <section className='event-card' onClick={(e) => {
@@ -18,8 +18,8 @@ const EventCard = ({ title, content, date, onEvent, showDate }) => {
                type='button'
                variant='contained'
                className='event-remove-button'
-               onClick={() => {
-                  console.log(`You removed an event...! Date: ${date}`);
+               onClick={(e) => {
+                  return onRemove ? onRemove(id, title, content, date) : null;
                }}
             >Remove</Button>
          </div>

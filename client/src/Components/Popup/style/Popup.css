@@ -51,6 +51,9 @@
   margin: 1rem auto;
   width: 100%;
 }
+.popup-container .popup-box .textfields .date-picker {
+  margin: 1rem 0;
+}
 .popup-container .popup-box .popup-buttons {
   display: flex;
   justify-content: space-between;

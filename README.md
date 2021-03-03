@@ -49,7 +49,10 @@ https://ducktor-homepage.vercel.app
    * [x] Menupoint like 'All' and 'Selected' or 'Chosen'
    * [x] 'Show all events' button (under the calendar -> the calendar and the button should be in a div and then we should change the animation a bit)
    * [ ] Create, remove and edit events
-   * [ ] Store datas in a Map (faster finding) by dates (need to fix date format (date is local date string so it can be different by regions (converting)))
+      * [x] Create
+      * [ ] Remove
+      * [ ] Edit
+   * [x] ~~Store datas in a Map (faster finding) by dates (need to fix date format (date is local date string so it can be different by regions (converting)))~~ I used object and it behaves like a map... (It is easier in some ways)
    * [ ] If there is any event today show it on the right side
 * [x] Popup and Calendar Events onClose and onDecline when user click outside of the panel
 * [ ] After exporting make the changes instead of a simple reload
@@ -66,6 +69,7 @@ https://ducktor-homepage.vercel.app
    * [ ] Adding the actual site to favorites by popup.
    * [ ] Access to history
    * [ ] Access to bookmarks and set favorites by that (opporunity to make own favorites)
+   * [ ] Changable font family (fontawsome, comic, ...)
 
 * For later:
    * For scrollDrag in favorites: https://medium.com/@eymaslive/scrolling-by-dragging-react-js-reusable-component-2b79e936b41c
@@ -116,6 +120,8 @@ https://ducktor-homepage.vercel.app
    * Edit icon: https://iconmonstr.com/pencil-15-svg/
 
 ## Local Storage Structure:
+
+### Datas
 
 JSON:
 ```json
@@ -175,4 +181,74 @@ const data = {
       B: 89,
    }
 }
+```
+
+### Events
+
+JSON:
+```json
+{
+   "27/02/2021": [
+      {
+         "title": "Something",
+         "content": "It is a content for something..."
+      },
+      {
+         "title": "Something1",
+         "content": "It is a content for something1..."
+      },
+      {
+         "title": "Something2",
+         "content": "It is a content for something2..."
+      }
+   ],
+   "26/02/2021": [
+      {
+         "title": "Nothing",
+         "content": "It is a content for nothing..."
+      },
+      {
+         "title": "Nothing1",
+         "content": "It is a content for nothing1..."
+      },
+      {
+         "title": "Nothing2",
+         "content": "It is a content for nothing2..."
+      }
+   ]
+}
+```
+
+JavaScript Object:
+```js
+const events = [
+   '27/02/2021': [
+      {
+         title: 'Something',
+         content: 'It is a content for something...',
+      },
+      {
+         title: 'Something1',
+         content: 'It is a content for something1...',
+      },
+      {
+         title: 'Something2',
+         content: 'It is a content for something2...',
+      },
+   ],
+   '26/02/2021': [
+      {
+         title: 'Nothing',
+         content: 'It is a content for nothing...',
+      },
+      {
+         content: 'It is a content for nothing1...',
+         title: 'Nothing1',
+      },
+      {
+         title: 'Nothing2',
+         content: 'It is a content for nothing2...',
+      },
+   ]
+]
 ```

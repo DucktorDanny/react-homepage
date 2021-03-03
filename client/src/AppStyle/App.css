@@ -41,6 +41,14 @@ body {
     width: calc(100% - 1rem);
   }
 }
+.react-calendar-container .react-calendar {
+  background: rgba(215, 215, 215, 0.8);
+  border: none;
+  border-bottom: 1px solid gray;
+}
+.react-calendar-container .MuiButtonBase-root {
+  background: rgba(215, 215, 215, 0.8);
+}
 
 .react-calendar-shown {
   transform: translateX(0%);

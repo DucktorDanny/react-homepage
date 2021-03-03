@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react';
-// import { Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 // import EventCard from './EventCard';
 import AllEvents from './AllEvents';
 import SelectedDateEvent from './SelectedDateEvent';
+import Popup from '../Popup/Popup';
 import './style/CalendarEvents.css';
 
-const CalendarEvents = ({ date, show, onClose }) => {
+const CalendarEvents = ({ date, events, show, onClose }) => {
+
+   // const [eventsState, setEventsState]
    const [selectedDate, setSelectedDate] = useState(date);
    const [isAllEventsSelected, setIsAllEventsSelected] = useState(null);
+
+   const [popup, setPopup] = useState(Object);
 
    const selectEventPoint = (e) => {
       removeAllMenuSelection();
@@ -40,6 +45,87 @@ const CalendarEvents = ({ date, show, onClose }) => {
       setSelectedDate(e);
    }
 
+   const handleEventAdding = () => {
+      const closeEventAddingPopup = () => {
+         setPopup({
+            type: 'event-handler',
+            open: false,
+            datas: {
+               acceptLabel: 'Add',
+               declineLabel: 'Cancel'
+            }
+         });
+      }
+      setPopup({
+         type: 'event-handler',
+         open: true,
+         datas: {
+            onAccept: (title, content, date) => {
+               console.log('Add', title, content, date);
+               date = new Date(date).toLocaleDateString();
+               if (!events[date]) {
+                  events[date] = [];
+               }
+               events[date].push({
+                  title,
+                  content
+               });
+               localStorage.setItem('events', JSON.stringify(events));
+               closeEventAddingPopup();
+            },
+            onDecline: () => {
+               console.log('Cancel');
+               closeEventAddingPopup();
+            },
+            acceptLabel: 'Add',
+            declineLabel: 'Cancel'
+         }
+      });
+   }
+
+   const eventOnRemove = (id, title, content, date) => {
+      const popupTitle = 'Remove';
+      const popupContent = 'Are you sure you want to remove this event?';
+      const acceptLabel = 'Yes';
+      const declineLabel = 'Cancel';
+
+      const closeRemovePopup = () => {
+         setPopup({
+            type: 'accept-decline',
+            open: false,
+            datas: {
+               title: popupTitle,
+               content: popupContent,
+               acceptLabel,
+               declineLabel,
+            }
+         });
+      }
+      
+      console.log(id, title, content, date);
+
+      setPopup({
+         type: 'accept-decline',
+         open: true,
+         datas: {
+            title: popupTitle,
+            content: popupContent,
+            acceptLabel,
+            declineLabel,
+            onAccept: () => {
+               events[date].splice(id, 1);
+               localStorage.setItem('events', JSON.stringify(events));
+
+               closeRemovePopup();
+            },
+            onDecline: () => {
+               closeRemovePopup();
+            }
+         }
+      });      
+
+   }
+
    useEffect(() => {
       // console.log('selectedDate changed: ', selectedDate)
       if (selectedDate) {
@@ -64,6 +150,7 @@ const CalendarEvents = ({ date, show, onClose }) => {
    }, [isAllEventsSelected]);
 
    return (
+      <>
       <div onClick={onCloseByBackground} className={show === true ? 'popup-container' : show === false ? 'popup-container popup-container-hidden' : 'popup-load'}>
          <div className='popup-box calendar-events'>
             <div className='calendar-events-close' onClick={onCloseByButton}>
@@ -80,12 +167,28 @@ const CalendarEvents = ({ date, show, onClose }) => {
 
             <div className='events-container'>
                {isAllEventsSelected
-                  ? <AllEvents events={date} onEvent={selectEvent} />
-                  : <SelectedDateEvent date={selectedDate} />}
+                  ? <AllEvents events={events} onEvent={selectEvent} onRemove={eventOnRemove} />
+                  : <SelectedDateEvent date={selectedDate} events={events[selectedDate] } onRemove={eventOnRemove} />}
+               
+               <section className='add-new-event'>
+                  <Button
+                     type='button'
+                     variant='contained'
+                     color='primary'
+                     onClick={handleEventAdding}
+                  >Add new event</Button>
+               </section>
+
             </div>
 
          </div>
       </div>
+      <Popup
+         type={popup.type}
+         open={popup.open}
+         datas={popup.datas}
+      />
+      </>
    )
 }
 

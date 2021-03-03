@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 import Clock from './Components/ClockAndGreeting/Clock';
 import Settings from './Components/Settings/Settings';
@@ -12,6 +12,16 @@ import { ThemeProvider } from '@material-ui/styles';
 import './AppStyle/App.css';
 
 const datas = JSON.parse(localStorage.getItem('datas'));
+const events = JSON.parse(localStorage.getItem('events'));
+
+// events['27/02/2021'].push({
+// 	title: 'I dont know',
+// 	content: 'I dont even know what I am doing here just writing something shit...'
+// });
+
+// console.log(events['27/02/2021']);
+
+// localStorage.setItem('events', JSON.stringify(events));
 
 const showElements = datas ? datas.showElements : {
    calendar: true,
@@ -63,10 +73,6 @@ const App = () => {
 		setCalendarEventsShowing(false);
 	}
 
-	// useEffect(() => {
-	// 	console.log('chosenDate changed: ', chosenDate);
-	// }, [chosenDate]);
-
 	return (
 		<>
 			{ showElements ?
@@ -75,7 +81,7 @@ const App = () => {
 					
 					<div className='react-calendar-container'>
 						<Calendar
-							className='react-calendar'
+							// className='react-calendar'
 							onChange={onChange}
 							value={value}
 							onClickDay={openCalendarEvents}
@@ -100,6 +106,7 @@ const App = () => {
 
 					<CalendarEvents
 						date={chosenDate}
+						events={events}
 						show={calendarEventsShowing}
 						onClose={closeCalendarEvents}
 					/>

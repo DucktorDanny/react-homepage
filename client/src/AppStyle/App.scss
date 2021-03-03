@@ -41,6 +41,20 @@ body {
       margin: .5rem;
       width: calc(100% - 1rem);
    }
+
+   $calendarBGColor: rgba(215, 215, 215, 0.8);
+   .react-calendar {
+      background: $calendarBGColor;
+      // color: white !important;
+      border: none;
+      border-bottom: 1px solid gray;
+   }
+
+   // MuiButtonBase-root MuiButton-root MuiButton-contained
+   .MuiButtonBase-root {
+      background: $calendarBGColor;
+      // color: white;
+   }
 }
 
 // .react-calendar-container {
