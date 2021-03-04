@@ -32,20 +32,22 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
 
    const onCloseByButton = (e) => {
       onClose(e);
-      // wait for the animation
-      setTimeout(() => {
-         setSelectedDate(null);
-      }, 500);
    }
 
    const onCloseByBackground = (e) => {
       if (e.target.classList.contains('popup-container')) {
-         onCloseByButton(e);
+         onClose(e);
       }
    }
 
    const selectEvent = (e) => {
-      setSelectedDate(e);
+      if (selectedDate === e) {
+         removeAllMenuSelection();
+         document.querySelector('#event-point-date').classList.add('selected-event-point');   
+         setIsAllEventsSelected(document.querySelector('#all-events').classList.contains('selected-event-point'));
+      } else {
+         setSelectedDate(e);
+      }
    }
 
    const handleEventAdding = () => {
@@ -157,27 +159,20 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
 	}
 
    useEffect(() => {
-      // console.log('selectedDate changed: ', selectedDate)
       if (selectedDate) {
          removeAllMenuSelection();
          document.querySelector('#event-point-date').classList.add('selected-event-point');
       }
       setIsAllEventsSelected(document.querySelector('#all-events').classList.contains('selected-event-point'));
-   }, [selectedDate, setSelectedDate]);
+   }, [selectedDate]);
 
    useEffect(() => {
-      // console.log('date changed: ', date)
       setSelectedDate(date);
    }, [date]);
 
    useEffect(() => {
-      // console.log('show changed: ', show, 'isAllEventsSelected value: ', isAllEventsSelected);
       setIsAllEventsSelected(document.querySelector('#all-events').classList.contains('selected-event-point'));
-   }, [show, setIsAllEventsSelected]);
-
-   useEffect(() => {
-      console.log('isAllEventsSelected changed: ', isAllEventsSelected);
-   }, [isAllEventsSelected]);
+   }, [setIsAllEventsSelected]);
 
    return (
       <>

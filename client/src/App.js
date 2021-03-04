@@ -71,6 +71,11 @@ const App = () => {
 	}
 	const closeCalendarEvents = (e) => {
 		setCalendarEventsShowing(false);
+
+		// time to end the animation of window closing
+		setTimeout(() => {
+			setChosenDate(null);
+		}, 500);
 	}
 
 	return (
