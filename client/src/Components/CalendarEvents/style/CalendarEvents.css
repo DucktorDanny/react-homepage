@@ -106,6 +106,34 @@
   background: #8e0000;
 }
 
+.event-notifications-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 15px;
+  color: #4f4f4f;
+}
+.event-notifications-container .event-notification {
+  height: auto;
+  width: 25rem;
+  margin-top: 0.5rem;
+  border-radius: 0.8rem;
+  background: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.event-notifications-container .event-notification .event-notification-title {
+  height: 100%;
+  min-height: 100% !important;
+  width: auto;
+  background: rgba(70, 70, 70, 0.2);
+  padding: 1.25rem;
+}
+.event-notifications-container .event-notification p {
+  padding: 1.25rem;
+}
+
 @media only screen and (max-width: 700px) {
   .calendar-events {
     height: 80% !important;

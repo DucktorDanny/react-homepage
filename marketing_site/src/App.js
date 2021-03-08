@@ -7,7 +7,10 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Section from './Components/Section';
 
-//images
+// library components:
+import ImageGallery from 'react-image-gallery';
+
+//images:
 import StartPagePhoto from './photos/start_page.png';
 import oldHomepage from './photos/old_homepage.png';
 import elementsShowing from './photos/visibility.png'
@@ -19,6 +22,25 @@ import editPopup from './photos/edit_popup.png';
 import importImage from './photos/import.png';
 import resetPopup from './photos/reset_popup.png';
 import Logo from './photos/ducktorD.png';
+
+// images for gallery:
+import Start from './photos/start_page.png';
+import StartThumbnail from './photos/start_page_thumbnail.png';
+
+const galleryImages = [
+	{
+		original: Start,
+	},
+	{
+		original: Start,
+	},
+	{
+		original: Start,
+	},
+	{
+		original: Start,
+	},
+]
 
 class App extends Component {
 	state = {
@@ -60,8 +82,10 @@ class App extends Component {
 		return (
 			<>
 				<Nav buttons={this.state.buttons} />
-				<Header startPagePhoto={StartPagePhoto} buttons={this.state.buttons} />
+				<Header startPagePhoto={StartPagePhoto} images={galleryImages} buttons={this.state.buttons} />
+				
 				<main>
+
 					<h2>About</h2>
 
 					<label htmlFor='Descreption.'>
@@ -75,6 +99,23 @@ class App extends Component {
 						content="It was just a simple page with some animations."
 						imagesLink={[oldHomepage]}
 					/>
+
+					<h2>Sample images</h2>
+
+					<section className='sample-images'>
+						<ImageGallery
+							items={galleryImages}
+							infinite={true}
+							autoPlay={true}
+							slideDuration={1000}
+							slideInterval={5000}
+							showThumbnails={false}
+							showPlayButton={true}
+							showFullscreenButton={false}
+							showBullets={false}
+							showNav={true}
+						/>
+					</section>
 
 					<h2>Usage/user guide</h2>
 

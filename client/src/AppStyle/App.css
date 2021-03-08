@@ -40,6 +40,9 @@ body {
     margin: 0.5rem;
     width: calc(100% - 1rem);
   }
+  .react-calendar-container .react-calendar {
+    width: 100%;
+  }
 }
 .react-calendar-container .react-calendar {
   background: rgba(215, 215, 215, 0.8);

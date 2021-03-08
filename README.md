@@ -54,6 +54,9 @@ https://ducktor-homepage.vercel.app
    * Close icon 2: https://iconmonstr.com/x-mark-11-svg/
    * Edit icon: https://iconmonstr.com/pencil-15-svg/
 
+* Marketing Side Image Viewer:
+   * react-image-gallery: https://www.npmjs.com/package/react-image-magnify
+
 * For later:
    * For scrollDrag in favorites: https://medium.com/@eymaslive/scrolling-by-dragging-react-js-reusable-component-2b79e936b41c
    * For Calendar events it might need: https://www.npmjs.com/package/react-calendar

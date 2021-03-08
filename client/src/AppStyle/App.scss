@@ -40,6 +40,10 @@ body {
    @media only screen and (max-width: 450px) {
       margin: .5rem;
       width: calc(100% - 1rem);
+
+      .react-calendar {
+         width: 100%;
+      }
    }
 
    $calendarBGColor: rgba(215, 215, 215, 0.8);

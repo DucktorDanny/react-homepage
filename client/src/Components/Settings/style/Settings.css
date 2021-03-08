@@ -83,7 +83,7 @@
 }
 .settings .settings-form .imp-exp-settings {
   width: 100%;
-  padding: 1rem 0 2rem 0;
+  padding: 1rem 0;
 }
 .settings .settings-form .imp-exp-settings button {
   display: block;
@@ -193,11 +193,6 @@
 @media only screen and (max-width: 550px) {
   .settings {
     width: calc(100% - 2rem);
-  }
-}
-@media only screen and (max-width: 950px) {
-  .settings {
-    background: linear-gradient(30deg, #4c4c4c, #c4c4c4);
   }
 }
 .settings-open {

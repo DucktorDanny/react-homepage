@@ -110,7 +110,7 @@
 
     .imp-exp-settings {
       width: 100%;
-      padding: 1rem 0 2rem 0;
+      padding: 1rem 0;
 
 
       button {
@@ -245,11 +245,11 @@
    }
 }
 
-@media only screen and (max-width: 950px) {
-  .settings {
-    background: linear-gradient(30deg, rgb(76, 76, 76), rgb(196, 196, 196));
-  }
-}
+// @media only screen and (max-width: 950px) {
+//   .settings {
+//     background: linear-gradient(30deg, rgba(164, 164, 164, 0.5), rgba(186, 186, 186, 0.8));
+//   }
+// }
 
 .settings-open {
    animation: open-settings-open .4s ease-in-out;

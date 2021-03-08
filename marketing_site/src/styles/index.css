@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap");
+@import "~react-image-gallery/styles/css/image-gallery.css";
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +9,18 @@
 #root {
   height: 100vh;
   scroll-behavior: smooth;
+}
+
+.image-gallery {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+.image-gallery img {
+  border-radius: 0.8rem;
+}
+
+.featured-thumb {
+  border-radius: 0 !important;
 }
 
 nav {
@@ -80,15 +93,16 @@ header img {
     transform: scale(1.01);
   }
 }
+
 main {
-  padding: 0 2.5rem 2.5rem;
+  padding: 1.5rem 2.5rem 2.5rem;
   color: #17576c;
   background: #e5f0fa;
 }
 main h2 {
   text-align: center;
   font-size: 2.5rem;
-  padding: 2.5rem 0;
+  padding: 1rem 0 2.5rem;
 }
 main h3 {
   font-size: 2rem;
@@ -236,6 +250,12 @@ img {
     width: 95%;
     margin: 0 auto 1.5rem;
     box-sizing: border-box;
+  }
+  main .sample-images {
+    padding: 0.4rem;
+  }
+  main .sample-images img {
+    border-radius: 0.4rem;
   }
   main section {
     max-width: none;

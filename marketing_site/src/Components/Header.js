@@ -3,6 +3,7 @@ const Header = ({startPagePhoto, buttons}) => {
       <header>
          <h1>Ducktor Homepage</h1>
          <img src={startPagePhoto} alt='Start page example photo' />
+         
          <div>
             {buttons.map((button, key) => (
                <button key={key} onClick={() => {
