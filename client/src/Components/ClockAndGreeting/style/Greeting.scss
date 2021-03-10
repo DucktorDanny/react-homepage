@@ -5,7 +5,7 @@
    text-align: center;
    color: white;
    z-index: -1;
-   animation: slide-in 1s ease-in-out;
+   animation: fade-in 1s ease-in-out;
    animation-fill-mode: forwards;
    overflow: hidden;
 
@@ -38,12 +38,13 @@
 }
 
 .greeting-hidden {
-   animation: slide-out 1s ease-in-out;
+   animation: fade-out 1s ease-in-out;
    animation-fill-mode: forwards;
 }
 
 .greeting-shown {
-   animation: slide-in-when-settings-open 1s ease-in-out;
+   // animation: slide-in-when-settings-open 1s ease-in-out;
+   animation: fade-in 1s ease-in-out;
    animation-fill-mode: forwards;
    // width: calc(100% - 500px);
 }

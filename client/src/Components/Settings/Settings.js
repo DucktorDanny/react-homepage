@@ -18,6 +18,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 	const [ showCalendar, setShowCalendar ] = useState(showElements.calendar);
 	const [ showFavorites, setShowFavorites ] = useState(showElements.favorites);
 	const [ showGreeting, setShowGreeting ] = useState(showElements.greeting);
+	const [ showNotifications, setShowNotifications ] = useState(showElements.notifications);
 
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
@@ -37,6 +38,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		const favorites = document.querySelector('.favorites');
 		const calendar = document.querySelector('.react-calendar-container');
 		const greeting = document.querySelector('.greeting');
+		const notifications = document.querySelector('.event-notifications-container');
 
 		if (!favorites.classList.contains('favorites-hidden')) {
 			favorites.style.display = 'none';
@@ -46,6 +48,9 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 		if (!greeting.classList.contains('greeting-hidden')) {
 			greeting.style.display = 'none';
+		}
+		if (!notifications.classList.contains('event-notifications-container-hidden')) {
+			notifications.style.display = 'none';
 		}
 	}, []);
 
@@ -74,6 +79,10 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 			greeting.classList.add('greeting-hidden');
 		}
 	}, [ showGreeting ]);
+
+	useEffect(() => {
+		animationHandler('event-notifications-container', 'event-notifications-container-hidden', 'block', showNotifications);
+	}, [showNotifications]);
 		
 	const animationHandler = (mainClass, hiddenClass, display, condition) => {
 		const element = document.querySelector(`.${mainClass}`);
@@ -416,6 +425,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				calendar: showCalendar,
 				favorites: showFavorites,
 				greeting: showGreeting,
+				notifications: showNotifications,
 			},
 			greeting: {
 				pronouns: greetingPronouns,
@@ -468,6 +478,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 					<Checkbox htmlName='show-favorites' onClick={ () => { setShowFavorites(!showFavorites) } } labelText='Show favorites' chekced={ showFavorites } />
 					<Checkbox htmlName='show-greeting' onClick={ () => { setShowGreeting(!showGreeting) } } labelText='Show greeting' chekced={ showGreeting } />
 					<Checkbox htmlName='show-calendar' onClick={ () => { setShowCalendar(!showCalendar) } } labelText='Show Calendar' chekced={ showCalendar } />
+					<Checkbox htmlName='show-notifications' onClick={ () => { setShowNotifications(!showNotifications) } } labelText='Show Notifications' chekced={ showNotifications } />
 
 					<Line />
 

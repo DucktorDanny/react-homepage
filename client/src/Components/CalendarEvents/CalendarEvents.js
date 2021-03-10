@@ -11,6 +11,8 @@ import 'react-notifications-component/dist/theme.css';
 import 'animate.css/animate.min.css';
 import './style/CalendarEvents.css';
 
+const todayKey = new Date().toLocaleDateString();
+
 const CalendarEvents = ({ date, events, show, onClose }) => {
 
    // const [eventsState, setEventsState]
@@ -178,7 +180,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
 
    return (
       <>
-         <EventNotification />
+         <EventNotification events={events[todayKey]} />
          <div onClick={onCloseByBackground} className={show === true ? 'popup-container' : show === false ? 'popup-container popup-container-hidden' : 'popup-load'}>
             <div className='popup-box calendar-events'>
                <div className='calendar-events-close' onClick={onCloseByButton}>

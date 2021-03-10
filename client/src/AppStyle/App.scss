@@ -33,9 +33,12 @@ body {
    border-radius: 15px;
    box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.4);
    background: transparent;
+   backdrop-filter: blur(1rem);
    font-size: 20px;
    overflow: hidden;
-   animation: slide-in 1s ease-in-out;
+   // animation: slide-in 1s ease-in-out;
+   animation: slide-up-show 1s ease-in-out;
+   z-index: 8;
    
    @media only screen and (max-width: 450px) {
       margin: .5rem;
@@ -66,23 +69,73 @@ body {
 // }
 
 .react-calendar-shown {
-   transform: translateX(0%);
-   opacity: 1;
-   animation: slide-in 1s ease-in-out;
+   // transform: translateX(0%);
+   // opacity: 1;
+   // animation: slide-in 1s ease-in-out;
    
+   transform: translateY(0%);
+   opacity: 1;
+   animation: slide-up-show 1s ease-in-out;
 }
 
 .react-calendar-hidden {
-   transform: translateX(-125%);
+   // transform: translateX(-125%);
+   // opacity: 0;
+   // animation: slide-out 1s ease-in-out;
+
+   transform: translateY(125%);
    opacity: 0;
-   animation: slide-out 1s ease-in-out;
-   
+   animation: slide-down-hide 1s ease-in-out;
 }
 
 .calendar-events-show-all-button {
    button {
       width: 100%;
       background: white;
+   }
+}
+
+@keyframes slide-up-show {
+   from {
+      transform: translateY(125%);
+      opacity: 0;
+   }
+   to {
+      transform: translateY(0%);
+      opacity: 1;
+   }
+}
+
+@keyframes slide-down-hide {
+   from {
+      transform: translateY(0%);
+      opacity: 1;
+   }
+   to {
+      transform: translateY(125%);
+      opacity: 0;
+   }
+}
+
+@keyframes slide-up-hide {
+   from {
+      transform: translateY(0%);
+      opacity: 1;
+   }
+   to {
+      transform: translateY(-125%);
+      opacity: 0;
+   }
+}
+
+@keyframes slide-down-show {
+   from {
+      transform: translateY(-125%);
+      opacity: 0;
+   }
+   to {
+      transform: translateY(0%);
+      opacity: 1;
    }
 }
 

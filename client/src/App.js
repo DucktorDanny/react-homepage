@@ -22,11 +22,12 @@ const events = JSON.parse(localStorage.getItem('events')) || {};
 // console.log(events['27/02/2021']);
 
 // localStorage.setItem('events', JSON.stringify(events));
-
+console.log(datas);
 const showElements = datas ? datas.showElements : {
    calendar: true,
    favorites: true,
-   greeting: true,
+	greeting: true,
+	notifications: true,
 };
 const greeting = datas ? datas.greeting : {
    pronouns: 'friend',

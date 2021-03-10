@@ -18,7 +18,7 @@ nav {
       width: 100%;
       display: flex;
       flex-wrap: wrap;
-      animation: slide-in 1s ease-in-out;
+      animation: slide-down-show 1s ease-in-out;
       animation-fill-mode: forwards;
 
       .fav-icon {
@@ -89,7 +89,7 @@ nav {
    }
 
    .favorites-hidden {
-      animation: slide-out 1s ease-in-out;
+      animation: slide-up-hide 1s ease-in-out;
       animation-fill-mode: forwards;
    }
 

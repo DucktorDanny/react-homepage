@@ -1,10 +1,18 @@
 import './style/CalendarEvents.css';
 
-const EventNotification = () => {
+const EventNotification = ({ events }) => {
+   console.log(events);
    return (
       <section className='event-notifications-container'>
-         <Notification title={'Shit'} content={`I don't know what to write here...`} />
-         <Notification title={'Shit'} content={`I don't know what to write here... And I do need something even more to test the more characters blah blah...`} />
+         {
+            events.length > 0
+            ? events.map((event, id) => {
+               return (
+                  <Notification key={id} title={event.title} content={event.content} />
+               )
+            })
+            : <h1 className='no-events-message'>There is no events today...</h1>
+         }
       </section>
    )
 }

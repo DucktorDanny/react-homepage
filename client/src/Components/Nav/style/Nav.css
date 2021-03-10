@@ -17,7 +17,7 @@ nav .favorites {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  animation: slide-in 1s ease-in-out;
+  animation: slide-down-show 1s ease-in-out;
   animation-fill-mode: forwards;
 }
 nav .favorites .fav-icon {
@@ -75,7 +75,7 @@ nav .favorites .fav-icon:hover .fav-full-title {
   opacity: 1;
 }
 nav .favorites-hidden {
-  animation: slide-out 1s ease-in-out;
+  animation: slide-up-hide 1s ease-in-out;
   animation-fill-mode: forwards;
 }
 nav .burger {

@@ -108,32 +108,54 @@
 
 .event-notifications-container {
   position: fixed;
+  height: 325px;
   right: 0;
   bottom: 0;
   margin: 15px;
+  padding: 0.5rem 15px;
   color: #4f4f4f;
+  overflow: auto;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1rem);
+  animation: slide-up-show 1s ease-in-out;
+  z-index: 7;
+}
+.event-notifications-container .no-events-message {
+  width: 25rem;
+  margin: 0.5rem auto 0.5rem;
+  text-align: center;
 }
 .event-notifications-container .event-notification {
-  height: auto;
   width: 25rem;
-  margin-top: 0.5rem;
-  border-radius: 0.8rem;
+  margin: 0.5rem 0 0.5rem;
+  border-radius: 0.8rem 0.4rem 0.8rem 0.8rem;
   background: white;
-  overflow: hidden;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 .event-notifications-container .event-notification .event-notification-title {
-  height: 100%;
-  min-height: 100% !important;
   width: auto;
   background: rgba(70, 70, 70, 0.2);
-  padding: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 0.8rem 0.4rem 0 0;
 }
 .event-notifications-container .event-notification p {
-  padding: 1.25rem;
+  padding: 1rem;
 }
 
+.event-notifications-container-hidden {
+  transform: translateY(125%);
+  opacity: 0;
+  animation: slide-down-hide 1s ease-in-out;
+}
+
+@media (max-width: 800px) {
+  .event-notifications-container {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
 @media only screen and (max-width: 700px) {
   .calendar-events {
     height: 80% !important;
