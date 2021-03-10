@@ -1,8 +1,11 @@
 {
   "name": "Ducktor Homepage",
   "description": "A homepage where you can add favorites, set greeting, background and much more...",
-  "version": "1.5",
+  "version": "1.5.1",
   "manifest_version": 2,
+  "permissions": [
+    "tabs"
+  ],
   "chrome_url_overrides" : {
       "newtab": "index.html"
   },

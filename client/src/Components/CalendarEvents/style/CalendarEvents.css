@@ -108,7 +108,7 @@
 
 .event-notifications-container {
   position: fixed;
-  height: 325px;
+  height: 320px;
   right: 0;
   bottom: 0;
   margin: 15px;
@@ -120,6 +120,7 @@
   backdrop-filter: blur(1rem);
   animation: slide-up-show 1s ease-in-out;
   z-index: 7;
+  box-sizing: border-box;
 }
 .event-notifications-container .no-events-message {
   width: 25rem;
@@ -142,6 +143,7 @@
 }
 .event-notifications-container .event-notification p {
   padding: 1rem;
+  font-size: 16px;
 }
 
 .event-notifications-container-hidden {

@@ -5,7 +5,7 @@ const EventNotification = ({ events }) => {
    return (
       <section className='event-notifications-container'>
          {
-            events.length > 0
+            events && events.length > 0
             ? events.map((event, id) => {
                return (
                   <Notification key={id} title={event.title} content={event.content} />
