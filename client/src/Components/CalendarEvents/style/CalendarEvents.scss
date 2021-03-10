@@ -1,3 +1,5 @@
+$animationSpeed: .6s;
+
 .calendar-events {
    box-sizing: border-box;
    height: 60% !important;
@@ -138,7 +140,7 @@
    background: rgba(255, 255, 255, 0.2);
    backdrop-filter: blur(1rem);
 
-   animation: slide-up-show 1s ease-in-out;
+   animation: slide-up-show $animationSpeed ease-in-out;
    z-index: 7;
 
    // display: flex;
@@ -184,7 +186,7 @@
 .event-notifications-container-hidden {
    transform: translateY(125%);
    opacity: 0;
-   animation: slide-down-hide 1s ease-in-out;
+   animation: slide-down-hide $animationSpeed ease-in-out;
 }
 
 @media (max-width: 800px) {

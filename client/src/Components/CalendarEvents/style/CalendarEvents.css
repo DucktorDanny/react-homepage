@@ -118,7 +118,7 @@
   border-radius: 0.8rem;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(1rem);
-  animation: slide-up-show 1s ease-in-out;
+  animation: slide-up-show 0.6s ease-in-out;
   z-index: 7;
   box-sizing: border-box;
 }
@@ -149,7 +149,7 @@
 .event-notifications-container-hidden {
   transform: translateY(125%);
   opacity: 0;
-  animation: slide-down-hide 1s ease-in-out;
+  animation: slide-down-hide 0.6s ease-in-out;
 }
 
 @media (max-width: 800px) {
