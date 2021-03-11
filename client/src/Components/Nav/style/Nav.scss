@@ -14,12 +14,37 @@ nav {
    -moz-user-select: none;
    -ms-user-select: none;
 
+   .favorites::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+    }
+
    .favorites {
-      margin: 0 1rem;
-      height: 75px;
+      margin: .5rem 1rem;
+      height: 100px;
       width: 100%;
       display: flex;
-      flex-wrap: wrap;
+      // flex-wrap: wrap;
+      // overflow-x: auto;
+      overflow-y: hidden;
+      overflow-x: scroll;
+
+      &::-webkit-scrollbar {
+         -webkit-appearance: none;
+         height: 8px;
+       }
+       &::-webkit-scrollbar-thumb {
+         border-radius: 10px;
+         background-color: rgba(255, 255, 255, 0.5);
+       }
+      
+      // &::-webkit-scrollbar {
+      //    max-height: 10px;
+      // }
+
+      // border: 1px solid red;
+      // padding-bottom: 1rem;
+      // box-sizing: border-box;
       animation: slide-down-show $animationSpeed ease-in-out;
       animation-fill-mode: forwards;
 
@@ -69,7 +94,7 @@ nav {
          .fav-full-title {
             position: absolute;
             bottom: 0;
-            transform: translateY(50%);
+            transform: translateY(0%);
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(25px);
             padding: .2rem;

@@ -11,14 +11,27 @@ nav {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+nav .favorites::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
 nav .favorites {
-  margin: 0 1rem;
-  height: 75px;
+  margin: 0.5rem 1rem;
+  height: 100px;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
   animation: slide-down-show 0.6s ease-in-out;
   animation-fill-mode: forwards;
+}
+nav .favorites::-webkit-scrollbar {
+  -webkit-appearance: none;
+  height: 8px;
+}
+nav .favorites::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 nav .favorites .fav-icon {
   display: flex;
@@ -60,7 +73,7 @@ nav .favorites .fav-icon .fav-title {
 nav .favorites .fav-icon .fav-full-title {
   position: absolute;
   bottom: 0;
-  transform: translateY(50%);
+  transform: translateY(0%);
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(25px);
   padding: 0.2rem;

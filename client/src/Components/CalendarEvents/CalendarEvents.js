@@ -136,6 +136,13 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
             declineLabel,
             onAccept: () => {
                events[date].splice(id, 1);
+
+               // if on that date we already dont have any events then we can delete that array
+               if (events[date].length === 0) {
+                  console.log('We have no events in here anymore... We could delete this date.');
+                  delete events[date];
+               }
+               
                localStorage.setItem('events', JSON.stringify(events));
                createNotification('Success', 'The event was successfully removed!', 'success');
                closeRemovePopup();
