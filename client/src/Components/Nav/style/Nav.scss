@@ -29,6 +29,8 @@ nav {
       overflow-y: hidden;
       overflow-x: scroll;
 
+      // scrolling solution found here:
+      // https://stackoverflow.com/questions/4050076/how-to-always-show-the-vertical-scrollbar-in-a-browser
       &::-webkit-scrollbar {
          -webkit-appearance: none;
          height: 8px;

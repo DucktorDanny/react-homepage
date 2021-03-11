@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import Clock from './Components/ClockAndGreeting/Clock';
 import Settings from './Components/Settings/Settings';
+import EventNotification from './Components/CalendarEvents/EventNotification';
 import Calendar from 'react-calendar';
 import CalendarEvents from './Components/CalendarEvents/CalendarEvents';
 import 'react-calendar/dist/Calendar.css';
@@ -60,6 +61,8 @@ const theme = createMuiTheme({
 	}
 });
 
+const todayKey = new Date().toLocaleDateString();
+
 const App = () => {
 	const [ value, onChange ] = useState(new Date());
 	const [ chosenDate, setChosenDate ] = useState(null);
@@ -84,30 +87,27 @@ const App = () => {
 			{ showElements ?
 				<ThemeProvider theme={theme}>
 					<Clock />
-					
-					<div className='react-calendar-container'>
-						<Calendar
-							// className='react-calendar'
-							onChange={onChange}
-							value={value}
-							onClickDay={openCalendarEvents}
-						/>
-						{/* <button className='' onClick={() => {
-							setCalendarEventsShowing(true);
-							setChosenDate(null);
-						}}>Show all events</button> */}
-						<div className='calendar-events-show-all-button'>
-							<Button
-								type='button'
-								variant='contained'
-								// color='primary'
-								onClick={() => {
-									setChosenDate(null);
-									setCalendarEventsShowing(true);
-								}}
-							>Show all events</Button>
+					<div className='bottom-components'>
+						<div className='react-calendar-container'>
+							<Calendar
+								// className='react-calendar'
+								onChange={onChange}
+								value={value}
+								onClickDay={openCalendarEvents}
+							/>
+							<div className='calendar-events-show-all-button'>
+								<Button
+									type='button'
+									variant='contained'
+									onClick={() => {
+										setChosenDate(null);
+										setCalendarEventsShowing(true);
+									}}
+								>Show all events</Button>
+							</div>
 						</div>
-							
+
+						<EventNotification events={events[todayKey]} />
 					</div>
 
 					<CalendarEvents

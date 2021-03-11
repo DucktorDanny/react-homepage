@@ -27,8 +27,35 @@ body {
    overflow: hidden;
 }
 
-.react-calendar-container {
+.bottom-components {
    position: fixed;
+   left: 0;
+   bottom: 0;
+   // border: 1px solid red;
+   width: 100%;
+   height: 375px;
+
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-end;
+   overflow-y: hidden;
+   overflow-x: auto;
+
+   &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      height: 15px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgb(255, 255, 255);
+    }
+}
+
+.react-calendar-container {
+   // position: fixed;
+   position: relative;
+   width: 350px;
+   min-width: 300px;
    left: 0;
    bottom: 0;
    margin: 15px;
@@ -84,7 +111,7 @@ body {
    // transform: translateX(-125%);
    // opacity: 0;
    // animation: slide-out 1s ease-in-out;
-
+   position: fixed;
    transform: translateY(125%);
    opacity: 0;
    animation: slide-down-hide $animationSpeed ease-in-out;

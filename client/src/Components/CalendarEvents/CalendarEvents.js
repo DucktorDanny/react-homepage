@@ -3,15 +3,13 @@ import { Button } from '@material-ui/core';
 
 import AllEvents from './AllEvents';
 import SelectedDateEvent from './SelectedDateEvent';
-import EventNotification from './EventNotification';
+// import EventNotification from './EventNotification';
 import Popup from '../Popup/Popup';
 
 import ReactNotifications, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css/animate.min.css';
 import './style/CalendarEvents.css';
-
-const todayKey = new Date().toLocaleDateString();
 
 const CalendarEvents = ({ date, events, show, onClose }) => {
 
@@ -187,7 +185,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
 
    return (
       <>
-         <EventNotification events={events[todayKey]} />
+         {/* <EventNotification events={events[todayKey]} /> */}
          <div onClick={onCloseByBackground} className={show === true ? 'popup-container' : show === false ? 'popup-container popup-container-hidden' : 'popup-load'}>
             <div className='popup-box calendar-events'>
                <div className='calendar-events-close' onClick={onCloseByButton}>
