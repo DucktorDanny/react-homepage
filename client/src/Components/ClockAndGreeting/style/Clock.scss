@@ -7,7 +7,6 @@
    color: white;
    overflow: hidden;
    z-index: -1;
-   animation: fade-in 1.5s ease-in-out;
 
    user-select: none;
    -webkit-user-select: none;
@@ -27,6 +26,10 @@
 
 }
 
+.clock-container-onload-animation {
+   animation: fade-in 1.4s ease-in-out;
+}
+
 @media only screen and (max-width: 450px) {
    .clock-container {
       h1 {
@@ -38,7 +41,6 @@
    }
 }
 
-
 .clock-when-settings-open {
    animation: clock-slide-open .6s ease-in-out;
    animation-fill-mode: forwards;
@@ -49,4 +51,16 @@
    animation: clock-slide-close .6s ease-in-out;
    animation-fill-mode: forwards;
    width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+   .clock-when-settings-open {
+      animation: none;
+      width: 100%;
+   }
+   
+   .clock-when-settings-close {
+      animation: none;
+      width: 100%;
+   }
 }

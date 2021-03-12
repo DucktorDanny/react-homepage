@@ -19,13 +19,17 @@ const Clock = () => {
 
    useEffect(() => {
       setTime();
+      setTimeout(() => {
+         const clockContainer = document.querySelector('.clock-container');
+         clockContainer.classList.remove('clock-container-onload-animation');
+      }, 1400);
       setInterval(() => {
          setTime();
       }, 1000);
    }, []);
    
    return(
-      <div className='clock-container'>
+      <div className='clock-container clock-container-onload-animation'>
          <h1>{ hours && minutes ? `${hours}:${minutes}` : 'Loading...' }</h1>
          <p>{amPm ? amPm : '' }</p>
       </div>

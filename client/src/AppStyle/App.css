@@ -44,6 +44,27 @@ body {
   background-color: white;
 }
 
+.bottom-components-settings-open {
+  animation: bottom-components-slide-open 0.45s ease-in-out forwards;
+  width: calc(100% - 500px);
+}
+
+.bottom-components-settings-close {
+  animation: bottom-components-slide-close 0.6s ease-in-out forwards;
+  width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  .bottom-components-settings-open {
+    animation: none;
+    width: 100%;
+  }
+
+  .bottom-components-settings-close {
+    animation: none;
+    width: 100%;
+  }
+}
 .react-calendar-container {
   position: relative;
   width: 350px;
@@ -192,6 +213,22 @@ body {
 @keyframes clock-slide-close {
   from {
     width: calc(100% - 500px);
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes bottom-components-slide-open {
+  from {
+    width: 100%;
+  }
+  to {
+    width: calc(100% - 515px);
+  }
+}
+@keyframes bottom-components-slide-close {
+  from {
+    width: calc(100% - 515px);
   }
   to {
     width: 100%;

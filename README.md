@@ -58,8 +58,7 @@ https://ducktor-homepage.vercel.app
    * react-image-gallery: https://www.npmjs.com/package/react-image-magnify
 
 * For later:
-   * For scrollDrag in favorites: https://medium.com/@eymaslive/scrolling-by-dragging-react-js-reusable-component-2b79e936b41c
-   * For Calendar events it might need: https://www.npmjs.com/package/react-calendar
+   * for overflow margin-right problem: https://stackoverflow.com/questions/11695354/css-right-margin-does-not-work-inside-a-div-with-overflow-scroll
 
 ## Local Storage Structure:
 

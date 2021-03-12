@@ -46,8 +46,15 @@ const Greeting = ({ pronouns, emojis }) => {
       return () => clearInterval(interval);
    }, [ setGreetings, pronouns, emojis ]);
 
+   useEffect(() => {
+      setTimeout(() => {
+         const greeting = document.querySelector('.greeting');
+         greeting.classList.remove('greeting-onload-animation');
+      }, 1400);
+   })
+
    return(
-      <div className='greeting'>
+      <div className='greeting greeting-onload-animation'>
          <h1>{greetings}</h1>
       </div>
    )

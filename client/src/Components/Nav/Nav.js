@@ -22,26 +22,43 @@ const Nav = ({ favorites }) => {
 			const settings = document.querySelector('.settings');
 			const clockContainer = document.querySelector('.clock-container');
 			const greeting = document.querySelector('.greeting');
+			// Calendar and Notificiations
+			const bottomComponents = document.querySelector('.bottom-components');
 
 			if (opened) {
 				if (settings.classList.contains('settings-close')) {
 					settings.classList.remove('settings-close');
 					clockContainer.classList.remove('clock-when-settings-close');
 					greeting.classList.remove('greeting-when-settings-close');
+					bottomComponents.classList.remove('bottom-components-settings-close');
 				}
 				settings.classList.add('settings-open');
 				clockContainer.classList.add('clock-when-settings-open');
 				greeting.classList.add('greeting-when-settings-open');
+				bottomComponents.classList.add('bottom-components-settings-open');
+				// setTimeout(() => {
+				// 	clockContainer.classList.remove('clock-when-settings-open');
+				// 	greeting.classList.remove('greeting-when-settings-open');
+				// 	bottomComponents.classList.remove('bottom-components-settings-open');
+				// }, 1000);
 			} else {
 				if (settings.classList.contains('settings-open')) {
 					settings.classList.remove('settings-open');
 					clockContainer.classList.remove('clock-when-settings-open');
 					greeting.classList.remove('greeting-shown');
 					greeting.classList.remove('greeting-when-settings-open');
+					bottomComponents.classList.remove('bottom-components-settings-open');
 				}
 				settings.classList.add('settings-close');
 				clockContainer.classList.add('clock-when-settings-close');
 				greeting.classList.add('greeting-when-settings-close');
+				bottomComponents.classList.add('bottom-components-settings-close');
+
+				setTimeout(() => {
+					clockContainer.classList.remove('clock-when-settings-close');
+					greeting.classList.remove('greeting-when-settings-close');
+					bottomComponents.classList.remove('bottom-components-settings-close');
+				}, 1000);
 			}
 		}
 		if (opened) {

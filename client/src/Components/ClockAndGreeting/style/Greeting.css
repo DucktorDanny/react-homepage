@@ -5,8 +5,6 @@
   text-align: center;
   color: white;
   z-index: -1;
-  animation: fade-in 1.4s ease-in-out;
-  animation-fill-mode: forwards;
   overflow: hidden;
 }
 .greeting h1 {
@@ -14,6 +12,11 @@
   white-space: nowrap;
   font-size: 32px;
   z-index: -1;
+}
+
+.greeting-onload-animation {
+  animation: fade-in 1.4s ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 @media only screen and (max-width: 450px) {
@@ -33,6 +36,17 @@
   width: 100%;
 }
 
+@media only screen and (max-width: 900px) {
+  .greeting-when-settings-open {
+    animation: none;
+    width: 100%;
+  }
+
+  .greeting-when-settings-close {
+    animation: none;
+    width: 100%;
+  }
+}
 .greeting-hidden {
   animation: fade-out 1s ease-in-out;
   animation-fill-mode: forwards;
@@ -41,22 +55,6 @@
 .greeting-shown {
   animation: fade-in 1s ease-in-out;
   animation-fill-mode: forwards;
-}
-
-@keyframes slide-in-when-settings-open {
-  0% {
-    transform: translateX(-125%);
-    opacity: 0;
-  }
-  70% {
-    opacity: 0.5;
-    transform: translateX(5%);
-  }
-  100% {
-    transform: translateX(0%);
-    width: calc(100% - 500px);
-    opacity: 1;
-  }
 }
 
 /*# sourceMappingURL=Greeting.css.map */
