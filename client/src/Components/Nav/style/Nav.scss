@@ -58,7 +58,7 @@ nav {
          a {
             display: block;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.5);
             height: 50px;
             width: 50px;
             margin: .5rem;
@@ -109,9 +109,9 @@ nav {
          }
 
          &:hover {
-            .fav-full-title {
-               opacity: 1;
-            }
+            // .fav-full-title {
+            //    opacity: 1;
+            // }
          }
       }
 
@@ -130,4 +130,28 @@ nav {
       animation: fade-in $animationSpeed ease-in-out;
       cursor: pointer;
    }
+}
+
+.content-label {
+   position: fixed;
+   top: 115px;
+   left: 50%;
+   transform: translateX(-50%);
+   
+   padding: .5rem;
+   border-radius: .4rem;
+   font-size: 1.2rem;
+
+   background: rgba(255, 255, 255, 0.5);
+   transition: opacity .4s;
+}
+
+.content-label-shown {
+   opacity: 1;
+   pointer-events: all;
+}
+
+.content-label-hidden {
+   opacity: 0;
+   pointer-events: none;
 }

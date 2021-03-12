@@ -1,8 +1,8 @@
 import './style/Nav.css';
 
-const Favorite = ({ name, url }) => {
+const Favorite = ({ name, url, onMouseEnter, onMouseLeave }) => {
    return (
-      <div className='fav-icon'>
+      <div className='fav-icon' onMouseEnter={() => onMouseEnter(name)} onMouseLeave={onMouseLeave}>
          <a href={ url }>
             <img className='url-img' src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${ url }`} alt="tests" />
          </a>

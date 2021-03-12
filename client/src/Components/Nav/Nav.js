@@ -4,11 +4,14 @@ import Burger from '@animated-burgers/burger-arrow';
 import '@animated-burgers/burger-arrow/dist/styles.css';
 
 import Favorite from './Favorite';
+import Label from './Label';
 import './style/Nav.css';
 
 const Nav = ({ favorites }) => {
 	const [ loaded, setLoaded ] = useState(false);
 	const [ opened, setOpened ] = useState(false);
+	const [ label, setLabel ] = useState('');
+	const [ labelShowing, setLabelShowing ] = useState(false);
 
 	const clicked = () => {
 		setOpened(!opened);
@@ -72,12 +75,16 @@ const Nav = ({ favorites }) => {
 				<section className='favorites'>
 					{favorites.map((favorite, i) => {
 						return(
-							<Favorite key={i} name={favorite.name} url={favorite.url} />
+							<Favorite key={i} name={favorite.name} url={favorite.url}
+								onMouseEnter={(name) => { setLabel(name); setLabelShowing(true); }}
+								onMouseLeave={() => { setLabelShowing(false) }}
+							/>
 						);
 					})}
 
 				</section>
 				<Burger direction='right' isOpen={ opened } onClick={ clicked } />
+				<Label content={label} show={labelShowing} />
 			</nav>
 		</>
 	)
