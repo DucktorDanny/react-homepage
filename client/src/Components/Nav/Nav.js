@@ -36,11 +36,6 @@ const Nav = ({ favorites }) => {
 				clockContainer.classList.add('clock-when-settings-open');
 				greeting.classList.add('greeting-when-settings-open');
 				bottomComponents.classList.add('bottom-components-settings-open');
-				// setTimeout(() => {
-				// 	clockContainer.classList.remove('clock-when-settings-open');
-				// 	greeting.classList.remove('greeting-when-settings-open');
-				// 	bottomComponents.classList.remove('bottom-components-settings-open');
-				// }, 1000);
 			} else {
 				if (settings.classList.contains('settings-open')) {
 					settings.classList.remove('settings-open');

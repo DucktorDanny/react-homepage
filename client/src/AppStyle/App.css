@@ -67,13 +67,14 @@ body {
 }
 .react-calendar-container {
   position: relative;
+  height: 315px;
   width: 350px;
   min-width: 300px;
   left: 0;
   bottom: 0;
-  margin: 15px;
+  margin: 0.8rem;
   border-radius: 15px;
-  box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 25px 2.5px rgba(0, 0, 0, 0.4);
   background: transparent;
   backdrop-filter: blur(1rem);
   font-size: 20px;
