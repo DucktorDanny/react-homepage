@@ -54,6 +54,11 @@ const Nav = ({ favorites }) => {
 				greeting.classList.add('greeting-when-settings-close');
 				bottomComponents.classList.add('bottom-components-settings-close');
 
+				/* if we are resizing the window the animation may noy be necessary
+				 * and then it is not gonna run the animation but when we size it back we
+				 * don't want it to run so we need to remove the animation
+				 * (It might not be the best way to do it but it works later we could find another solution for this)
+				*/
 				setTimeout(() => {
 					clockContainer.classList.remove('clock-when-settings-close');
 					greeting.classList.remove('greeting-when-settings-close');
