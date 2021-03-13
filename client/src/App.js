@@ -108,6 +108,13 @@ const App = () => {
 						</div>
 
 						<EventNotification events={events[todayKey]} />
+
+						{/* <div style={{
+							width: '50px',
+							height: '100px',
+							background: 'white',
+							margin: '.8rem',
+						}}></div> */}
 					</div>
 
 					<CalendarEvents

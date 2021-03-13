@@ -7,7 +7,7 @@
    color: white;
    overflow: hidden;
    z-index: -1;
-
+   
    user-select: none;
    -webkit-user-select: none;
    -moz-user-select: none;
@@ -62,5 +62,16 @@
    .clock-when-settings-close {
       animation: none;
       width: 100%;
+   }
+}
+
+@media (max-height: 850px) {
+   .clock-container {
+      h1 {
+         font-size: 4.5rem;
+      }
+      p {
+         font-size: 2.25rem;
+      }
    }
 }

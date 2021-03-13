@@ -57,5 +57,13 @@
     width: 100%;
   }
 }
+@media (max-height: 850px) {
+  .clock-container h1 {
+    font-size: 4.5rem;
+  }
+  .clock-container p {
+    font-size: 2.25rem;
+  }
+}
 
 /*# sourceMappingURL=Clock.css.map */
