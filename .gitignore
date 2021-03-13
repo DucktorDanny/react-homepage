@@ -12,8 +12,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /build
+
 build.crx
 build.pem
+
 /coverage
 Archive.zip
 .vercel
