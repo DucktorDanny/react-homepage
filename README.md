@@ -6,9 +6,11 @@
 
 https://ducktor-homepage.vercel.app
 
-![PositioningPlans] (positioning_sample.png "Positioning plans")
+### Positioning Plans
+![PositioningPlans] (positioning_sample.png)
 
-![CurrentLookSample] (current_look_sample.png "Current Look Sample")
+### Current Look Sample
+![CurrentLookSample] (current_look_sample.png)
 
 ## To Do:
 
