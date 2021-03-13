@@ -1,12 +1,16 @@
 .greeting {
-   position: fixed;
+   // position: fixed;
+   position: relative;
    width: 100%;
-   top: 25%;
+   margin: 1rem 0;
+   // top: 25%;
    text-align: center;
    color: white;
    z-index: -1;
    
    overflow: hidden;
+
+   // border: 1px solid green;
 
    h1 {
       overflow: hidden;

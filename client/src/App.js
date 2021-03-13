@@ -1,6 +1,8 @@
 import { useState } from 'react';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 
+import Nav from './Components/Nav/Nav';
+import Greeting from './Components/ClockAndGreeting/Greeting';
 import Clock from './Components/ClockAndGreeting/Clock';
 import Settings from './Components/Settings/Settings';
 import EventNotification from './Components/CalendarEvents/EventNotification';
@@ -15,15 +17,8 @@ import './AppStyle/App.css';
 const datas = JSON.parse(localStorage.getItem('datas'));
 const events = JSON.parse(localStorage.getItem('events')) || {};
 
-// events['27/02/2021'].push({
-// 	title: 'I dont know',
-// 	content: 'I dont even know what I am doing here just writing something shit...'
-// });
-
-// console.log(events['27/02/2021']);
-
 // localStorage.setItem('events', JSON.stringify(events));
-console.log(datas);
+
 const showElements = datas ? datas.showElements : {
    calendar: true,
    favorites: true,
@@ -67,6 +62,10 @@ const App = () => {
 	const [ value, onChange ] = useState(new Date());
 	const [ chosenDate, setChosenDate ] = useState(null);
 	const [ calendarEventsShowing, setCalendarEventsShowing ] = useState(null);
+	const [ favorites, setFavorites ] = useState(favoritesArray);
+	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
+	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
+	const [ calendarContainerHeight, setCalendarContainerHeight ] =useState(null);
 
 	const openCalendarEvents = (e) => {
 		const convertedEvent = new Date(e.toString()).toLocaleDateString();
@@ -81,40 +80,65 @@ const App = () => {
 			setChosenDate(null);
 		}, 500);
 	}
+	
+	/**
+	 * These are required because of notification-container's 
+	 * height to be equal to calendar's height
+	 */
+	const updateCalendarContainerHeight = () => {
+		// the setTimeout is required because the Calendar's size not changing immediately...
+		setTimeout(() => {
+			setCalendarContainerHeight(document.querySelector('.react-calendar-container').offsetHeight);
+		}, 1);
+	}
+
+	// Start up height
+	useEffect(() => {
+		setCalendarContainerHeight(document.querySelector('.react-calendar-container').offsetHeight);
+	}, []);
+
+	// If the height of Calendar is changing
+	useEffect(() => {
+		if (calendarContainerHeight) {
+			document.querySelector('.event-notifications-container').style.height = `${calendarContainerHeight}px`;
+		}
+	}, [calendarContainerHeight]);
 
 	return (
 		<>
 			{ showElements ?
 				<ThemeProvider theme={theme}>
-					<Clock />
-					<div className='bottom-components'>
-						<div className='react-calendar-container'>
-							<Calendar
-								// className='react-calendar'
-								onChange={onChange}
-								value={value}
-								onClickDay={openCalendarEvents}
-							/>
-							<div className='calendar-events-show-all-button'>
-								<Button
-									type='button'
-									variant='contained'
-									onClick={() => {
-										setChosenDate(null);
-										setCalendarEventsShowing(true);
-									}}
-								>Show all events</Button>
+					<div className='app'>
+						<Nav favorites={ favorites } />
+
+						<main>
+							<Greeting pronouns={ greetingPronouns } emojis={ greetingEmoji } />
+							<Clock />
+						</main>
+
+						<div className='bottom-components'>
+							<div className='react-calendar-container' onMouseUp={ updateCalendarContainerHeight }>
+								<Calendar
+									// className='react-calendar'
+									onChange={onChange}
+									value={value}
+									onClickDay={openCalendarEvents}
+								/>
+
+								<div className='calendar-events-show-all-button'>
+									<Button
+										type='button'
+										variant='contained'
+										onClick={() => {
+											setChosenDate(null);
+											setCalendarEventsShowing(true);
+										}}
+									>Show all events</Button>
+								</div>
 							</div>
+
+							<EventNotification events={events[todayKey]} />
 						</div>
-
-						<EventNotification events={events[todayKey]} />
-
-						{/* <div style={{
-							width: '50px',
-							height: '100px',
-							background: 'white',
-							margin: '.8rem',
-						}}></div> */}
 					</div>
 
 					<CalendarEvents
@@ -128,6 +152,9 @@ const App = () => {
 						greeting={ greeting }
 						favoritesArray={ favoritesArray }
 						backgroundColor={ backgroundColor }
+						getFavorites={ setFavorites }
+						getGreetingPronouns={ setGreetingPronouns }
+						getGreetingEmoji={ setGreetingEmoji }
 					/>
 				</ThemeProvider>
 			: <h1 style={{

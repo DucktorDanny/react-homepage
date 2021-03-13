@@ -6,6 +6,10 @@
 
 https://ducktor-homepage.vercel.app
 
+![Positioning plans] (positioning_sample.png "Positioning plans")
+
+![Current Look Sample] (current_look_sample.png "Current Look Sample")
+
 ## To Do:
 
 * I moved my 'To Do' to trello.com

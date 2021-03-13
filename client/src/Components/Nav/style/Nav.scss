@@ -1,7 +1,10 @@
 $animationSpeed: .6s;
 
 nav {
-   position: fixed;
+   // position: fixed;
+   // border: 1px solid red;
+
+   position: relative;
    top: 0;
    left: 0;
    width: 100%;

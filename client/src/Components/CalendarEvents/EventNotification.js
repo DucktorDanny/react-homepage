@@ -1,7 +1,7 @@
 import './style/CalendarEvents.css';
 
 const EventNotification = ({ events }) => {
-   console.log(events);
+   // console.log(document.querySelector('.react-calendar-container'));
    return (
       <section className='event-notifications-container'>
          {
@@ -11,7 +11,7 @@ const EventNotification = ({ events }) => {
                   <Notification key={id} title={event.title} content={event.content} />
                )
             })
-            : <h1 className='no-events-message'>There is no events today...</h1>
+            : <h1 className='no-events-message'>There are no events today...</h1>
          }
       </section>
    )

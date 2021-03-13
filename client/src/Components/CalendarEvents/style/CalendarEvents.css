@@ -107,9 +107,8 @@
 }
 
 .event-notifications-container {
-  height: 315px;
   width: 350px;
-  min-width: 350px;
+  min-width: 300px;
   right: 0;
   bottom: 0;
   margin-left: auto;
@@ -172,6 +171,11 @@
   }
   .calendar-events .event-card h3, .calendar-events .event-card p, .calendar-events .event-card label {
     margin: 0.5rem;
+  }
+}
+@media only screen and (max-height: 800px) {
+  .calendar-events {
+    height: calc(95% - 2rem) !important;
   }
 }
 

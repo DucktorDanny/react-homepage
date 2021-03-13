@@ -1,7 +1,7 @@
 .greeting {
-  position: fixed;
+  position: relative;
   width: 100%;
-  top: 25%;
+  margin: 1rem 0;
   text-align: center;
   color: white;
   z-index: -1;

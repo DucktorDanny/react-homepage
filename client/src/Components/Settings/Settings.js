@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import Nav from '../Nav/Nav';
+// import Nav from '../Nav/Nav';
 import Checkbox from './Checkbox';
 import Line from './Line';
-import Greeting from '../ClockAndGreeting/Greeting';
 import FavoriteList from './FavoriteList';
 import BackgroundChanging from './BackgroundChanging';
 import Popup from '../Popup/Popup';
@@ -14,7 +13,15 @@ import 'animate.css/animate.min.css';
 
 import './style/Settings.css';
 
-const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) => {
+const Settings = ({
+	showElements,
+	greeting,
+	favoritesArray,
+	backgroundColor,
+	getFavorites,
+	getGreetingPronouns,
+	getGreetingEmoji
+}) => {
 	const [ showCalendar, setShowCalendar ] = useState(showElements.calendar);
 	const [ showFavorites, setShowFavorites ] = useState(showElements.favorites);
 	const [ showGreeting, setShowGreeting ] = useState(showElements.greeting);
@@ -56,7 +63,8 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	// showCalendar changes => animation changes (useing animationHandler function
 	useEffect(() => {
-		animationHandler('react-calendar-container', 'react-calendar-hidden', 'block', showCalendar);
+		// animationHandler('react-calendar-container', 'react-calendar-hidden', null, showCalendar);
+		bottomComponentsAnimationHandler('react-calendar-container', 'react-calendar-hidden', showCalendar, 600);
 	}, [ showCalendar ]);
 
 	// showFavorites changes => animation changes (useing animationHandler function)
@@ -81,9 +89,33 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 	}, [ showGreeting ]);
 
 	useEffect(() => {
-		animationHandler('event-notifications-container', 'event-notifications-container-hidden', 'block', showNotifications);
+		bottomComponentsAnimationHandler('event-notifications-container', 'event-notifications-container-hidden', showNotifications, 600);
 	}, [showNotifications]);
-		
+	
+	// getFavorites if it changes
+	useEffect(() => {
+		if (getFavorites) {
+			return getFavorites(favorites);
+		}
+		return;
+	}, [favorites, getFavorites]);
+
+	// getGreetingPronouns if it changes
+	useEffect(() => {
+		if (getGreetingPronouns) {
+			return getGreetingPronouns(greetingPronouns);
+		}
+		return;
+	}, [greetingPronouns, getGreetingPronouns]);
+
+	// getGreetingEmoji if it changes
+	useEffect(() => {
+		if (getGreetingEmoji) {
+			return getGreetingEmoji(greetingEmoji);
+		}
+		return;
+	}, [greetingEmoji, getGreetingEmoji]);
+
 	const animationHandler = (mainClass, hiddenClass, display, condition) => {
 		const element = document.querySelector(`.${mainClass}`);
 		if (condition) {
@@ -94,28 +126,29 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 		}
 	}
 
+	const bottomComponentsAnimationHandler = (mainClass, hiddenClass, condition, delay) => {
+		const element = document.querySelector(`.${mainClass}`);
+		if (condition) {
+			element.style.display = null;
+			element.classList.remove(hiddenClass);
+		} else {
+			element.classList.add(hiddenClass);
+			setTimeout(() => {
+				element.style.display = 'none';
+			}, delay);
+		}
+	}
+
 	const greetingPronounsChange = (e) => {
 		const pronouns = e.target.value;
 		const isValid = pronouns.length <= 12;
 		setIsPronounsValid(isValid);
-		
-		// if (isValid && pronouns !== '') {
-		// 	setGreetingPronouns(pronouns);
-		// } else if (isValid && pronouns === '') {
-		// 	setGreetingPronouns(greeting.pronouns);
-		// }
 	}
 
 	const greetingEmjisChange = (e) => {
 		const emoji = e.target.value.trim();
 		const isValid = isEmoji(emoji) || emoji === '';
 		setIsEmojiValid(isValid);
-		
-		// if (isValid && emoji !== '') {
-		// 	setGreetingEmoji(emoji);
-		// } else if (isValid && emoji === '') {
-		// 	setGreetingEmoji(greeting.emoji);
-		// }
 	}
 
 	const changeGreeting = () => {
@@ -205,10 +238,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 			type,
 			open: true,
 			datas: {
-				titleField,
-				linkField,
-				acceptLabel,
-				declineLabel,
+				titleField, linkField, acceptLabel, declineLabel,
 				onAccept: () => {
 					try {
 						modifyFavorite(
@@ -259,10 +289,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 			type,
 			open: false,
 			datas: {
-				titleField,
-				linkField,
-				acceptLabel,
-				declineLabel
+				titleField, linkField, acceptLabel, declineLabel
 			}
 		});
 	}	
@@ -270,17 +297,44 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 	const removeFavorite = (e) => {
 		const favoriteIndex = parseInt(e.target.getAttribute('id'));
 
-		// remove in a state array:
-		// (made this way because other methods like splice doesnt re-render...)
-		let test = [];
+		const title = 'Remove favorite';
+		const content = `Are you sure you want to remove the '${ favorites[favoriteIndex].name }' favorite?`;
+		const acceptLabel = 'Yes';
+		const declineLabel = 'Cancel';
 
-		for (let i = 0; i < favorites.length; i++) {
-			if (i !== favoriteIndex) {
-				test.push(favorites[i]);
+		const closePopup = () => {
+			setPopup({
+				type: 'accept-decline',
+				open: false,
+				datas: {
+					title, content, acceptLabel, declineLabel,
+				}
+			});
+		};
+
+		console.log(favorites[favoriteIndex]);
+		setPopup({
+			type: 'accept-decline',
+			open: true,
+			datas: {
+				title, content, acceptLabel, declineLabel,
+				onAccept: () => {
+					// remove in a state array:
+					// (made this way because other methods like splice doesnt re-render...)
+					let test = [];
+					for (let i = 0; i < favorites.length; i++) {
+						if (i !== favoriteIndex) {
+							test.push(favorites[i]);
+						}
+					}
+					setFavorites(test);
+					closePopup();
+				},
+				onDecline: () => {
+					closePopup();
+				}
 			}
-		}
-
-		setFavorites(test);
+		});		
 	}
 
 	const reorder = (arr, from, to) => {
@@ -372,10 +426,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				type,
 				open: true,
 				datas: {
-					title,
-					content,
-					acceptLabel,
-					declineLabel,
+					title, content, acceptLabel, declineLabel,
 					onAccept: () => {
 						localStorage.removeItem('datas');
 						// easy way:
@@ -384,10 +435,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							type,
 							open: false,
 							datas: {
-								title,
-								content,
-								acceptLabel,
-								declineLabel
+								title, content, acceptLabel, declineLabel
 							}
 						});
 					},
@@ -396,10 +444,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 							type,
 							open: false,
 							datas: {
-								title,
-								content,
-								acceptLabel,
-								declineLabel
+								title, content, acceptLabel, declineLabel
 							}
 						});
 					}
@@ -448,9 +493,7 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	const createNotification = (title, message, type) => {
 		store.addNotification({
-			title,
-			message,
-			type,
+			title, message, type,
 			container: 'bottom-center',
 			animationIn: ['animate__animated animate__flipInX'],
 			animationOut: ['animate__animated animate__fadeOut'],
@@ -462,7 +505,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 
 	return (
 		<>
-			<Nav favorites={ favorites } />
 			<ReactNotifications />
 			<Popup
 				type={popup.type}
@@ -617,7 +659,6 @@ const Settings = ({ showElements, greeting, favoritesArray, backgroundColor }) =
 				</form>
 				<Line />
 			</div>
-			<Greeting pronouns={ greetingPronouns } emojis={ greetingEmoji } />
 		</>
 	)
 }

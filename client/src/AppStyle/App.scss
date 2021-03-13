@@ -27,14 +27,35 @@ body {
    overflow: hidden;
 }
 
+.app {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   // border: 1px solid yellow;
+   height: 100vh;
+
+   transition: all .4s;
+}
+
+main {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   // border: 1px solid red;
+}
+
 // for overflow margin-right problem:
 // https://stackoverflow.com/questions/11695354/css-right-margin-does-not-work-inside-a-div-with-overflow-scroll
 .bottom-components {
    // bottom components like calendar and notifications
-   position: fixed;
+   // position: fixed;
+   position: relative;
    left: 0;
    bottom: 0;
    width: calc(100% - 1.6rem);
+   min-height: 200px;
    margin: .4rem .8rem;
    padding: .4rem 0;
    // height: 375px;
@@ -59,35 +80,37 @@ body {
 
 .bottom-components-settings-open {
       animation: bottom-components-slide-open .45s ease-in-out forwards;
-      width: calc(100% - 500px);
+      width: calc(100% - 545px);
 }
 
 .bottom-components-settings-close {
    animation: bottom-components-slide-close .6s ease-in-out forwards;
-   width: 100%;
+   width: calc(100% - 1.6rem);
 }
 
 @media only screen and (max-width: 900px) {
    .bottom-components-settings-open {
       animation: none;
-      width: 100%;
+      width: calc(100% - 1.6rem);
    }
 
    .bottom-components-settings-close {
       animation: none;
-      width: 100%;
+      width: calc(100% - 1.6rem);
    }
 }
 
 .react-calendar-container {
    // position: fixed;
-   // position: relative;
-   height: 315px;
+   // position: absolute;
+   // height: 350px;
+   
    width: 350px;
-   min-width: 350px;
+   min-width: 300px;
    left: 0;
    bottom: 0;
    margin-right: .8rem;
+   // margin-bottom: .4rem;
    border-radius: 15px;
    // box-shadow: 0 0 25px 2.5px rgba(0, 0, 0, 0.4);
    background: transparent;
@@ -101,7 +124,7 @@ body {
    display: inline-block;
 
    @media only screen and (max-width: 450px) {
-      margin: .5rem;
+      margin-right: .8rem;
       width: calc(100% - 1rem);
 
       .react-calendar {
@@ -111,15 +134,23 @@ body {
 
    $calendarBGColor: rgba(215, 215, 215, 0.8);
    .react-calendar {
+      // min-height: 315px;
+      // max-height: 315px;
+      // max-height: 300px;
       background: $calendarBGColor;
       // color: white !important;
       border: none;
       border-bottom: 1px solid gray;
+
+      .react-calendar__navigation {
+         // margin: .5em !important;
+      }
    }
 
    // MuiButtonBase-root MuiButton-root MuiButton-contained
    .MuiButtonBase-root {
       background: $calendarBGColor;
+      // border: none;
       // color: white;
    }
 }
@@ -142,7 +173,7 @@ body {
    // transform: translateX(-125%);
    // opacity: 0;
    // animation: slide-out 1s ease-in-out;
-   // position: fixed;
+   // position: absolute;
    transform: translateY(125%);
    opacity: 0;
    animation: slide-down-hide $animationSpeed ease-in-out;
@@ -152,6 +183,14 @@ body {
    button {
       width: 100%;
       background: white;
+   }
+}
+
+@media only screen and (max-height: 575px) {
+   .app {
+      display: block;
+      height: 100%;
+      overflow: auto;
    }
 }
 

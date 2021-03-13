@@ -1,9 +1,9 @@
 .clock-container {
-   
+   position: relative;
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 100vh;
+   // height: 100vh;
    color: white;
    overflow: hidden;
    z-index: -1;
@@ -12,6 +12,8 @@
    -webkit-user-select: none;
    -moz-user-select: none;
    -ms-user-select: none;
+
+   // border: 1px solid green;
 
    h1 {
       font-size: 9rem;
@@ -65,7 +67,7 @@
    }
 }
 
-@media (max-height: 850px) {
+@media (max-height: 750px) {
    .clock-container {
       h1 {
          font-size: 4.5rem;
