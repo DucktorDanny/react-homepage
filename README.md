@@ -199,3 +199,31 @@ const events = [
    ]
 ]
 ```
+
+Maybe I should use this type of structure for storing events:
+```js
+const events = {
+	2021: {
+		3: {
+			21: [
+				{
+					title: 'asd',
+					content: 'something',
+				},
+				{
+					title: 'asd',
+					content: 'something',
+				},
+			]
+		},
+		4: {
+			22: [
+				{
+					title: 'asd',
+					content: 'something',
+				},
+			]
+		}
+	}
+}
+```

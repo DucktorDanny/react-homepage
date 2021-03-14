@@ -130,7 +130,7 @@ const Settings = ({
 
 	useEffect(() => {
 		if (getTwentyFourClockMode) {
-			return twentyFourClockMode;
+			return getTwentyFourClockMode(twentyFourClockMode);
 		}
 		return;
 	}, [twentyFourClockMode, getTwentyFourClockMode]);
@@ -541,8 +541,8 @@ const Settings = ({
 					<div className='element-visibility'>
 						<Checkbox htmlName='show-favorites' onClick={ () => { setShowFavorites(!showFavorites) } } labelText='Show favorites' chekced={ showFavorites } />
 						<Checkbox htmlName='show-greeting' onClick={ () => { setShowGreeting(!showGreeting) } } labelText='Show greeting' chekced={ showGreeting } />
-						<Checkbox htmlName='show-calendar' onClick={ () => { setShowCalendar(!showCalendar) } } labelText='Show Calendar' chekced={ showCalendar } />
-						<Checkbox htmlName='show-notifications' onClick={ () => { setShowNotifications(!showNotifications) } } labelText='Show Notifications' chekced={ showNotifications } />
+						<Checkbox htmlName='show-calendar' onClick={ () => { setShowCalendar(!showCalendar) } } labelText='Show calendar' chekced={ showCalendar } />
+						<Checkbox htmlName='show-notifications' onClick={ () => { setShowNotifications(!showNotifications) } } labelText='Show notifications' chekced={ showNotifications } />
 					</div>
 
 					<Line />
@@ -559,7 +559,7 @@ const Settings = ({
 						<Checkbox
 							htmlName='show-seconds'
 							onClick={ () => { setShowSeconds(!showSeconds) } }
-							labelText='Show Seconds'
+							labelText='Show seconds'
 							chekced={ showSeconds }
 						/>
 					</div>
