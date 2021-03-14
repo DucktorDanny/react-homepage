@@ -1,0 +1,160 @@
+$animationSpeed: .6s;
+
+nav {
+   // position: fixed;
+   // border: 1px solid red;
+
+   position: relative;
+   top: 0;
+   left: 0;
+   width: 100%;
+   color: white;
+   display: flex;
+   align-items: center;
+
+   user-select: none;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+
+   .favorites::-webkit-scrollbar-thumb {
+      background-color: darkgrey;
+      outline: 1px solid slategrey;
+    }
+
+   .favorites {
+      margin: .5rem 1rem;
+      height: 100px;
+      width: 100%;
+      display: flex;
+      // flex-wrap: wrap;
+      // overflow-x: auto;
+      overflow-y: hidden;
+      overflow-x: scroll;
+
+      // scrolling solution found here:
+      // https://stackoverflow.com/questions/4050076/how-to-always-show-the-vertical-scrollbar-in-a-browser
+      &::-webkit-scrollbar {
+         -webkit-appearance: none;
+         height: 8px;
+       }
+       &::-webkit-scrollbar-thumb {
+         border-radius: 10px;
+         background-color: rgba(255, 255, 255, 0.5);
+       }
+      
+      // &::-webkit-scrollbar {
+      //    max-height: 10px;
+      // }
+
+      // border: 1px solid red;
+      // padding-bottom: 1rem;
+      // box-sizing: border-box;
+      animation: slide-down-show $animationSpeed ease-in-out;
+      animation-fill-mode: forwards;
+
+      .fav-icon {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+
+         a {
+            display: block;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.5);
+            height: 50px;
+            width: 50px;
+            margin: .5rem;
+            border-radius: 10px;
+            transition: all .3s;
+            cursor: pointer;
+   
+            .url-img {
+               position: relative;
+               display: block;
+               width: 45%;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+            }
+   
+            &:hover {
+               background: rgb(161, 161, 161);
+            }
+   
+            &:active {
+               background: rgb(201, 201, 201);
+            }
+         }
+
+         .fav-title {
+            max-width: 50px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all .6s;
+            transition: all .4s;
+         }
+         
+         .fav-full-title {
+            position: absolute;
+            bottom: 0;
+            transform: translateY(0%);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(25px);
+            padding: .2rem;
+            border: .1px solid rgba(255, 255, 255, 0.6);
+            border-radius: .4rem;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transition: all .4s;
+         }
+
+         &:hover {
+            // .fav-full-title {
+            //    opacity: 1;
+            // }
+         }
+      }
+
+   }
+
+   .favorites-hidden {
+      animation: slide-up-hide $animationSpeed ease-in-out;
+      animation-fill-mode: forwards;
+   }
+
+   .burger {
+      margin: 2rem;
+      margin-left: auto;
+      min-width: 35px;
+      max-width: 35px;
+      animation: fade-in $animationSpeed ease-in-out;
+      cursor: pointer;
+   }
+}
+
+.content-label {
+   position: fixed;
+   top: 115px;
+   left: 50%;
+   transform: translateX(-50%);
+   
+   padding: .5rem;
+   border-radius: .4rem;
+   font-size: 1.2rem;
+
+   background: rgba(255, 255, 255, 0.5);
+   transition: opacity .4s;
+}
+
+.content-label-shown {
+   opacity: 1;
+   pointer-events: all;
+}
+
+.content-label-hidden {
+   opacity: 0;
+   pointer-events: none;
+}

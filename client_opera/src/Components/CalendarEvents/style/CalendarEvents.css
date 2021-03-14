@@ -1,0 +1,184 @@
+.calendar-events {
+  box-sizing: border-box;
+  height: 60% !important;
+  width: 80% !important;
+  max-width: 800px !important;
+  color: #464646;
+}
+.calendar-events .calendar-event-point-section {
+  display: flex;
+  justify-content: flex-start;
+}
+.calendar-events .calendar-event-point-section .event-point {
+  display: block;
+  margin-right: 1rem;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.75rem;
+  transition: all 0.4s;
+  user-select: none;
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+}
+.calendar-events .calendar-event-point-section .event-point:hover {
+  background: rgba(70, 70, 70, 0.1);
+}
+.calendar-events .calendar-event-point-section .selected-event-point {
+  border-bottom: 0.2rem solid #464646;
+}
+.calendar-events .calendar-events-close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 0.5rem 0.5rem;
+  padding: 0.5rem;
+  transform: translate(25%, -25%);
+  border-radius: 15px;
+  background: red;
+  transition: all 0.3s;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: white;
+}
+.calendar-events .calendar-events-close:hover {
+  background: #8e0000;
+}
+.calendar-events .events-container {
+  height: calc(100% - 3.25rem);
+  width: 100%;
+  padding: 0.1rem 1.5rem;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  border: 0.1rem solid rgba(70, 70, 70, 0.8);
+  border-radius: 5px;
+}
+.calendar-events .events-container .add-new-event {
+  position: fixed;
+  bottom: -1.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.calendar-events .events-container .add-new-event button {
+  font-size: 1rem;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.calendar-events .event-card {
+  position: relative;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  background: #ebebeb;
+  box-shadow: 5px 5px 10px 1px rgba(70, 70, 70, 0.2);
+  cursor: pointer;
+}
+.calendar-events .event-card h3, .calendar-events .event-card p, .calendar-events .event-card label {
+  cursor: pointer;
+  margin: 0 1.5rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.calendar-events .event-card .event-card-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 0 1.5rem;
+}
+.calendar-events .event-card .event-card-buttons button {
+  margin: 0 0.25rem;
+  color: white;
+}
+.calendar-events .event-card .event-card-buttons .event-edit-button {
+  background: #6c8bcf;
+}
+.calendar-events .event-card .event-card-buttons .event-remove-button {
+  background: #8e0000;
+}
+
+.event-notifications-container {
+  max-height: 315px;
+  min-height: 125px;
+  width: 350px;
+  min-width: 300px;
+  right: 0;
+  bottom: 0;
+  margin-left: auto;
+  padding: 0.5rem 15px;
+  color: #4f4f4f;
+  overflow: auto;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(1rem);
+  animation: slide-up-show 0.6s ease-in-out;
+  z-index: 7;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.event-notifications-container .no-events-message {
+  width: 100%;
+  margin: 1rem auto 1rem;
+  text-align: center;
+}
+.event-notifications-container .event-notification {
+  width: 100%;
+  margin: 0.5rem 0 0.5rem;
+  border-radius: 0.8rem 0.4rem 0.8rem 0.8rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+.event-notifications-container .event-notification .event-notification-title {
+  width: auto;
+  background: rgba(70, 70, 70, 0.2);
+  padding: 0.5rem;
+  border-radius: 0.8rem 0.4rem 0 0;
+}
+.event-notifications-container .event-notification p {
+  padding: 1rem;
+  font-size: 16px;
+}
+
+.event-notifications-container-hidden {
+  transform: translateY(125%);
+  opacity: 0;
+  animation: slide-down-hide 0.6s ease-in-out;
+}
+
+@media only screen and (max-width: 800px) {
+  .calendar-events {
+    height: 80% !important;
+    width: 95% !important;
+  }
+  .calendar-events .event-card {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .calendar-events .event-card h3 {
+    font-size: 1.5rem;
+  }
+  .calendar-events .event-card p {
+    font-size: 1.1rem;
+  }
+  .calendar-events .event-card h3, .calendar-events .event-card p, .calendar-events .event-card label {
+    margin: 0.5rem;
+  }
+}
+@media only screen and (max-height: 800px) {
+  .calendar-events {
+    height: calc(95% - 2rem) !important;
+  }
+}
+
+/*# sourceMappingURL=CalendarEvents.css.map */

@@ -1,0 +1,123 @@
+nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+nav .favorites::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+nav .favorites {
+  margin: 0.5rem 1rem;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  animation: slide-down-show 0.6s ease-in-out;
+  animation-fill-mode: forwards;
+}
+nav .favorites::-webkit-scrollbar {
+  -webkit-appearance: none;
+  height: 8px;
+}
+nav .favorites::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+nav .favorites .fav-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav .favorites .fav-icon a {
+  display: block;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.5);
+  height: 50px;
+  width: 50px;
+  margin: 0.5rem;
+  border-radius: 10px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+nav .favorites .fav-icon a .url-img {
+  position: relative;
+  display: block;
+  width: 45%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+nav .favorites .fav-icon a:hover {
+  background: #a1a1a1;
+}
+nav .favorites .fav-icon a:active {
+  background: #c9c9c9;
+}
+nav .favorites .fav-icon .fav-title {
+  max-width: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.6s;
+  transition: all 0.4s;
+}
+nav .favorites .fav-icon .fav-full-title {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(0%);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(25px);
+  padding: 0.2rem;
+  border: 0.1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 0.4rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.4s;
+}
+nav .favorites-hidden {
+  animation: slide-up-hide 0.6s ease-in-out;
+  animation-fill-mode: forwards;
+}
+nav .burger {
+  margin: 2rem;
+  margin-left: auto;
+  min-width: 35px;
+  max-width: 35px;
+  animation: fade-in 0.6s ease-in-out;
+  cursor: pointer;
+}
+
+.content-label {
+  position: fixed;
+  top: 115px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.5);
+  transition: opacity 0.4s;
+}
+
+.content-label-shown {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.content-label-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=Nav.css.map */

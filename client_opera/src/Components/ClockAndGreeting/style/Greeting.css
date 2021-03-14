@@ -1,0 +1,60 @@
+.greeting {
+  position: relative;
+  width: 100%;
+  margin: 1rem 0;
+  text-align: center;
+  color: white;
+  z-index: -1;
+  overflow: hidden;
+}
+.greeting h1 {
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 32px;
+  z-index: -1;
+}
+
+.greeting-onload-animation {
+  animation: fade-in 1.4s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@media only screen and (max-width: 450px) {
+  .greeting h1 {
+    font-size: 20px;
+  }
+}
+.greeting-when-settings-open {
+  animation: clock-slide-open 0.8s ease-in-out;
+  animation-fill-mode: forwards;
+  width: calc(100% - 500px);
+}
+
+.greeting-when-settings-close {
+  animation: clock-slide-close 0.8s ease-in-out;
+  animation-fill-mode: forwards;
+  width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  .greeting-when-settings-open {
+    animation: none;
+    width: 100%;
+  }
+
+  .greeting-when-settings-close {
+    animation: none;
+    width: 100%;
+  }
+}
+.greeting-hidden {
+  animation: fade-out 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.greeting-shown {
+  animation: fade-in 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/*# sourceMappingURL=Greeting.css.map */

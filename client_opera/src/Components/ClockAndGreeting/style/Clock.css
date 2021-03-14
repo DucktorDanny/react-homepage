@@ -1,0 +1,78 @@
+.clock-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+  z-index: -1;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.clock-container h1 {
+  font-size: 9rem;
+  font-weight: normal;
+  z-index: -1;
+}
+.clock-container div {
+  height: calc(100% - 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 4rem;
+}
+.clock-container div p {
+  font-size: 3rem;
+  z-index: -1;
+}
+
+.clock-container-onload-animation {
+  animation: fade-in 1.4s ease-in-out;
+}
+
+@media only screen and (max-width: 450px) {
+  .clock-container h1 {
+    font-size: 4.5rem;
+  }
+  .clock-container div {
+    height: calc(100% - 1.5rem);
+  }
+  .clock-container div p {
+    font-size: 1.5rem;
+  }
+}
+.clock-when-settings-open {
+  animation: clock-slide-open 0.6s ease-in-out;
+  animation-fill-mode: forwards;
+  width: calc(100% - 500px);
+}
+
+.clock-when-settings-close {
+  animation: clock-slide-close 0.6s ease-in-out;
+  animation-fill-mode: forwards;
+  width: 100%;
+}
+
+@media only screen and (max-width: 900px) {
+  .clock-when-settings-open {
+    animation: none;
+    width: 100%;
+  }
+
+  .clock-when-settings-close {
+    animation: none;
+    width: 100%;
+  }
+}
+@media (max-height: 750px) {
+  .clock-container h1 {
+    font-size: 4.5rem;
+  }
+  .clock-container p {
+    font-size: 2.25rem;
+  }
+}
+
+/*# sourceMappingURL=Clock.css.map */
