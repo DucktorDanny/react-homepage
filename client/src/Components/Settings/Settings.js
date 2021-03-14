@@ -21,13 +21,16 @@ const Settings = ({
 	getFavorites,
 	getGreetingPronouns,
 	getGreetingEmoji,
-	getShowSeconds
+	getShowSeconds,
+	getTwentyFourClockMode,
 }) => {
 	const [ showCalendar, setShowCalendar ] = useState(showElements.calendar !== null ? showElements.calendar : true);
 	const [ showFavorites, setShowFavorites ] = useState(showElements.favorites !== null ? showElements.favorites : true);
 	const [ showGreeting, setShowGreeting ] = useState(showElements.greeting !== null ? showElements.greeting : true);
 	const [ showNotifications, setShowNotifications ] = useState(showElements.notifications !== null ? showElements.notifications : true);
+
 	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds !== null ? showElements.seconds : true);
+	const [ twentyFourClockMode, setTwentyFourClockMode ] = useState(showElements.twentyFourClockMode !== null ? showElements.twentyFourClockMode : false);
 
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns || 'friend');
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji || '🐣');
@@ -124,6 +127,13 @@ const Settings = ({
 		}
 		return;
 	}, [showSeconds, getShowSeconds]);
+
+	useEffect(() => {
+		if (getTwentyFourClockMode) {
+			return twentyFourClockMode;
+		}
+		return;
+	}, [twentyFourClockMode, getTwentyFourClockMode]);
 
 	const animationHandler = (mainClass, hiddenClass, display, condition) => {
 		const element = document.querySelector(`.${mainClass}`);
@@ -481,6 +491,7 @@ const Settings = ({
 				greeting: showGreeting,
 				notifications: showNotifications,
 				seconds: showSeconds,
+				twentyFourClockMode,
 			},
 			greeting: {
 				pronouns: greetingPronouns,
@@ -532,7 +543,25 @@ const Settings = ({
 						<Checkbox htmlName='show-greeting' onClick={ () => { setShowGreeting(!showGreeting) } } labelText='Show greeting' chekced={ showGreeting } />
 						<Checkbox htmlName='show-calendar' onClick={ () => { setShowCalendar(!showCalendar) } } labelText='Show Calendar' chekced={ showCalendar } />
 						<Checkbox htmlName='show-notifications' onClick={ () => { setShowNotifications(!showNotifications) } } labelText='Show Notifications' chekced={ showNotifications } />
-						<Checkbox htmlName='show-seconds' onClick={ () => { setShowSeconds(!showSeconds) } } labelText='Show Seconds' chekced={ showSeconds } />
+					</div>
+
+					<Line />
+
+					<h2>Clock settings</h2>
+
+					<div className='clock-settings'>
+						<Checkbox
+							htmlName='24-hour-mode'
+							onClick={ () => { setTwentyFourClockMode(!twentyFourClockMode) } }
+							labelText='24-hour mode'
+							chekced={ twentyFourClockMode }
+						/>
+						<Checkbox
+							htmlName='show-seconds'
+							onClick={ () => { setShowSeconds(!showSeconds) } }
+							labelText='Show Seconds'
+							chekced={ showSeconds }
+						/>
 					</div>
 
 					<Line />

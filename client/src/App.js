@@ -24,7 +24,8 @@ const showElements = datas ? datas.showElements : {
    favorites: true,
 	greeting: true,
 	notifications: true,
-	seconds: true
+	seconds: true,
+	twentyFourClockMode: false,
 };
 const greeting = datas ? datas.greeting : {
    pronouns: 'friend',
@@ -66,7 +67,8 @@ const App = () => {
 	const [ favorites, setFavorites ] = useState(favoritesArray);
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
-	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds || true);
+	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds);
+	const [ twentyFourClockMode, setTwentyFourClockMode ] = useState(showElements.twentyFourClockMode);
 
 	const openCalendarEvents = (e) => {
 		const convertedEvent = new Date(e.toString()).toLocaleDateString();
@@ -91,7 +93,7 @@ const App = () => {
 
 						<main>
 							<Greeting pronouns={ greetingPronouns } emojis={ greetingEmoji } />
-							<Clock showSeconds={ showSeconds } />
+							<Clock showSeconds={ showSeconds } twentyFourClockMode={ twentyFourClockMode } />
 						</main>
 
 						<div className='bottom-components'>
@@ -134,6 +136,7 @@ const App = () => {
 						getGreetingPronouns={ setGreetingPronouns }
 						getGreetingEmoji={ setGreetingEmoji }
 						getShowSeconds={ setShowSeconds }
+						getTwentyFourClockMode={ setTwentyFourClockMode }
 					/>
 				</ThemeProvider>
 			: <h1 style={{
