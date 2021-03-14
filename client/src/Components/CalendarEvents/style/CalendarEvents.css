@@ -107,6 +107,8 @@
 }
 
 .event-notifications-container {
+  max-height: 315px;
+  min-height: 125px;
   width: 350px;
   min-width: 300px;
   right: 0;
@@ -125,7 +127,7 @@
 }
 .event-notifications-container .no-events-message {
   width: 100%;
-  margin: 0.5rem auto 0.5rem;
+  margin: 1rem auto 1rem;
   text-align: center;
 }
 .event-notifications-container .event-notification {

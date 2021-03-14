@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 import Nav from './Components/Nav/Nav';
 import Greeting from './Components/ClockAndGreeting/Greeting';
@@ -24,6 +24,7 @@ const showElements = datas ? datas.showElements : {
    favorites: true,
 	greeting: true,
 	notifications: true,
+	seconds: true
 };
 const greeting = datas ? datas.greeting : {
    pronouns: 'friend',
@@ -65,7 +66,7 @@ const App = () => {
 	const [ favorites, setFavorites ] = useState(favoritesArray);
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
-	const [ calendarContainerHeight, setCalendarContainerHeight ] =useState(null);
+	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds);
 
 	const openCalendarEvents = (e) => {
 		const convertedEvent = new Date(e.toString()).toLocaleDateString();
@@ -80,29 +81,6 @@ const App = () => {
 			setChosenDate(null);
 		}, 500);
 	}
-	
-	/**
-	 * These are required because of notification-container's 
-	 * height to be equal to calendar's height
-	 */
-	const updateCalendarContainerHeight = () => {
-		// the setTimeout is required because the Calendar's size not changing immediately...
-		setTimeout(() => {
-			setCalendarContainerHeight(document.querySelector('.react-calendar-container').offsetHeight);
-		}, 1);
-	}
-
-	// Start up height
-	useEffect(() => {
-		setCalendarContainerHeight(document.querySelector('.react-calendar-container').offsetHeight);
-	}, []);
-
-	// If the height of Calendar is changing
-	useEffect(() => {
-		if (calendarContainerHeight) {
-			document.querySelector('.event-notifications-container').style.height = `${calendarContainerHeight}px`;
-		}
-	}, [calendarContainerHeight]);
 
 	return (
 		<>
@@ -113,11 +91,11 @@ const App = () => {
 
 						<main>
 							<Greeting pronouns={ greetingPronouns } emojis={ greetingEmoji } />
-							<Clock />
+							<Clock showSeconds={ showSeconds } />
 						</main>
 
 						<div className='bottom-components'>
-							<div className='react-calendar-container' onMouseUp={ updateCalendarContainerHeight }>
+							<div className='react-calendar-container'>
 								<Calendar
 									// className='react-calendar'
 									onChange={onChange}
@@ -155,6 +133,7 @@ const App = () => {
 						getFavorites={ setFavorites }
 						getGreetingPronouns={ setGreetingPronouns }
 						getGreetingEmoji={ setGreetingEmoji }
+						getShowSeconds={ setShowSeconds }
 					/>
 				</ThemeProvider>
 			: <h1 style={{

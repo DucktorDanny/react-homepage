@@ -20,12 +20,14 @@ const Settings = ({
 	backgroundColor,
 	getFavorites,
 	getGreetingPronouns,
-	getGreetingEmoji
+	getGreetingEmoji,
+	getShowSeconds
 }) => {
 	const [ showCalendar, setShowCalendar ] = useState(showElements.calendar);
 	const [ showFavorites, setShowFavorites ] = useState(showElements.favorites);
 	const [ showGreeting, setShowGreeting ] = useState(showElements.greeting);
 	const [ showNotifications, setShowNotifications ] = useState(showElements.notifications);
+	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds);
 
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
@@ -115,6 +117,13 @@ const Settings = ({
 		}
 		return;
 	}, [greetingEmoji, getGreetingEmoji]);
+
+	useEffect(() => {
+		if (getShowSeconds) {
+			return getShowSeconds(showSeconds);
+		}
+		return;
+	}, [showSeconds, getShowSeconds]);
 
 	const animationHandler = (mainClass, hiddenClass, display, condition) => {
 		const element = document.querySelector(`.${mainClass}`);
@@ -471,6 +480,7 @@ const Settings = ({
 				favorites: showFavorites,
 				greeting: showGreeting,
 				notifications: showNotifications,
+				seconds: showSeconds,
 			},
 			greeting: {
 				pronouns: greetingPronouns,
@@ -522,6 +532,7 @@ const Settings = ({
 						<Checkbox htmlName='show-greeting' onClick={ () => { setShowGreeting(!showGreeting) } } labelText='Show greeting' chekced={ showGreeting } />
 						<Checkbox htmlName='show-calendar' onClick={ () => { setShowCalendar(!showCalendar) } } labelText='Show Calendar' chekced={ showCalendar } />
 						<Checkbox htmlName='show-notifications' onClick={ () => { setShowNotifications(!showNotifications) } } labelText='Show Notifications' chekced={ showNotifications } />
+						<Checkbox htmlName='show-seconds' onClick={ () => { setShowSeconds(!showSeconds) } } labelText='Show Seconds' chekced={ showSeconds } />
 					</div>
 
 					<Line />

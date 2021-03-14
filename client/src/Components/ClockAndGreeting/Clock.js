@@ -2,18 +2,22 @@ import { useEffect, useState } from 'react';
 
 import './style/Clock.css';
 
-const Clock = () => {
+const Clock = ({ showSeconds = true }) => {
    const [hours, setHours] = useState(null);
    const [minutes, setMinutes] = useState(null);
+   const [seconds, setSeconds] = useState(null);
    const [amPm, setAmPm] = useState(null);
 
    const setTime = () => {
       const now = {
          hours: new Date().getHours(),
-         minutes: new Date().getMinutes()
+         minutes: new Date().getMinutes(),
+         seconds: new Date().getSeconds()
       };
+      // console.log(now.seconds);
       setHours(now.hours > 12 ? now.hours - 12 + '': now.hours+'');
       setMinutes(now.minutes < 10 ? `0${now.minutes}` : now.minutes+'');
+      setSeconds(now.seconds < 10 ? `0${now.seconds}` : now.seconds+'');
       setAmPm(now.hours >= 12 ? 'pm' : 'am');
    }
 
@@ -23,15 +27,24 @@ const Clock = () => {
          const clockContainer = document.querySelector('.clock-container');
          clockContainer.classList.remove('clock-container-onload-animation');
       }, 1400);
-      setInterval(() => {
+
+      const interval = setInterval(() => {
          setTime();
       }, 1000);
+
+      return () => {
+         console.log('Clean up...');
+         clearInterval(interval);
+      }
    }, []);
    
    return(
       <div className='clock-container clock-container-onload-animation'>
          <h1>{ hours && minutes ? `${hours}:${minutes}` : 'Loading...' }</h1>
-         <p>{amPm ? amPm : '' }</p>
+         <div>
+            <p>{showSeconds && seconds ? seconds : ''}</p>
+            <p>{amPm ? amPm : '' }</p>
+         </div>
       </div>
    )
 }

@@ -127,6 +127,8 @@ $animationSpeed: .6s;
 }
 
 .event-notifications-container {
+   max-height: 315px;
+   min-height: 125px;
    width: 350px;
    min-width: 300px;
    right: 0;
@@ -148,9 +150,8 @@ $animationSpeed: .6s;
    box-sizing: border-box;
 
    .no-events-message {
-      // width: 25rem;
       width: 100%;
-      margin: .5rem auto .5rem;
+      margin: 1rem auto 1rem;
       text-align: center;
    }
 

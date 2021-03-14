@@ -16,9 +16,14 @@
   font-weight: normal;
   z-index: -1;
 }
-.clock-container p {
-  font-size: 4.5rem;
-  transform: translateY(25%);
+.clock-container div {
+  height: calc(100% - 3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.clock-container div p {
+  font-size: 3rem;
   z-index: -1;
 }
 
@@ -30,8 +35,11 @@
   .clock-container h1 {
     font-size: 4.5rem;
   }
-  .clock-container p {
-    font-size: 2.25rem;
+  .clock-container div {
+    height: calc(100% - 1.5rem);
+  }
+  .clock-container div p {
+    font-size: 1.5rem;
   }
 }
 .clock-when-settings-open {
