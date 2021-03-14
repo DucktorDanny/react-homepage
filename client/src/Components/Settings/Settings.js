@@ -23,14 +23,14 @@ const Settings = ({
 	getGreetingEmoji,
 	getShowSeconds
 }) => {
-	const [ showCalendar, setShowCalendar ] = useState(showElements.calendar);
-	const [ showFavorites, setShowFavorites ] = useState(showElements.favorites);
-	const [ showGreeting, setShowGreeting ] = useState(showElements.greeting);
-	const [ showNotifications, setShowNotifications ] = useState(showElements.notifications);
-	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds);
+	const [ showCalendar, setShowCalendar ] = useState(showElements.calendar !== null ? showElements.calendar : true);
+	const [ showFavorites, setShowFavorites ] = useState(showElements.favorites !== null ? showElements.favorites : true);
+	const [ showGreeting, setShowGreeting ] = useState(showElements.greeting !== null ? showElements.greeting : true);
+	const [ showNotifications, setShowNotifications ] = useState(showElements.notifications !== null ? showElements.notifications : true);
+	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds !== null ? showElements.seconds : true);
 
-	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
-	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
+	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns || 'friend');
+	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji || '🐣');
 
 	const [ isEmojiValid, setIsEmojiValid ] = useState(true);
 	const [ isPronounsValid, setIsPronounsValid ] = useState(true);

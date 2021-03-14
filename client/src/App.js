@@ -66,7 +66,7 @@ const App = () => {
 	const [ favorites, setFavorites ] = useState(favoritesArray);
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
-	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds);
+	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds || true);
 
 	const openCalendarEvents = (e) => {
 		const convertedEvent = new Date(e.toString()).toLocaleDateString();
