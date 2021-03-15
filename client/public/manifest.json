@@ -1,13 +1,1 @@
-{
-  "name": "Ducktor Homepage",
-  "description": "A homepage where you can add favorites, set greeting, background and much more...",
-  "version": "1.5.1",
-  "manifest_version": 2,
-  "permissions": [
-    "tabs"
-  ],
-  "chrome_url_overrides" : {
-      "newtab": "index.html"
-  },
-  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
-}
+{"name":"Ducktor Homepage","description":"A homepage where you can add favorites, set greeting, background and much more...","version":"1.5.1","manifest_version":2,"permissions":["tabs"],"chrome_url_overrides":{"newtab":"index.html"},"content_security_policy":"script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"}

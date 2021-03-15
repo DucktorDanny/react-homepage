@@ -12,7 +12,10 @@ echo "Genrating build for Opera"
 rm -rf build_opera
 mkdir build_opera
 
-cp opera_files/background.js opera_files/manifest.json build_opera
-cd build
+cd opera_files
+node opera_version_update.js
+cp background.js manifest.json ../build_opera
+
+cd ../build
 cp .env asset-manifest.json favicon.ico index.html *.png robots.txt ../build_opera
 cp -r ./static ../build_opera
