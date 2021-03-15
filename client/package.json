@@ -83,7 +83,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "styles": "bash styles.sh"
+    "styles": "bash styles.sh",
+    "full_build": "bash opera_build.sh"
   },
   "eslintConfig": {
     "extends": [
