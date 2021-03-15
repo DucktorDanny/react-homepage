@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # need to solve the issue that opera not supporting "chrome_url_overrides"
-# so I generate a different build what can solve this problem
+# so I generate a different build what can solve this problem.
 
 echo "Starting basic client build..."
 
