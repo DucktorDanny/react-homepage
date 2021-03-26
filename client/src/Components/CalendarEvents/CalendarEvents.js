@@ -34,11 +34,17 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
 
    const onCloseByButton = (e) => {
       onClose(e);
+      setTimeout(() => {
+         setSelectedDate(date);
+      }, 500);
    }
 
    const onCloseByBackground = (e) => {
       if (e.target.classList.contains('popup-container')) {
          onClose(e);
+         setTimeout(() => {
+            setSelectedDate(date);
+         }, 500);
       }
    }
 

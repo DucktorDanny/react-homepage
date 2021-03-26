@@ -11,6 +11,9 @@ import ReactNotifications, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css/animate.min.css';
 
+// Setting Sections:
+import ExportingImporting from './SettingSections/ExportingImporting';
+
 import './style/Settings.css';
 
 const Settings = ({
@@ -385,95 +388,6 @@ const Settings = ({
 
 	}
 
-	// 'exporting'
-	const copySettingsDatas = () => {
-		try {
-			const datas = localStorage.getItem('datas');
-	
-			if (!datas) {
-				throw new Error('You have no saved datas!');
-			}
-
-			navigator.clipboard.writeText(datas)
-				.then(() => {
-					createNotification('Success', 'You have copied your settings!', 'success');
-				})
-				.catch((err) => {
-					createNotification('Error', `Error in copying: ${err}`, 'danger');
-				})
-			
-		} catch(err) {
-			createNotification('Error', err.message, 'danger');
-		}
-	}
-
-	const setImportedDatas = () => {
-		
-		const importSettingsField = document.querySelector('#import-settings-field');
-		console.log(importSettingsField);
-		
-		// verify datas
-		try {
-			const datas = JSON.parse(importSettingsField.value);
-
-			if (datas.showElements && datas.greeting && datas.favoritesArray && datas.backgroundColor) {
-				localStorage.setItem('datas', JSON.stringify(datas));
-				createNotification('Success', 'You have imported settings!', 'success');
-				
-				// easy way:
-				window.location.reload(true);
-			}
-		} catch (err) {
-			createNotification('Error', err.message, 'danger');
-		}
-	}
-
-	const resetSettings = () => {
-		try {
-			const datas = JSON.parse(localStorage.getItem('datas'));
-			if (!datas) {
-				throw new Error('There are no saved settings.');
-			}
-
-			const type = 'accept-decline';
-			const title = 'Reset settings';
-			const content = 'Are you sure you want to delete your saved settings?';
-			const acceptLabel = 'Reset';
-			const declineLabel = 'Cancel';
-
-			setPopup({
-				type,
-				open: true,
-				datas: {
-					title, content, acceptLabel, declineLabel,
-					onAccept: () => {
-						localStorage.removeItem('datas');
-						// easy way:
-						window.location.reload(true);
-						setPopup({
-							type,
-							open: false,
-							datas: {
-								title, content, acceptLabel, declineLabel
-							}
-						});
-					},
-					onDecline: () => {
-						setPopup({
-							type,
-							open: false,
-							datas: {
-								title, content, acceptLabel, declineLabel
-							}
-						});
-					}
-				}
-			});
-		} catch(err) {
-			createNotification('Error', err.message, 'danger');
-		}
-	}
-
 	const saveChanges = (event) => {
 		if (event) {
 			event.preventDefault();
@@ -523,7 +437,7 @@ const Settings = ({
 			}
 		});
 	}
-
+	
 	return (
 		<>
 			<ReactNotifications />
@@ -575,7 +489,7 @@ const Settings = ({
 
 					<Line />
 
-					<h2>Greeting</h2>
+					<h2>Greeting settings</h2>
 					<div className='greeting-settings'>
 						<TextField
 							id='greeting-pronouns'
@@ -653,39 +567,7 @@ const Settings = ({
 
 					<Line />
 
-					<h2>Import, export and reset settings</h2>
-					<div className='imp-exp-settings'>
-
-						<TextField
-							id='import-settings-field'
-							className='textfield'
-							name='favorite-add-link'
-							type='text'
-							label='Copied datas'
-							variant='outlined'
-						/>
-
-						<Button
-							type='button'
-							variant='contained'
-							color='primary'
-							onClick={ setImportedDatas }
-						>Import</Button>
-
-						<Button
-							type='button'
-							variant='contained'
-							color='primary'
-							onClick={ copySettingsDatas }
-						>Copy settings datas</Button>
-
-						<Button
-							type='button'
-							variant='contained'
-							className='reset-settings'
-							onClick={ resetSettings }
-						>Reset settings</Button>
-					</div>
+					<ExportingImporting createNotification={createNotification} setPopup={setPopup} />
 
 					{/* Save changes */}
 					<div className='save-changes'>

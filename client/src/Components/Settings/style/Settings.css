@@ -82,20 +82,20 @@
 .settings .settings-form .background-sliders h3 {
   color: #373e49;
 }
-.settings .settings-form .imp-exp-settings {
+.settings .settings-form .imp-exp {
   width: 100%;
-  padding: 1rem 0;
+  padding: 1rem 0 0;
 }
-.settings .settings-form .imp-exp-settings button {
+.settings .settings-form .imp-exp button {
   display: block;
   margin: 0 auto 1.5rem;
 }
-.settings .settings-form .imp-exp-settings .textfield {
+.settings .settings-form .imp-exp .textfield {
   display: block;
   margin: 0 auto 1.5rem;
   width: 70%;
 }
-.settings .settings-form .imp-exp-settings .reset-settings {
+.settings .settings-form .imp-exp .reset-settings {
   color: white;
   background: #960000;
 }
