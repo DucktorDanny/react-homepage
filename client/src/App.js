@@ -19,6 +19,47 @@ const events = JSON.parse(localStorage.getItem('events')) || {};
 
 // localStorage.setItem('events', JSON.stringify(events));
 
+/**
+ * 
+ * This might be the best solution for my problem when you have a key by a given day's date
+ * 
+*/
+
+// const today = new Date().toLocaleDateString('en-US');
+// const yesterday = new Date('2021.03.28.').toLocaleDateString('en-US');
+// const possibleDateKey = new Date(today).getTime();
+// const anotherPossibleDateKey = new Date(yesterday).getTime();
+
+// console.log(new Date(`${possibleDateKey}`));
+
+// Converting to this format to display -> new Date().toDateString();
+
+// const events = {};
+
+// events[possibleDateKey] = [
+// 	{
+// 		title: 'Something',
+// 		content: 'It is something what you could say here...',
+// 	},
+// 	{
+// 		title: 'Something',
+// 		content: 'It is something what you could say here...',
+// 	},
+// ];
+
+// events[anotherPossibleDateKey] = [
+// 	{
+// 		title: 'Something yesterday',
+// 		content: 'It is something what you could say here from yesterday...',
+// 	},
+// 	{
+// 		title: 'Something yesterday',
+// 		content: 'It is something what you could say here from yesterday...',
+// 	},
+// ];
+
+// console.log(testEvents);
+
 const showElements = datas ? datas.showElements : {
    calendar: true,
    favorites: true,
@@ -58,7 +99,7 @@ const theme = createMuiTheme({
 	}
 });
 
-const todayKey = new Date().toLocaleDateString();
+const todayKey = new Date(new Date().toDateString()).getTime();
 
 const App = () => {
 	const [ value, onChange ] = useState(new Date());
@@ -71,7 +112,8 @@ const App = () => {
 	const [ twentyFourClockMode, setTwentyFourClockMode ] = useState(showElements.twentyFourClockMode);
 
 	const openCalendarEvents = (e) => {
-		const convertedEvent = new Date(e.toString()).toLocaleDateString();
+		// const convertedEvent = new Date(e.toString()).toLocaleDateString();
+		const convertedEvent = e.getTime();
 		setChosenDate(convertedEvent);
 		setCalendarEventsShowing(true);
 	}

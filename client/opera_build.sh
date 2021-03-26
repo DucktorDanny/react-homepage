@@ -7,7 +7,7 @@ echo "Starting basic client build..."
 
 npm run build
 
-echo "Genrating build for Opera"
+echo "Generating build for Opera"
 
 rm -rf build_opera
 mkdir build_opera

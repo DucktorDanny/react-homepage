@@ -104,6 +104,11 @@ $animationSpeed: .6s;
          -ms-user-select: none;
       }
 
+      label {
+         min-width: 5rem;
+         text-align: center;
+      }
+
       .event-card-buttons {
          display: flex;
          justify-content: center;

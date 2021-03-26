@@ -5,6 +5,7 @@ import './style/CalendarEvents.css';
 const SelectedDateEvent = ({ date, events, onRemove }) => {
    const eventEdit = (e) => {
       console.log(e);
+      // do something...
    }
 
    return (

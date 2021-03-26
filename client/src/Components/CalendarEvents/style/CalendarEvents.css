@@ -90,6 +90,10 @@
   -moz-user-select: none;
   -ms-user-select: none;
 }
+.calendar-events .event-card label {
+  min-width: 5rem;
+  text-align: center;
+}
 .calendar-events .event-card .event-card-buttons {
   display: flex;
   justify-content: center;

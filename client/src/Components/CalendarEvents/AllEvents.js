@@ -15,11 +15,29 @@ const AllEvents = ({ events, onEvent, onRemove }) => {
       return isThereAnyEvent;
    }
 
+   const objectEntriesWithIntKeys = (obj) => {
+      try {
+         const basicObjectEntries = Object.entries(obj);
+         const convertedEntries = [];
+         basicObjectEntries.forEach(element => {
+            convertedEntries.push([
+               parseInt(element[0]),
+               element[1]
+            ]);
+         });
+         const result = convertedEntries.sort((a, b) => a[0] - b[0]);
+         return result;
+      } catch (err) {
+         console.log(err.message);
+      }
+      return;
+   }
+
    return (
       <>
          {
             hasEvents()
-               ? Object.entries(events).map((date, i) => (
+               ? objectEntriesWithIntKeys(events).map((date, i) => (
                   date[1].map((event, j) => {
                      const key = `all-${i}-${j}`;
                      return (

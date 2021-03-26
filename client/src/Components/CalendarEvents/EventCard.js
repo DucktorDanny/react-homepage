@@ -12,7 +12,7 @@ const EventCard = ({ id, title, content, date, onEvent, onRemove, showDate }) =>
       }}>
          <h3>{title}</h3>
          <p>{content}</p>
-         {showDate ? <label htmlFor='date'>{date}</label> : ''}
+         {showDate ? <label htmlFor='date'>{new Date(parseInt(date)).toDateString()}</label> : ''}
          <div className='event-card-buttons'>
             <Button
                type='button'

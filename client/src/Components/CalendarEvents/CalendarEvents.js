@@ -77,8 +77,8 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
                   if (!title || title === '' || !content || content === '') {
                      throw new Error('Title and content are required!');
                   }
-
-                  date = new Date(date).toLocaleDateString();
+                  // console.log(date);
+                  date = new Date(new Date(date).toDateString()).getTime();
                   if (!events[date]) {
                      events[date] = [];
                   }
@@ -89,6 +89,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
                   localStorage.setItem('events', JSON.stringify(events));
                   createNotification('Success', 'New event successfully added!', 'success');
                   closeEventAddingPopup();
+                  console.log(events);
                } catch(err) {
                   console.error(err.message);
                   createNotification('Error', err.message, 'danger');
@@ -197,14 +198,14 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
 
                <section className='calendar-event-point-section'>
                   <h1 id='all-events' className={selectedDate ? 'event-point' : 'event-point selected-event-point'} onClick={selectEventPoint}>All events</h1>
-                  {selectedDate ? <h1 id='event-point-date' className='event-point selected-event-point' onClick={selectEventPoint}>Selected: {selectedDate}</h1> : ''}
+                  {selectedDate ? <h1 id='event-point-date' className='event-point selected-event-point' onClick={selectEventPoint}>Selected: {new Date(parseInt(selectedDate)).toDateString()}</h1> : ''}
                </section>
 
                <div className='events-container'>
                   {isAllEventsSelected
                      ? <AllEvents events={events} onEvent={selectEvent} onRemove={eventOnRemove} />
-                     : <SelectedDateEvent date={selectedDate} events={events[selectedDate]} onRemove={eventOnRemove} />}
-
+                     : <SelectedDateEvent date={selectedDate} events={events[selectedDate]} onRemove={eventOnRemove} />
+                  }
                   <section className='add-new-event'>
                      <Button
                         type='button'
