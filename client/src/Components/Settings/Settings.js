@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-
-// import Nav from '../Nav/Nav';
-import Checkbox from './Checkbox';
-import Line from './Line';
-import FavoriteList from './FavoriteList';
-import BackgroundChanging from './BackgroundChanging';
-import Popup from '../Popup/Popup';
 import { Button } from '@material-ui/core';
 import ReactNotifications, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css/animate.min.css';
 
+// Own Components:
+import Line from './Line';
+import FavoriteList from './FavoriteList';
+import BackgroundChanging from './BackgroundChanging';
+import Popup from '../Popup/Popup';
+
 // Setting Sections:
+import ElementVisibility from './SettingSections/ElementVisibility';
 import ClockSettings from './SettingSections/ClockSettings';
 import GreetingModifier from './SettingSections/GreetingModifier';
 import AddingNewFavorite from './SettingSections/AddingNewFavorite';
@@ -20,24 +20,42 @@ import ExportingImporting from './SettingSections/ExportingImporting';
 import './style/Settings.css';
 
 const Settings = ({
+	// variables from localStorage
 	showElements,
 	greeting,
 	favoritesArray,
 	backgroundColor,
+	
+	// getter functions:
 	getFavorites,
 	getGreetingPronouns,
 	getGreetingEmoji,
 	getShowSeconds,
 	getTwentyFourClockMode,
 }) => {
-	const [ showCalendar, setShowCalendar ] = useState(showElements.calendar !== null ? showElements.calendar : true);
-	const [ showFavorites, setShowFavorites ] = useState(showElements.favorites !== null ? showElements.favorites : true);
-	const [ showGreeting, setShowGreeting ] = useState(showElements.greeting !== null ? showElements.greeting : true);
-	const [ showNotifications, setShowNotifications ] = useState(showElements.notifications !== null ? showElements.notifications : true);
+	// element visibility variables
+	const [ showCalendar, setShowCalendar ] = useState(
+		showElements.calendar !== null ? showElements.calendar : true
+	);
+	const [ showFavorites, setShowFavorites ] = useState(
+		showElements.favorites !== null ? showElements.favorites : true
+	);
+	const [ showGreeting, setShowGreeting ] = useState(
+		showElements.greeting !== null ? showElements.greeting : true
+	);
+	const [ showNotifications, setShowNotifications ] = useState(
+		showElements.notifications !== null ? showElements.notifications : true
+	);
 
-	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds !== null ? showElements.seconds : true);
-	const [ twentyFourClockMode, setTwentyFourClockMode ] = useState(showElements.twentyFourClockMode !== null ? showElements.twentyFourClockMode : false);
+	// variables for clock settings
+	const [ showSeconds, setShowSeconds ] = useState(
+		showElements.seconds !== null ? showElements.seconds : true
+	);
+	const [ twentyFourClockMode, setTwentyFourClockMode ] = useState(
+		showElements.twentyFourClockMode !== null ? showElements.twentyFourClockMode : false
+	);
 
+	// greeting
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns || 'friend');
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji || '🐣');
 
@@ -45,7 +63,7 @@ const Settings = ({
 
 	const [popup, setPopup] = useState(Object);
 
-	// page load
+	// on the page load it blocks those animatinos where its displaying is disabled
 	useEffect(() => {
 		const favorites = document.querySelector('.favorites');
 		const calendar = document.querySelector('.react-calendar-container');
@@ -65,12 +83,6 @@ const Settings = ({
 			notifications.style.display = 'none';
 		}
 	}, []);
-
-	// showCalendar changes => animation changes (useing animationHandler function
-	useEffect(() => {
-		// animationHandler('react-calendar-container', 'react-calendar-hidden', null, showCalendar);
-		bottomComponentsAnimationHandler('react-calendar-container', 'react-calendar-hidden', showCalendar, 600);
-	}, [ showCalendar ]);
 
 	// showFavorites changes => animation changes (useing animationHandler function)
 	useEffect(() => {
@@ -93,6 +105,12 @@ const Settings = ({
 		}
 	}, [ showGreeting ]);
 
+	// calendar displaying
+	useEffect(() => {
+		bottomComponentsAnimationHandler('react-calendar-container', 'react-calendar-hidden', showCalendar, 600);
+	}, [ showCalendar ]);
+
+	// notification panel displaying
 	useEffect(() => {
 		bottomComponentsAnimationHandler('event-notifications-container', 'event-notifications-container-hidden', showNotifications, 600);
 	}, [showNotifications]);
@@ -113,14 +131,15 @@ const Settings = ({
 		return;
 	}, [greetingPronouns, getGreetingPronouns]);
 
-	// getGreetingEmoji if it changes
+	// returns greetingEmoji if it's changing
 	useEffect(() => {
 		if (getGreetingEmoji) {
 			return getGreetingEmoji(greetingEmoji);
 		}
 		return;
 	}, [greetingEmoji, getGreetingEmoji]);
-
+	
+	// returns showSeconds if it's changing
 	useEffect(() => {
 		if (getShowSeconds) {
 			return getShowSeconds(showSeconds);
@@ -128,6 +147,7 @@ const Settings = ({
 		return;
 	}, [showSeconds, getShowSeconds]);
 
+	// returns twentyFourClockMode if it's changing
 	useEffect(() => {
 		if (getTwentyFourClockMode) {
 			return getTwentyFourClockMode(twentyFourClockMode);
@@ -135,6 +155,12 @@ const Settings = ({
 		return;
 	}, [twentyFourClockMode, getTwentyFourClockMode]);
 
+	/**
+	 * it gets four parameters there is two names of css classes, one of them is the main class
+	 * and the other is the hidden class (what hides the given element by an animation) if the fourth
+	 * parameter what is the condition is true then it removes the hidden class and set the display
+	 * for the specified value otherwise it adds only the hidden class (here the display part is not changing)
+	 */
 	const animationHandler = (mainClass, hiddenClass, display, condition) => {
 		const element = document.querySelector(`.${mainClass}`);
 		if (condition) {
@@ -145,6 +171,11 @@ const Settings = ({
 		}
 	}
 
+	/**
+	 * Here by this function name I mean the calendar and notification components
+	 * and this function only take care of those. Here you can specify a delay for
+	 * the end of the animation. (Btw it is really similar to the animationHandler function)
+	 */
 	const bottomComponentsAnimationHandler = (mainClass, hiddenClass, condition, delay) => {
 		const element = document.querySelector(`.${mainClass}`);
 		if (condition) {
@@ -156,150 +187,6 @@ const Settings = ({
 				element.style.display = 'none';
 			}, delay);
 		}
-	}
-
-	const editFavorite = (e) => {
-		setPopup(Object);
-		const favoriteIndex = parseInt(e.target.getAttribute('id'));
-
-		const type = 'favorite-edit';
-		const titleField = favorites[favoriteIndex].name;
-		const linkField = favorites[favoriteIndex].url;
-		const acceptLabel = 'Edit';
-		const declineLabel = 'Cancel';
-
-		console.log(titleField, linkField);
-
-		setPopup({
-			type,
-			open: true,
-			datas: {
-				titleField, linkField, acceptLabel, declineLabel,
-				onAccept: () => {
-					try {
-						modifyFavorite(
-							document.querySelector('#favorite-edit-title').value,
-							document.querySelector('#favorite-edit-link').value,
-							favoriteIndex
-						);
-						closeEditPopup({ type, titleField, linkField, acceptLabel, declineLabel });
-					} catch(err) {
-						createNotification('Error', err.message, 'danger');
-					}
-				},
-				onDecline: () => {
-					closeEditPopup({ type, titleField, linkField, acceptLabel, declineLabel });		
-				}
-			}
-		});
-	}
-
-	const modifyFavorite = (name, url, idx) => {
-
-		const isNameValid = name.length <= 20;
-		const isUrlValid = url.includes('http://') || url.includes('https://') || url === '';
-
-		if (isNameValid && isUrlValid) {
-			if (name === '' && url === '') {
-				throw new Error('There are no changes!');
-			}
-			
-			const favoriteElements = favorites;
-			
-			if (name !== '') favoriteElements[idx].name = name;
-			if (url !== '') favoriteElements[idx].url = url;
-			
-			setFavorites(favoriteElements);
-			saveChanges();
-		} else if (!isNameValid) {
-			throw new Error('The new name is too long!');
-		} else if (!isUrlValid) {
-			throw new Error('Invalid URL! It need contain https:// or http://!');
-		}
-	}
-
-	const closeEditPopup = ({ type, titleField, linkField, acceptLabel, declineLabel }) => {
-		document.querySelector('#favorite-edit-title').value = '';
-		document.querySelector('#favorite-edit-link').value = '';
-		setPopup({
-			type,
-			open: false,
-			datas: {
-				titleField, linkField, acceptLabel, declineLabel
-			}
-		});
-	}	
-
-	const removeFavorite = (e) => {
-		const favoriteIndex = parseInt(e.target.getAttribute('id'));
-
-		const title = 'Remove favorite';
-		const content = `Are you sure you want to remove the '${ favorites[favoriteIndex].name }' favorite?`;
-		const acceptLabel = 'Yes';
-		const declineLabel = 'Cancel';
-
-		const closePopup = () => {
-			setPopup({
-				type: 'accept-decline',
-				open: false,
-				datas: {
-					title, content, acceptLabel, declineLabel,
-				}
-			});
-		};
-
-		console.log(favorites[favoriteIndex]);
-		setPopup({
-			type: 'accept-decline',
-			open: true,
-			datas: {
-				title, content, acceptLabel, declineLabel,
-				onAccept: () => {
-					// remove in a state array:
-					// (made this way because other methods like splice doesnt re-render...)
-					let test = [];
-					for (let i = 0; i < favorites.length; i++) {
-						if (i !== favoriteIndex) {
-							test.push(favorites[i]);
-						}
-					}
-					setFavorites(test);
-					closePopup();
-				},
-				onDecline: () => {
-					closePopup();
-				}
-			}
-		});		
-	}
-
-	const reorder = (arr, from, to) => {
-
-		if (arr) {
-			arr.splice(to, 0, arr.splice(from, 1)[0]);
-			return arr;
-		}
-		return;
-	}
-
-	const onDragEnd = (result) => {
-		// if the destinatin is null don't do anything
-		if (!result.destination) {
-			return;
-		}
-
-		// We need te re-order the array by these indexes
-
-		if (favorites) {
-			let newArray = [];
-			const orderedArray = reorder(favorites, result.source.index, result.destination.index);
-			// reset the array state
-			for (let i = 0; i < orderedArray.length; i++) {
-				newArray.push(orderedArray[i]);
-			}
-			setFavorites(newArray);
-		}
-
 	}
 
 	const saveChanges = (event) => {
@@ -340,6 +227,10 @@ const Settings = ({
 		createNotification('Success', 'Changes have been saved!', 'success');
 	}
 
+	/*
+	 * It is a template or pattern for the imported addNotification to be easier to use it
+	 * and by this you don't have to specify so many properties every time.
+	 */
 	const createNotification = (title, message, type) => {
 		store.addNotification({
 			title, message, type,
@@ -364,14 +255,13 @@ const Settings = ({
 				<h1>Settings</h1>
 				<Line />
 				<form className='settings-form' onSubmit={ saveChanges }>
-					<h2>Element visibility</h2>
 
-					<div className='element-visibility'>
-						<Checkbox htmlName='show-favorites' onClick={ () => { setShowFavorites(!showFavorites) } } labelText='Show favorites' chekced={ showFavorites } />
-						<Checkbox htmlName='show-greeting' onClick={ () => { setShowGreeting(!showGreeting) } } labelText='Show greeting' chekced={ showGreeting } />
-						<Checkbox htmlName='show-calendar' onClick={ () => { setShowCalendar(!showCalendar) } } labelText='Show calendar' chekced={ showCalendar } />
-						<Checkbox htmlName='show-notifications' onClick={ () => { setShowNotifications(!showNotifications) } } labelText='Show notifications' chekced={ showNotifications } />
-					</div>
+					<ElementVisibility
+						showFavorites={showFavorites} setShowFavorites={setShowFavorites}
+						showGreeting={showGreeting} setShowGreeting={setShowGreeting}
+						showCalendar={showCalendar} setShowCalendar={setShowCalendar}
+						showNotifications={showNotifications} setShowNotifications={setShowNotifications}
+					/>
 
 					<Line />
 
@@ -410,10 +300,11 @@ const Settings = ({
 					<Line />
 
 					<FavoriteList
-						favorites={ favorites }
-						editFunction={ editFavorite }
-						removeFunction={ removeFavorite }
-						onDragEnd={ onDragEnd }
+						favorites={favorites}
+						setFavorites={setFavorites}
+						setPopup={setPopup}
+						saveChanges={saveChanges}
+						createNotification={createNotification}
 					/>
 
 					<Line />

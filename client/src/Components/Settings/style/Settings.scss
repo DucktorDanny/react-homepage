@@ -111,7 +111,6 @@
 
     .imp-exp {
       width: 100%;
-      padding: 1rem 0 0;
 
       button {
         display: block;
@@ -231,7 +230,7 @@
 .droppable {
   align-items: center;
   width: 75%;
-  padding: 0rem 0 2rem;
+  padding: 0rem 0 1rem;
 }
 
 .draggable {
@@ -268,7 +267,7 @@
    display: block;
    position: relative;
    padding-left: 40px;
-   margin: 1rem 4rem 2rem;
+   margin: .5rem 4rem 2rem;
    cursor: pointer;
    font-size: 22px;
    -webkit-user-select: none;

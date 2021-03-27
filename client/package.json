@@ -84,7 +84,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "styles": "bash styles.sh",
-    "full_build": "bash opera_build.sh",
+    "build:full": "bash opera_build.sh",
     "manifest:version": "node scripts/manifest_version_update.js"
   },
   "eslintConfig": {
