@@ -6,12 +6,15 @@ import Line from './Line';
 import FavoriteList from './FavoriteList';
 import BackgroundChanging from './BackgroundChanging';
 import Popup from '../Popup/Popup';
-import { TextField, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import ReactNotifications, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css/animate.min.css';
 
 // Setting Sections:
+import ClockSettings from './SettingSections/ClockSettings';
+import GreetingModifier from './SettingSections/GreetingModifier';
+import AddingNewFavorite from './SettingSections/AddingNewFavorite';
 import ExportingImporting from './SettingSections/ExportingImporting';
 
 import './style/Settings.css';
@@ -37,12 +40,6 @@ const Settings = ({
 
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns || 'friend');
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji || '🐣');
-
-	const [ isEmojiValid, setIsEmojiValid ] = useState(true);
-	const [ isPronounsValid, setIsPronounsValid ] = useState(true);
-
-	const [ isFavoriteNameValid, setIsFavoriteNameValid ] = useState(true);
-	const [ isFavoriteUrlValid, setIsFavoriteUrlValid ] = useState(true);
 
 	const [ favorites, setFavorites ] = useState(favoritesArray);
 
@@ -158,89 +155,6 @@ const Settings = ({
 			setTimeout(() => {
 				element.style.display = 'none';
 			}, delay);
-		}
-	}
-
-	const greetingPronounsChange = (e) => {
-		const pronouns = e.target.value;
-		const isValid = pronouns.length <= 12;
-		setIsPronounsValid(isValid);
-	}
-
-	const greetingEmjisChange = (e) => {
-		const emoji = e.target.value.trim();
-		const isValid = isEmoji(emoji) || emoji === '';
-		setIsEmojiValid(isValid);
-	}
-
-	const changeGreeting = () => {
-		const pronouns = document.querySelector('#greeting-pronouns').value;
-		const emoji = document.querySelector('#greeting-emoji').value;
-		try {
-			if (pronouns === '' && emoji === '') {
-				throw new Error('There were no changes!');
-			}
-
-			if (isPronounsValid && pronouns !== '') {
-				setGreetingPronouns(pronouns);
-				document.querySelector('#greeting-pronouns').value = '';
-			}
-
-			if (isEmojiValid && emoji !== '') {
-				setGreetingEmoji(emoji);
-				document.querySelector('#greeting-emoji').value = '';
-			}
-		} catch (err) {
-			// (title, message, type)
-			createNotification('Warning', err.message, 'warning');
-		}
-	}
-
-	const isEmoji = (emoji) => {
-		return /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|\ud83c[\ude32-\ude3a]|\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])/g
-			.test(emoji);
-	}
-
-	const addNewFavorite = () => {
-		const form = document.querySelector('.settings-form');
-		const formData = new FormData(form);
-
-		const name = formData.get('favorite-add-name');
-		const url = formData.get('favorite-add-link');
-
-		try {
-			const isNameValid = name.length <= 20;
-			const isUrlValid = url.includes('http://') || url.includes('https://') || url === '';
-			
-			setIsFavoriteNameValid(isNameValid);
-			setIsFavoriteUrlValid(isUrlValid);
-			
-			if (name === '' || url === '') {
-				throw new Error('Name and Url is required!');
-			}
-
-			if (isNameValid && isUrlValid) {
-				const newFavorite = {
-					name: name,
-					url: url
-				};
-	
-				setFavorites([...favorites, newFavorite]);
-	
-				form.reset();
-			}
-		} catch (err) {
-			createNotification('Error', err.message, 'danger');
-		}
-	}
-
-	const checkAddForm = (e) => {
-		const favoriteField = e.target;
-
-		if (favoriteField.value === '' && favoriteField.name === 'favorite-add-link') {
-			setIsFavoriteUrlValid(true);
-		} else if (favoriteField.name === 'favorite-add-name') {
-			setIsFavoriteNameValid(favoriteField.value.length <= 20);
 		}
 	}
 
@@ -461,26 +375,15 @@ const Settings = ({
 
 					<Line />
 
-					<h2>Clock settings</h2>
-
-					<div className='clock-settings'>
-						<Checkbox
-							htmlName='24-hour-mode'
-							onClick={ () => { setTwentyFourClockMode(!twentyFourClockMode) } }
-							labelText='24-hour mode'
-							chekced={ twentyFourClockMode }
-						/>
-						<Checkbox
-							htmlName='show-seconds'
-							onClick={ () => { setShowSeconds(!showSeconds) } }
-							labelText='Show seconds'
-							chekced={ showSeconds }
-						/>
-					</div>
+					<ClockSettings
+						twentyFourClockMode={twentyFourClockMode}
+						setTwentyFourClockMode={setTwentyFourClockMode}
+						showSeconds={showSeconds}
+						setShowSeconds={setShowSeconds}
+					/>
 
 					<Line />
 
-					<h2>Change background color</h2>
 					<BackgroundChanging
 						R={ backgroundColor.R }
 						G={ backgroundColor.G }
@@ -489,75 +392,23 @@ const Settings = ({
 
 					<Line />
 
-					<h2>Greeting settings</h2>
-					<div className='greeting-settings'>
-						<TextField
-							id='greeting-pronouns'
-							name='greeting-pronouns'
-							className='textfield'
-							type='text'
-							label='Pronouns'
-							helperText={ !isPronounsValid ? 'Too long pronouns!' : '' }
-							variant='outlined'
-							onChange={ greetingPronounsChange } 
-							disabled={ !showGreeting }
-							error={ !isPronounsValid }
-						/>
-						<TextField
-							id='greeting-emoji'
-							name='greeting-emoji'
-							className='textfield'
-							type='text'
-							label='Emojis'
-							helperText={ !isEmojiValid ? 'It is not an emoji!' : '' }
-							variant='outlined'
-							onChange={ greetingEmjisChange } 
-							disabled={ !showGreeting }
-							error={ !isEmojiValid }
-						/>
-						<Button
-							variant='contained'
-							color='primary'
-							onClick={changeGreeting}
-						>Change</Button>
-					</div>
+					<GreetingModifier
+						showGreeting={showGreeting}
+						setGreetingPronouns={setGreetingPronouns}
+						setGreetingEmoji={setGreetingEmoji}
+						createNotification={createNotification}
+					/>
 
 					<Line />
 
-					<h2>Add new favorite</h2>
-					<div className='favorite-add'>
-						<TextField
-							id='favorite-add-name'
-							className='textfield'
-							name='favorite-add-name'
-							type='text'
-							label='Name'
-							variant='outlined'
-							onChange={ checkAddForm }
-							error={ !isFavoriteNameValid }
-							helperText={ !isFavoriteNameValid ? 'The name is too long' : '' }
-						/>
-						<TextField
-							id='favorite-add-url'
-							className='textfield'
-							name='favorite-add-link'
-							type='text'
-							label='Link'
-							variant='outlined'
-							onChange={ checkAddForm }
-							error={ !isFavoriteUrlValid }
-							helperText={ !isFavoriteUrlValid ? 'Url is invalid' : '' }
-						/>
-						<Button
-							variant='contained'
-							color='primary'
-							onClick={ addNewFavorite }
-						>Add</Button>
-					</div>
+					<AddingNewFavorite
+						favorites={favorites}
+						setFavorites={setFavorites}
+						createNotification={createNotification}
+					/>
 
 					<Line />
 
-					<h2>Favorite changes</h2>
 					<FavoriteList
 						favorites={ favorites }
 						editFunction={ editFavorite }
@@ -567,7 +418,10 @@ const Settings = ({
 
 					<Line />
 
-					<ExportingImporting createNotification={createNotification} setPopup={setPopup} />
+					<ExportingImporting
+						createNotification={createNotification}
+						setPopup={setPopup}
+					/>
 
 					{/* Save changes */}
 					<div className='save-changes'>

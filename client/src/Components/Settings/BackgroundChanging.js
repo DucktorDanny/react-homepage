@@ -46,47 +46,50 @@ const BackgroundChanging = ({ R, G, B }) => {
 	}, [red, green, blue]);
 
    return (
-      <div className='background-sliders'>
-       
-         <h3>Red</h3>
-         <PrettoSlider
-            valueLabelDisplay='auto'
-            aria-label='pretto slider'
-            value={ red }
-            min={ 0 }
-            max={ 255 }
-            onChange={ changeRed }
-            style={{
-               color: 'red'
-            }}
-         />
+      <>
+         <h2>Change background color</h2>
+         <div className='background-sliders'>
 
-         <h3>Green</h3>
-         <PrettoSlider
-            valueLabelDisplay='auto'
-            aria-label='pretto slider'
-            value={ green }
-            min={ 0 }
-            max={ 255 }
-            onChange={ changeGreen }
-            style={{
-               color: 'green'
-            }}
-         />
+            <h3>Red</h3>
+            <PrettoSlider
+               valueLabelDisplay='auto'
+               aria-label='pretto slider'
+               value={red}
+               min={0}
+               max={255}
+               onChange={changeRed}
+               style={{
+                  color: 'red'
+               }}
+            />
 
-         <h3>Blue</h3>
-         <PrettoSlider
-            valueLabelDisplay='auto'
-            aria-label='pretto slider'
-            value={ blue }
-            min={ 0 }
-            max={ 255 }
-            onChange={ changeBlue }
-            style={{
-               color: 'blue'
-            }}
-         />
-      </div>
+            <h3>Green</h3>
+            <PrettoSlider
+               valueLabelDisplay='auto'
+               aria-label='pretto slider'
+               value={green}
+               min={0}
+               max={255}
+               onChange={changeGreen}
+               style={{
+                  color: 'green'
+               }}
+            />
+
+            <h3>Blue</h3>
+            <PrettoSlider
+               valueLabelDisplay='auto'
+               aria-label='pretto slider'
+               value={blue}
+               min={0}
+               max={255}
+               onChange={changeBlue}
+               style={{
+                  color: 'blue'
+               }}
+            />
+         </div>
+      </>
    )
 }
 

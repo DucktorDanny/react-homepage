@@ -34,42 +34,43 @@ const FavoriteList = ({ favorites, editFunction, removeFunction, onDragEnd }) =>
 	const renderDraggable = useDraggableInPortal();
 
 	return (
-
-		<DragDropContext onDragEnd={ onDragEnd }>
-			<Droppable droppableId='droppable'>
-				{(provided, snapshot) => (
-					<div
-						{ ...provided.droppableProps }
-						ref={ provided.innerRef }
-						className='droppable'
-					>
-						{favorites.map((fav, index) => (
-							<Draggable key={ `${index}-fav` } draggableId={ `${index}-fav` } index={ index }>
-								{renderDraggable(provided => (
-									<div
-										ref={ provided.innerRef }
-										{ ...provided.draggableProps }
-										{ ...provided.dragHandleProps }
-										className='draggable'
-									>
-										<FavoriteListElement
-											key={ index }
-											data_key={ index }
-											name={ fav.name }
-											url={ fav.url }
-											editFunction={ editFunction }
-											removeFunction={ removeFunction }
-										/>
-									</div>
-								))}
-							</Draggable>
-						))}
-						{provided.placeholder}
-					</div>
-				)}
-			</Droppable>
-		</DragDropContext>
-// </div>
+		<>
+			<h2>Favorite changes</h2>
+			<DragDropContext onDragEnd={onDragEnd}>
+				<Droppable droppableId='droppable'>
+					{(provided, snapshot) => (
+						<div
+							{...provided.droppableProps}
+							ref={provided.innerRef}
+							className='droppable'
+						>
+							{favorites.map((fav, index) => (
+								<Draggable key={`${index}-fav`} draggableId={`${index}-fav`} index={index}>
+									{renderDraggable(provided => (
+										<div
+											ref={provided.innerRef}
+											{...provided.draggableProps}
+											{...provided.dragHandleProps}
+											className='draggable'
+										>
+											<FavoriteListElement
+												key={index}
+												data_key={index}
+												name={fav.name}
+												url={fav.url}
+												editFunction={editFunction}
+												removeFunction={removeFunction}
+											/>
+										</div>
+									))}
+								</Draggable>
+							))}
+							{provided.placeholder}
+						</div>
+					)}
+				</Droppable>
+			</DragDropContext>
+		</>
 	)
 }
 
