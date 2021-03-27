@@ -1,1 +1,0 @@
-{"name":"Ducktor Homepage","description":"A homepage where you can add favorites, set greeting, background and much more...","version":"1.5.1","manifest_version":2,"permissions":["tabs"],"background":{"scripts":["background.js"]},"content_security_policy":"script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"}
