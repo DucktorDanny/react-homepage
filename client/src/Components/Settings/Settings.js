@@ -25,7 +25,7 @@ const Settings = ({
 	greeting,
 	favoritesArray,
 	backgroundColor,
-	
+
 	// getter functions:
 	getFavorites,
 	getGreetingPronouns,
@@ -190,6 +190,7 @@ const Settings = ({
 	}
 
 	const saveChanges = (event) => {
+		console.log('save changes in settings');
 		if (event) {
 			event.preventDefault();
 		}
@@ -199,7 +200,7 @@ const Settings = ({
 			.replace('), rgb(164, 164, 164))', '')
 			.split(', ');
 		
-		const datas = {
+		const data = {
 			showElements: {
 				calendar: showCalendar,
 				favorites: showFavorites,
@@ -223,7 +224,7 @@ const Settings = ({
 		greeting.pronouns = greetingPronouns;
 		greeting.emoji = greetingEmoji;
 
-		localStorage.setItem('datas', JSON.stringify(datas));
+		localStorage.setItem('data', JSON.stringify(data));
 		createNotification('Success', 'Changes have been saved!', 'success');
 	}
 
@@ -299,6 +300,8 @@ const Settings = ({
 
 					<Line />
 
+					{/* It should be able to collapsable. */}
+					
 					<FavoriteList
 						favorites={favorites}
 						setFavorites={setFavorites}

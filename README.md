@@ -132,98 +132,37 @@ const data = {
 
 ### Events
 
-JSON:
-```json
+Date.getTime() is the key and all event has a title and a content
+
+```js
 {
-   "27/02/2021": [
+   "1616713200000": [
       {
          "title": "Something",
-         "content": "It is a content for something..."
-      },
-      {
-         "title": "Something1",
-         "content": "It is a content for something1..."
-      },
-      {
-         "title": "Something2",
-         "content": "It is a content for something2..."
+         "content": "This is also something what you could write here."
       }
    ],
-   "26/02/2021": [
+   "1631570400000": [
+      {
+         "title": "Something 2",
+         "content": "alskd jas daskl jdlask djaslk jd"
+      }
+   ],
+   "1616799600000": [
+      {
+         "title": "Asd",
+         "content": "ADASD jasl djasl djals jdlasd"
+      },
       {
          "title": "Nothing",
-         "content": "It is a content for nothing..."
-      },
+         "content": "ajd lsaj dlasjk dlajs dlk"
+      }
+   ],
+   "1616886000000": [
       {
-         "title": "Nothing1",
-         "content": "It is a content for nothing1..."
-      },
-      {
-         "title": "Nothing2",
-         "content": "It is a content for nothing2..."
+         "title": "This is a new day",
+         "content": "This is another test event for the next day. Let's see how well it works."
       }
    ]
-}
-```
-
-JavaScript Object:
-```js
-const events = [
-   '27/02/2021': [
-      {
-         title: 'Something',
-         content: 'It is a content for something...',
-      },
-      {
-         title: 'Something1',
-         content: 'It is a content for something1...',
-      },
-      {
-         title: 'Something2',
-         content: 'It is a content for something2...',
-      },
-   ],
-   '26/02/2021': [
-      {
-         title: 'Nothing',
-         content: 'It is a content for nothing...',
-      },
-      {
-         content: 'It is a content for nothing1...',
-         title: 'Nothing1',
-      },
-      {
-         title: 'Nothing2',
-         content: 'It is a content for nothing2...',
-      },
-   ]
-]
-```
-
-Maybe I should use this type of structure for storing events:
-```js
-const events = {
-	2021: {
-		3: {
-			21: [
-				{
-					title: 'asd',
-					content: 'something',
-				},
-				{
-					title: 'asd',
-					content: 'something',
-				},
-			]
-		},
-		4: {
-			22: [
-				{
-					title: 'asd',
-					content: 'something',
-				},
-			]
-		}
-	}
 }
 ```

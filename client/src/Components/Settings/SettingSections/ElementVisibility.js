@@ -8,7 +8,13 @@ const ElementVisibility = ({
    showCalendar, setShowCalendar,
    showNotifications, setShowNotifications
 }) => {
-
+   /**
+    * I was thinking that the useStates and useEffects what belongs mainly to these should be here,
+    * but I came to that conclusion that this might be much easier if I have access to all of them there.
+    * However I might try it again where I would have getters and in Settings.js I would have access to these.
+    * 
+    * Think about it...
+    */
    return (
       <>
          <h2>Element visibility</h2>

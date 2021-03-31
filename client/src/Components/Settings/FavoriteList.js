@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { Button } from '@material-ui/core';
 import { createPortal } from 'react-dom';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import FavoriteListElement from './FavoriteListElement';
@@ -72,7 +73,7 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 	}
 
 	const modifyFavorite = (name, url, idx) => {
-
+		console.log('Modify favorite');
 		const isNameValid = name.length <= 20;
 		const isUrlValid = url.includes('http://') || url.includes('https://') || url === '';
 
@@ -159,6 +160,7 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 	}
 
 	const onDragEnd = (result) => {
+		console.log('onDragEnd');
 		// if the destinatin is null don't do anything
 		if (!result.destination) {
 			return;
@@ -178,9 +180,45 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 
 	// ___INSERTED___
 
+	const [showElements, setShowElements] = useState(false);
+
+	const collapsing = (e) => {
+		const droppable = document.querySelector('.droppable');
+		const arrow = document.querySelector('.rotate');
+		setShowElements(!showElements);
+		console.log(droppable);
+		if (droppable.style.maxHeight) {
+			droppable.style.maxHeight = null;
+			droppable.style.opacity = 0;
+			droppable.style.pointerEvents = 'none';
+			arrow.style.transform = 'rotate(0deg)';
+			setTimeout(() => {
+				droppable.style.overflow = 'hidden';
+			}, 400);
+		} else {
+			droppable.style.maxHeight = `${droppable.scrollHeight}px`;
+			droppable.style.opacity = 1;
+			droppable.style.pointerEvents = 'all';
+			droppable.style.overflow = 'visible';
+			arrow.style.transform = 'rotate(180deg)';
+		}
+	}
+
 	return (
 		<>
-			<h2>Favorite changes</h2>
+			<h2 style={{
+				marginBottom: '0'
+			}}>Favorite elements remove/edit</h2>
+			<Button
+               type='button'
+               variant='contained'
+               color='primary'
+               onClick={collapsing}
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" className="rotate" fill="#ffffff" viewBox="0 0 24 24">
+					<path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/>
+				</svg>
+			</Button>
 			<DragDropContext onDragEnd={onDragEnd}>
 				<Droppable droppableId='droppable'>
 					{(provided, snapshot) => (
@@ -215,6 +253,7 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 					)}
 				</Droppable>
 			</DragDropContext>
+
 		</>
 	)
 }

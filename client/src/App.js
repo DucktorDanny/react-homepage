@@ -14,10 +14,10 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import './AppStyle/App.css';
 
-const datas = JSON.parse(localStorage.getItem('datas'));
+const data = JSON.parse(localStorage.getItem('data'));
 const events = JSON.parse(localStorage.getItem('events')) || {};
 
-const showElements = datas ? datas.showElements : {
+const showElements = data ? data.showElements : {
    calendar: true,
    favorites: true,
 	greeting: true,
@@ -25,11 +25,11 @@ const showElements = datas ? datas.showElements : {
 	seconds: true,
 	twentyFourClockMode: false,
 };
-const greeting = datas ? datas.greeting : {
+const greeting = data ? data.greeting : {
    pronouns: 'friend',
    emoji: '🐣',
 };
-const favoritesArray = datas ? datas.favoritesArray : [
+const favoritesArray = data ? data.favoritesArray : [
    {
       name: 'Youtube',
       url: 'https://youtube.com',
@@ -39,7 +39,7 @@ const favoritesArray = datas ? datas.favoritesArray : [
       url: 'https://facebook.com'
    },
 ];
-const backgroundColor = datas ? datas.backgroundColor : {
+const backgroundColor = data ? data.backgroundColor : {
    R: 7,
    G: 55,
    B: 89,

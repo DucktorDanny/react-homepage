@@ -18,7 +18,7 @@ const ExportingImporting = ({ createNotification, setPopup }) => {
             const data = JSON.parse(importSettingsField.value);
    
             if (data.showElements && data.greeting && data.favoritesArray && data.backgroundColor) {
-               localStorage.setItem('datas', JSON.stringify(data));
+               localStorage.setItem('data', JSON.stringify(data));
                createNotification('Success', 'You have imported settings!', 'success');
                
                // easy way:
@@ -53,7 +53,7 @@ const ExportingImporting = ({ createNotification, setPopup }) => {
    const copySettingsData = (type) => {
 		try {
          if (type === 'settings') {
-            const data = localStorage.getItem('datas');
+            const data = localStorage.getItem('data');
       
             if (!data) {
                throw new Error('You have no saved data!');
@@ -90,7 +90,7 @@ const ExportingImporting = ({ createNotification, setPopup }) => {
    
    const resetSettings = () => {
 		try {
-			const datas = JSON.parse(localStorage.getItem('datas'));
+			const datas = JSON.parse(localStorage.getItem('data'));
 			if (!datas) {
 				throw new Error('There are no saved settings.');
 			} 
@@ -107,7 +107,7 @@ const ExportingImporting = ({ createNotification, setPopup }) => {
 				datas: {
 					title, content, acceptLabel, declineLabel,
 					onAccept: () => {
-						localStorage.removeItem('datas');
+						localStorage.removeItem('data');
 						// easy way:
 						window.location.reload(true);
 						setPopup({
