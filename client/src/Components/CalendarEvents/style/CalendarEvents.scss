@@ -43,7 +43,7 @@ $animationSpeed: .6s;
       padding: .5rem;
       transform: translate(25%, -25%);
       border-radius: 15px;
-      background: red;
+      background: rgb(142, 0, 0);
       transition: all .3s;
       cursor: pointer;
 
@@ -53,7 +53,7 @@ $animationSpeed: .6s;
       fill: white;
 
       &:hover {
-         background: rgb(142, 0, 0);
+         background: rgb(182, 0, 0);
       }
    }
    
@@ -77,6 +77,7 @@ $animationSpeed: .6s;
             font-size: 1rem;
             border: 1px solid white;
             border-radius: 10px;
+            margin: 0 .5rem;
          }
       }
    }
@@ -212,6 +213,7 @@ $animationSpeed: .6s;
 
          h3 {
             font-size: 1.5rem;
+            min-width: 100px;
          }
 
          p {

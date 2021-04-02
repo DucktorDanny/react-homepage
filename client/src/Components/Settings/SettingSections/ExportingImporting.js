@@ -104,28 +104,16 @@ const ExportingImporting = ({ createNotification, setPopup }) => {
 			setPopup({
 				type,
 				open: true,
-				datas: {
+				data: {
 					title, content, acceptLabel, declineLabel,
 					onAccept: () => {
 						localStorage.removeItem('data');
 						// easy way:
 						window.location.reload(true);
-						setPopup({
-							type,
-							open: false,
-							datas: {
-								title, content, acceptLabel, declineLabel
-							}
-						});
+						setPopup({});
 					},
 					onDecline: () => {
-						setPopup({
-							type,
-							open: false,
-							datas: {
-								title, content, acceptLabel, declineLabel
-							}
-						});
+						setPopup({});
 					}
 				}
 			});

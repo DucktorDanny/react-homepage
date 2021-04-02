@@ -20,7 +20,8 @@ const Settings = ({
 	// variables from localStorage
 	showElements,
 	greeting,
-	favoritesArray,
+	favorites,
+	setFavorites,
 	backgroundColor,
 	createNotification,
 
@@ -57,7 +58,7 @@ const Settings = ({
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
 
-	const [ favorites, setFavorites ] = useState(favoritesArray);
+	// const [ favorites, setFavorites ] = useState(favoritesArray);
 
 	const [popup, setPopup] = useState(Object);
 

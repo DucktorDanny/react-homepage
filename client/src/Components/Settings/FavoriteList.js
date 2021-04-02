@@ -40,40 +40,41 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 		setPopup(Object);
 		const favoriteIndex = parseInt(e.target.getAttribute('id'));
 
-		const type = 'favorite-edit';
 		const titleField = favorites[favoriteIndex].name;
 		const linkField = favorites[favoriteIndex].url;
-		const acceptLabel = 'Edit';
-		const declineLabel = 'Cancel';
-
-		console.log(titleField, linkField);
-
+		
 		setPopup({
-			type,
+			type: 'favorite-edit',
 			open: true,
 			data: {
-				titleField, linkField, acceptLabel, declineLabel,
-				onAccept: () => {
+				titleField,
+				linkField,
+				acceptLabel: 'Edit',
+				declineLabel: 'Cancel',
+				onAccept: (newTitle, newLink) => {
 					try {
+						if (!newTitle && !newLink) {
+							throw new Error('There were no changes!');
+						}
 						modifyFavorite(
-							document.querySelector('#favorite-edit-title').value,
-							document.querySelector('#favorite-edit-link').value,
+							newTitle || titleField,
+							newLink || linkField,
 							favoriteIndex
 						);
-						closeEditPopup({ type, titleField, linkField, acceptLabel, declineLabel });
+						setPopup({});
 					} catch(err) {
 						createNotification('Error', err.message, 'danger');
 					}
 				},
 				onDecline: () => {
-					closeEditPopup({ type, titleField, linkField, acceptLabel, declineLabel });		
+					setPopup({});
 				}
 			}
 		});
 	}
 
 	const modifyFavorite = (name, url, idx) => {
-		console.log('Modify favorite');
+		console.log('Modify favorite: ', name, url);
 		const isNameValid = name.length <= 20;
 		const isUrlValid = url.includes('http://') || url.includes('https://') || url === '';
 
@@ -81,31 +82,21 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 			if (name === '' && url === '') {
 				throw new Error('There are no changes!');
 			}
+
+			setFavorites(favs => favs.map((element, index) => {
+				if (idx === index) {
+					element.name = name;
+					element.url = url;
+				}
+				return element;
+			}));
 			
-			const favoriteElements = favorites;
-			
-			if (name !== '') favoriteElements[idx].name = name;
-			if (url !== '') favoriteElements[idx].url = url;
-			
-			setFavorites(favoriteElements);
 			saveChanges();
 		} else if (!isNameValid) {
 			throw new Error('The new name is too long!');
 		} else if (!isUrlValid) {
 			throw new Error('Invalid URL! It need contain https:// or http://!');
 		}
-	}
-
-	const closeEditPopup = ({ type, titleField, linkField, acceptLabel, declineLabel }) => {
-		document.querySelector('#favorite-edit-title').value = '';
-		document.querySelector('#favorite-edit-link').value = '';
-		setPopup({
-			type,
-			open: false,
-			data: {
-				titleField, linkField, acceptLabel, declineLabel
-			}
-		});
 	}	
 
 	const removeFavorite = (e) => {
@@ -115,16 +106,6 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 		const content = `Are you sure you want to remove the '${ favorites[favoriteIndex].name }' favorite?`;
 		const acceptLabel = 'Yes';
 		const declineLabel = 'Cancel';
-
-		const closePopup = () => {
-			setPopup({
-				type: 'accept-decline',
-				open: false,
-				data: {
-					title, content, acceptLabel, declineLabel,
-				}
-			});
-		};
 
 		console.log(favorites[favoriteIndex]);
 		setPopup({
@@ -142,10 +123,10 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 						}
 					}
 					setFavorites(test);
-					closePopup();
+					setPopup({});
 				},
 				onDecline: () => {
-					closePopup();
+					setPopup({});
 				}
 			}
 		});		

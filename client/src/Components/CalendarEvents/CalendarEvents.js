@@ -59,19 +59,6 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
    }
 
    const handleEventAdding = () => {
-      const closeEventAddingPopup = () => {
-         setPopup({
-            type: 'event-handler',
-            open: false,
-            data: {
-               acceptLabel: 'Add',
-               declineLabel: 'Cancel'
-            }
-         });
-         document.querySelector('#event-title-field').value = '';
-         document.querySelector('#event-content-field').value = '';
-         
-      }
       setPopup({
          type: 'event-handler',
          open: true,
@@ -94,7 +81,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
                   });
                   localStorage.setItem('events', JSON.stringify(events));
                   createNotification('Success', 'New event successfully added!', 'success');
-                  closeEventAddingPopup();
+                  setPopup({});
                   console.log(events);
                } catch(err) {
                   console.error(err.message);
@@ -102,7 +89,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
                }
             },
             onDecline: () => {
-               closeEventAddingPopup();
+               setPopup({});
             },
             acceptLabel: 'Add',
             declineLabel: 'Cancel'
@@ -110,35 +97,17 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
       });
    }
 
-   const eventOnRemove = (id, title, content, date) => {
-      const popupTitle = 'Remove';
-      const popupContent = 'Are you sure you want to remove this event?';
-      const acceptLabel = 'Yes';
-      const declineLabel = 'Cancel';
-
-      const closeRemovePopup = () => {
-         setPopup({
-            type: 'accept-decline',
-            open: false,
-            data: {
-               title: popupTitle,
-               content: popupContent,
-               acceptLabel,
-               declineLabel,
-            }
-         });
-      }
-      
+   const eventOnRemove = (id, title, content, date) => {      
       console.log(id, title, content, date);
 
       setPopup({
          type: 'accept-decline',
          open: true,
          data: {
-            title: popupTitle,
-            content: popupContent,
-            acceptLabel,
-            declineLabel,
+            title: 'Remove',
+            content: 'Are you sure you want to remove this event?',
+            acceptLabel: 'Yes',
+            declineLabel: 'Cancel',
             onAccept: () => {
                events[date].splice(id, 1);
 
@@ -150,15 +119,40 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
                
                localStorage.setItem('events', JSON.stringify(events));
                createNotification('Success', 'The event was successfully removed!', 'success');
-               closeRemovePopup();
+               setPopup({});
             },
             onDecline: () => {
-               closeRemovePopup();
+               setPopup({});
             }
          }
       });      
+   }
+
+   const removeAllEvents = () => {
+      console.log('Hahahah hello... so u wanna remove all events ha? haha not yet...');
+
+      setPopup({
+         type: 'accept-decline',
+         open: true,
+         data: {
+            title: 'Remove all events',
+            content: 'Are you sure you want to remove all events?',
+            acceptLabel: 'Yes',
+            declineLabel: 'Cancel',
+            onAccept: () => {
+               setPopup({});
+            },
+            onDecline: () => {
+               setPopup({});
+            }
+         }
+      })
 
    }
+
+   useEffect(() => {
+      console.log(popup);
+   }, [popup]);
 
    const createNotification = (title, message, type) => {
 		store.addNotification({
@@ -219,6 +213,15 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
                         color='primary'
                         onClick={handleEventAdding}
                      >Add new event</Button>
+                     <Button
+                        type='button'
+                        variant='contained'
+                        style={{
+                           color: 'white',
+                           background: 'rgb(142, 0, 0)'
+                        }}
+                        onClick={removeAllEvents}
+                     >Remove all events</Button>
                   </section>
 
                </div>

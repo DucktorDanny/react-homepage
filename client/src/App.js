@@ -162,7 +162,8 @@ const App = () => {
 					// props
 					showElements={ showElements }
 					greeting={ greeting }
-					favoritesArray={ favoritesArray }
+					favorites={favorites}
+					setFavorites={setFavorites}
 					backgroundColor={ backgroundColor }
 					createNotification={createNotification}
 					// getters

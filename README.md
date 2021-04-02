@@ -59,6 +59,7 @@ https://ducktor-homepage.vercel.app
    * Close icon 1: https://iconmonstr.com/x-mark-8-svg/
    * Close icon 2: https://iconmonstr.com/x-mark-11-svg/
    * Edit icon: https://iconmonstr.com/pencil-15-svg/
+   * Show all favorites in Settings: https://iconmonstr.com/arrow-65-svg/
 
 * Marketing Side Image Viewer:
    * react-image-gallery: https://www.npmjs.com/package/react-image-magnify

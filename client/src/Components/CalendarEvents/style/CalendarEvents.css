@@ -37,7 +37,7 @@
   padding: 0.5rem;
   transform: translate(25%, -25%);
   border-radius: 15px;
-  background: red;
+  background: #8e0000;
   transition: all 0.3s;
   cursor: pointer;
   display: flex;
@@ -46,7 +46,7 @@
   fill: white;
 }
 .calendar-events .calendar-events-close:hover {
-  background: #8e0000;
+  background: #b60000;
 }
 .calendar-events .events-container {
   height: calc(100% - 3.25rem);
@@ -67,6 +67,7 @@
   font-size: 1rem;
   border: 1px solid white;
   border-radius: 10px;
+  margin: 0 0.5rem;
 }
 .calendar-events .event-card {
   position: relative;
@@ -177,6 +178,7 @@
   }
   .calendar-events .event-card h3 {
     font-size: 1.5rem;
+    min-width: 100px;
   }
   .calendar-events .event-card p {
     font-size: 1.1rem;

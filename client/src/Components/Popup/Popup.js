@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TextField, Button } from '@material-ui/core';
 // import { Grid } from '@material-ui/core';
 // import DateFnsUtils from '@date-io/date-fns';
@@ -11,42 +11,64 @@ const Popup = ({
    open,
    data
 }) => {
+   const [cache, setCache] = useState(null);
+
    const onDeclineByBackground = (e) => {
       if (e.target.classList.contains('popup-container')) {
          data.onDecline();
       }
    }
+
+   useEffect(() => {
+      // console.log(type, open, data);
+      if (type && open && data) {
+         setCache({
+            type, open, data
+         });
+      } else if (cache && !type && !open && !data) {
+         setCache({...cache, open: false});
+      }
+   }, [type, open, data]);
+
+   useEffect(() => {
+      console.log(cache);
+      if (cache) {
+         console.log(cache.data);
+      }
+   }, [cache]);
+
    return (
-      <div onClick={onDeclineByBackground} className={open === true ? 'popup-container' : open === false ? 'popup-container popup-container-hidden' : 'popup-load'} >
+      <div onClick={onDeclineByBackground} className={cache ? cache.open === true ? 'popup-container' : cache.open === false ? 'popup-container popup-container-hidden' : 'popup-load' : ''} >
          <div className='popup-box'>
             {
-               type === 'accept-decline'
+               cache ?
+               cache.type === 'accept-decline'
                   ? <AcceptDecline
-                     title={data.title}
-                     content={data.content}
-                     acceptLabel={data.acceptLabel}
-                     declineLabel={data.declineLabel}
-                     onAccept={data.onAccept}
-                     onDecline={data.onDecline}
+                     title={cache.data.title}
+                     content={cache.data.content}
+                     acceptLabel={cache.data.acceptLabel}
+                     declineLabel={cache.data.declineLabel}
+                     onAccept={cache.data.onAccept}
+                     onDecline={cache.data.onDecline}
                   />
-               : type === 'favorite-edit'
+               : cache.type === 'favorite-edit'
                      ? <FavoriteEdit
-                        titleField={data.titleField}
-                        linkField={data.linkField}
-                        acceptLabel={data.acceptLabel}
-                        declineLabel={data.declineLabel}
-                        onAccept={data.onAccept}
-                        onDecline={data.onDecline}
+                        titleField={cache.data.titleField}
+                        linkField={cache.data.linkField}
+                        acceptLabel={cache.data.acceptLabel}
+                        declineLabel={cache.data.declineLabel}
+                        onAccept={cache.data.onAccept}
+                        onDecline={cache.data.onDecline}
                      />
-               : type === 'event-handler'
-               ? <EventHandler
-                     date={data.date}
-                     onAccept={data.onAccept}
-                     onDecline={data.onDecline}
-                     acceptLabel={data.acceptLabel}
-                     declineLabel={data.declineLabel}
+               : cache.type === 'event-handler'
+                  ? <EventHandler
+                     date={cache.data.date}
+                     onAccept={cache.data.onAccept}
+                     onDecline={cache.data.onDecline}
+                     acceptLabel={cache.data.acceptLabel}
+                     declineLabel={cache.data.declineLabel}
                   />
-               : ''
+               : '' : ''
             }
          </div>
       </div >
@@ -91,12 +113,14 @@ const FavoriteEdit = ({
    onAccept,
    onDecline
 }) => {
+   const [newTitle, setNewTitle] = useState(null);
+   const [newLink, setNewLink] = useState(null);
+
    return (
       <>
          <h1>Edit</h1>
-         <Line />
+         {/* <Line /> */}
          <div className='textfields'>
-            <h2>{titleField}</h2>
             <TextField
                id='favorite-edit-title'
                className='edit-textfield'
@@ -104,8 +128,9 @@ const FavoriteEdit = ({
                type='text'
                label='New title'
                variant='outlined'
+               value={newTitle !== null ? newTitle : titleField}
+               onChange={(e) => setNewTitle(e.target.value)}
             />
-            <h2>{linkField}</h2>
             <TextField
                id='favorite-edit-link'
                className='edit-textfield'
@@ -113,6 +138,8 @@ const FavoriteEdit = ({
                type='text'
                label='New link'
                variant='outlined'
+               value={newLink !== null ? newLink : linkField}
+               onChange={(e) => setNewLink(e.target.value)}
             />
          </div>
 
@@ -121,7 +148,14 @@ const FavoriteEdit = ({
                type='button'
                variant='contained'
                className='popup-button-accept'
-               onClick={onAccept}
+                  // here we should pass a state with the value of textfield
+               onClick={() => {
+                  onAccept(newTitle, newLink);
+                  setTimeout(() => {
+                     setNewTitle(null);
+                     setNewLink(null);
+                  }, 500);
+               }}
             >{acceptLabel}</Button>
             <Button
                type='button'
