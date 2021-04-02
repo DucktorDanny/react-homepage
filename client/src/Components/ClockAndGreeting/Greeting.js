@@ -26,13 +26,13 @@ const Greeting = ({ pronouns, emojis }) => {
             emojisProp.current = emojis;
          }
    
-         if (currentHour > 21) {
+         if (currentHour > 19) {
             setGreetings(`Good night, ${pronounsProp.current}!  ${emojisProp.current}`);
-         } else if (currentHour > 17) {
+         } else if (currentHour > 16) {
             setGreetings(`Good evening, ${pronounsProp.current}!  ${emojisProp.current}`);
-         } else if (currentHour > 12) {
+         } else if (currentHour > 11) {
             setGreetings(`Good afternoon, ${pronounsProp.current}!  ${emojisProp.current}`);
-         } else if (currentHour > 5) {
+         } else if (currentHour > 2) {
             setGreetings(`Good morning, ${pronounsProp.current}! ${emojisProp.current}`);
          } else {
             setGreetings(`Good night, ${pronounsProp.current}!  ${emojisProp.current}`);

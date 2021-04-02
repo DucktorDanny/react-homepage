@@ -51,7 +51,7 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 		setPopup({
 			type,
 			open: true,
-			datas: {
+			data: {
 				titleField, linkField, acceptLabel, declineLabel,
 				onAccept: () => {
 					try {
@@ -102,7 +102,7 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 		setPopup({
 			type,
 			open: false,
-			datas: {
+			data: {
 				titleField, linkField, acceptLabel, declineLabel
 			}
 		});
@@ -120,7 +120,7 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 			setPopup({
 				type: 'accept-decline',
 				open: false,
-				datas: {
+				data: {
 					title, content, acceptLabel, declineLabel,
 				}
 			});
@@ -130,7 +130,7 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 		setPopup({
 			type: 'accept-decline',
 			open: true,
-			datas: {
+			data: {
 				title, content, acceptLabel, declineLabel,
 				onAccept: () => {
 					// remove in a state array:

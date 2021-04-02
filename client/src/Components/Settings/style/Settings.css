@@ -6,11 +6,11 @@
 
 .settings {
   position: fixed;
-  top: 5rem;
+  top: 6rem;
   right: 0;
-  height: calc(100% - 8rem);
+  height: calc(100% - 9rem);
   margin: 2rem 1rem;
-  width: 500px;
+  width: 450px;
   background: linear-gradient(30deg, rgba(164, 164, 164, 0.5), rgba(186, 186, 186, 0.8));
   backdrop-filter: blur(15px);
   border-radius: 15px;
@@ -21,6 +21,7 @@
   overflow: hidden;
 }
 .settings h1 {
+  font-family: "Comic Neue Bold";
   font-size: 36px;
   text-align: center;
   margin: 1rem;
@@ -37,9 +38,11 @@
   scrollbar-color: rgba(255, 255, 255, 0.8) transparent !important;
 }
 .settings .settings-form h2 {
+  font-family: "Comic Neue Bold";
   margin: 1rem;
   font-size: 26px;
   text-align: center;
+  width: 60%;
 }
 .settings .settings-form button {
   margin: 1rem;
@@ -200,7 +203,7 @@
   margin: 0 auto 1rem;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 500px) {
   .settings {
     width: calc(100% - 2rem);
   }

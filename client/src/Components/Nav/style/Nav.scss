@@ -27,8 +27,7 @@ nav {
       height: 100px;
       width: 100%;
       display: flex;
-      // flex-wrap: wrap;
-      // overflow-x: auto;
+
       overflow-y: hidden;
       overflow-x: scroll;
 
@@ -42,14 +41,6 @@ nav {
          border-radius: 10px;
          background-color: rgba(255, 255, 255, 0.5);
        }
-      
-      // &::-webkit-scrollbar {
-      //    max-height: 10px;
-      // }
-
-      // border: 1px solid red;
-      // padding-bottom: 1rem;
-      // box-sizing: border-box;
       animation: slide-down-show $animationSpeed ease-in-out;
       animation-fill-mode: forwards;
 
@@ -110,12 +101,6 @@ nav {
             opacity: 0;
             transition: all .4s;
          }
-
-         &:hover {
-            // .fav-full-title {
-            //    opacity: 1;
-            // }
-         }
       }
 
    }
@@ -127,7 +112,8 @@ nav {
 
    .burger {
       margin: 2rem;
-      margin-left: auto;
+      margin-left: 0;
+      // margin-left: auto;
       min-width: 35px;
       max-width: 35px;
       animation: fade-in $animationSpeed ease-in-out;

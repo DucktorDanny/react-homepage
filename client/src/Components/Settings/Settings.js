@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@material-ui/core';
-import ReactNotifications, { store } from 'react-notifications-component';
-import 'react-notifications-component/dist/theme.css';
-import 'animate.css/animate.min.css';
 
 // Own Components:
 import Line from './Line';
@@ -25,6 +22,7 @@ const Settings = ({
 	greeting,
 	favoritesArray,
 	backgroundColor,
+	createNotification,
 
 	// getter functions:
 	getFavorites,
@@ -56,8 +54,8 @@ const Settings = ({
 	);
 
 	// greeting
-	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns || 'friend');
-	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji || '🐣');
+	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
+	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
 
 	const [ favorites, setFavorites ] = useState(favoritesArray);
 
@@ -227,30 +225,13 @@ const Settings = ({
 		localStorage.setItem('data', JSON.stringify(data));
 		createNotification('Success', 'Changes have been saved!', 'success');
 	}
-
-	/*
-	 * It is a template or pattern for the imported addNotification to be easier to use it
-	 * and by this you don't have to specify so many properties every time.
-	 */
-	const createNotification = (title, message, type) => {
-		store.addNotification({
-			title, message, type,
-			container: 'bottom-center',
-			animationIn: ['animate__animated animate__flipInX'],
-			animationOut: ['animate__animated animate__fadeOut'],
-			dismiss: {
-				duration: 3000
-			}
-		});
-	}
 	
 	return (
 		<>
-			<ReactNotifications />
 			<Popup
 				type={popup.type}
 				open={popup.open}
-				datas={popup.datas}
+				data={popup.data}
 			/>
 			<div className='settings'>
 				<h1>Settings</h1>
@@ -300,8 +281,6 @@ const Settings = ({
 
 					<Line />
 
-					{/* It should be able to collapsable. */}
-					
 					<FavoriteList
 						favorites={favorites}
 						setFavorites={setFavorites}

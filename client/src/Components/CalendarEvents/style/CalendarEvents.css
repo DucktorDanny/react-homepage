@@ -82,6 +82,9 @@
   box-shadow: 5px 5px 10px 1px rgba(70, 70, 70, 0.2);
   cursor: pointer;
 }
+.calendar-events .event-card h3 {
+  font-family: "Comic Neue Bold";
+}
 .calendar-events .event-card h3, .calendar-events .event-card p, .calendar-events .event-card label {
   cursor: pointer;
   margin: 0 1.5rem;
@@ -147,6 +150,9 @@
   background: rgba(70, 70, 70, 0.2);
   padding: 0.5rem;
   border-radius: 0.8rem 0.4rem 0 0;
+}
+.event-notifications-container .event-notification .event-notification-title h1 {
+  font-family: "Comic Neue Bold";
 }
 .event-notifications-container .event-notification p {
   padding: 1rem;

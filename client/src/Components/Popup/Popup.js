@@ -9,11 +9,11 @@ import './style/Popup.css';
 const Popup = ({
    type,
    open,
-   datas
+   data
 }) => {
    const onDeclineByBackground = (e) => {
       if (e.target.classList.contains('popup-container')) {
-         datas.onDecline();
+         data.onDecline();
       }
    }
    return (
@@ -22,29 +22,29 @@ const Popup = ({
             {
                type === 'accept-decline'
                   ? <AcceptDecline
-                     title={datas.title}
-                     content={datas.content}
-                     acceptLabel={datas.acceptLabel}
-                     declineLabel={datas.declineLabel}
-                     onAccept={datas.onAccept}
-                     onDecline={datas.onDecline}
+                     title={data.title}
+                     content={data.content}
+                     acceptLabel={data.acceptLabel}
+                     declineLabel={data.declineLabel}
+                     onAccept={data.onAccept}
+                     onDecline={data.onDecline}
                   />
                : type === 'favorite-edit'
                      ? <FavoriteEdit
-                        titleField={datas.titleField}
-                        linkField={datas.linkField}
-                        acceptLabel={datas.acceptLabel}
-                        declineLabel={datas.declineLabel}
-                        onAccept={datas.onAccept}
-                        onDecline={datas.onDecline}
+                        titleField={data.titleField}
+                        linkField={data.linkField}
+                        acceptLabel={data.acceptLabel}
+                        declineLabel={data.declineLabel}
+                        onAccept={data.onAccept}
+                        onDecline={data.onDecline}
                      />
                : type === 'event-handler'
                ? <EventHandler
-                     date={datas.date}
-                     onAccept={datas.onAccept}
-                     onDecline={datas.onDecline}
-                     acceptLabel={datas.acceptLabel}
-                     declineLabel={datas.declineLabel}
+                     date={data.date}
+                     onAccept={data.onAccept}
+                     onDecline={data.onDecline}
+                     acceptLabel={data.acceptLabel}
+                     declineLabel={data.declineLabel}
                   />
                : ''
             }

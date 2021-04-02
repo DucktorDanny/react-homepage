@@ -63,7 +63,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
          setPopup({
             type: 'event-handler',
             open: false,
-            datas: {
+            data: {
                acceptLabel: 'Add',
                declineLabel: 'Cancel'
             }
@@ -75,7 +75,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
       setPopup({
          type: 'event-handler',
          open: true,
-         datas: {
+         data: {
             onAccept: (title, content, date) => {
                try {
                   // console.log('Add', title, content, date);
@@ -120,7 +120,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
          setPopup({
             type: 'accept-decline',
             open: false,
-            datas: {
+            data: {
                title: popupTitle,
                content: popupContent,
                acceptLabel,
@@ -134,7 +134,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
       setPopup({
          type: 'accept-decline',
          open: true,
-         datas: {
+         data: {
             title: popupTitle,
             content: popupContent,
             acceptLabel,
@@ -228,7 +228,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
          <Popup
             type={popup.type}
             open={popup.open}
-            datas={popup.datas}
+            data={popup.data}
          />
          <ReactNotifications />
       </>

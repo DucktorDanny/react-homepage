@@ -91,7 +91,7 @@ nav .favorites-hidden {
 }
 nav .burger {
   margin: 2rem;
-  margin-left: auto;
+  margin-left: 0;
   min-width: 35px;
   max-width: 35px;
   animation: fade-in 0.6s ease-in-out;
