@@ -3,15 +3,11 @@ import { Button } from '@material-ui/core';
 
 import AllEvents from './AllEvents';
 import SelectedDateEvent from './SelectedDateEvent';
-// import EventNotification from './EventNotification';
 import Popup from '../Popup/Popup';
 
-import ReactNotifications, { store } from 'react-notifications-component';
-import 'react-notifications-component/dist/theme.css';
-import 'animate.css/animate.min.css';
 import './style/CalendarEvents.css';
 
-const CalendarEvents = ({ date, events, show, onClose }) => {
+const CalendarEvents = ({ date, events, show, onClose, createNotification }) => {
 
    // const [eventsState, setEventsState]
    const [selectedDate, setSelectedDate] = useState(date);
@@ -63,6 +59,7 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
          type: 'event-handler',
          open: true,
          data: {
+            date: !isAllEventsSelected ? selectedDate : null,
             onAccept: (title, content, date) => {
                try {
                   // console.log('Add', title, content, date);
@@ -131,42 +128,44 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
    const removeAllEvents = () => {
       console.log('Hahahah hello... so u wanna remove all events ha? haha not yet...');
 
-      setPopup({
-         type: 'accept-decline',
-         open: true,
-         data: {
-            title: 'Remove all events',
-            content: 'Are you sure you want to remove all events?',
-            acceptLabel: 'Yes',
-            declineLabel: 'Cancel',
-            onAccept: () => {
-               setPopup({});
-            },
-            onDecline: () => {
-               setPopup({});
-            }
+      // selectedDate
+      // isAllEventsSelected
+      try {
+         if (Object.entries(events).length === 0 || (!isAllEventsSelected && !events[selectedDate])) {
+            throw new Error('There are no events!');
          }
-      })
-
+         setPopup({
+            type: 'accept-decline',
+            open: true,
+            data: {
+               title: 'Remove all events',
+               content: `Are you sure you want to remove all events${isAllEventsSelected 
+                  ? ''
+                  : ` from this day (${new Date(selectedDate).toDateString()})`}?`,
+               acceptLabel: 'Yes',
+               declineLabel: 'Cancel',
+               onAccept: () => {
+                  if (isAllEventsSelected) {
+                     Object.entries(events).forEach(day => delete events[day[0]]);
+                  } else {
+                     delete events[selectedDate];
+                  }
+                  localStorage.setItem('events', JSON.stringify(events));
+                  setPopup({});
+               },
+               onDecline: () => {
+                  setPopup({});
+               }
+            }
+         });
+      } catch (err) {
+         createNotification('Error', err.message, 'danger')
+      }
    }
 
    useEffect(() => {
       console.log(popup);
    }, [popup]);
-
-   const createNotification = (title, message, type) => {
-		store.addNotification({
-			title,
-			message,
-			type,
-			container: 'bottom-center',
-			animationIn: ['animate__animated animate__flipInX'],
-			animationOut: ['animate__animated animate__fadeOut'],
-			dismiss: {
-				duration: 3000
-			}
-		});
-	}
 
    useEffect(() => {
       if (selectedDate) {
@@ -233,7 +232,6 @@ const CalendarEvents = ({ date, events, show, onClose }) => {
             open={popup.open}
             data={popup.data}
          />
-         <ReactNotifications />
       </>
    )
 }

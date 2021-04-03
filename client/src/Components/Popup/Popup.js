@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { TextField, Button } from '@material-ui/core';
 // import { Grid } from '@material-ui/core';
 // import DateFnsUtils from '@date-io/date-fns';
@@ -12,6 +12,7 @@ const Popup = ({
    data
 }) => {
    const [cache, setCache] = useState(null);
+   const cacheRef = useRef(null);
 
    const onDeclineByBackground = (e) => {
       if (e.target.classList.contains('popup-container')) {
@@ -22,20 +23,14 @@ const Popup = ({
    useEffect(() => {
       // console.log(type, open, data);
       if (type && open && data) {
-         setCache({
+         cacheRef.current = {
             type, open, data
-         });
-      } else if (cache && !type && !open && !data) {
-         setCache({...cache, open: false});
+         };
+         setCache(cacheRef.current);
+      } else if (cacheRef.current && !type && !open && !data) {
+         setCache({...cacheRef.current, open: false});
       }
    }, [type, open, data]);
-
-   useEffect(() => {
-      console.log(cache);
-      if (cache) {
-         console.log(cache.data);
-      }
-   }, [cache]);
 
    return (
       <div onClick={onDeclineByBackground} className={cache ? cache.open === true ? 'popup-container' : cache.open === false ? 'popup-container popup-container-hidden' : 'popup-load' : ''} >
@@ -119,7 +114,7 @@ const FavoriteEdit = ({
    return (
       <>
          <h1>Edit</h1>
-         {/* <Line /> */}
+         <Line />
          <div className='textfields'>
             <TextField
                id='favorite-edit-title'
@@ -169,35 +164,33 @@ const FavoriteEdit = ({
 }
 
 const EventHandler = ({
-   title,
-   content,
    date,
    onAccept,
    onDecline,
    acceptLabel,
    declineLabel
 }) => {
-   const [chosenTitle, setChosenTitle] = useState(title || '');
-   const [chosenContent, setChosenContent] = useState(content || '');
-   const [selectedDate, setSelectedDate] = useState(date || new Date());
+   const [chosenTitle, setChosenTitle] = useState('');
+   const [chosenContent, setChosenContent] = useState('');
+   const [selectedDate, setSelectedDate] = useState(date  ? date : new Date().getTime());
 
-   const handleTitleChange = (e) => {
-      setChosenTitle(e.target.value);
-   }
+   useEffect(() => {
+      console.log(date);
+      if (date) {
+         setSelectedDate(date);
+      } else {
+         setSelectedDate(new Date().getTime());
+      }
+   }, [date]);
 
-   const handleContentChange = (e) => {
-      setChosenContent(e.target.value);
-   }
-
-   const handleDateChange = (e) => {
-      setSelectedDate(e.target.value);
-   }
+   useEffect(() => {
+      console.log(selectedDate);
+   }, [selectedDate])
 
    return (
       <>
          <h1>Add new event</h1>
          <div className='textfields'>
-            {/* <h2>Title</h2> */}
             <TextField
                id='event-title-field'
                className='edit-textfield'
@@ -205,9 +198,9 @@ const EventHandler = ({
                type='text'
                label='Title'
                variant='outlined'
-               onChange={handleTitleChange}
+               value={chosenTitle}
+               onChange={(e) => setChosenTitle(e.target.value)}
             />
-            {/* <h2>Content</h2> */}
             <TextField
                id='event-content-field'
                className='edit-textfield'
@@ -215,18 +208,20 @@ const EventHandler = ({
                type='text'
                label='Content'
                variant='outlined'
-               onChange={handleContentChange}
+               value={chosenContent}
+               onChange={(e) => setChosenContent(e.target.value)}
             />
             <TextField
                id='date'
                label='Event date'
                type='date'
-               defaultValue={new Date().toLocaleDateString('hu-HU').split('. ').join('-').replace('.', '')}
+               // defaultValue={}
                className='date-picker'
                InputLabelProps={{
                   shrink: true,
                }}
-               onChange={handleDateChange}
+               value={new Date(selectedDate).toLocaleDateString('hu-HU').split('. ').join('-').replace('.', '')}
+               onChange={(e) => setSelectedDate(e.target.value)}
             />
          </div>
 
@@ -235,7 +230,14 @@ const EventHandler = ({
                type='button'
                variant='contained'
                className='popup-button-accept'
-               onClick={(e) => onAccept(chosenTitle, chosenContent, selectedDate)}
+               onClick={(e) => {
+                  onAccept(chosenTitle, chosenContent, selectedDate);
+                  setTimeout(() => {
+                     setChosenTitle('');
+                     setChosenContent('');
+                     setSelectedDate(new Date().getTime());
+                  }, 500);
+               }}
             >{acceptLabel}</Button>
             <Button
                type='button'

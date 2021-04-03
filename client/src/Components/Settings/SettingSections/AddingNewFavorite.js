@@ -1,55 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TextField, Button } from '@material-ui/core';
 
 import '../style/Settings.css';
 
 const AddingNewFavorite = ({ favorites, setFavorites, createNotification }) => {
-
-   const [ isFavoriteNameValid, setIsFavoriteNameValid ] = useState(true);
-	const [ isFavoriteUrlValid, setIsFavoriteUrlValid ] = useState(true);
-
-   const checkAddForm = (e) => {
-		const favoriteField = e.target;
-
-		if (favoriteField.value === '' && favoriteField.name === 'favorite-add-link') {
-			setIsFavoriteUrlValid(true);
-		} else if (favoriteField.name === 'favorite-add-name') {
-			setIsFavoriteNameValid(favoriteField.value.length <= 20);
-		}
-	}
+   
+   const [newFavName, setNewFavName] = useState('');
+   const [newFavUrl, setNewFavUrl] = useState('');
+   const [ isNewFavUrlValid, setIsNewFavUrlValid ] = useState(false);
 
    const addNewFavorite = () => {
-		const form = document.querySelector('.settings-form');
-		const formData = new FormData(form);
+      try {
+         if (newFavName === '' || newFavUrl === '') {
+            throw new Error('Name and url are required!');
+         }
 
-		const name = formData.get('favorite-add-name');
-		const url = formData.get('favorite-add-link');
+         if (!isNewFavUrlValid) {
+            throw new Error('Url is invalid!');
+         }
 
-		try {
-			const isNameValid = name.length <= 20;
-			const isUrlValid = url.includes('http://') || url.includes('https://') || url === '';
-			
-			setIsFavoriteNameValid(isNameValid);
-			setIsFavoriteUrlValid(isUrlValid);
-			
-			if (name === '' || url === '') {
-				throw new Error('Name and Url is required!');
-			}
+         const newFav = {
+            name: newFavName,
+            url: newFavUrl,
+         };
 
-			if (isNameValid && isUrlValid) {
-				const newFavorite = {
-					name: name,
-					url: url
-				};
-	
-				setFavorites([...favorites, newFavorite]);
-	
-				form.reset();
-			}
-		} catch (err) {
-			createNotification('Error', err.message, 'danger');
-		}
-	}
+         setFavorites([...favorites, newFav]);
+         setNewFavName('');
+         setNewFavUrl('');
+      } catch (err) {
+         createNotification('Error', err.message, 'danger');
+      }
+   }
+
+   useEffect(() => {
+      setIsNewFavUrlValid(
+         (newFavUrl.includes('http://') || newFavUrl.includes('https://'))
+      );
+   }, [newFavUrl]);
 
    return (
       <>
@@ -62,9 +49,12 @@ const AddingNewFavorite = ({ favorites, setFavorites, createNotification }) => {
                type='text'
                label='Name'
                variant='outlined'
-               onChange={checkAddForm}
-               error={!isFavoriteNameValid}
-               helperText={!isFavoriteNameValid ? 'The name is too long' : ''}
+               value={newFavName}
+               onChange={(e) => setNewFavName(e.target.value)}
+               inputProps={{
+                  maxLength: 20,
+               }}
+               helperText={newFavName.length === 20 ? 'This is the maximum length' : ''}
             />
             <TextField
                id='favorite-add-url'
@@ -73,9 +63,10 @@ const AddingNewFavorite = ({ favorites, setFavorites, createNotification }) => {
                type='text'
                label='Link'
                variant='outlined'
-               onChange={checkAddForm}
-               error={!isFavoriteUrlValid}
-               helperText={!isFavoriteUrlValid ? 'Url is invalid' : ''}
+               value={newFavUrl}
+               onChange={(e) => setNewFavUrl(e.target.value)}
+               error={!isNewFavUrlValid && newFavUrl.length > 7 }
+               helperText={!isNewFavUrlValid && newFavUrl.length > 7 ? 'Url needs to start with https:// or http://' : ''}
             />
             <Button
                variant='contained'

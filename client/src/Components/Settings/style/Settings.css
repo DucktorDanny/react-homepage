@@ -21,7 +21,7 @@
   overflow: hidden;
 }
 .settings h1 {
-  font-family: "Comic Neue Bold";
+  font-weight: bold;
   font-size: 36px;
   text-align: center;
   margin: 1rem;
@@ -38,7 +38,7 @@
   scrollbar-color: rgba(255, 255, 255, 0.8) transparent !important;
 }
 .settings .settings-form h2 {
-  font-family: "Comic Neue Bold";
+  font-weight: bold;
   margin: 1rem;
   font-size: 26px;
   text-align: center;

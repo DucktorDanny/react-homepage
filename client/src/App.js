@@ -157,6 +157,7 @@ const App = () => {
 					events={events}
 					show={calendarEventsShowing}
 					onClose={closeCalendarEvents}
+					createNotification={createNotification}
 				/>
 				<Settings
 					// props

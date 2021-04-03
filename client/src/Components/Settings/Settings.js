@@ -267,6 +267,8 @@ const Settings = ({
 
 					<GreetingModifier
 						showGreeting={showGreeting}
+						greetingPronouns={greetingPronouns}
+						greetingEmoji={greetingEmoji}
 						setGreetingPronouns={setGreetingPronouns}
 						setGreetingEmoji={setGreetingEmoji}
 						createNotification={createNotification}

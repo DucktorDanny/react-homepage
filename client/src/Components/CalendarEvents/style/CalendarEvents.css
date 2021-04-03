@@ -8,6 +8,17 @@
 .calendar-events .calendar-event-point-section {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.calendar-events .calendar-event-point-section::-webkit-scrollbar {
+  -webkit-appearance: none;
+  height: 5px;
+}
+.calendar-events .calendar-event-point-section::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #464646;
 }
 .calendar-events .calendar-event-point-section .event-point {
   display: block;
@@ -21,6 +32,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  white-space: nowrap;
   cursor: pointer;
 }
 .calendar-events .calendar-event-point-section .event-point:hover {
@@ -62,6 +74,7 @@
   bottom: -1.3rem;
   left: 50%;
   transform: translateX(-50%);
+  white-space: nowrap;
 }
 .calendar-events .events-container .add-new-event button {
   font-size: 1rem;
@@ -84,15 +97,16 @@
   cursor: pointer;
 }
 .calendar-events .event-card h3 {
-  font-family: "Comic Neue Bold";
+  font-weight: bold;
+  min-width: 5rem;
 }
 .calendar-events .event-card h3, .calendar-events .event-card p, .calendar-events .event-card label {
-  cursor: pointer;
   margin: 0 1.5rem;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  cursor: pointer;
 }
 .calendar-events .event-card label {
   min-width: 5rem;
@@ -153,7 +167,7 @@
   border-radius: 0.8rem 0.4rem 0 0;
 }
 .event-notifications-container .event-notification .event-notification-title h1 {
-  font-family: "Comic Neue Bold";
+  font-weight: bold;
 }
 .event-notifications-container .event-notification p {
   padding: 1rem;
@@ -178,7 +192,7 @@
   }
   .calendar-events .event-card h3 {
     font-size: 1.5rem;
-    min-width: 100px;
+    text-align: center;
   }
   .calendar-events .event-card p {
     font-size: 1.1rem;

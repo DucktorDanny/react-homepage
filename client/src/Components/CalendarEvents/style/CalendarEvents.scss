@@ -10,6 +10,18 @@ $animationSpeed: .6s;
    .calendar-event-point-section {
       display: flex;
       justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-y: hidden;
+      overflow-x: auto;
+      
+      &::-webkit-scrollbar {
+         -webkit-appearance: none;
+         height: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+         border-radius: 10px;
+         background-color: rgb(70, 70, 70);
+       }
       
       .event-point {
          display: block;
@@ -23,6 +35,7 @@ $animationSpeed: .6s;
          -webkit-user-select: none;
          -moz-user-select: none;
          -ms-user-select: none;
+         white-space: nowrap;
          cursor: pointer;
          
          &:hover {
@@ -72,6 +85,7 @@ $animationSpeed: .6s;
          bottom: -1.3rem;
          left: 50%;
          transform: translateX(-50%);
+         white-space: nowrap;
 
          button {
             font-size: 1rem;
@@ -97,16 +111,17 @@ $animationSpeed: .6s;
       cursor: pointer;
 
       h3 {
-         font-family: 'Comic Neue Bold';
+         font-weight: bold;
+         min-width: 5rem;
       }
 
       h3, p, label {
-         cursor: pointer;
          margin: 0 1.5rem;
          user-select: none;
          -webkit-user-select: none;
          -moz-user-select: none;
          -ms-user-select: none;
+         cursor: pointer;
       }
 
       label {
@@ -182,7 +197,7 @@ $animationSpeed: .6s;
          border-radius: .8rem .4rem 0 0;
 
          h1 {
-            font-family: 'Comic Neue Bold';
+            font-weight: bold;
          }
       }
 
@@ -213,7 +228,7 @@ $animationSpeed: .6s;
 
          h3 {
             font-size: 1.5rem;
-            min-width: 100px;
+            text-align: center;
          }
 
          p {

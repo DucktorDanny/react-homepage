@@ -16,9 +16,8 @@
    // border: 1px solid green;
 
    h1 {
-      font-family: 'Comic Neue Bold';
       font-size: 9rem;
-      font-weight: normal;
+      font-weight: bold;
       z-index: -1;
    }
    div {
@@ -57,7 +56,7 @@
 .clock-when-settings-open {
    animation: clock-slide-open .6s ease-in-out;
    animation-fill-mode: forwards;
-   width: calc(100% - 500px);
+   width: calc(100% - 450px);
 }
 
 .clock-when-settings-close {

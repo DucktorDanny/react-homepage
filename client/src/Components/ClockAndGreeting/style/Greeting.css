@@ -27,7 +27,7 @@
 .greeting-when-settings-open {
   animation: clock-slide-open 0.8s ease-in-out;
   animation-fill-mode: forwards;
-  width: calc(100% - 500px);
+  width: calc(100% - 450px);
 }
 
 .greeting-when-settings-close {
