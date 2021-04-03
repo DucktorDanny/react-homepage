@@ -105,6 +105,9 @@ const App = () => {
 	* and by this you don't have to specify so many properties every time.
 	*/
 	const createNotification = (title, message, type) => {
+		if (type === 'danger') {
+			console.error(message);
+		}
 		store.addNotification({
 			title, message, type,
 			container: 'bottom-center',

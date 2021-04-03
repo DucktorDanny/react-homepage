@@ -83,7 +83,9 @@
   width: 75%;
 }
 .settings .settings-form .background-sliders h3 {
-  color: #373e49;
+  color: #464646;
+  font-weight: normal;
+  font-size: 1.15rem;
 }
 .settings .settings-form .imp-exp {
   width: 100%;

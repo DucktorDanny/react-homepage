@@ -1,8 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import { TextField, Button } from '@material-ui/core';
-// import { Grid } from '@material-ui/core';
-// import DateFnsUtils from '@date-io/date-fns';
-// import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import Line from '../Settings/Line';
 import './style/Popup.css';
 
@@ -70,6 +67,7 @@ const Popup = ({
    )
 };
 
+// need to separate this
 const AcceptDecline = ({
    title,
    content,
@@ -78,28 +76,29 @@ const AcceptDecline = ({
    onAccept,
    onDecline
 }) => (
-      <>
-         <h1>{title}</h1>
-         <Line />
-         <p>{content}</p>
+   <>
+      <h1>{title}</h1>
+      <Line />
+      <p>{content}</p>
 
-         <div className='popup-buttons'>
-            <Button
-               type='button'
-               variant='contained'
-               className='popup-button-accept'
-               onClick={onAccept}
-            >{acceptLabel}</Button>
-            <Button
-               type='button'
-               variant='contained'
-               className='popup-button-decline'
-               onClick={onDecline}
-            >{declineLabel}</Button>
-         </div>
-      </>
-   );
+      <div className='popup-buttons'>
+         <Button
+            type='button'
+            variant='contained'
+            className='popup-button-accept'
+            onClick={onAccept}
+         >{acceptLabel}</Button>
+         <Button
+            type='button'
+            variant='contained'
+            className='popup-button-decline'
+            onClick={onDecline}
+         >{declineLabel}</Button>
+      </div>
+   </>
+);
 
+// need to separate this
 const FavoriteEdit = ({
    titleField,
    linkField,
@@ -163,6 +162,7 @@ const FavoriteEdit = ({
    )
 }
 
+// need to separate this
 const EventHandler = ({
    date,
    onAccept,

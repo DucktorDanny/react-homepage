@@ -16,6 +16,11 @@ https://ducktor-homepage.vercel.app
 
 * I moved my 'To Do' to trello.com
 
+* Currently working on:
+   * Popup separatings.
+   * Fix notification update.
+   * Changable fonts.
+
 ## Links:
 
 * burger:
@@ -61,15 +66,15 @@ https://ducktor-homepage.vercel.app
    * Edit icon: https://iconmonstr.com/pencil-15-svg/
    * Show all favorites in Settings: https://iconmonstr.com/arrow-65-svg/
 
+* emoji-picker-react:
+   * https://github.com/ealush/emoji-picker-react#readme
+
 * Marketing Side Image Viewer:
    * react-image-gallery: https://www.npmjs.com/package/react-image-magnify
 
-* For later:
-   * for overflow margin-right problem: https://stackoverflow.com/questions/11695354/css-right-margin-does-not-work-inside-a-div-with-overflow-scroll
-
 ## Local Storage Structure:
 
-### Datas
+### Settings Data
 
 JSON:
 ```json

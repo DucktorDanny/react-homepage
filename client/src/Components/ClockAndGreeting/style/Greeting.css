@@ -57,4 +57,47 @@
   animation-fill-mode: forwards;
 }
 
+.emoji-picker-react {
+  margin: 0 auto 1rem;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.23) !important;
+  border-radius: 10px !important;
+  background: #b9c3c8 !important;
+}
+.emoji-picker-react .emoji-group:before {
+  background: #b9c3c8 !important;
+  color: rgba(0, 0, 0, 0.54) !important;
+  backdrop-filter: blur(20px);
+  border-radius: 5px;
+}
+.emoji-picker-react .content-wrapper:before {
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+.emoji-picker-react .emoji-search {
+  background: transparent !important;
+  border-color: rgba(0, 0, 0, 0.23) !important;
+  color: rgba(0, 0, 0, 0.54);
+}
+.emoji-picker-react .variation-list {
+  background: #b9c3c8 !important;
+}
+
+.chosen-emoji {
+  min-height: 3.5rem;
+  margin: auto;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chosen-emoji h3 {
+  font-size: 2.25rem;
+  text-align: center;
+}
+.chosen-emoji label {
+  margin: auto;
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.54);
+}
+
 /*# sourceMappingURL=Greeting.css.map */
