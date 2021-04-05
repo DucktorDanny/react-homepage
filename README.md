@@ -17,8 +17,9 @@ https://ducktor-homepage.vercel.app
 * I moved my 'To Do' to trello.com
 
 * Currently working on:
-   * Fix notification update: maybe events should be in a state?
    * Changable fonts.
+   * Maybe editable todo?
+   * Todo/event fixes.
 
 ## Links:
 
