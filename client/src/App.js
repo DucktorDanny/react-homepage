@@ -4,8 +4,8 @@ import Nav from './Components/Nav/Nav';
 import Greeting from './Components/ClockAndGreeting/Greeting';
 import Clock from './Components/ClockAndGreeting/Clock';
 import Settings from './Components/Settings/Settings';
-import EventNotification from './Components/CalendarEvents/EventNotification';
-import CalendarEvents from './Components/CalendarEvents/CalendarEvents';
+import EventNotification from './Components/DailyTodos/EventNotification';
+import DailyTodos from './Components/DailyTodos/DailyTodos';
 
 import ReactNotifications, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
@@ -73,7 +73,7 @@ const App = () => {
 	const [calendarValue, setCalendarValue] = useState(new Date());
 	const [todayKey, setTodayKey] = useState(new Date(new Date().toDateString()).getTime());
 	const [chosenDate, setChosenDate] = useState(null);
-	const [calendarEventsShowing, setCalendarEventsShowing] = useState(null);
+	const [DailyTodosShowing, setDailyTodosShowing] = useState(null);
 
 	const [favorites, setFavorites] = useState(favoritesArray);
 	const [greetingPronouns, setGreetingPronouns] = useState(greeting.pronouns);
@@ -96,13 +96,13 @@ const App = () => {
 		}
 	}, []);
 
-	const openCalendarEvents = (e) => {
+	const openDailyTodos = (e) => {
 		const convertedEvent = e.getTime();
 		setChosenDate(convertedEvent);
-		setCalendarEventsShowing(true);
+		setDailyTodosShowing(true);
 	}
-	const closeCalendarEvents = (e) => {
-		setCalendarEventsShowing(false);
+	const closeDailyTodos = (e) => {
+		setDailyTodosShowing(false);
 		// time to end the animation of window closing
 		setTimeout(() => {
 			setChosenDate(null);
@@ -163,7 +163,7 @@ const App = () => {
 							<Calendar
 								onChange={setCalendarValue}
 								value={calendarValue}
-								onClickDay={openCalendarEvents}
+								onClickDay={openDailyTodos}
 							/>
 
 							<div className='calendar-events-show-all-button'>
@@ -172,7 +172,7 @@ const App = () => {
 									variant='contained'
 									onClick={() => {
 										setChosenDate(null);
-										setCalendarEventsShowing(true);
+										setDailyTodosShowing(true);
 									}}
 								>Show all events</Button>
 							</div>
@@ -182,13 +182,13 @@ const App = () => {
 					</div>
 				</div>
 
-				<CalendarEvents
+				<DailyTodos
 					date={chosenDate}
 					events={events}
 					setEvents={setEvents}
 					setEventDone={setEventDone}
-					show={calendarEventsShowing}
-					onClose={closeCalendarEvents}
+					show={DailyTodosShowing}
+					onClose={closeDailyTodos}
 					createNotification={createNotification}
 				/>
 				<Settings

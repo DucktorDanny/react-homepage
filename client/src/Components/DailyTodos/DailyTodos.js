@@ -5,9 +5,9 @@ import AllEvents from './AllEvents';
 import SelectedDateEvent from './SelectedDateEvent';
 import Popup from '../Popup/Popup';
 
-import './style/CalendarEvents.css';
+import './style/DailyTodos.css';
 
-const CalendarEvents = ({ date, events, setEvents, show, onClose, createNotification, setEventDone }) => {
+const DailyTodos = ({ date, events, setEvents, show, onClose, createNotification, setEventDone }) => {
 
    // const [eventsState, setEventsState]
    const [selectedDate, setSelectedDate] = useState(date);
@@ -245,4 +245,4 @@ const CalendarEvents = ({ date, events, setEvents, show, onClose, createNotifica
    )
 }
 
-export default CalendarEvents;
+export default DailyTodos;

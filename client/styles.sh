@@ -3,8 +3,8 @@
 cd src/AppStyle
 sass --watch App.scss App.css &
 
-cd ../Components/CalendarEvents/style
-sass --watch CalendarEvents.scss CalendarEvents.css &
+cd ../Components/DailyTodos/style
+sass --watch DailyTodos.scss DailyTodos.css &
 
 cd ../../ClockAndGreeting/style
 sass --watch Clock.scss Clock.css &

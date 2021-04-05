@@ -1,5 +1,5 @@
 import Checkbox from '../Settings/Checkbox';
-import './style/CalendarEvents.css';
+import './style/DailyTodos.css';
 
 const EventNotification = ({ events, setEvents, setEventDone }) => {
 

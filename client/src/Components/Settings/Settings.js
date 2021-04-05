@@ -299,6 +299,8 @@ const Settings = ({
 						setPopup={setPopup}
 					/>
 
+					<p style={{ textAlign: 'center' }}>Made by ducktorD. 2021.<br/>v1.5.1</p>
+
 					{/* Save changes */}
 					<div className='save-changes'>
 						<Button

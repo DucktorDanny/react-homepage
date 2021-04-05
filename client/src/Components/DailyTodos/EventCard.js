@@ -1,6 +1,6 @@
 import Checkbox from '../Settings/Checkbox';
 import { Button } from '@material-ui/core';
-import './style/CalendarEvents.css';
+import './style/DailyTodos.css';
 
 const EventCard = ({
    id,
@@ -23,17 +23,7 @@ const EventCard = ({
       }}>
          {/* htmlName, onClick, labelText, chekced */}
          <div className='event-card-title'>
-            <Checkbox htmlName='event-done' onClick={() => {
-               // setEvents(events => {
-               //    return {...events, [date]: events[date].map((e, i) => {
-               //       if (i === id) {
-               //          e.done = !done;
-               //       }
-               //       return e;
-               //    })}
-               // });
-               setEventDone(id, !done, date);
-            }} chekced={done} />
+            <Checkbox htmlName='event-done' onClick={() => setEventDone(id, !done, date)} chekced={done} />
             <h3>{title}</h3>
          </div>
          <p>{content}</p>

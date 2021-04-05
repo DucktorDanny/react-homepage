@@ -1,6 +1,6 @@
 import EventCard from './EventCard';
 // import { Button } from '@material-ui/core';
-import './style/CalendarEvents.css';
+import './style/DailyTodos.css';
 
 const SelectedDateEvent = ({ date, events, onRemove, setEventDone }) => {
    const eventEdit = (e) => {

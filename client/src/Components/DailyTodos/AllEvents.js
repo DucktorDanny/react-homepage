@@ -1,5 +1,5 @@
 import EventCard from './EventCard';
-import './style/CalendarEvents.css';
+import './style/DailyTodos.css';
 
 const AllEvents = ({ events, onEvent, onRemove, setEventDone }) => {
 
