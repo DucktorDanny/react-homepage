@@ -17,7 +17,6 @@ https://ducktor-homepage.vercel.app
 * I moved my 'To Do' to trello.com
 
 * Currently working on:
-   * Popup separatings.
    * Fix notification update.
    * Changable fonts.
 
