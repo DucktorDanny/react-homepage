@@ -28,7 +28,7 @@ if (datas) {
 }
 
 const data = JSON.parse(localStorage.getItem('data'));
-const events = JSON.parse(localStorage.getItem('events')) || {};
+const eventsObject = JSON.parse(localStorage.getItem('events')) || {};
 
 const showElements = data ? data.showElements : {
    calendar: true,
@@ -68,16 +68,18 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
-	const [ calendarValue, setCalendarValue ] = useState(new Date());
-	const [todayKey, setTodayKey] = useState(new Date(new Date().toDateString()).getTime());
-	const [ chosenDate, setChosenDate ] = useState(null);
-	const [ calendarEventsShowing, setCalendarEventsShowing ] = useState(null);
+	const [events, setEvents] = useState(eventsObject);
 
-	const [ favorites, setFavorites ] = useState(favoritesArray);
-	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
-	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
-	const [ showSeconds, setShowSeconds ] = useState(showElements.seconds);
-	const [ twentyFourClockMode, setTwentyFourClockMode ] = useState(showElements.twentyFourClockMode);
+	const [calendarValue, setCalendarValue] = useState(new Date());
+	const [todayKey, setTodayKey] = useState(new Date(new Date().toDateString()).getTime());
+	const [chosenDate, setChosenDate] = useState(null);
+	const [calendarEventsShowing, setCalendarEventsShowing] = useState(null);
+
+	const [favorites, setFavorites] = useState(favoritesArray);
+	const [greetingPronouns, setGreetingPronouns] = useState(greeting.pronouns);
+	const [greetingEmoji, setGreetingEmoji] = useState(greeting.emoji);
+	const [showSeconds, setShowSeconds] = useState(showElements.seconds);
+	const [twentyFourClockMode, setTwentyFourClockMode] = useState(showElements.twentyFourClockMode);
 
 	// if old localStorage type updated it sends a notification
 	useEffect(() => {
@@ -108,10 +110,21 @@ const App = () => {
 	}
 
 	const setEventDone = (index, newDoneValue, dateKey) => {
-		events[dateKey][index].done = newDoneValue;
-		console.log(`${events[dateKey][index].title} ${newDoneValue ? 'done' : 'not done'}...`);
-		localStorage.setItem('events', JSON.stringify(events));
+		// setEvents({...events, [dateKey]: events[dateKey].map((e, i) => {
+		// 		if (i === index) {
+		// 			e.done = newDoneValue;
+		// 		}
+		// 		return e;
+		// 	})
+		// });
+		// events[dateKey][index].done = newDoneValue;
+		// console.log(`${events[dateKey][index].title} ${newDoneValue ? 'done' : 'not done'}...`);
+		// localStorage.setItem('events', JSON.stringify(events));
 	}
+
+	useEffect(() => {
+		console.log(events);
+	}, [events]);
 
 	/*
 	* It is a template/pattern for the imported addNotification to be easier to use it
@@ -164,13 +177,14 @@ const App = () => {
 							</div>
 						</div>
 
-						<EventNotification events={events[todayKey]} setEventDone={setEventDone} />
+						<EventNotification events={events[todayKey]} setEvents={setEvents} />
 					</div>
 				</div>
 
 				<CalendarEvents
 					date={chosenDate}
 					events={events}
+					setEvents={setEvents}
 					show={calendarEventsShowing}
 					onClose={closeCalendarEvents}
 					createNotification={createNotification}

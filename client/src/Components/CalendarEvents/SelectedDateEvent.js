@@ -2,10 +2,9 @@ import EventCard from './EventCard';
 // import { Button } from '@material-ui/core';
 import './style/CalendarEvents.css';
 
-const SelectedDateEvent = ({ date, events, onRemove }) => {
+const SelectedDateEvent = ({ date, events, onRemove, setEvents }) => {
    const eventEdit = (e) => {
       console.log(e);
-      // do something...
    }
 
    return (
@@ -18,6 +17,8 @@ const SelectedDateEvent = ({ date, events, onRemove }) => {
                      id={id}
                      title={event.title}
                      content={event.content}
+                     done={event.done}
+                     setEvents={setEvents}
                      date={date}
                      onEvent={eventEdit}
                      onRemove={onRemove}

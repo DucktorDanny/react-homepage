@@ -7,7 +7,7 @@ import Popup from '../Popup/Popup';
 
 import './style/CalendarEvents.css';
 
-const CalendarEvents = ({ date, events, show, onClose, createNotification }) => {
+const CalendarEvents = ({ date, events, show, onClose, createNotification, setEvents }) => {
 
    // const [eventsState, setEventsState]
    const [selectedDate, setSelectedDate] = useState(date);
@@ -205,8 +205,18 @@ const CalendarEvents = ({ date, events, show, onClose, createNotification }) => 
 
                <div className='events-container'>
                   {isAllEventsSelected
-                     ? <AllEvents events={events} onEvent={selectEvent} onRemove={eventOnRemove} />
-                     : <SelectedDateEvent date={selectedDate} events={events[selectedDate]} onRemove={eventOnRemove} />
+                     ? <AllEvents
+                        events={events}
+                        setEvents={setEvents}
+                        onEvent={selectEvent}
+                        onRemove={eventOnRemove}
+                     />
+                     : <SelectedDateEvent
+                        date={selectedDate}
+                        setEvents={setEvents}
+                        events={events[selectedDate]}
+                        onRemove={eventOnRemove}
+                     />
                   }
                   <section className='add-new-event'>
                      <Button

@@ -1,7 +1,7 @@
 import EventCard from './EventCard';
 import './style/CalendarEvents.css';
 
-const AllEvents = ({ events, onEvent, onRemove }) => {
+const AllEvents = ({ events, onEvent, onRemove, setEvents }) => {
 
    const hasEvents = () => {
       let isThereAnyEvent = false;
@@ -46,6 +46,8 @@ const AllEvents = ({ events, onEvent, onRemove }) => {
                            id={j}
                            title={event.title}
                            content={event.content}
+                           done={event.done}
+                           setEvents={setEvents}
                            date={date[0] }
                            onEvent={onEvent}
                            onRemove={onRemove}
