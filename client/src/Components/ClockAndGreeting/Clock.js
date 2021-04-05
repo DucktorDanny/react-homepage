@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import './style/Clock.css';
 
-const Clock = ({ showSeconds = true, twentyFourClockMode }) => {
+const Clock = ({ showSeconds = true, twentyFourClockMode, setTodayKey }) => {
    const [hours, setHours] = useState(null);
    const [minutes, setMinutes] = useState(null);
    const [seconds, setSeconds] = useState(null);

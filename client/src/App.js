@@ -67,10 +67,9 @@ const theme = createMuiTheme({
 	}
 });
 
-const todayKey = new Date(new Date().toDateString()).getTime();
-
 const App = () => {
 	const [ calendarValue, setCalendarValue ] = useState(new Date());
+	const [todayKey, setTodayKey] = useState(new Date(new Date().toDateString()).getTime());
 	const [ chosenDate, setChosenDate ] = useState(null);
 	const [ calendarEventsShowing, setCalendarEventsShowing ] = useState(null);
 
@@ -85,6 +84,14 @@ const App = () => {
 		if (updated) {
 			createNotification('Success', 'Refreshed older version.', 'success');
 		}
+		const interval = setInterval(() => {
+			setTodayKey(new Date(new Date().toDateString()).getTime());
+		}, 1000 * 60);
+
+		return () => {
+			console.log('Clear todayKey interval...');
+			clearInterval(interval);
+		}
 	}, []);
 
 	const openCalendarEvents = (e) => {
@@ -98,6 +105,12 @@ const App = () => {
 		setTimeout(() => {
 			setChosenDate(null);
 		}, 500);
+	}
+
+	const setEventDone = (index, newDoneValue, dateKey) => {
+		events[dateKey][index].done = newDoneValue;
+		console.log(`${events[dateKey][index].title} ${newDoneValue ? 'done' : 'not done'}...`);
+		localStorage.setItem('events', JSON.stringify(events));
 	}
 
 	/*
@@ -151,7 +164,7 @@ const App = () => {
 							</div>
 						</div>
 
-						<EventNotification events={events[todayKey]} />
+						<EventNotification events={events[todayKey]} setEventDone={setEventDone} />
 					</div>
 				</div>
 

@@ -36,6 +36,9 @@ const EventHandler = ({
                 type='text'
                 label='Title'
                 variant='outlined'
+                inputProps={{
+                   maxLength: 16
+                }}
                 value={chosenTitle}
                 onChange={(e) => setChosenTitle(e.target.value)}
              />

@@ -83,6 +83,10 @@ main {
     width: calc(100% - 1.6rem);
   }
 }
+.event-done * {
+  text-decoration: line-through;
+}
+
 .react-calendar-container {
   width: 350px;
   min-width: 300px;

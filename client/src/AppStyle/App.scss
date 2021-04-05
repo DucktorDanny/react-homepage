@@ -119,6 +119,10 @@ main {
    }
 }
 
+.event-done * {
+   text-decoration: line-through;
+}
+
 .react-calendar-container {
    // position: fixed;
    // position: absolute;
