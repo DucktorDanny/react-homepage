@@ -131,10 +131,14 @@
   display: flex;
   justify-content: center;
   margin: 0 1.5rem;
+  text-decoration: none;
 }
 .calendar-events .event-card .event-card-buttons button {
   margin: 0 0.25rem;
   color: white;
+}
+.calendar-events .event-card .event-card-buttons .MuiButton-label {
+  text-decoration: none;
 }
 .calendar-events .event-card .event-card-buttons .event-edit-button {
   background: #6c8bcf;

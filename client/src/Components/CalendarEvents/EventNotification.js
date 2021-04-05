@@ -1,21 +1,7 @@
-import { useState } from 'react';
 import Checkbox from '../Settings/Checkbox';
 import './style/CalendarEvents.css';
 
-const EventNotification = ({ events, setEvents }) => {
-   // console.log(document.querySelector('.react-calendar-container'));
-
-      const updateEventsDone = (id, newDoneValue) => {
-         const dateKey = new Date(new Date().toDateString()).getTime();
-         setEvents(events => {
-            return {...events, [dateKey]: events[dateKey].map((e, i) => {
-               if (i === id) {
-                  e.done = !newDoneValue;
-               }
-               return e;
-            })}
-         });
-      }
+const EventNotification = ({ events, setEvents, setEventDone }) => {
 
    return (
       <section className='event-notifications-container'>
@@ -23,7 +9,10 @@ const EventNotification = ({ events, setEvents }) => {
             events && events.length > 0
             ? events.map((event, id) => {
                return (
-                  <Notification key={id} title={event.title} content={event.content} done={event.done} setDone={(newDoneValue) => updateEventsDone(id, newDoneValue)} />
+                  <Notification key={id} title={event.title} content={event.content} done={event.done} setDone={(newDoneValue) => {
+                     const dateKey = new Date(new Date().toDateString()).getTime();
+                     setEventDone(id, newDoneValue, dateKey);
+                  }} />
                )
             })
             : <h1 className='no-events-message'>There are no events today...</h1>

@@ -110,20 +110,21 @@ const App = () => {
 	}
 
 	const setEventDone = (index, newDoneValue, dateKey) => {
-		// setEvents({...events, [dateKey]: events[dateKey].map((e, i) => {
-		// 		if (i === index) {
-		// 			e.done = newDoneValue;
-		// 		}
-		// 		return e;
-		// 	})
-		// });
-		// events[dateKey][index].done = newDoneValue;
-		// console.log(`${events[dateKey][index].title} ${newDoneValue ? 'done' : 'not done'}...`);
-		// localStorage.setItem('events', JSON.stringify(events));
+		setEvents({...events, [dateKey]: events[dateKey].map((e, i) => {
+				if (i === index) {
+					e.done = newDoneValue;
+				}
+				return e;
+			})
+		});
+		console.log(`${events[dateKey][index].title} ${newDoneValue ? 'done' : 'not done'}...`);
+		localStorage.setItem('events', JSON.stringify(events));
 	}
 
 	useEffect(() => {
+		console.log('Change is detected...');
 		console.log(events);
+		localStorage.setItem('events', JSON.stringify(events));
 	}, [events]);
 
 	/*
@@ -177,7 +178,7 @@ const App = () => {
 							</div>
 						</div>
 
-						<EventNotification events={events[todayKey]} setEvents={setEvents} />
+						<EventNotification events={events[todayKey]} setEventDone={setEventDone} />
 					</div>
 				</div>
 
@@ -185,6 +186,7 @@ const App = () => {
 					date={chosenDate}
 					events={events}
 					setEvents={setEvents}
+					setEventDone={setEventDone}
 					show={calendarEventsShowing}
 					onClose={closeCalendarEvents}
 					createNotification={createNotification}

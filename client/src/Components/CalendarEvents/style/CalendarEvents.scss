@@ -154,10 +154,15 @@ $animationSpeed: .6s;
          display: flex;
          justify-content: center;
          margin: 0 1.5rem;
+         text-decoration: none;
 
          button {
             margin: 0 .25rem;
             color: white;
+         }
+         
+         .MuiButton-label {
+            text-decoration: none;
          }
    
          .event-edit-button {

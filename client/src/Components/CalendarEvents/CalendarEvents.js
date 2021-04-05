@@ -7,7 +7,7 @@ import Popup from '../Popup/Popup';
 
 import './style/CalendarEvents.css';
 
-const CalendarEvents = ({ date, events, show, onClose, createNotification, setEvents }) => {
+const CalendarEvents = ({ date, events, setEvents, show, onClose, createNotification, setEventDone }) => {
 
    // const [eventsState, setEventsState]
    const [selectedDate, setSelectedDate] = useState(date);
@@ -62,22 +62,23 @@ const CalendarEvents = ({ date, events, show, onClose, createNotification, setEv
             date: !isAllEventsSelected ? selectedDate : null,
             onAccept: (title, content, date) => {
                try {
-                  // console.log('Add', title, content, date);
 
                   if (!title || title === '' || !content || content === '') {
                      throw new Error('Title and content are required!');
                   }
-                  // console.log(date);
+
                   date = new Date(new Date(date).toDateString()).getTime();
                   if (!events[date]) {
                      events[date] = [];
+                     setEvents({...events, [date]: [{
+                        title, content, done: false,
+                     }]});
+                  } else {
+                     setEvents({...events, [date]: [...events[date], {
+                        title, content, done: false,
+                     }]});
                   }
-                  events[date].push({
-                     title,
-                     content,
-                     done: false,
-                  });
-                  localStorage.setItem('events', JSON.stringify(events));
+
                   createNotification('Success', 'New event successfully added!', 'success');
                   setPopup({});
                   console.log(events);
@@ -95,6 +96,10 @@ const CalendarEvents = ({ date, events, show, onClose, createNotification, setEv
       });
    }
 
+   useEffect(() => {
+      console.log('CHANGE');
+   }, [events]);
+
    const eventOnRemove = (id, title, content, date) => {      
       console.log(id, title, content, date);
 
@@ -107,15 +112,8 @@ const CalendarEvents = ({ date, events, show, onClose, createNotification, setEv
             acceptLabel: 'Yes',
             declineLabel: 'Cancel',
             onAccept: () => {
-               events[date].splice(id, 1);
-
-               // if on that date we already dont have any events then we can delete that array
-               if (events[date].length === 0) {
-                  console.log('We have no events in here anymore... We could delete this date.');
-                  delete events[date];
-               }
-               
-               localStorage.setItem('events', JSON.stringify(events));
+               setEvents({...events, [date]: events[date].filter((e, i) => i !== id)});
+               // still need to check if we have empty arrays... (in useEffect)
                createNotification('Success', 'The event was successfully removed!', 'success');
                setPopup({});
             },
@@ -127,31 +125,33 @@ const CalendarEvents = ({ date, events, show, onClose, createNotification, setEv
    }
 
    const removeAllEvents = () => {
-      console.log('Hahahah hello... so u wanna remove all events ha? haha not yet...');
 
-      // selectedDate
-      // isAllEventsSelected
       try {
          if (Object.entries(events).length === 0 || (!isAllEventsSelected && !events[selectedDate])) {
             throw new Error('There are no events!');
          }
+         const thisDayString = new Date(selectedDate).toDateString();
          setPopup({
             type: 'accept-decline',
             open: true,
             data: {
                title: 'Remove all events',
-               content: `Are you sure you want to remove all events${isAllEventsSelected 
-                  ? ''
-                  : ` from this day (${new Date(selectedDate).toDateString()})`}?`,
+               content: `Are you sure you want to remove all events${isAllEventsSelected ? '' : ` from this day (${thisDayString})`}?`,
                acceptLabel: 'Yes',
                declineLabel: 'Cancel',
                onAccept: () => {
                   if (isAllEventsSelected) {
-                     Object.entries(events).forEach(day => delete events[day[0]]);
+                     setEvents({});
+                     createNotification('Success', 'You have deleted all of your events!', 'success');
                   } else {
-                     delete events[selectedDate];
+                     setEvents(events => {
+                        const eventsCopy = {...events};
+                        delete eventsCopy[selectedDate];
+                        return eventsCopy;
+                     });
+                     createNotification('Success', `You have deleted all of your events from this day (${thisDayString})!`, 'success');
                   }
-                  localStorage.setItem('events', JSON.stringify(events));
+
                   setPopup({});
                },
                onDecline: () => {
@@ -163,10 +163,6 @@ const CalendarEvents = ({ date, events, show, onClose, createNotification, setEv
          createNotification('Error', err.message, 'danger')
       }
    }
-
-   useEffect(() => {
-      console.log(popup);
-   }, [popup]);
 
    useEffect(() => {
       if (selectedDate) {
@@ -207,13 +203,13 @@ const CalendarEvents = ({ date, events, show, onClose, createNotification, setEv
                   {isAllEventsSelected
                      ? <AllEvents
                         events={events}
-                        setEvents={setEvents}
+                        setEventDone={setEventDone}
                         onEvent={selectEvent}
                         onRemove={eventOnRemove}
                      />
                      : <SelectedDateEvent
                         date={selectedDate}
-                        setEvents={setEvents}
+                        setEventDone={setEventDone}
                         events={events[selectedDate]}
                         onRemove={eventOnRemove}
                      />
