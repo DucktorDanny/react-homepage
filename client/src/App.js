@@ -44,12 +44,12 @@ const greeting = data ? data.greeting : {
 };
 const favoritesArray = data ? data.favoritesArray : [
    {
-      name: 'Youtube',
-      url: 'https://youtube.com',
+      name: 'Twitch',
+      url: 'https://twitch.tv',
    },
    {
-      name: 'Facebook',
-      url: 'https://facebook.com'
+      name: 'Speedtest',
+      url: 'https://speedtest.net'
    },
 ];
 const backgroundColor = data ? data.backgroundColor : {
