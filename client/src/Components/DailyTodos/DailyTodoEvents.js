@@ -108,7 +108,7 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
          open: true,
          data: {
             title: 'Remove',
-            content: 'Are you sure you want to remove this event?',
+            content: 'Are you sure you want to remove this todo?',
             acceptLabel: 'Yes',
             declineLabel: 'Cancel',
             onAccept: () => {
@@ -136,20 +136,20 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
             open: true,
             data: {
                title: 'Remove all events',
-               content: `Are you sure you want to remove all events${isAllEventsSelected ? '' : ` from this day (${thisDayString})`}?`,
+               content: `Are you sure you want to remove all todo${isAllEventsSelected ? '' : ` from this day (${thisDayString})`}?`,
                acceptLabel: 'Yes',
                declineLabel: 'Cancel',
                onAccept: () => {
                   if (isAllEventsSelected) {
                      setEvents({});
-                     createNotification('Success', 'You have deleted all of your events!', 'success');
+                     createNotification('Success', 'You have deleted all of your todo!', 'success');
                   } else {
                      setEvents(events => {
                         const eventsCopy = {...events};
                         delete eventsCopy[selectedDate];
                         return eventsCopy;
                      });
-                     createNotification('Success', `You have deleted all of your events from this day (${thisDayString})!`, 'success');
+                     createNotification('Success', `You have deleted all of your todo from this day (${thisDayString})!`, 'success');
                   }
 
                   setPopup({});
@@ -195,7 +195,7 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
                points like 'All', 'Chosen date' (if there is otherwise disabled show) */}
 
                <section className='calendar-event-point-section'>
-                  <h1 id='all-events' className={selectedDate ? 'event-point' : 'event-point selected-event-point'} onClick={selectEventPoint}>All events</h1>
+                  <h1 id='all-events' className={selectedDate ? 'event-point' : 'event-point selected-event-point'} onClick={selectEventPoint}>All todo</h1>
                   {selectedDate ? <h1 id='event-point-date' className='event-point selected-event-point' onClick={selectEventPoint}>Selected: {new Date(parseInt(selectedDate)).toDateString()}</h1> : ''}
                </section>
 
@@ -220,7 +220,7 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
                         variant='contained'
                         color='primary'
                         onClick={handleEventAdding}
-                     >Add new event</Button>
+                     >Add new todo</Button>
                      <Button
                         type='button'
                         variant='contained'
@@ -229,7 +229,7 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
                            background: 'rgb(142, 0, 0)'
                         }}
                         onClick={removeAllEvents}
-                     >Remove all events</Button>
+                     >Remove all todo</Button>
                   </section>
 
                </div>

@@ -27,7 +27,7 @@ const EventHandler = ({
  
     return (
        <>
-          <h1>Add new event</h1>
+          <h1>Add new todo</h1>
           <div className='textfields'>
              <TextField
                 id='event-title-field'

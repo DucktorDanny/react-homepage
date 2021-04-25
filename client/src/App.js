@@ -58,6 +58,8 @@ const backgroundColor = data ? data.backgroundColor : {
    B: 89,
 };
 
+const font = "'Comic Neue', cursive";
+
 const App = () => {
 	const [events, setEvents] = useState(eventsObject);
 
@@ -72,7 +74,7 @@ const App = () => {
 	const [showSeconds, setShowSeconds] = useState(showElements.seconds);
 	const [twentyFourClockMode, setTwentyFourClockMode] = useState(showElements.twentyFourClockMode);
 
-	const [font, setFont] = useState(localStorage.getItem('font') || "'Comic Neue', cursive");
+	// const [font, setFont] = useState(localStorage.getItem('font') || "'Comic Neue', cursive");
 
 	// if old localStorage type updated it sends a notification
 	useEffect(() => {
@@ -89,7 +91,7 @@ const App = () => {
 		}
 	}, []);
 
-	const openDailyTodos = (e) => {
+	const openDailyTodo = (e) => {
 		const convertedEvent = e.getTime();
 		setChosenDate(convertedEvent);
 		setDailyTodosShowing(true);
@@ -139,10 +141,10 @@ const App = () => {
 		});
 	}
 
-	useEffect(() => {
-		console.log(font);
-		console.log(font.split(', '));
-	}, [font]);
+	// useEffect(() => {
+	// 	console.log(font);
+	// 	console.log(font.split(', '));
+	// }, [font]);
 
 	return (
 		<>
@@ -169,7 +171,7 @@ const App = () => {
 							<Calendar
 								onChange={setCalendarValue}
 								value={calendarValue}
-								onClickDay={openDailyTodos}
+								onClickDay={openDailyTodo}
 							/>
 
 							<div className='calendar-events-show-all-button'>
@@ -180,7 +182,7 @@ const App = () => {
 										setChosenDate(null);
 										setDailyTodosShowing(true);
 									}}
-								>Show all events</Button>
+								>Show all todo</Button>
 							</div>
 						</div>
 
