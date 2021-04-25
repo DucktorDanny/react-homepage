@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@material-ui/core';
 
-import AllEvents from './AllEvents';
-import SelectedDateEvent from './SelectedDateEvent';
+import AllDailyTodo from './AllDailyTodo';
+import SelectedDateOfTodo from './SelectedDateOfTodo';
 import Popup from '../Popup/Popup';
 
-import './style/DailyTodos.css';
+import './style/DailyTodoEvents.css';
 
-const DailyTodos = ({ date, events, setEvents, show, onClose, createNotification, setEventDone }) => {
+const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotification, setEventDone }) => {
 
    // const [eventsState, setEventsState]
    const [selectedDate, setSelectedDate] = useState(date);
@@ -201,16 +201,16 @@ const DailyTodos = ({ date, events, setEvents, show, onClose, createNotification
 
                <div className='events-container'>
                   {isAllEventsSelected
-                     ? <AllEvents
-                        events={events}
-                        setEventDone={setEventDone}
-                        onEvent={selectEvent}
+                     ? <AllDailyTodo
+                        dailyTodo={events}
+                        onTodo={selectEvent}
                         onRemove={eventOnRemove}
+                        setTodoDone={setEventDone}
                      />
-                     : <SelectedDateEvent
+                     : <SelectedDateOfTodo
                         date={selectedDate}
-                        setEventDone={setEventDone}
-                        events={events[selectedDate]}
+                        setTodoDone={setEventDone}
+                        dailyTodo={events[selectedDate]}
                         onRemove={eventOnRemove}
                      />
                   }
@@ -245,4 +245,4 @@ const DailyTodos = ({ date, events, setEvents, show, onClose, createNotification
    )
 }
 
-export default DailyTodos;
+export default DailyTodoEvents;

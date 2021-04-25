@@ -41,6 +41,15 @@ const Clock = ({ showSeconds = true, twentyFourClockMode, setTodayKey }) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
+   useEffect(() => {
+      const secondsAndAmPmDiv = document.querySelector('.clock-container div');
+      if (!showSeconds && twentyFourClockMode) {
+         secondsAndAmPmDiv.style.minWidth = '0';
+      } else {
+         secondsAndAmPmDiv.style.minWidth = '4rem';
+      }
+   }, [showSeconds, twentyFourClockMode]);
+
    return(
       <div className='clock-container clock-container-onload-animation'>
          <h1>{ hours && minutes ? `${hours > 12 && !twentyFourClockMode ? hours - 12 + '': hours+''}:${minutes}` : 'Loading...' }</h1>

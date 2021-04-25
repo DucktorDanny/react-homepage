@@ -1,21 +1,21 @@
 import Checkbox from '../Settings/Checkbox';
-import './style/DailyTodos.css';
+import './style/DailyTodoEvents.css';
 
-const EventNotification = ({ events, setEvents, setEventDone }) => {
+const DailyTodoNotification = ({ dailyTodo, setTodoDone }) => {
 
    return (
       <section className='event-notifications-container'>
          {
-            events && events.length > 0
-            ? events.map((event, id) => {
+            dailyTodo && dailyTodo.length > 0
+            ? dailyTodo.map((todo, id) => {
                return (
-                  <Notification key={id} title={event.title} content={event.content} done={event.done} setDone={(newDoneValue) => {
+                  <Notification key={id} title={todo.title} content={todo.content} done={todo.done} setDone={(newDoneValue) => {
                      const dateKey = new Date(new Date().toDateString()).getTime();
-                     setEventDone(id, newDoneValue, dateKey);
+                     setTodoDone(id, newDoneValue, dateKey);
                   }} />
                )
             })
-            : <h1 className='no-events-message'>There are no events today...</h1>
+            : <h1 className='no-events-message'>There are no todo today...</h1>
          }
       </section>
    )
@@ -35,4 +35,4 @@ const Notification = ({ title, content, done, setDone }) => {
    )
 }
 
-export default EventNotification;
+export default DailyTodoNotification;

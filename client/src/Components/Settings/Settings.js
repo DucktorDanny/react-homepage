@@ -13,6 +13,7 @@ import ClockSettings from './SettingSections/ClockSettings';
 import GreetingModifier from './SettingSections/GreetingModifier';
 import AddingNewFavorite from './SettingSections/AddingNewFavorite';
 import ExportingImporting from './SettingSections/ExportingImporting';
+// import FontSelect from './SettingSections/FontSelect';
 
 import './style/Settings.css';
 
@@ -26,6 +27,7 @@ const Settings = ({
 	createNotification,
 
 	// getter functions:
+	// getFont,
 	getFavorites,
 	getGreetingPronouns,
 	getGreetingEmoji,
@@ -57,8 +59,6 @@ const Settings = ({
 	// greeting
 	const [ greetingPronouns, setGreetingPronouns ] = useState(greeting.pronouns);
 	const [ greetingEmoji, setGreetingEmoji ] = useState(greeting.emoji);
-
-	// const [ favorites, setFavorites ] = useState(favoritesArray);
 
 	const [popup, setPopup] = useState(Object);
 
@@ -262,6 +262,13 @@ const Settings = ({
 						G={ backgroundColor.G }
 						B={ backgroundColor.B }
 					/>
+
+					{/* <Line />
+
+					<FontSelect
+						defaultFont={localStorage.getItem('font') || "'Comic Neue', cursive"}
+						fontOnChange={getFont}
+					/> */}
 
 					<Line />
 

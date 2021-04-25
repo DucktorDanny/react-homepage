@@ -1,29 +1,28 @@
 import Checkbox from '../Settings/Checkbox';
 import { Button } from '@material-ui/core';
-import './style/DailyTodos.css';
+import './style/DailyTodoEvents.css';
 
-const EventCard = ({
+const TodoCard = ({
    id,
    title,
    content,
    done,
-   // setEvents,
-   setEventDone,
+   setTodoDone,
    date,
-   onEvent,
+   onTodo,
    onRemove,
    showDate
 }) => {
    return (
       <section className={`event-card ${done ? 'event-done' : ''}`} onClick={(e) => {
          if (!e.target.classList.contains('MuiButton-label') && !e.target.classList.contains('MuiButtonBase-root') && !e.target.classList.contains('checkmark')) {
-            return onEvent ? onEvent(date) : null;
+            return onTodo ? onTodo(date) : null;
          }
          return null;
       }}>
          {/* htmlName, onClick, labelText, chekced */}
          <div className='event-card-title'>
-            <Checkbox htmlName='event-done' onClick={() => setEventDone(id, !done, date)} chekced={done} />
+            <Checkbox htmlName='event-done' onClick={() => setTodoDone(id, !done, date)} chekced={done} />
             <h3>{title}</h3>
          </div>
          <p>{content}</p>
@@ -42,4 +41,4 @@ const EventCard = ({
    )
 }
 
-export default EventCard;
+export default TodoCard;

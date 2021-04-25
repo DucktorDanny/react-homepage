@@ -1,18 +1,18 @@
-import EventCard from './EventCard';
-import './style/DailyTodos.css';
+import TodoCard from './TodoCard';
+import './style/DailyTodoEvents.css';
 
-const AllEvents = ({ events, onEvent, onRemove, setEventDone }) => {
+const AllDailyTodo = ({ dailyTodo, onTodo, onRemove, setTodoDone }) => {
 
-   const hasEvents = () => {
-      let isThereAnyEvent = false;
-      if (events) {
-         Object.entries(events).forEach(event => {
-            if (event[1].length > 0) {
-               isThereAnyEvent = true;
+   const hasDailyTodos = () => {
+      let isThereAnyDailyTodo = false;
+      if (dailyTodo) {
+         Object.entries(dailyTodo).forEach(todo => {
+            if (todo[1].length > 0) {
+               isThereAnyDailyTodo = true;
             }
          });
       }
-      return isThereAnyEvent;
+      return isThereAnyDailyTodo;
    }
 
    const objectEntriesWithIntKeys = (obj) => {
@@ -36,30 +36,30 @@ const AllEvents = ({ events, onEvent, onRemove, setEventDone }) => {
    return (
       <>
          {
-            hasEvents()
-               ? objectEntriesWithIntKeys(events).map((date, i) => (
-                  date[1].map((event, j) => {
+            hasDailyTodos()
+               ? objectEntriesWithIntKeys(dailyTodo).map((date, i) => (
+                  date[1].map((todo, j) => {
                      const key = `all-${i}-${j}`;
                      return (
-                        <EventCard
+                        <TodoCard
                            key={key}
                            id={j}
-                           title={event.title}
-                           content={event.content}
-                           done={event.done}
-                           setEventDone={setEventDone}
+                           title={todo.title}
+                           content={todo.content}
+                           done={todo.done}
+                           setTodoDone={setTodoDone}
                            date={date[0] }
-                           onEvent={onEvent}
+                           onTodo={onTodo}
                            onRemove={onRemove}
                            showDate
                         />
                      )
                   })
                ))
-               : <h2>There are no events!</h2>
+               : <h2>There are no to do!</h2>
          }
       </>
    )
 }
 
-export default AllEvents;
+export default AllDailyTodo;

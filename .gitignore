@@ -23,3 +23,5 @@ Archive.zip
 .now.json
 .nowignore
 mySettings.json
+.eslintcache
+

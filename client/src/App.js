@@ -4,8 +4,8 @@ import Nav from './Components/Nav/Nav';
 import Greeting from './Components/ClockAndGreeting/Greeting';
 import Clock from './Components/ClockAndGreeting/Clock';
 import Settings from './Components/Settings/Settings';
-import EventNotification from './Components/DailyTodos/EventNotification';
-import DailyTodos from './Components/DailyTodos/DailyTodos';
+import DailyTodoNotification from './Components/DailyTodos/DailyTodoNotification';
+import DailyTodoEvents from './Components/DailyTodos/DailyTodoEvents';
 
 import ReactNotifications, { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
@@ -58,15 +58,6 @@ const backgroundColor = data ? data.backgroundColor : {
    B: 89,
 };
 
-const theme = createMuiTheme({
-	typography: {
-		fontFamily: [
-			'"Comic Neue"',
-			'cursive'
-		].join(','),
-	}
-});
-
 const App = () => {
 	const [events, setEvents] = useState(eventsObject);
 
@@ -80,6 +71,8 @@ const App = () => {
 	const [greetingEmoji, setGreetingEmoji] = useState(greeting.emoji);
 	const [showSeconds, setShowSeconds] = useState(showElements.seconds);
 	const [twentyFourClockMode, setTwentyFourClockMode] = useState(showElements.twentyFourClockMode);
+
+	const [font, setFont] = useState(localStorage.getItem('font') || "'Comic Neue', cursive");
 
 	// if old localStorage type updated it sends a notification
 	useEffect(() => {
@@ -146,9 +139,22 @@ const App = () => {
 		});
 	}
 
+	useEffect(() => {
+		console.log(font);
+		console.log(font.split(', '));
+	}, [font]);
+
 	return (
 		<>
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={
+				createMuiTheme({
+					typography: {
+						fontFamily: [
+							font.split(', ')
+						].join(','),
+					}
+				}
+			)}>
 				<ReactNotifications />
 				<div className='app'>
 					<Nav favorites={ favorites } />
@@ -178,11 +184,11 @@ const App = () => {
 							</div>
 						</div>
 
-						<EventNotification events={events[todayKey]} setEventDone={setEventDone} />
+						<DailyTodoNotification dailyTodo={events[todayKey]} setTodoDone={setEventDone} />
 					</div>
 				</div>
 
-				<DailyTodos
+				<DailyTodoEvents
 					date={chosenDate}
 					events={events}
 					setEvents={setEvents}
@@ -205,6 +211,7 @@ const App = () => {
 					getGreetingEmoji={ setGreetingEmoji }
 					getShowSeconds={ setShowSeconds }
 					getTwentyFourClockMode={ setTwentyFourClockMode }
+					// getFont={setFont}
 				/>
 			</ThemeProvider>
 		</>

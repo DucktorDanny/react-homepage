@@ -4,7 +4,7 @@ cd src/AppStyle
 sass --watch App.scss App.css &
 
 cd ../Components/DailyTodos/style
-sass --watch DailyTodos.scss DailyTodos.css &
+sass --watch DailyTodoEvents.scss DailyTodoEvents.css &
 
 cd ../../ClockAndGreeting/style
 sass --watch Clock.scss Clock.css &
