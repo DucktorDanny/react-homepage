@@ -116,6 +116,16 @@ const Settings = ({
 	
 	// getFavorites if it changes
 	useEffect(() => {
+		const resizeFavoriteListHeight = () => {
+			const droppable = document.querySelector('.droppable');
+			if (droppable.style.maxHeight) {
+				droppable.style.maxHeight = null;
+				droppable.style.maxHeight = `${droppable.scrollHeight}px`;
+				console.log(droppable.scrollHeight);
+			}
+		}
+		resizeFavoriteListHeight();
+
 		if (getFavorites) {
 			return getFavorites(favorites);
 		}
@@ -316,7 +326,6 @@ const Settings = ({
 							color='primary'
 						>Save</Button>
 					</div>
-
 				</form>
 				<Line />
 			</div>

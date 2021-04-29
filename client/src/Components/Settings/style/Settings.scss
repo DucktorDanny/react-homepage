@@ -88,10 +88,6 @@ $settingsWidth: 450px;
       }
     }
 
-    // .font-selector {
-    //   margin: 0 auto 1rem;
-    // }
-
     // border: 1px solid red; 
     .favorite-add {
       width: 100%;
@@ -272,11 +268,14 @@ $settingsWidth: 450px;
   pointer-events: none;
   overflow: hidden;
   transition: all .4s;
+  border: 1px solid transparent;
+  padding-bottom: 10px;
 }
 
 .draggable {
   width: 100%;
-  margin: 0 auto 1rem;
+  // margin: 0 auto 1rem;
+  margin: 10px auto 0;
 }
 
 @media only screen and (max-width: 500px) {

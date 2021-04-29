@@ -167,11 +167,12 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 		const droppable = document.querySelector('.droppable');
 		const arrow = document.querySelector('.rotate');
 		setShowElements(!showElements);
-		console.log(droppable);
+		// console.log(droppable);
 		if (droppable.style.maxHeight) {
 			droppable.style.maxHeight = null;
 			droppable.style.opacity = 0;
 			droppable.style.pointerEvents = 'none';
+			droppable.style.paddingBottom = '0';
 			arrow.style.transform = 'rotate(0deg)';
 			setTimeout(() => {
 				droppable.style.overflow = 'hidden';
@@ -179,6 +180,7 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 		} else {
 			droppable.style.maxHeight = `${droppable.scrollHeight}px`;
 			droppable.style.opacity = 1;
+			droppable.style.paddingBottom = '10px';
 			droppable.style.pointerEvents = 'all';
 			droppable.style.overflow = 'visible';
 			arrow.style.transform = 'rotate(180deg)';

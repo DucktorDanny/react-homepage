@@ -198,11 +198,13 @@
   pointer-events: none;
   overflow: hidden;
   transition: all 0.4s;
+  border: 1px solid transparent;
+  padding-bottom: 10px;
 }
 
 .draggable {
   width: 100%;
-  margin: 0 auto 1rem;
+  margin: 10px auto 0;
 }
 
 @media only screen and (max-width: 500px) {
