@@ -10,7 +10,7 @@ https://ducktor-homepage.vercel.app
 ![PositioningPlans](positioning_sample.png)
 
 ### Current Look Sample
-![CurrentLookSample](current_look_sample.png)
+![CurrentLookSample](current_look_sample_2021_04_29.png)
 
 ## To Do:
 
