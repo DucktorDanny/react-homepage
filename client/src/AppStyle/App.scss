@@ -1,5 +1,6 @@
 $animationSpeed: .6s;
 $settingsWidth: 450px;
+$calendarBGColor: rgba(215, 215, 215, 0.8);
 
 * {
    margin: 0;
@@ -69,11 +70,11 @@ main {
 
    &::-webkit-scrollbar {
       -webkit-appearance: none;
-      height: 15px;
+      height: 10px;
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
-      background-color: rgb(255, 255, 255);
+      background-color: $calendarBGColor;
     }
 }
 
@@ -135,7 +136,6 @@ main {
       }
    }
 
-   $calendarBGColor: rgba(215, 215, 215, 0.8);
    .react-calendar {
       // min-height: 315px;
       // max-height: 315px;

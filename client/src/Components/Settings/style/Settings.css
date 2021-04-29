@@ -8,7 +8,7 @@
   position: fixed;
   top: 6rem;
   right: 0;
-  height: calc(100% - 9rem);
+  height: calc(100% - 140px);
   margin: 2rem 1rem;
   width: 450px;
   background: linear-gradient(30deg, rgba(164, 164, 164, 0.5), rgba(186, 186, 186, 0.8));
@@ -26,10 +26,9 @@
   text-align: center;
   margin: 1rem;
 }
-.settings .settings-form {
-  height: calc(100% - 175px);
-  padding: 0rem 0 3rem;
-  padding: 1rem 0 3rem;
+.settings .settings-section {
+  height: calc(100% - 85px);
+  padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,73 +36,73 @@
   overflow-y: scroll;
   scrollbar-color: rgba(255, 255, 255, 0.8) transparent !important;
 }
-.settings .settings-form h2 {
+.settings .settings-section h2 {
   font-weight: bold;
   margin: 1rem;
   font-size: 26px;
   text-align: center;
   width: 60%;
 }
-.settings .settings-form button {
+.settings .settings-section button {
   margin: 1rem;
 }
-.settings .settings-form .textfield .MuiOutlinedInput-root {
+.settings .settings-section .textfield .MuiOutlinedInput-root {
   width: 100%;
 }
-.settings .settings-form .line {
+.settings .settings-section .line {
   border: 1px solid rgba(255, 255, 255, 0.4);
   width: 65%;
 }
-.settings .settings-form .greeting-settings {
+.settings .settings-section .greeting-settings {
   width: 100%;
 }
-.settings .settings-form .greeting-settings .textfield {
+.settings .settings-section .greeting-settings .textfield {
   width: 40%;
   display: block;
   margin: 0 auto 1rem;
 }
-.settings .settings-form .greeting-settings button {
+.settings .settings-section .greeting-settings button {
   display: block;
   margin: 0 auto 1rem;
 }
-.settings .settings-form .favorite-add {
+.settings .settings-section .favorite-add {
   width: 100%;
 }
-.settings .settings-form .favorite-add .textfield {
+.settings .settings-section .favorite-add .textfield {
   width: 40%;
   display: block;
   margin: 0 auto 1rem;
 }
-.settings .settings-form .favorite-add button {
+.settings .settings-section .favorite-add button {
   display: block;
   margin: 0 auto 1rem;
 }
-.settings .settings-form .background-sliders {
+.settings .settings-section .background-sliders {
   padding-bottom: 1.5rem;
   width: 75%;
 }
-.settings .settings-form .background-sliders h3 {
+.settings .settings-section .background-sliders h3 {
   color: #464646;
   font-weight: normal;
   font-size: 1.15rem;
 }
-.settings .settings-form .imp-exp {
+.settings .settings-section .imp-exp {
   width: 100%;
 }
-.settings .settings-form .imp-exp button {
+.settings .settings-section .imp-exp button {
   display: block;
   margin: 0 auto 1.5rem;
 }
-.settings .settings-form .imp-exp .textfield {
+.settings .settings-section .imp-exp .textfield {
   display: block;
   margin: 0 auto 1.5rem;
   width: 70%;
 }
-.settings .settings-form .imp-exp .reset-settings {
+.settings .settings-section .imp-exp .reset-settings {
   color: white;
   background: #960000;
 }
-.settings .settings-form .save-changes {
+.settings .settings-section .save-changes {
   position: fixed;
   width: 100%;
   right: 0;
@@ -111,7 +110,7 @@
   z-index: 20;
   pointer-events: none;
 }
-.settings .settings-form .save-changes button {
+.settings .settings-section .save-changes button {
   display: block;
   margin: 0.75rem auto;
   font-size: 1rem;

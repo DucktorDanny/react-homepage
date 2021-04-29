@@ -55,11 +55,11 @@ main {
 }
 .bottom-components::-webkit-scrollbar {
   -webkit-appearance: none;
-  height: 15px;
+  height: 10px;
 }
 .bottom-components::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: white;
+  background-color: rgba(215, 215, 215, 0.8);
 }
 
 .bottom-components-settings-open {

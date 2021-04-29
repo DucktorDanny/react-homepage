@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 
 // Own Components:
 import Line from './Line';
@@ -47,6 +47,9 @@ const Settings = ({
 	const [ showNotifications, setShowNotifications ] = useState(
 		showElements.notifications !== null ? showElements.notifications : true
 	);
+
+	// backgroundColor for saving
+	const [ backgroundColorState, setBackgroundColorState ] = useState(backgroundColor);
 
 	// variables for clock settings
 	const [ showSeconds, setShowSeconds ] = useState(
@@ -165,6 +168,46 @@ const Settings = ({
 	}, [twentyFourClockMode, getTwentyFourClockMode]);
 
 	/**
+	 * If any change is happening in these states it is saved.
+	 */
+	useEffect(() => {
+		const saveChangesOnChange = () => {
+			console.log('save changes in settings');
+
+			const data = {
+				showElements: {
+					calendar: showCalendar,
+					favorites: showFavorites,
+					greeting: showGreeting,
+					notifications: showNotifications,
+					seconds: showSeconds,
+					twentyFourClockMode,
+				},
+				greeting: {
+					pronouns: greetingPronouns,
+					emoji: greetingEmoji,
+				},
+				favoritesArray: favorites,
+				backgroundColor: backgroundColorState,
+			}
+
+			localStorage.setItem('data', JSON.stringify(data));
+		}
+		saveChangesOnChange();
+	}, [
+		showCalendar,
+		showFavorites,
+		showGreeting,
+		showNotifications,
+		showSeconds,
+		twentyFourClockMode,
+		backgroundColorState,
+		greetingPronouns,
+		greetingEmoji,
+		favorites
+	]);
+
+	/**
 	 * it gets four parameters there is two names of css classes, one of them is the main class
 	 * and the other is the hidden class (what hides the given element by an animation) if the fourth
 	 * parameter what is the condition is true then it removes the hidden class and set the display
@@ -197,45 +240,6 @@ const Settings = ({
 			}, delay);
 		}
 	}
-
-	const saveChanges = (event) => {
-		console.log('save changes in settings');
-		if (event) {
-			event.preventDefault();
-		}
-
-		const bgColor = document.querySelector('body').style.backgroundImage
-			.replace('linear-gradient(rgb(', '')
-			.replace('), rgb(164, 164, 164))', '')
-			.split(', ');
-		
-		const data = {
-			showElements: {
-				calendar: showCalendar,
-				favorites: showFavorites,
-				greeting: showGreeting,
-				notifications: showNotifications,
-				seconds: showSeconds,
-				twentyFourClockMode,
-			},
-			greeting: {
-				pronouns: greetingPronouns,
-				emoji: greetingEmoji,
-			},
-			favoritesArray: favorites,
-			backgroundColor: {
-				R: parseInt(bgColor[0]),
-				G: parseInt(bgColor[1]),
-				B: parseInt(bgColor[2]),
-			}
-		}
-
-		greeting.pronouns = greetingPronouns;
-		greeting.emoji = greetingEmoji;
-
-		localStorage.setItem('data', JSON.stringify(data));
-		createNotification('Success', 'Changes have been saved!', 'success');
-	}
 	
 	return (
 		<>
@@ -247,7 +251,7 @@ const Settings = ({
 			<div className='settings'>
 				<h1>Settings</h1>
 				<Line />
-				<form className='settings-form' onSubmit={ saveChanges }>
+				<section className='settings-section'>
 
 					<ElementVisibility
 						showFavorites={showFavorites} setShowFavorites={setShowFavorites}
@@ -271,6 +275,7 @@ const Settings = ({
 						R={ backgroundColor.R }
 						G={ backgroundColor.G }
 						B={ backgroundColor.B }
+						getColor={setBackgroundColorState}
 					/>
 
 					{/* <Line />
@@ -305,7 +310,6 @@ const Settings = ({
 						favorites={favorites}
 						setFavorites={setFavorites}
 						setPopup={setPopup}
-						saveChanges={saveChanges}
 						createNotification={createNotification}
 					/>
 
@@ -316,18 +320,9 @@ const Settings = ({
 						setPopup={setPopup}
 					/>
 
-					<p style={{ textAlign: 'center' }}>Made by ducktorD. 2021.<br/>v1.5.1</p>
-
-					{/* Save changes */}
-					<div className='save-changes'>
-						<Button
-							type='submit'
-							variant='contained'
-							color='primary'
-						>Save</Button>
-					</div>
-				</form>
-				<Line />
+					{/* Footer */}
+					<p style={{ textAlign: 'center', marginBottom: '1rem' }}>Made by ducktorD. 2021.<br/>v1.5.1</p>
+				</section>
 			</div>
 		</>
 	)

@@ -10,7 +10,8 @@ $settingsWidth: 450px;
    position: fixed;
    top: 6rem;
    right: 0;
-   height: calc(100% - 9rem);
+  //  height: calc(100% - 8.8rem);
+   height: calc(100% - 140px);
    margin: 2rem 1rem;
    width: $settingsWidth;
 
@@ -35,10 +36,9 @@ $settingsWidth: 450px;
       margin: 1rem;
   }
 
-	.settings-form {
-    height: calc(100% - 175px);
-    padding: 0rem 0 3rem;
-    padding: 1rem 0 3rem;
+	.settings-section {
+    height: calc(100% - 85px);
+    padding-top: .5rem;
 
 		display: flex;
 		flex-direction: column;

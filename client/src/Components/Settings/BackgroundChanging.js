@@ -32,7 +32,7 @@ const PrettoSlider = withStyles({
    },
  })(Slider);
 
-const BackgroundChanging = ({ R, G, B }) => {
+const BackgroundChanging = ({ R, G, B, getColor }) => {
    const [ red, setRed ] = useState(R !== null ? R : 7);
 	const [ green, setGreen ] = useState(G !== null ? G : 55);
 	const [ blue, setBlue ] = useState(B !== null ? B : 89);
@@ -42,8 +42,14 @@ const BackgroundChanging = ({ R, G, B }) => {
 	const changeBlue = (event, newValue) => setBlue(newValue);
 	
 	useEffect(() => {
-		document.querySelector('body').style.background = `linear-gradient(to bottom, rgb(${red}, ${green}, ${blue}), #a4a4a4)`;
+      document.querySelector('body').style.background = `linear-gradient(to bottom, rgb(${red}, ${green}, ${blue}), #a4a4a4)`;
 	}, [red, green, blue]);
+
+   const colorChange = () => {
+      if (getColor) {
+         getColor({ R: red, G: green, B: blue });
+      }
+   }
 
    return (
       <>
@@ -58,6 +64,7 @@ const BackgroundChanging = ({ R, G, B }) => {
                min={0}
                max={255}
                onChange={changeRed}
+               onMouseUp={colorChange}
                style={{
                   color: 'red'
                }}
@@ -71,6 +78,7 @@ const BackgroundChanging = ({ R, G, B }) => {
                min={0}
                max={255}
                onChange={changeGreen}
+               onMouseUp={colorChange}
                style={{
                   color: 'green'
                }}
@@ -84,6 +92,7 @@ const BackgroundChanging = ({ R, G, B }) => {
                min={0}
                max={255}
                onChange={changeBlue}
+               onMouseUp={colorChange}
                style={{
                   color: 'blue'
                }}

@@ -16,7 +16,7 @@ const Nav = ({ favorites }) => {
 	const clicked = () => {
 		setOpened(!opened);
 		
-		const form = document.querySelector('.settings-form');
+		const form = document.querySelector('.settings-section');
 		form.scrollTo(0, 0);
 	}
 

@@ -90,8 +90,6 @@ const FavoriteList = ({ favorites, setFavorites, setPopup, saveChanges, createNo
 				}
 				return element;
 			}));
-			
-			saveChanges();
 		} else if (!isNameValid) {
 			throw new Error('The new name is too long!');
 		} else if (!isUrlValid) {
