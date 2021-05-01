@@ -11,12 +11,13 @@ const TodoCard = ({
    date,
    onTodo,
    onRemove,
-   showDate
+   showDate,
+   marginTop
 }) => {
    return (
-      <section className={`event-card ${done ? 'event-done' : ''}`} onClick={(e) => {
+      <section className={`event-card ${done ? 'event-done' : ''}`} style={{marginTop: `${marginTop || '0'}`}} onClick={(e) => {
          if (!e.target.classList.contains('MuiButton-label') && !e.target.classList.contains('MuiButtonBase-root') && !e.target.classList.contains('checkmark')) {
-            return onTodo ? onTodo(date) : null;
+            return onTodo ? onTodo(date, id) : null;
          }
          return null;
       }}>

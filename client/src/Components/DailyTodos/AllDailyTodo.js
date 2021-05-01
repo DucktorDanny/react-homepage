@@ -1,7 +1,10 @@
+import React, { useRef } from 'react';
 import TodoCard from './TodoCard';
+import DateSeparator from './DateSeparator';
 import './style/DailyTodoEvents.css';
 
 const AllDailyTodo = ({ dailyTodo, onTodo, onRemove, setTodoDone }) => {
+   const dateSeparatorValue = useRef(Number);
 
    const hasDailyTodos = () => {
       let isThereAnyDailyTodo = false;
@@ -39,20 +42,33 @@ const AllDailyTodo = ({ dailyTodo, onTodo, onRemove, setTodoDone }) => {
             hasDailyTodos()
                ? objectEntriesWithIntKeys(dailyTodo).map((date, i) => (
                   date[1].map((todo, j) => {
-                     const key = `all-${i}-${j}`;
+                     const todoKey = `all-${i}-${j}`;
+                     let showSeparator = false;
+                     if (!dateSeparatorValue.current || j === 0 || (dateSeparatorValue.current && dateSeparatorValue.current !== date[0])) {
+                        showSeparator = true;
+                     }
+                     dateSeparatorValue.current = date[0];
+
+                     if (showSeparator) {
+                        console.log(`separator-${date[0]}-${i}`);
+                     }
+                     console.log(i);
+
                      return (
-                        <TodoCard
-                           key={key}
-                           id={j}
-                           title={todo.title}
-                           content={todo.content}
-                           done={todo.done}
-                           setTodoDone={setTodoDone}
-                           date={date[0] }
-                           onTodo={onTodo}
-                           onRemove={onRemove}
-                           showDate
-                        />
+                        <React.Fragment key={todoKey}>
+                           {showSeparator ? <DateSeparator date={new Date(date[0]).toDateString()} /> : ''}
+                           <TodoCard
+                              id={j}
+                              title={todo.title}
+                              content={todo.content}
+                              done={todo.done}
+                              setTodoDone={setTodoDone}
+                              date={date[0] }
+                              onTodo={onTodo}
+                              onRemove={onRemove}
+                              // showDate
+                           />
+                        </React.Fragment>
                      )
                   })
                ))

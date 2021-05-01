@@ -2,17 +2,14 @@ import TodoCard from './TodoCard';
 // import { Button } from '@material-ui/core';
 import './style/DailyTodoEvents.css';
 
-const SelectedDateOfTodo = ({ date, dailyTodo, onRemove, setTodoDone }) => {
-   const todoEdit = (e) => {
-      console.log(e);
-   }
+const SelectedDateOfTodo = ({ date, dailyTodo, onRemove, setTodoDone, todoEdit }) => {
 
    return (
       <>
          {
             dailyTodo && dailyTodo.length !== 0
                ? dailyTodo.map((todo, id) => (
-                  <TodoCard
+                   <TodoCard
                      key={`selected-${id}`}
                      id={id}
                      title={todo.title}
@@ -22,6 +19,7 @@ const SelectedDateOfTodo = ({ date, dailyTodo, onRemove, setTodoDone }) => {
                      date={date}
                      onTodo={todoEdit}
                      onRemove={onRemove}
+                     marginTop={id === 0 ? '1rem' : ''}
                   />
                ))
                : <h2>There are no todo!</h2>

@@ -27,14 +27,22 @@
   margin: 1rem;
 }
 .settings .settings-section {
-  height: calc(100% - 85px);
+  height: calc(100% - 90px);
   padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-color: rgba(255, 255, 255, 0.8) transparent !important;
+}
+.settings .settings-section::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+.settings .settings-section::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .settings .settings-section h2 {
   font-weight: bold;
@@ -64,6 +72,14 @@
 .settings .settings-section .greeting-settings button {
   display: block;
   margin: 0 auto 1rem;
+}
+.settings .settings-section .greeting-settings .emoji-scroll-wrapper::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+.settings .settings-section .greeting-settings .emoji-scroll-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .settings .settings-section .favorite-add {
   width: 100%;
@@ -295,10 +311,10 @@
 
 .line {
   position: relative;
+  height: 1px;
   width: 80%;
   margin: auto;
   border-radius: 100%;
-  border: 1px solid white;
 }
 
 /*# sourceMappingURL=Settings.css.map */

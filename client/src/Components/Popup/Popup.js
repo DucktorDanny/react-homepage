@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import AcceptDecline from './PopupTypes/AcceptDecline';
 import FavoriteEdit from './PopupTypes/FavoriteEdit';
 import EventHandler from './PopupTypes/EventHandler';
+import EventEdit from './PopupTypes/EventEdit';
 import './style/Popup.css';
 
 const Popup = ({
@@ -33,7 +34,16 @@ const Popup = ({
    }, [type, open, data]);
 
    return (
-      <div onClick={onDeclineByBackground} className={cache ? cache.open === true ? 'popup-container' : cache.open === false ? 'popup-container popup-container-hidden' : 'popup-load' : ''} >
+      <div 
+         onClick={onDeclineByBackground}
+         className={ cache
+            ? cache.open === true
+               ? 'popup-container'
+               : cache.open === false
+                  ? 'popup-container popup-container-hidden'
+                  : 'popup-load' 
+            : '' }
+      >
          <div className='popup-box'>
             {
                cache ?
@@ -63,6 +73,16 @@ const Popup = ({
                      acceptLabel={cache.data.acceptLabel}
                      declineLabel={cache.data.declineLabel}
                   />
+               : cache.type === 'event-edit'
+                  ? <EventEdit
+                        date={cache.data.date}
+                        titleField={cache.data.titleField}
+                        linkField={cache.data.linkField}
+                        acceptLabel={cache.data.acceptLabel}
+                        declineLabel={cache.data.declineLabel}
+                        onAccept={cache.data.onAccept}
+                        onDecline={cache.data.onDecline}
+                     />
                : '' : ''
             }
          </div>

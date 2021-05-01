@@ -112,7 +112,16 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
             acceptLabel: 'Yes',
             declineLabel: 'Cancel',
             onAccept: () => {
-               setEvents({...events, [date]: events[date].filter((e, i) => i !== id)});
+               // remove spesific todo
+               const modifiedEvents = {...events, [date]: events[date].filter((e, i) => i !== id)};
+               // if on a day we have no more todo then delete empty parts
+               Object.entries(modifiedEvents).forEach(event => {
+                  if (event[1].length === 0) {
+                     delete modifiedEvents[parseInt(event[0])];
+                  }
+               });
+               setEvents(modifiedEvents);
+
                // still need to check if we have empty arrays... (in useEffect)
                createNotification('Success', 'The event was successfully removed!', 'success');
                setPopup({});
@@ -180,6 +189,41 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
       setIsAllEventsSelected(document.querySelector('#all-events').classList.contains('selected-event-point'));
    }, [setIsAllEventsSelected]);
 
+   const todoEdit = (date, id) => {
+      const { title, content } = events[date][id]
+      console.log(title, content);
+      setPopup(Object);
+      setPopup({
+         type: 'event-edit',
+         open: true,
+         data: {
+            date,
+				titleField: title,
+				linkField: content,
+				acceptLabel: 'Edit',
+            declineLabel: 'Cancel',
+            onAccept: (newDate, newTitle, newContent) => {
+               try {
+                  if (!newDate && !newTitle && !newContent) {
+                     throw new Error('There were no changes!');
+                  }
+                  modifyTodoEvent();
+                  setPopup({});
+               } catch (err) {
+                  createNotification('Error', err.message, 'danger');
+               }
+            },
+            onDecline: () => {
+               setPopup({});
+            },
+         }
+      });
+   }
+
+   const modifyTodoEvent = (id, date, title, content) => {
+      console.log('Hello from the inside of the modify function. :)');
+   }
+
    return (
       <>
          {/* <EventNotification events={events[todayKey]} /> */}
@@ -212,6 +256,7 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
                         setTodoDone={setEventDone}
                         dailyTodo={events[selectedDate]}
                         onRemove={eventOnRemove}
+                        todoEdit={todoEdit}
                      />
                   }
                   <section className='add-new-event'>

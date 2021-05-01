@@ -63,11 +63,19 @@
 .calendar-events .events-container {
   height: calc(100% - 3.25rem);
   width: 100%;
-  padding: 0.1rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   box-sizing: border-box;
   overflow-y: scroll;
   border: 0.1rem solid rgba(70, 70, 70, 0.8);
   border-radius: 5px;
+}
+.calendar-events .events-container::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+.calendar-events .events-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .calendar-events .events-container .add-new-event {
   position: fixed;
@@ -85,7 +93,7 @@
 .calendar-events .event-card {
   position: relative;
   width: 100%;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   padding: 1rem 0;
   box-sizing: border-box;
   display: flex;
@@ -170,6 +178,14 @@
   display: inline-block;
   box-sizing: border-box;
 }
+.event-notifications-container::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+.event-notifications-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
 .event-notifications-container .no-events-message {
   width: 100%;
   margin: 1rem auto 1rem;
@@ -208,6 +224,13 @@
   transform: translateY(125%);
   opacity: 0;
   animation: slide-down-hide 0.6s ease-in-out;
+}
+
+.date-separator {
+  display: flex;
+}
+.date-separator p {
+  margin: 0.5rem 0 0.5rem !important;
 }
 
 @media only screen and (max-width: 1000px) {

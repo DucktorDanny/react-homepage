@@ -23,7 +23,7 @@ const FavoriteEdit = ({
                 className='edit-textfield'
                 name='favorite-edit-title'
                 type='text'
-                label='New title'
+                label='Name'
                 variant='outlined'
                 value={newTitle !== null ? newTitle : titleField}
                 onChange={(e) => setNewTitle(e.target.value)}
@@ -33,7 +33,7 @@ const FavoriteEdit = ({
                 className='edit-textfield'
                 name='favorite-edit-link'
                 type='text'
-                label='New link'
+                label='Link'
                 variant='outlined'
                 value={newLink !== null ? newLink : linkField}
                 onChange={(e) => setNewLink(e.target.value)}

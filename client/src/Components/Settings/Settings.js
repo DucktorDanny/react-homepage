@@ -241,6 +241,12 @@ const Settings = ({
 		}
 	}
 	
+	const handleScroll = (e) => {
+		if (!e.target.classList.contains('on-scrollbar')) {
+			e.target.classList.add('on-scrollbar');
+		}
+	}
+
 	return (
 		<>
 			<Popup
@@ -250,8 +256,8 @@ const Settings = ({
 			/>
 			<div className='settings'>
 				<h1>Settings</h1>
-				<Line />
-				<section className='settings-section'>
+				<Line heightPx='2' />
+				<section className='settings-section' onScroll={handleScroll}>
 
 					<ElementVisibility
 						showFavorites={showFavorites} setShowFavorites={setShowFavorites}

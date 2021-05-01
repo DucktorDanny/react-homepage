@@ -73,11 +73,22 @@ $animationSpeed: .6s;
    .events-container {
       height: calc(100% - 3.25rem);
       width: 100%;
-      padding: .1rem 1.5rem;
+      padding: .5rem 1.5rem;
       box-sizing: border-box;
       overflow-y: scroll;
       border: .1rem solid rgba(70, 70, 70, 0.8);
       border-radius: 5px;
+
+      // because of windows I need to modify the scrollbar... :)
+      &::-webkit-scrollbar {
+         -webkit-appearance: none;
+         width: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+         border-radius: 10px;
+         background-color: rgba(255, 255, 255, 0.8);
+      }
 
       .add-new-event {
          position: fixed;
@@ -99,7 +110,7 @@ $animationSpeed: .6s;
    .event-card {
       position: relative;
       width: 100%;
-      margin: 1rem 0;
+      margin-bottom: 1rem;
       padding: 1rem 0;
       box-sizing: border-box;
       display: flex;
@@ -204,6 +215,17 @@ $animationSpeed: .6s;
 
    box-sizing: border-box;
 
+   // because of windows I need to modify the scrollbar... :)
+   &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 10px;
+   }
+
+   &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+   }
+
    .no-events-message {
       width: 100%;
       margin: 1rem auto 1rem;
@@ -252,6 +274,13 @@ $animationSpeed: .6s;
    transform: translateY(125%);
    opacity: 0;
    animation: slide-down-hide $animationSpeed ease-in-out;
+}
+
+.date-separator {
+   display: flex;
+   p {
+      margin: .5rem 0 .5rem !important;
+   }
 }
 
 @media only screen and (max-width: 1000px) {

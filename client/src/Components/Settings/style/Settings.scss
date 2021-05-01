@@ -37,7 +37,7 @@ $settingsWidth: 450px;
   }
 
 	.settings-section {
-    height: calc(100% - 85px);
+    height: calc(100% - 90px);
     padding-top: .5rem;
 
 		display: flex;
@@ -45,9 +45,20 @@ $settingsWidth: 450px;
 		align-items: center;
 		justify-content: flex-start;
     
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-color: rgba(255, 255, 255, 0.8) transparent !important;
-    
+
+    // because of windows I need to modify the scrollbar... :)
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
 		h2 {
       font-weight: bold;
 			margin: 1rem;
@@ -85,6 +96,19 @@ $settingsWidth: 450px;
       button {
         display: block;
         margin: 0 auto 1rem;
+      }
+
+      .emoji-scroll-wrapper {
+        // because of windows I need to modify the scrollbar... :)
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+            width: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
       }
     }
 
@@ -374,10 +398,11 @@ $settingsWidth: 450px;
 
 .line {
   position: relative;
+  height: 1px;
 	width: 80%;
   // background: linear-gradient(to right, transparent, white, transparent);
 	margin: auto;
 	border-radius: 100%;
-	border: 1px solid white;
+	// border: 1px solid white;
 }
 

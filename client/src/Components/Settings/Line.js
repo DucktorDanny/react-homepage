@@ -1,8 +1,11 @@
 import './style/Settings.css';
 
-const Line = () => {
+const Line = ({lineColor, heightPx, widthPercent}) => {
    return (
-      <div className='line'></div>
+      <div className='line' style={{
+         background: `linear-gradient(to right, transparent, ${lineColor || 'white'}, transparent)`,
+         height: `${heightPx || '1'}px`
+      }}></div>
    )
 }
 
