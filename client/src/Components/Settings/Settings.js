@@ -325,9 +325,12 @@ const Settings = ({
 						createNotification={createNotification}
 						setPopup={setPopup}
 					/>
-
+aaa
 					{/* Footer */}
-					<p style={{ textAlign: 'center', marginBottom: '1rem' }}>Made by ducktorD. 2021.<br/>v1.5.1</p>
+					<p style={{ textAlign: 'center', marginBottom: '1rem' }}>Made by ducktorD. 2021.
+						<br/>v1.5.1<br/>
+						<a href='https://ducktordanny.com/homepage-extension' target='_blank' rel='noreferrer noopener'>Info</a>
+					</p>
 				</section>
 			</div>
 		</>
