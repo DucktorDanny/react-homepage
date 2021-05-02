@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Line from '../../Settings/Line';
 import { TextField, Button } from '@material-ui/core';
 
@@ -13,7 +13,20 @@ const EventEdit = ({
 }) => {
 	const [newTitle, setNewTitle] = useState(null);
 	const [newContent, setNewContent] = useState(null);
-	const [newDate, setNewDate] = useState(null);
+	const [newDate, setNewDate] = useState(date  ? date : new Date().getTime());
+
+	useEffect(() => {
+		console.log(date);
+		if (date) {
+			setNewDate(date);
+		} else {
+			setNewDate(new Date().getTime());
+		}
+	 }, [date]);
+  
+	 useEffect(() => {
+		console.log(newDate);
+	 }, [newDate])
 
 	return (
 		<>
@@ -49,7 +62,7 @@ const EventEdit = ({
 					InputLabelProps={{
 						shrink: true,
 					}}
-					value={new Date(date).toLocaleDateString('hu-HU').split('. ').join('-').replace('.', '')}
+					value={new Date(newDate).toLocaleDateString('hu-HU').split('. ').join('-').replace('.', '')}
 					onChange={(e) => setNewDate(e.target.value)}
 				/>
 			</div>
@@ -63,7 +76,7 @@ const EventEdit = ({
 					onClick={() => {
 						onAccept(newDate, newTitle, newContent);
 						setTimeout(() => {
-							setNewDate(null);
+							setNewDate(new Date().getTime());
 							setNewTitle(null);
 							setNewContent(null);
 						}, 500);

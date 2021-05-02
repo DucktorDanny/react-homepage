@@ -54,6 +54,24 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
       }
    }
 
+   const addSpecifiTodo = (title, content, date, done) => {
+      if (!title || title === '' || !content || content === '') {
+         throw new Error('Title and content are required!');
+      }
+
+      date = new Date(new Date(date).toDateString()).getTime();
+      if (!events[date]) {
+         events[date] = [];
+         setEvents({...events, [date]: [{
+            title, content, done,
+         }]});
+      } else {
+         setEvents({...events, [date]: [...events[date], {
+            title, content, done,
+         }]});
+      }
+   }
+
    const handleEventAdding = () => {
       setPopup({
          type: 'event-handler',
@@ -62,22 +80,7 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
             date: !isAllEventsSelected ? selectedDate : null,
             onAccept: (title, content, date) => {
                try {
-
-                  if (!title || title === '' || !content || content === '') {
-                     throw new Error('Title and content are required!');
-                  }
-
-                  date = new Date(new Date(date).toDateString()).getTime();
-                  if (!events[date]) {
-                     events[date] = [];
-                     setEvents({...events, [date]: [{
-                        title, content, done: false,
-                     }]});
-                  } else {
-                     setEvents({...events, [date]: [...events[date], {
-                        title, content, done: false,
-                     }]});
-                  }
+                  addSpecifiTodo(title, content, date, false);
 
                   createNotification('Success', 'New event successfully added!', 'success');
                   setPopup({});
@@ -96,9 +99,23 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
       });
    }
 
-   useEffect(() => {
-      console.log('CHANGE');
-   }, [events]);
+   // useEffect(() => {
+   //    console.log('CHANGE');
+   // }, [events]);
+
+   // the date is the timeKey of a group and the id is the index of that timeKey
+   const removeSpecificTodo = (id, date) => {
+      console.log('Removing: ', id, date);
+      console.log(events);
+      const modifiedEvents = {...events, [date]: events[date].filter((e, i) => i !== id)};
+      // if on a day we have no more todo then delete empty parts
+      Object.entries(modifiedEvents).forEach(event => {
+         if (event[1].length === 0) {
+            delete modifiedEvents[parseInt(event[0])];
+         }
+      });
+      setEvents(modifiedEvents);
+   }
 
    const eventOnRemove = (id, title, content, date) => {      
       console.log(id, title, content, date);
@@ -113,14 +130,7 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
             declineLabel: 'Cancel',
             onAccept: () => {
                // remove spesific todo
-               const modifiedEvents = {...events, [date]: events[date].filter((e, i) => i !== id)};
-               // if on a day we have no more todo then delete empty parts
-               Object.entries(modifiedEvents).forEach(event => {
-                  if (event[1].length === 0) {
-                     delete modifiedEvents[parseInt(event[0])];
-                  }
-               });
-               setEvents(modifiedEvents);
+               removeSpecificTodo(id, date);
 
                // still need to check if we have empty arrays... (in useEffect)
                createNotification('Success', 'The event was successfully removed!', 'success');
@@ -207,7 +217,8 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
                   if (!newDate && !newTitle && !newContent) {
                      throw new Error('There were no changes!');
                   }
-                  modifyTodoEvent();
+                  newDate = new Date(new Date(newDate).toDateString()).getTime();
+                  modifyTodoEvent(id, date, newDate || date, newTitle || title, newContent || content);
                   setPopup({});
                } catch (err) {
                   createNotification('Error', err.message, 'danger');
@@ -220,8 +231,31 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
       });
    }
 
-   const modifyTodoEvent = (id, date, title, content) => {
-      console.log('Hello from the inside of the modify function. :)');
+   const modifyTodoEvent = (id, date, newDate, newTitle, newContent) => {
+      console.log(id, date, newDate, newTitle, newContent);
+
+      if (!newTitle || newTitle === '' || !newContent || newContent === '') {
+         throw new Error('Title and content are required!');
+      }
+
+      const isTodoDone =  events[date][id].done;
+      const modifiedEvents = {...events, [date]: events[date].filter((e, i) => i !== id)};
+      Object.entries(modifiedEvents).forEach(event => {
+         if (event[1].length === 0) {
+            delete modifiedEvents[parseInt(event[0])];
+         }
+      });
+      if (!modifiedEvents[newDate]) {
+         modifiedEvents[newDate] = []
+      }
+      modifiedEvents[newDate].push({
+         title: newTitle,
+         content: newContent,
+         done: isTodoDone,
+      });
+
+      console.log(modifiedEvents);
+      setEvents(modifiedEvents);
    }
 
    return (
