@@ -239,20 +239,31 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
       }
 
       const isTodoDone =  events[date][id].done;
-      const modifiedEvents = {...events, [date]: events[date].filter((e, i) => i !== id)};
-      Object.entries(modifiedEvents).forEach(event => {
-         if (event[1].length === 0) {
-            delete modifiedEvents[parseInt(event[0])];
+      
+      let modifiedEvents = null;
+      if (newDate === date) {
+         modifiedEvents = events;
+         modifiedEvents[newDate][id] = {
+            title: newTitle,
+            content: newContent,
+            done: isTodoDone,
+         };
+      } else {
+         modifiedEvents = {...events, [date]: events[date].filter((e, i) => i !== id)};
+         Object.entries(modifiedEvents).forEach(event => {
+            if (event[1].length === 0) {
+               delete modifiedEvents[parseInt(event[0])];
+            }
+         });
+         if (!modifiedEvents[newDate]) {
+            modifiedEvents[newDate] = []
          }
-      });
-      if (!modifiedEvents[newDate]) {
-         modifiedEvents[newDate] = []
+         modifiedEvents[newDate].push({
+            title: newTitle,
+            content: newContent,
+            done: isTodoDone,
+         });
       }
-      modifiedEvents[newDate].push({
-         title: newTitle,
-         content: newContent,
-         done: isTodoDone,
-      });
 
       console.log(modifiedEvents);
       setEvents(modifiedEvents);
