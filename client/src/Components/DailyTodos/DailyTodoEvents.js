@@ -99,10 +99,6 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
       });
    }
 
-   // useEffect(() => {
-   //    console.log('CHANGE');
-   // }, [events]);
-
    // the date is the timeKey of a group and the id is the index of that timeKey
    const removeSpecificTodo = (id, date) => {
       console.log('Removing: ', id, date);
@@ -248,6 +244,7 @@ const DailyTodoEvents = ({ date, events, setEvents, show, onClose, createNotific
             content: newContent,
             done: isTodoDone,
          };
+         localStorage.setItem('events', JSON.stringify(modifiedEvents));
       } else {
          modifiedEvents = {...events, [date]: events[date].filter((e, i) => i !== id)};
          Object.entries(modifiedEvents).forEach(event => {

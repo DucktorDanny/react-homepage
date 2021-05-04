@@ -325,7 +325,7 @@ const Settings = ({
 						createNotification={createNotification}
 						setPopup={setPopup}
 					/>
-aaa
+
 					{/* Footer */}
 					<p style={{ textAlign: 'center', marginBottom: '1rem' }}>Made by ducktorD. 2021.
 						<br/>v1.5.1<br/>

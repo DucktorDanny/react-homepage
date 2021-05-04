@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 
+import useSettings from './Hooks/useSettings';
+import useEvents from './Hooks/useEvents';
+
 import Nav from './Components/Nav/Nav';
 import Greeting from './Components/ClockAndGreeting/Greeting';
 import Clock from './Components/ClockAndGreeting/Clock';
@@ -27,41 +30,11 @@ if (datas) {
 	console.log('Refreshed older version.');
 }
 
-const data = JSON.parse(localStorage.getItem('data'));
-const eventsObject = JSON.parse(localStorage.getItem('events')) || {};
-
-const showElements = data ? data.showElements : {
-   calendar: true,
-   favorites: true,
-	greeting: true,
-	notifications: true,
-	seconds: true,
-	twentyFourClockMode: false,
-};
-const greeting = data ? data.greeting : {
-   pronouns: 'friend',
-   emoji: '🐣',
-};
-const favoritesArray = data ? data.favoritesArray : [
-   {
-      name: 'Twitch',
-      url: 'https://twitch.tv',
-   },
-   {
-      name: 'Speedtest',
-      url: 'https://speedtest.net'
-   },
-];
-const backgroundColor = data ? data.backgroundColor : {
-   R: 7,
-   G: 55,
-   B: 89,
-};
-
 const font = "'Comic Neue', cursive";
 
 const App = () => {
-	const [events, setEvents] = useState(eventsObject);
+	const [events, setEvents] = useEvents();
+	const { showElements, greeting, favoritesArray, backgroundColor } = useSettings();
 
 	const [calendarValue, setCalendarValue] = useState(new Date());
 	const [todayKey, setTodayKey] = useState(new Date(new Date().toDateString()).getTime());
@@ -116,6 +89,7 @@ const App = () => {
 		localStorage.setItem('events', JSON.stringify(events));
 	}
 
+	// save events
 	useEffect(() => {
 		console.log('Change is detected...');
 		console.log(events);
@@ -140,11 +114,6 @@ const App = () => {
 			}
 		});
 	}
-
-	// useEffect(() => {
-	// 	console.log(font);
-	// 	console.log(font.split(', '));
-	// }, [font]);
 
 	return (
 		<>
